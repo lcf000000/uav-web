@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lcf.dao.UserMapper">
+	<resultMap id="BaseResultMap" type="com.lcf.model.User" >
+	    <id column="USER_ID" property="id" jdbcType="BIGINT" />
+	    <result column="USER_UNAME" property="username" jdbcType="VARCHAR" />
+	    <result column="USER_PASS" property="password" jdbcType="VARCHAR" />
+	    <result column="USER_EMAIL" property="email" jdbcType="VARCHAR" />
+	    <result column="USER_NAME" property="realname" jdbcType="VARCHAR" />
+	    <result column="USER_COUNTRY" property="country" jdbcType="VARCHAR" />
+	    <result column="USER_ORG" property="org" jdbcType="VARCHAR" />
+	    <result column="USER_REGDATE" property="regtime" jdbcType="VARCHAR" />
+	    <result column="USER_RIGHT" property="right" jdbcType="NUMERIC" />
+ 	</resultMap>
+	<select id="findUserByName" resultMap="BaseResultMap">
+		SELECT * FROM USER WHERE USER_UNAME = #{username} 
+	</select>
+	
+	<select id="getUserList" resultMap="BaseResultMap" parameterType="com.lcf.model.User">
+		SELECT * FROM USER WHERE 1 = 1
+		<if test="user.username!=null and user.username!=''"> 
+		AND USER_UNAME like concat('%',#{user.username},'%')
+		</if>
+		<if test="user.email!=null and user.email!=''">
+		AND USER_EMAIL like concat('%',#{user.email},'%')
+		</if>
+		<if test="user.realname!=null and user.realname!=''">
+		AND USER_NAME like concat('%',#{user.realname},'%')
+		</if> 
+		<if test="user.country!=null and user.country!=''">
+		AND USER_COUNTRY like concat('%',#{user.country},'%')
+		</if> 
+		<if test="user.org!=null and user.org!=''">
+		AND USER_ORG like concat('%',#{user.org},'%')
+		</if>
+		<if test="user.right!=null and user.right!=''">
+		AND USER_RIGHT = #{user.right}
+		</if>
+	</select>
+	
+	<insert id="addUser" useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO USER(<trim suffixOverrides=",">
+            <if test="username !=null and username !=''">USER_UNAME,</if>
+            <if test="password !=null and password !=''">USER_PASS,</if>
+            <if test="email !=null and email !=''">USER_EMAIL,</if>
+            <if test="country !=null and country !=''">USER_COUNTRY,</if>
+            <if test="realname !=null and realname !=''">USER_NAME,</if>
+            <if test="org !=null and org !=''">USER_ORG,</if>
+            <if test="regtime !=null and regtime !=''">USER_REGDATE,</if>
+            <if test="right !=null and right !=''">USER_RIGHT</if>
+            </trim>)values(<trim suffixOverrides=",">
+            <if test="username !=null and username !=''">#{username},</if>
+            <if test="password !=null and password !=''">#{password},</if>
+            <if test="email !=null and email !=''">#{email},</if>
+            <if test="country !=null and country !=''">#{country},</if>
+            <if test="realname !=null and realname !=''">#{realname},</if>
+            <if test="org !=null and org !=''">#{org},</if>
+            <if test="regtime !=null and regtime !=''">#{regtime},</if>
+            <if test="right !=null and right !=''">#{right}</if>
+            </trim>)
+	</insert>
+	
+    <update id="editUser" useGeneratedKeys="true" keyProperty="id">
+    	UPDATE USER
+    	<set>
+    		<if test="username !=null and username !=''">USER_UNAME = #{username},</if>
+            <if test="password !=null and password !=''">USER_PASS  = #{password},</if>
+            <if test="email !=null and email !=''">USER_EMAIL  = #{email},</if>
+            <if test="country !=null and country !=''">USER_COUNTRY  = #{country},</if>
+            <if test="realname !=null and realname !=''">USER_NAME  = #{realname},</if>
+            <if test="org !=null and org !=''">USER_ORG = #{org}</if>
+            <if test="right !=null and right !=''">USER_RIGHT = #{right}</if>
+    	</set>
+    	WHERE USER_ID = #{id}
+    </update>
+    
+    <delete id="deleteUser" parameterType="int">
+		DELETE FROM USER WHERE USER_ID = #{id}
+	</delete>
+</mapper>

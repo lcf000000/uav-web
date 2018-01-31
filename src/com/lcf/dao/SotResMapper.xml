@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lcf.dao.SotResMapper">
+	<resultMap id="BaseResultMap" type="com.lcf.model.SotRes" >
+	    <id column="RESULT_ID" property="id" jdbcType="BIGINT" />
+	    <result column="RESULT_NAME" property="name" jdbcType="VARCHAR" />
+	    <result column="RESULT_DATE" property="user_id" jdbcType="BIGINT" />
+	    <result column="USER_ID" property="language" jdbcType="BIGINT" />
+	    <result column="RESULT_LANG" property="environment" jdbcType="VARCHAR" />
+	    <result column="RESULT_EVM" property="reference" jdbcType="VARCHAR" />
+	    <result column="RESULT_REF" property="resfile" jdbcType="VARCHAR" />
+	    <result column="RESULT_RESFILE" property="descrip" jdbcType="LONGVARCHAR" />
+	    <result column="RESULT_CODE" property="code" jdbcType="LONGVARCHAR" />
+	    <result column="RESULT_STATUS" property="status" jdbcType="INT" />
+	    <result column="RESULT_DESCRI" property="arc" jdbcType="LONGVARCHAR" />
+	    <result column="RESULT_ARC" property="bc" jdbcType="DOUBLE" />
+	    <result column="RESULT_BC" property="cm" jdbcType="DOUBLE" />
+	    <result column="RESULT_CM" property="cm" jdbcType="DOUBLE" />
+	    <result column="RESULT_FM" property="foc" jdbcType="DOUBLE" />
+	    <result column="RESULT_FOC" property="iv" jdbcType="DOUBLE" />
+	    <result column="RESULT_IV" property="lr" jdbcType="DOUBLE" />
+	    <result column="RESULT_LR" property="ov" jdbcType="DOUBLE" />
+	    <result column="RESULT_OV" property="poc" jdbcType="DOUBLE" />
+	    <result column="RESULT_POC" property="sob" jdbcType="DOUBLE" />
+	    <result column="RESULT_SOB" property="sv" jdbcType="DOUBLE" />
+	    <result column="RESULT_SV" property="vc" jdbcType="DOUBLE" />
+ 	</resultMap>
+	<select id="findSotResByLoc" resultMap="BaseResultMap">
+		SELECT * FROM RESULT_SOT WHERE USER_ID = #{user_id} 
+	</select>
+	<select id="findSotResById" resultMap="BaseResultMap">
+		SELECT * FROM RESULT_SOT WHERE RESULT_ID = #{id} 
+	</select>
+    
+    <delete id="deleteSotRes" parameterType="int">
+		DELETE FROM RESULT_SOT WHERE RESULT_ID = #{id}
+	</delete>
+</mapper>

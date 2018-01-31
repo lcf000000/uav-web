@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lcf.dao.InformationMapper">
+	<resultMap id="BaseResultMap" type="com.lcf.model.Information" >
+	    <id column="INFO_ID" property="id" jdbcType="BIGINT" />
+	    <result column="INFO_LOC" property="location" jdbcType="NUMERIC" />
+	    <result column="INFO_COMMENT" property="comment" jdbcType="VARCHAR" />
+	    <result column="INFO_TITLE" property="title" jdbcType="VARCHAR" />
+	    <result column="INFO_AUTHOR" property="author" jdbcType="VARCHAR" />
+	    <result column="INFO_DATE" property="datetime" jdbcType="VARCHAR" />
+	    <result column="INFO_CONTENT1" property="content1" jdbcType="LONGVARCHAR" />
+	    <result column="INFO_IMGPATH" property="imgpath" jdbcType="LONGVARCHAR" />
+	    <result column="INFO_CONTENT3" property="content3" jdbcType="LONGVARCHAR" />
+ 	</resultMap>
+	<select id="findInfoByLoc" resultMap="BaseResultMap">
+		SELECT * FROM INFO WHERE INFO_LOC = #{location} 
+	</select>
+	<select id="findInfoById" resultMap="BaseResultMap">
+		SELECT * FROM INFO WHERE INFO_ID = #{id} 
+	</select>
+	<select id="getInfoList" resultMap="BaseResultMap" parameterType="com.lcf.model.Information">
+		SELECT * FROM INFO WHERE 1 = 1
+		<if test="info.location!=null and info.location!=''">
+		AND INFO_LOC = #{info.location}
+		</if>
+		<if test="info.comment!=null and info.comment!=''"> 
+		AND INFO_COMMENT like concat('%',#{info.comment},'%')
+		</if>
+		<if test="info.title!=null and info.title!=''"> 
+		AND INFO_TITLE like concat('%',#{info.title},'%')
+		</if>
+		<if test="info.author!=null and info.author!=''">
+		AND INFO_AUTHOR like concat('%',#{info.author},'%')
+		</if>
+		<if test="info.datetime!=null and info.datetime!=''">
+		AND INFO_DATE like concat('%',#{info.datetime},'%')
+		</if>
+		<if test="info.content1!=null and info.content1!=''">
+		AND INFO_CONTENT1 like concat('%',#{info.content1},'%')
+		</if> 
+		<if test="info.imgpath!=null and info.imgpath!=''">
+		AND INFO_IMGPATH like concat('%',#{info.imgpath},'%')
+		</if> 
+		<if test="info.content3!=null and info.content3!=''">
+		AND INFO_CONTENT3 like concat('%',#{info.content3},'%')
+		</if>
+	</select>
+	
+	<insert id="addInfo" useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO INFO(<trim suffixOverrides=",">
+            <if test="location !=null and location !=''">INFO_LOC,</if>
+            <if test="comment !=null and comment !=''">INFO_COMMENT,</if>
+            <if test="title !=null and title !=''">INFO_TITLE,</if>
+            <if test="author !=null and author !=''">INFO_AUTHOR,</if>
+            <if test="datetime !=null and datetime !=''">INFO_DATE,</if>
+            <if test="content1 !=null and content1 !=''">INFO_CONTENT1,</if>
+            <if test="imgpath !=null and imgpath !=''">INFO_IMGPATH,</if>
+            <if test="content3 !=null and content3 !=''">INFO_CONTENT3</if>
+            </trim>)values(<trim suffixOverrides=",">
+            <if test="location !=null and location !=''">#{location},</if>
+            <if test="comment !=null and comment !=''">#{comment},</if>
+            <if test="title !=null and title !=''">#{title},</if>
+            <if test="author !=null and author !=''">#{author},</if>
+            <if test="datetime !=null and datetime !=''">#{datetime},</if>
+            <if test="content1 !=null and content1 !=''">#{content1},</if>
+            <if test="imgpath !=null and imgpath !=''">#{imgpath},</if>
+            <if test="content3 !=null and content3 !=''">#{content3}</if>
+            </trim>)
+	</insert>
+	
+    <update id="editInfo" useGeneratedKeys="true" keyProperty="id">
+    	UPDATE INFO
+    	<set>
+    		<if test="location !=null and location !=''">INFO_LOC = #{location},</if>
+            <if test="comment !=null and comment !=''">INFO_COMMENT = #{comment},</if>
+            <if test="title !=null and title !=''">INFO_TITLE = #{title},</if>
+            <if test="author !=null and author !=''">INFO_AUTHOR = #{author},</if>
+            <if test="datetime !=null and datetime !=''">INFO_DATE = #{datetime},</if>
+            <if test="content1 !=null and content1 !=''">INFO_CONTENT1 = #{content1},</if>
+            <if test="imgpath !=null and imgpath !=''">INFO_IMGPATH = #{imgpath},</if>
+            <if test="content3 !=null and content3 !=''">INFO_CONTENT3 = #{content3}</if>
+    	</set>
+    	WHERE INFO_ID = #{id}
+    </update>
+    
+    <delete id="deleteInfo" parameterType="int">
+		DELETE FROM INFO WHERE INFO_ID = #{id}
+	</delete>
+</mapper>
