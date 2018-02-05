@@ -102,7 +102,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             <!-- /input-group -->
                         </li>
                         <li>
-                            <a href="index.html"><i class="fa fa-dashboard fa-fw"></i> Welcome</a>
+                            <a href="#"><i class="fa fa-dashboard fa-fw"></i> Welcome</a>
                         </li>
                         <li>
                             <a href="<%=path%>/manage/userlist"><i class="fa fa-table fa-fw"></i> Users</a>
@@ -135,7 +135,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">User Manage</h1>
+                    <h1 class="page-header">MOT Results Manage</h1>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -149,120 +149,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         <div class="panel-body" id="search-input">
 							<form class="form-inline well">
 								<div class="row">
+									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 									<span>User name:</span>
 									<input type="text" class="form-control" placeholder="User name" id="username-search">
 									&nbsp;&nbsp;
-									<span>Real name:</span>
-									<input type="text" class="form-control" placeholder="Real name" id="realname-search">
-									&nbsp;&nbsp;
-									<span>Organization:</span>
-									<input type="text" class="form-control" placeholder="Organization" id="org-search">
-									&nbsp;&nbsp;
-									<span>&nbsp;Email:&nbsp;</span>
-									<input type="text" class="form-control" placeholder="Email" id="email-search">
-								</div>
-								<div class="row">
-								&nbsp;
-								</div>
-								<div class="row">
-									<span>&nbsp;Country&nbsp;&nbsp;:&nbsp;&nbsp;</span>
-									<input type="text" class="form-control" placeholder="Country" id="country-search">
-									&nbsp;&nbsp;
-									<span>User type&nbsp;:&nbsp;</span>
-									<select id="right-search" name="right" class="selectpicker show-tick form-control">
-	                                        <option value="1">Register User</option>
-	                                        <option value="2">Member</option>
-	                                        <option value="3">Super Member</option>
-	                                        <option value="4">Others</option>
-	                                </select>
+									<span>Tracker name:</span>
+									<input type="text" class="form-control" placeholder="Tracker name" id="trackername-search">
 	                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 	                                <button type="button" class="btn" id="btn-advanced-search" onclick="search()"><i class="fa fa-search"></i> Search</button>
 	                                <button type="button" class="btn" id="btn-advanced-search" onclick="removeSearchVal()"><i class="fa fa-times"></i> Remove Search Rules</button>
-	                            </div>
-							</form>
-                        </div>
-                    </div>
-                    <div class="panel panel-default" id="edit-panel">
-                        <div class="panel-heading">
-                            <h4>Edit</h4>
-                        </div>
-                        <!-- /.panel-heading -->
-                        <div class="panel-body">
-							<form class="form-inline well" id="editUser-form" >
-								<div class="row">
-									<input type="hidden" name="id" id="id-edit">
-									<span>User name:</span>
-									<input type="text" class="form-control" id="username-edit" name="username">
-									&nbsp;&nbsp;
-									<span>Password:</span>
-									<input type="password" class="form-control" id="password-edit" name="password">
-									&nbsp;&nbsp;
-									<span>Real name:</span>
-									<input type="text" class="form-control" id="realname-edit" name="realname">
-									&nbsp;&nbsp;
-									<span>Organization:</span>
-									<input type="text" class="form-control" id="org-edit" nam="org">
-									&nbsp;&nbsp;
-									<span>&nbsp;Email:&nbsp;</span>
-									<input type="text" class="form-control" id="email-edit" name="email">
-								</div>
-								<div class="row">
-								&nbsp;
-								</div>
-								<div class="row">
-									<span>&nbsp;Country&nbsp;&nbsp;:&nbsp;&nbsp;</span>
-									<input type="text" class="form-control" id="country-edit" name="country">
-									<span style="margin-left:10px">User type:</span>
-									<select id="right-edit" name="right" class="selectpicker show-tick form-control" style="margin-left:10px" name="right">
-	                                        <option value="1">Register User</option>
-	                                        <option value="2">Member</option>
-	                                        <option value="3">Super Member</option>
-	                                        <option value="4">Others</option>
-	                                </select>
-	                                <button type="button" class="btn"  onclick="saveEdit()" style="margin-left:30px"><i class="fa fa-save"></i> Save Edit</button>   
-	                                <button type="button" class="btn"  onclick="cancelEdit()" style="margin-left:30px"><i class="fa fa-share-square-o"></i> Cancel Edit</button>
-	                            </div>
-							</form>
-                        </div>
-                    </div>
-                    <div class="panel panel-default" id="add-panel">
-                        <div class="panel-heading">
-                            <h4>Add</h4>
-                        </div>
-                        <!-- /.panel-heading -->
-                        <div class="panel-body">
-							<form class="form-inline well" id="addUser-form">
-								<div class="row">
-									<span>User name:</span>
-									<input type="text" class="form-control" placeholder="User name" id="username-add" name="username">
-									&nbsp;&nbsp;
-									<span>Password:</span>
-									<input type="password" class="form-control" placeholder="Password" id="password-add" name="password">
-									&nbsp;&nbsp;
-									<span>Real name:</span>
-									<input type="text" class="form-control" placeholder="Real name" id="realname-add" name="realname">
-									&nbsp;&nbsp;
-									<span>Organization:</span>
-									<input type="text" class="form-control" placeholder="Organization" id="org-add" name="org">
-									&nbsp;&nbsp;
-									<span>&nbsp;Email:&nbsp;</span>
-									<input type="text" class="form-control" placeholder="Email" id="email-add" name="email">
-								</div>
-								<div class="row">
-								&nbsp;
-								</div>
-								<div class="row">
-									<span>&nbsp;Country&nbsp;&nbsp;:&nbsp;&nbsp;</span>
-									<input type="text" class="form-control" placeholder="Country" id="country-add" name="country">
-									<span style="margin-left:10px">User type:</span>
-									<select id="right-add" name="right" class="selectpicker show-tick form-control" style="margin-left:10px">
-	                                        <option value="1">Register User</option>
-	                                        <option value="2">Member</option>
-	                                        <option value="3">Super Member</option>
-	                                        <option value="4">Others</option>
-	                                </select>
-	                                <button type="button" class="btn"  onclick="submitAdd()" style="margin-left:30px" id="addUser-btn"><i class="fa fa-save"></i> Submit</button>   
-	                                <button type="button" class="btn"  onclick="cancelAdd()" style="margin-left:30px"><i class="fa fa-share-square-o"></i> Cancel</button>
 	                            </div>
 							</form>
                         </div>
@@ -282,17 +177,26 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             <button type="button" class="btn btn-info pull-right" onclick="editUser()"><i class="fa fa-pencil"></i> Edit</button>
                             <button type="button" class="btn btn-danger pull-right" onclick="removeUser()"><i class="fa fa-times"></i> Remove</button>
                             <button type="button" class="btn btn-success pull-right" onclick="addUser()"><i class="fa fa-plus"></i> Add</button>
-                                <thead>
+                                <thead> 
 									<tr>
 										<th>ID</th>
+										<th>Tracker Name</th>
+	                                    <th>ARC</th>
+	                                    <th>BC</th>
+	                                    <th>CM</th>
+	                                    <th>FM</th>
+	                                    <th>FOC</th>
+	                                    <th>IV</th>
+	                                    <th>LR</th>
+	                                    <th>OV</th>
+	                                    <th>POC</th>
+	                                    <th>SOB</th>
+	                                    <th>SV</th>
+	                                    <th>VC</th>
 	                                    <th>User Name</th>
-	                                    <th>Password</th>
-	                                    <th>Real Name</th>
-	                                    <th>Right</th>
-	                                    <th>Email</th>
-	                                    <th>Country</th>
-	                                    <th>Register Date</th>
-	                                    <th>Organization</th>
+	                                    <th>Date</th>
+	                                    <th>Code</th>
+	                                    <th>Environment</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -300,14 +204,23 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								<tfoot>
 									<tr>
 										<th>ID</th>
+										<th>Tracker Name</th>
+	                                    <th>ARC</th>
+	                                    <th>BC</th>
+	                                    <th>CM</th>
+	                                    <th>FM</th>
+	                                    <th>FOC</th>
+	                                    <th>IV</th>
+	                                    <th>LR</th>
+	                                    <th>OV</th>
+	                                    <th>POC</th>
+	                                    <th>SOB</th>
+	                                    <th>SV</th>
+	                                    <th>VC</th>
 	                                    <th>User Name</th>
-	                                    <th>Password</th>
-	                                    <th>Real Name</th>
-	                                    <th>Right</th>
-	                                    <th>Email</th>
-	                                    <th>Country</th>
-	                                    <th>Register Date</th>
-	                                    <th>Organization</th>
+	                                    <th>Date</th>
+	                                    <th>Code</th>
+	                                    <th>Environment</th>
 									</tr>
 								</tfoot>
                             </table>
@@ -351,6 +264,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <!-- Custom Theme JavaScript -->
     <script src="<%=path%>/js/manager/sb-admin-2.js"></script>
     
-	<script src="<%=path%>/js/manager/userlist.js"></script>
+	<script src="<%=path%>/js/manager/sotlist.js"></script>
 </body>
 </html>

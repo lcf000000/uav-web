@@ -102,7 +102,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             <!-- /input-group -->
                         </li>
                         <li>
-                            <a href="index.html"><i class="fa fa-dashboard fa-fw"></i> Welcome</a>
+                            <a href="#"><i class="fa fa-dashboard fa-fw"></i> Welcome</a>
                         </li>
                         <li>
                             <a href="<%=path%>/manage/userlist"><i class="fa fa-table fa-fw"></i> Users</a>

@@ -124,6 +124,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				                                    <th>SOB</th>
 				                                    <th>SV</th>
 				                                    <th>VC</th>
+				                                    <th>Environment</th>
 												</tr>
 											</thead>
 											<tbody>
@@ -153,6 +154,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				                                    <th>SOB</th>
 				                                    <th>SV</th>
 				                                    <th>VC</th>
+				                                    <th>Speed(fps)</th>
+				                                    <th>Environment</th>
 												</tr>
 											</thead>
 											<tbody>
@@ -182,6 +185,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				                                    <th>SOB</th>
 				                                    <th>SV</th>
 				                                    <th>VC</th>
+				                                    <th>Environment</th>
 												</tr>
 											</thead>
 											<tbody>

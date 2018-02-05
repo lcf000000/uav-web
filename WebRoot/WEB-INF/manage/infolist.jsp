@@ -106,13 +106,28 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             <!-- /input-group -->
                         </li>
                         <li>
-                            <a href="index.html"><i class="fa fa-dashboard fa-fw"></i> Welcome</a>
+                            <a href="#"><i class="fa fa-dashboard fa-fw"></i> Welcome</a>
                         </li>
                         <li>
                             <a href="<%=path%>/manage/userlist"><i class="fa fa-table fa-fw"></i> Users</a>
                         </li>
                         <li>
                             <a href="<%=path%>/manage/infolist"><i class="fa fa-edit fa-fw"></i> Announcement</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Results<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="<%=path%>/manage/detlist">Detection</a>
+                                </li>
+                                <li>
+                                    <a href="<%=path%>/manage/sotlist">Single-tracking</a>
+                                </li>
+                                <li>
+                                    <a href="<%=path%>/manage/motlist">Multi-tracking</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
                         </li>
                     </ul>
                 </div>
