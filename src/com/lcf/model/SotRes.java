@@ -1,8 +1,11 @@
 package com.lcf.model;
 
+import java.sql.Timestamp;
+
 public class SotRes {
 	private int id;
 	private int user_id;
+	private Timestamp date;
 	private String name;
 	private String language;
 	private String environment;
@@ -23,6 +26,9 @@ public class SotRes {
 	private double sob;
 	private double sv;
 	private double vc;
+	private double speed;
+	private double overall;
+	
 	public int getId() {
 		return id;
 	}
@@ -40,6 +46,12 @@ public class SotRes {
 	}
 	public void setUser_id(int user_id) {
 		this.user_id = user_id;
+	}
+	public Timestamp getDate() {
+		return date;
+	}
+	public void setDate(Timestamp date) {
+		this.date = date;
 	}
 	public String getLanguage() {
 		return language;
@@ -154,5 +166,17 @@ public class SotRes {
 	}
 	public void setVc(double vc) {
 		this.vc = vc;
+	}
+	public double getSpeed() {
+		return speed;
+	}
+	public void setSpeed(double speed) {
+		this.speed = speed;
+	}
+	public double getOverall() {
+		return overall;
+	}
+	public void setOverall(double overall) {
+		this.overall = overall;
 	}
 }
