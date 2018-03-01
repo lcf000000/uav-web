@@ -48,9 +48,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<li class="dropdown">
                             <a href="#" class="dropdown-toggle navia" data-toggle="dropdown">Results <i class="fa fa-angle-down"></i></a>
                             <ul class="dropdown-menu">
-                                <li><a href="<%=path%>/views/" class="navia">Detection</a></li>
-                                <li><a href="<%=path%>/views/" class="navia">Single-Tracking</a></li>
-                                <li><a href="<%=path%>/views/" class="navia">Multi-Tracking</a></li>
+                                <li><a href="<%=path%>/views/detTable" class="navia">Detection</a></li>
+                                <li><a href="<%=path%>/views/sotTable" class="navia">Single-Tracking</a></li>
+                                <li><a href="<%=path%>/views/motTable" class="navia">Multi-Tracking</a></li>
                             </ul>
                         </li>
                         <li class="dropdown">
@@ -83,7 +83,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div class="row">
 				<div class="col-md-2">
 				</div>
-				<div class="col-md-8" id="show-info" style="word-wrap:break-word;">
+				<div class="col-md-8 panel panel-default" id="show-info" style="word-wrap:break-word;">
 				</div>
 				<div class="col-md-2">
 				</div>

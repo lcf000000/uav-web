@@ -28,7 +28,7 @@ import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
 /**
- * @author zh
+ * @author
  * 2014-8-23
  */
 @Controller
