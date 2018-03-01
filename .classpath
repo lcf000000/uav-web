@@ -69,6 +69,6 @@
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/cglib-3.1.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/jsqlparser-0.9.5.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/pagehelper-4.2.1.jar"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jre1.8.0_151"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="output" path="WebRoot/WEB-INF/classes"/>
 </classpath>

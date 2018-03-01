@@ -5,11 +5,9 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.sql.Timestamp;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import javax.annotation.Resource;
 
-import org.apache.commons.lang.StringEscapeUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -150,23 +148,6 @@ public class SotResController {
 	
 	@RequestMapping(value = "/sotres/tabledata", method = RequestMethod.POST)
 	@ResponseBody
-	public JSONObject findUserByName(
-			HttpServletRequest request,
-    		@RequestParam String Name) {
-		//String userRes = null;
-		SotRes sotres = new SotRes();
-		try {
-			sotres = sotresService.findUserByUserName(Name);
-		} catch(Exception e) {
-			log.debug(e.getMessage());
-		}
-		JSONObject jsonObject = JSONObject.fromObject(sotres);
-		
-		return jsonObject;
-	}
-	
-	@RequestMapping(value = "/sotres/tabledata", method = RequestMethod.POST)
-	@ResponseBody
 	public JSONObject tabledata(
 			HttpServletRequest request,
 			@RequestParam Integer start,
@@ -276,7 +257,7 @@ public class SotResController {
 	
 	@RequestMapping(value = "/sotres/addSot", method = RequestMethod.POST)
 	@ResponseBody
-	public Json addSotRes(SotRes sotres) {
+	public Json addSot(SotRes sotres) {
 		
 		Json json = new Json();
 		log.debug("Update result: " + sotres.getId());

@@ -4,14 +4,14 @@
 	<resultMap id="BaseResultMap" type="com.lcf.model.SotRes" >
 	    <id column="RESULT_ID" property="id" jdbcType="BIGINT" />
 	    <result column="RESULT_NAME" property="name" jdbcType="VARCHAR" />
-	    <result column="RESULT_DATE" property="date" jdbcType="DATATIME" />
+	    <result column="RESULT_DATE" property="date" jdbcType="TIMESTAMP" />
 	    <result column="USER_ID" property="user_id" jdbcType="BIGINT" />
 	    <result column="RESULT_LANG" property="language" jdbcType="VARCHAR" />
 	    <result column="RESULT_EVM" property="environment" jdbcType="VARCHAR" />
 	    <result column="RESULT_REF" property="reference" jdbcType="VARCHAR" />
 	    <result column="RESULT_RESFILE" property="resfile" jdbcType="LONGVARCHAR" />
 	    <result column="RESULT_CODE" property="code" jdbcType="LONGVARCHAR" />
-	    <result column="RESULT_STATUS" property="status" jdbcType="INT" />
+	    <result column="RESULT_STATUS" property="status" jdbcType="INTEGER" />
 	    <result column="RESULT_DESCRI" property="descrip" jdbcType="LONGVARCHAR" />
 	    <result column="RESULT_ARC" property="arc" jdbcType="DOUBLE" />
 	    <result column="RESULT_BC" property="bc" jdbcType="DOUBLE" />
