@@ -17,6 +17,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<!-- Bootstrap core CSS -->
 		<link href="<%=path%>/css/bootstrap/bootstrap.min.css" rel="stylesheet">
 		<link rel="stylesheet" href="<%=path%>/css/font-awesome/font-awesome.min.css">
+		<!-- DataTables CSS -->
+	    <link href="<%=path%>/css/datatables/dataTables.bootstrap.css" rel="stylesheet">
+	    <link href="<%=path%>/css/datatables/select.dataTables.min.css" rel="stylesheet">
+	    <!-- DataTables Responsive CSS -->
+	    <link href="<%=path%>/css/datatables/dataTables.responsive.css" rel="stylesheet">
 		<!-- Custom styles for this template -->
 		<link href="<%=path%>/css/views/main.css" rel="stylesheet">
 	</head>
@@ -84,7 +89,57 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<div class="col-md-1">
 				</div>
 				<div class="col-md-10" id="show-info" style="word-wrap:break-word;">
-					
+					<table width="100%" class="table table-striped table-bordered table-hover table-condensed" id="dataTables-sotres">
+                            <button type="button" class="btn btn-danger pull-right" onclick="removeSot()"><i class="fa fa-times"></i> Remove</button>
+                                <thead> 
+									<tr>
+										<th>ID</th>
+										<th>Tracker Name</th>
+	                                    <th>ARC</th>
+	                                    <th>BC</th>
+	                                    <th>CM</th>
+	                                    <th>FM</th>
+	                                    <th>FOC</th>
+	                                    <th>IV</th>
+	                                    <th>LR</th>
+	                                    <th>OV</th>
+	                                    <th>POC</th>
+	                                    <th>SOB</th>
+	                                    <th>SV</th>
+	                                    <th>VC</th>
+	                                    <th>Speed(fps)</th>
+	                                    <th>User Name</th>
+	                                    <th>Date</th>
+	                                    <th>Code</th>
+	                                    <th>Environment</th>
+									</tr>
+								</thead>
+								<tbody>
+								</tbody>
+								<tfoot>
+									<tr>
+										<th>ID</th>
+										<th>Tracker Name</th>
+	                                    <th>ARC</th>
+	                                    <th>BC</th>
+	                                    <th>CM</th>
+	                                    <th>FM</th>
+	                                    <th>FOC</th>
+	                                    <th>IV</th>
+	                                    <th>LR</th>
+	                                    <th>OV</th>
+	                                    <th>POC</th>
+	                                    <th>SOB</th>
+	                                    <th>SV</th>
+	                                    <th>VC</th>
+	                                    <th>Speed(fps)</th>
+	                                    <th>User Name</th>
+	                                    <th>Date</th>
+	                                    <th>Code</th>
+	                                    <th>Environment</th>
+									</tr>
+								</tfoot>
+                            </table>
 				</div>
 				<div class="col-md-1">
 				</div>
@@ -105,5 +160,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<script src="<%=path%>/js/bootstrap/bootstrap.min.js"></script>
 		<script src="<%=path%>/js/views/viewsGlob.js"></script>
 		<script src="<%=path%>/js/views/sottable.js"></script>
+		<!-- DataTables JavaScript -->
+	    <script src="<%=path%>/js/datatables/jquery.dataTables.min.js"></script>
+	    <script src="<%=path%>/js/datatables/dataTables.bootstrap.min.js"></script>
+	    <script src="<%=path%>/js/datatables/dataTables.responsive.js"></script>
+	    <script src="<%=path%>/js/datatables/fnReloadAjax.js"></script>
+	    <script src="<%=path%>/js/datatables/dataTables.select.min.js"></script>
 	</body>
 </html>
