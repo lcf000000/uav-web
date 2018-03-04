@@ -77,12 +77,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     	<i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
-                        <li><a href="#"><i class="fa fa-user fa-fw"></i> Manager Profile</a>
-                        </li>
-                        <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
-                        </li>
                         <li class="divider"></li>
-                        <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                        <li><a href="#" onclick="loginOut()"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                         </li>
                     </ul>
                     <!-- /.dropdown-user -->
@@ -367,7 +363,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
     <!-- Custom Theme JavaScript -->
     <script src="<%=path%>/js/manager/sb-admin-2.js"></script>
-    
+    <script src="<%=path%>/js/manager/global.js"></script>
     <script src="<%=path%>/js/manager/infolist.js"></script>
 </body>
 

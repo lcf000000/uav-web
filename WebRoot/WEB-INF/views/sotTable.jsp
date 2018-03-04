@@ -91,25 +91,37 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<div class="col-md-10 panel panel-default" id="show-info" style="word-wrap:break-word;">
 					<h3>Evaluate metric</h3>
 					
-					<table width="100%" class="table table-striped table-bordered table-hover table-condensed" id="dataTables-sotres">
+					<table class="table table-striped table-bordered table-hover table-condensed" id="dataTables-sotres" >
                                 <thead> 
 									<tr>
-										<th>ID</th>
 										<th>Tracker Name</th>
-	                                    <th>ARC</th>
-	                                    <th>BC</th>
-	                                    <th>CM</th>
-	                                    <th>FM</th>
-	                                    <th>FOC</th>
-	                                    <th>IV</th>
-	                                    <th>LR</th>
-	                                    <th>OV</th>
-	                                    <th>POC</th>
-	                                    <th>SOB</th>
-	                                    <th>SV</th>
-	                                    <th>VC</th>
+										<th>P-Overall</th>
+										<th>S-Overall</th>
+	                                    <th>P-ARC</th>
+	                                    <th>P-BC</th>
+	                                    <th>P-CM</th>
+	                                    <th>P-FM</th>
+	                                    <th>P-FOC</th>
+	                                    <th>P-IV</th>
+	                                    <th>P-LR</th>
+	                                    <th>P-OV</th>
+	                                    <th>P-POC</th>
+	                                    <th>P-SOB</th>
+	                                    <th>P-SV</th>
+	                                    <th>P-VC</th>
+	                                    <th>S-ARC</th>
+	                                    <th>S-BC</th>
+	                                    <th>S-CM</th>
+	                                    <th>S-FM</th>
+	                                    <th>S-FOC</th>
+	                                    <th>S-IV</th>
+	                                    <th>S-LR</th>
+	                                    <th>S-OV</th>
+	                                    <th>S-POC</th>
+	                                    <th>S-SOB</th>
+	                                    <th>S-SV</th>
+	                                    <th>S-VC</th>
 	                                    <th>Speed(fps)</th>
-	                                    <th>User Name</th>
 	                                    <th>Date</th>
 	                                    <th>Code</th>
 	                                    <th>Environment</th>
@@ -117,29 +129,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								</thead>
 								<tbody>
 								</tbody>
-								<tfoot>
-									<tr>
-										<th>ID</th>
-										<th>Tracker Name</th>
-	                                    <th>ARC</th>
-	                                    <th>BC</th>
-	                                    <th>CM</th>
-	                                    <th>FM</th>
-	                                    <th>FOC</th>
-	                                    <th>IV</th>
-	                                    <th>LR</th>
-	                                    <th>OV</th>
-	                                    <th>POC</th>
-	                                    <th>SOB</th>
-	                                    <th>SV</th>
-	                                    <th>VC</th>
-	                                    <th>Speed(fps)</th>
-	                                    <th>User Name</th>
-	                                    <th>Date</th>
-	                                    <th>Code</th>
-	                                    <th>Environment</th>
-									</tr>
-								</tfoot>
                             </table>
 				</div>
 				<div class="col-md-1">
