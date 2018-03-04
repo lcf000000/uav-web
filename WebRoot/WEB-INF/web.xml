@@ -25,12 +25,12 @@
     <url-pattern>/*</url-pattern>
   </filter-mapping>
   <filter>
-  	<filter-name>PageFilter</filter-name>
-  	<filter-class>com.lcf.interceptor.PageFilter</filter-class>
+    <filter-name>PageFilter</filter-name>
+    <filter-class>com.lcf.interceptor.PageFilter</filter-class>
   </filter>
   <filter-mapping>
-  	<filter-name>PageFilter</filter-name>
-  	<url-pattern>/*</url-pattern>
+    <filter-name>PageFilter</filter-name>
+    <url-pattern>/*</url-pattern>
   </filter-mapping>
   <servlet>
     <servlet-name>spring4mvc</servlet-name>

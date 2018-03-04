@@ -65,13 +65,23 @@
 						<a href="<%=path%>/views/register" id="register_btn" class="">Create an account</a>
 					</div>
 					<div class="form-group">
-						<input type="submit" class="btn btn-success pull-right" value="Login" disabled="disabled" id="loginSubmit" onclick="submitLogin()" />
-						<input onclick="backReg()" class="btn btn-info pull-left" id="back_btn" value="Back"/>  
+						<div class="col-sm-3 col-md-3"><input onclick="backReg()" class="btn btn-info btn-block" id="back_btn" value="Back"/></div>
+						<div class="col-sm-9 col-md-9"><input type="submit" class="btn btn-success btn-block" value="Login" disabled="disabled" id="loginSubmit" onclick="submitLogin()" /></div>
 					</div>
 				</div>
 			</form>
 		</div>
 		</div>
 	</body>
+	<script type="text/javascript">
+	$(document).ready(function(){
+		var message = "${message}";
+		if(message!=""){
+			toastr.error(message);
+		}
+		changeCode();
+		$("#codeImg").bind("click",changeCode);
+	});
+	</script>
 </html>
 

@@ -22,7 +22,6 @@ import com.lcf.model.dataformat.DataGrid;
 import com.lcf.model.dataformat.Json;
 import com.lcf.model.dataformat.PageBean;
 import com.lcf.service.UserService;
-import com.lcf.util.RequestUtil;
 
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
@@ -54,30 +53,34 @@ public class UserController {
     public String login(HttpServletRequest request,HttpServletResponse response,
     		@RequestParam String username, @RequestParam String password,  // username,password,code 为前端传递过来的参数
     		@RequestParam String code) throws Exception{
-    	
-		if (code.toLowerCase().equals(request.getSession().getAttribute("RANDOMCODE").toString().toLowerCase())){
-			User user = null;
-			try{
-				user = userService.findUserByName(username);
-			}catch(Exception e){
-			}
-			if (user == null) {
-				log.info("User is null");  
-	    		request.getSession().setAttribute("message", "Username or password is wrong, please log in again!");
-	    		return "views/login"; 
-			}else {
-				if (user.getPassword().equals(password)) {
-					// 保存用信息到session
-					request.getSession().setAttribute("user", user);
-	        		return "redirect:" + RequestUtil.retrieveSavedRequest();//跳转至访问页面
-				}else {
-					log.info("password is not correct");  
-	        		request.getSession().setAttribute("message", "Username or password is wrong, please log in again!");
-	        		return "views/login"; 
+		HttpSession session = request.getSession(false);
+		if(session!=null) {
+			if (code.toLowerCase().equals(session.getAttribute("RANDOMCODE").toString().toLowerCase())){
+				User user = null;
+				try{
+					user = userService.findUserByName(username);
+				}catch(Exception e){
 				}
+				if (user == null) { 
+		    		request.setAttribute("message", "Username or password is wrong, please log in again!");
+		    		return "views/login"; 
+				}else {
+					if (user.getPassword().equals(password)) {
+						// 保存用信息到session
+						session.setAttribute("user", user);
+		        		return "redirect:/";//跳转至访问页面
+					}else {
+						log.info("password is not correct");  
+		        		request.setAttribute("message", "Username or password is wrong, please log in again!");
+		        		return "views/login"; 
+					}
+				}
+			}else {
+				request.setAttribute("message", "Verification code input error, please re-enter!");
+	    		return "views/login"; //返回某个页面 ，格式为'文件夹/页面名称' 一般返回内容为json格式
 			}
 		}else {
-			request.getSession().setAttribute("message", "Verification code input error, please re-enter!");
+			request.setAttribute("message", "Verification code input error, please re-enter!");
     		return "views/login"; //返回某个页面 ，格式为'文件夹/页面名称' 一般返回内容为json格式
 		}
 	}

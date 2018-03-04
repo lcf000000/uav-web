@@ -1,13 +1,7 @@
 var username_ok = false;
 var code_ok = false;
 var password_ok = false;
-$(document).ready(function(){
-	if("${sessionScope.message}"!=""){
-		toastr.error("${sessionScope.message}");
-	}
-	changeCode();
-	$("#codeImg").bind("click",changeCode);
-});
+
 function genTimestamp(){
 	var time = new Date();
 	return time.getTime();
