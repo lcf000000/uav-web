@@ -14,20 +14,33 @@ public class SotRes {
 	private String descrip;
 	private String code;
 	private int status;
-	private double arc;
-	private double bc;
-	private double cm;
-	private double fm;
-	private double foc;
-	private double iv;
-	private double lr;
-	private double ov;
-	private double poc;
-	private double sob;
-	private double sv;
-	private double vc;
+	private double arc_p;
+	private double bc_p;
+	private double cm_p;
+	private double fm_p;
+	private double foc_p;
+	private double iv_p;
+	private double lr_p;
+	private double ov_p;
+	private double poc_p;
+	private double sob_p;
+	private double sv_p;
+	private double vc_p;
+	private double overall_p;
+	private double arc_iou;
+	private double bc_iou;
+	private double cm_iou;
+	private double fm_iou;
+	private double foc_iou;
+	private double iv_iou;
+	private double lr_iou;
+	private double ov_iou;
+	private double poc_iou;
+	private double sob_iou;
+	private double sv_iou;
+	private double vc_iou;
+	private double overall_iou;
 	private double speed;
-	private double overall;
 	
 	public int getId() {
 		return id;
@@ -95,88 +108,166 @@ public class SotRes {
 	public void setStatus(int status) {
 		this.status = status;
 	}
-	public double getArc() {
-		return arc;
+	public double getArcP() {
+		return arc_p;
 	}
-	public void setArc(double arc) {
-		this.arc = arc;
+	public void setArcP(double arc_p) {
+		this.arc_p = arc_p;
 	}
-	public double getBc() {
-		return bc;
+	public double getBcP() {
+		return bc_p;
 	}
-	public void setBc(double bc) {
-		this.bc = bc;
+	public void setBcP(double bc_p) {
+		this.bc_p = bc_p;
 	}
-	public double getCm() {
-		return cm;
+	public double getCmP() {
+		return cm_p;
 	}
-	public void setCm(double cm) {
-		this.cm = cm;
+	public void setCmP(double cm_p) {
+		this.cm_p = cm_p;
 	}
-	public double getFm() {
-		return fm;
+	public double getFmP() {
+		return fm_p;
 	}
-	public void setFm(double fm) {
-		this.fm = fm;
+	public void setFmP(double fm) {
+		this.fm_p = fm_p;
 	}
-	public double getFoc() {
-		return foc;
+	public double getFocP() {
+		return foc_p;
 	}
-	public void setFoc(double foc) {
-		this.foc = foc;
+	public void setFocP(double foc_p) {
+		this.foc_p = foc_p;
 	}
-	public double getIv() {
-		return iv;
+	public double getIvP() {
+		return iv_p;
 	}
-	public void setIv(double iv) {
-		this.iv = iv;
+	public void setIvP(double iv_p) {
+		this.iv_p = iv_p;
 	}
-	public double getLr() {
-		return lr;
+	public double getLrP() {
+		return lr_p;
 	}
-	public void setLr(double lr) {
-		this.lr = lr;
+	public void setLrP(double lr_p) {
+		this.lr_p = lr_p;
 	}
-	public double getOv() {
-		return ov;
+	public double getOvP() {
+		return ov_p;
 	}
-	public void setOv(double ov) {
-		this.ov = ov;
+	public void setOvP(double ov_p) {
+		this.ov_p = ov_p;
 	}
-	public double getPoc() {
-		return poc;
+	public double getPocP() {
+		return poc_p;
 	}
-	public void setPoc(double poc) {
-		this.poc = poc;
+	public void setPocP(double poc_p) {
+		this.poc_p = poc_p;
 	}
-	public double getSob() {
-		return sob;
+	public double getSobP() {
+		return sob_p;
 	}
-	public void setSob(double sob) {
-		this.sob = sob;
+	public void setSobP(double sob_p) {
+		this.sob_p = sob_p;
 	}
-	public double getSv() {
-		return sv;
+	public double getSvP() {
+		return sv_p;
 	}
-	public void setSv(double sv) {
-		this.sv = sv;
+	public void setSvP(double sv_p) {
+		this.sv_p = sv_p;
 	}
-	public double getVc() {
-		return vc;
+	public double getVcP() {
+		return vc_p;
 	}
-	public void setVc(double vc) {
-		this.vc = vc;
+	public void setVcP(double vc_p) {
+		this.vc_p = vc_p;
+	}
+	public double getOverallP() {
+		return overall_p;
+	}
+	public void setOverallP(double overall_p) {
+		this.overall_p = overall_p;
+	}
+	public double getArcIOU() {
+		return arc_iou;
+	}
+	public void setArcIOU(double arc_iou) {
+		this.arc_iou = arc_iou;
+	}
+	public double getBcIOU() {
+		return bc_iou;
+	}
+	public void setBcIOU(double bc_iou) {
+		this.bc_iou = bc_iou;
+	}
+	public double getCmIOU() {
+		return cm_iou;
+	}
+	public void setCmIOU(double cm_iou) {
+		this.cm_iou = cm_iou;
+	}
+	public double getFmIOU() {
+		return fm_iou;
+	}
+	public void setFmIOU(double fm_iou) {
+		this.fm_iou = fm_iou;
+	}
+	public double getFocIOU() {
+		return foc_iou;
+	}
+	public void setFocIOU(double foc_iou) {
+		this.foc_iou = foc_iou;
+	}
+	public double getIvIOU() {
+		return iv_iou;
+	}
+	public void setIvIOU(double iv_iou) {
+		this.iv_iou = iv_iou;
+	}
+	public double getLrIOU() {
+		return lr_iou;
+	}
+	public void setLrIOU(double lr_iou) {
+		this.lr_iou = lr_iou;
+	}
+	public double getOvIOU() {
+		return ov_iou;
+	}
+	public void setOvIOU(double ov_iou) {
+		this.ov_iou = ov_iou;
+	}
+	public double getPocIOU() {
+		return poc_iou;
+	}
+	public void setPocIOU(double poc_iou) {
+		this.poc_iou = poc_iou;
+	}
+	public double getSobIOU() {
+		return sob_iou;
+	}
+	public void setSobIOU(double sob_iou) {
+		this.sob_iou = sob_iou;
+	}
+	public double getSvIOU() {
+		return sv_iou;
+	}
+	public void setSvIOU(double sv_iou) {
+		this.sv_iou = sv_iou;
+	}
+	public double getVcIOU() {
+		return vc_iou;
+	}
+	public void setVcIOU(double vc_iou) {
+		this.vc_iou = vc_iou;
+	}
+	public double getOverallIOU() {
+		return overall_iou;
+	}
+	public void setOverallIOU(double overall_iou) {
+		this.overall_iou = overall_iou;
 	}
 	public double getSpeed() {
 		return speed;
 	}
 	public void setSpeed(double speed) {
 		this.speed = speed;
-	}
-	public double getOverall() {
-		return overall;
-	}
-	public void setOverall(double overall) {
-		this.overall = overall;
 	}
 }

@@ -21,6 +21,9 @@ import com.lcf.model.dataformat.Json;
 import com.lcf.model.SotRes;
 import com.lcf.service.SotResService;
 import com.lcf.model.dataformat.PageBean;
+import com.lcf.util.UnzipFileUtil;
+import com.lcf.util.EvaluateUtil;
+import com.lcf.util.common.SotResultStruct;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
@@ -70,14 +73,28 @@ public class SotResController {
                 	// 处理Results文件
                     String restrueFileName= "res" + String.valueOf(user_id) + addname + resfileName;
                     // 设置存放文件的路径
-                    path = "E:\\Project\\website\\data\\sot\\" + restrueFileName;
+                    String sotDir = "N:/evaluate/sottest/";
+                    String groudtruthPath = "N:/evaluate/sottest/gt/";
+                    //path = "E:\\Project\\website\\data\\sot\\" + restrueFileName;
+                    path = sotDir + restrueFileName;
+                    gtPath = groudtruthPath + restrueFileName;
                     log.info("存放文件的路径:"+path);
                     // 转存文件到指定的路径
                     resfile.transferTo(new File(path));
                     log.info("文件成功上传到指定目录下");
                     
-                    
+                  //解压文件
+                    try {
+                    	UnzipFileUtil.unZipFiles(path, sotDir);
+                    } catch (Exception e) {
+                    	log.debug(e.getMessage());
+                    }
                     //解析文件 得出结果
+                                       
+                    //EvaluateUtil.SotResult res = new EvaluateUtil.SotResult();
+            		SotResultStruct res = new SotResultStruct();
+            		res = EvaluateUtil.sotEvaluate(gtPath, path);
+            		log.info("总体评测结果完成。");
                     
                     // 处理Description文件
                     String destrueFileName= "des" + String.valueOf(user_id) + addname + desfileName;
@@ -86,17 +103,77 @@ public class SotResController {
                     // 转存文件到指定的路径
                     desfile.transferTo(new File(path));
                     
+                    String codetrueFileName = "";
                     //处理Code文件
                     if (restype!=null&&destype!=null) {// 判断文件类型是否为空
-                        if ("zip".equals(restype.toUpperCase())){
+                        if ("zip".equals(restype.toUpperCase())) {
                         	
-                        	String codetrueFileName= "code" + String.valueOf(user_id) + addname + codefileName;
+                        	codetrueFileName= "code" + String.valueOf(user_id) + addname + codefileName;
                             // 设置存放文件的路径
-                            path = "E:\\Project\\website\\data\\sot\\" + codetrueFileName;
+                            path = sotDir + codetrueFileName;
                             // 转存文件到指定的路径
                             desfile.transferTo(new File(path));
                         }
                     }
+                    
+                    SotRes sotres = new SotRes();
+            		
+            		//sotres.setId(id);
+            		sotres.setName(name);
+            		sotres.setUser_id(user_id);
+            		sotres.setLanguage(language);
+            		sotres.setEnvironment(environment);
+            		sotres.setResfile(resfileName);
+            		sotres.setCode(codetrueFileName);
+            		sotres.setDescrip(destrueFileName);
+            		sotres.setReference(reference);
+            		
+            		sotres.setArcP(res.arc_p);
+            		sotres.setBcP(res.bc_p);
+            		sotres.setCmP(res.cm_p);
+            		sotres.setFmP(res.fm_p);
+            		sotres.setFocP(res.foc_p);
+            		sotres.setIvP(res.iv_p);
+            		sotres.setLrP(res.lr_p);
+            		sotres.setOvP(res.ov_p);
+            		sotres.setPocP(res.poc_p);
+            		sotres.setSobP(res.sob_p);
+            		sotres.setSvP(res.sv_p);
+            		sotres.setVcP(res.vc_p);
+            		sotres.setOverallP(res.getPrecision());
+            		
+            		sotres.setArcIOU(res.arc_iou);
+            		sotres.setBcIOU(res.bc_iou);
+            		sotres.setCmIOU(res.cm_iou);
+            		sotres.setFmIOU(res.fm_iou);
+            		sotres.setFocIOU(res.foc_iou);
+            		sotres.setIvIOU(res.iv_iou);
+            		sotres.setLrIOU(res.lr_iou);
+            		sotres.setOvIOU(res.ov_iou);
+            		sotres.setPocIOU(res.poc_iou);
+            		sotres.setSobIOU(res.sob_iou);
+            		sotres.setSvIOU(res.sv_iou);
+            		sotres.setVcIOU(res.vc_iou);
+            		sotres.setOverallP(res.getIOU());
+            		sotres.setSpeed(res.getFPS());
+            		
+            		sotres.setStatus(1);
+            		
+            		Date currentDate = new Date();
+            		String nowTime = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(currentDate);
+            		Timestamp dateTime = Timestamp.valueOf(nowTime);
+            		sotres.setDate(dateTime);
+            		
+            		Json json = new Json();
+            		log.debug("Insert record.");
+            		try {
+            			sotresService.addSotRes(sotres);
+            			json.setSuccess(true);
+            			json.setMsg("Insert result success!");
+            		} catch(Exception e) {
+            			json.setMsg(e.getMessage());
+            		}
+                    
                     
                 }else {
                 	log.info("不是我们想要的文件类型,请按要求重新上传");
@@ -162,20 +239,33 @@ public class SotResController {
     		@RequestParam String resfile,
     		@RequestParam String code,
     		@RequestParam String descrip,
-    		@RequestParam double arc,
-    		@RequestParam double bc,
-    		@RequestParam double cm,
-    		@RequestParam double fm,
-    		@RequestParam double foc,
-    		@RequestParam double iv,
-    		@RequestParam double lr,
-    		@RequestParam double ov,
-    		@RequestParam double poc,
-    		@RequestParam double sob,
-    		@RequestParam double sv,
-    		@RequestParam double vc,
+    		@RequestParam double arc_p,
+    		@RequestParam double bc_p,
+    		@RequestParam double cm_p,
+    		@RequestParam double fm_p,
+    		@RequestParam double foc_p,
+    		@RequestParam double iv_p,
+    		@RequestParam double lr_p,
+    		@RequestParam double ov_p,
+    		@RequestParam double poc_p,
+    		@RequestParam double sob_p,
+    		@RequestParam double sv_p,
+    		@RequestParam double vc_p,
+    		@RequestParam double overall_p,
+    		@RequestParam double arc_iou,
+    		@RequestParam double bc_iou,
+    		@RequestParam double cm_iou,
+    		@RequestParam double fm_iou,
+    		@RequestParam double foc_iou,
+    		@RequestParam double iv_iou,
+    		@RequestParam double lr_iou,
+    		@RequestParam double ov_iou,
+    		@RequestParam double poc_iou,
+    		@RequestParam double sob_iou,
+    		@RequestParam double sv_iou,
+    		@RequestParam double vc_iou,    		
+    		@RequestParam double overall_iou,
     		@RequestParam double speed,
-    		@RequestParam double overall,
     		@RequestParam Integer status) throws Exception {
 		//String userRes = null;
 		SotRes sotres = new SotRes();
@@ -189,20 +279,34 @@ public class SotResController {
 		sotres.setCode(code);
 		sotres.setDescrip(descrip);
 		sotres.setReference(reference);
-		sotres.setArc(arc);
-		sotres.setBc(bc);
-		sotres.setCm(cm);
-		sotres.setFm(fm);
-		sotres.setFoc(foc);
-		sotres.setIv(iv);
-		sotres.setLr(lr);
-		sotres.setOv(ov);
-		sotres.setPoc(poc);
-		sotres.setSob(sob);
-		sotres.setSv(sv);
-		sotres.setVc(vc);
+		sotres.setArcP(arc_p);
+		sotres.setBcP(bc_p);
+		sotres.setCmP(cm_p);
+		sotres.setFmP(fm_p);
+		sotres.setFocP(foc_p);
+		sotres.setIvP(iv_p);
+		sotres.setLrP(lr_p);
+		sotres.setOvP(ov_p);
+		sotres.setPocP(poc_p);
+		sotres.setSobP(sob_p);
+		sotres.setSvP(sv_p);
+		sotres.setVcP(vc_p);
+		sotres.setOverallP(overall_p);
+		
+		sotres.setArcIOU(arc_iou);
+		sotres.setBcIOU(bc_iou);
+		sotres.setCmIOU(cm_iou);
+		sotres.setFmIOU(fm_iou);
+		sotres.setFocIOU(foc_iou);
+		sotres.setIvIOU(iv_iou);
+		sotres.setLrIOU(lr_iou);
+		sotres.setOvIOU(ov_iou);
+		sotres.setPocIOU(poc_iou);
+		sotres.setSobIOU(sob_iou);
+		sotres.setSvIOU(sv_iou);
+		sotres.setVcIOU(vc_iou);
 		sotres.setSpeed(speed);
-		sotres.setOverall(overall);
+		sotres.setOverallIOU(overall_iou);
 		sotres.setStatus(status);
 		
 		PageBean<SotRes> pb = sotresService.getSotResList(sotres);
