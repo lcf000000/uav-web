@@ -13,11 +13,11 @@
 	    <result column="USER_RIGHT" property="right" jdbcType="NUMERIC" />
  	</resultMap>
 	<select id="findUserByName" resultMap="BaseResultMap">
-		SELECT * FROM USER WHERE USER_UNAME = #{username} 
+		SELECT * FROM user WHERE USER_UNAME = #{username} 
 	</select>
 	
 	<select id="getUserList" resultMap="BaseResultMap" parameterType="com.lcf.model.User">
-		SELECT * FROM USER WHERE 1 = 1
+		SELECT * FROM user WHERE 1 = 1
 		<if test="user.username!=null and user.username!=''"> 
 		AND USER_UNAME like concat('%',#{user.username},'%')
 		</if>
@@ -39,7 +39,7 @@
 	</select>
 	
 	<insert id="addUser" useGeneratedKeys="true" keyProperty="id">
-		INSERT INTO USER(<trim suffixOverrides=",">
+		INSERT INTO user(<trim suffixOverrides=",">
             <if test="username !=null and username !=''">USER_UNAME,</if>
             <if test="password !=null and password !=''">USER_PASS,</if>
             <if test="email !=null and email !=''">USER_EMAIL,</if>
@@ -61,7 +61,7 @@
 	</insert>
 	
     <update id="editUser" useGeneratedKeys="true" keyProperty="id">
-    	UPDATE USER
+    	UPDATE user
     	<set>
     		<if test="username !=null and username !=''">USER_UNAME = #{username},</if>
             <if test="password !=null and password !=''">USER_PASS  = #{password},</if>
@@ -75,6 +75,6 @@
     </update>
     
     <delete id="deleteUser" parameterType="int">
-		DELETE FROM USER WHERE USER_ID = #{id}
+		DELETE FROM user WHERE USER_ID = #{id}
 	</delete>
 </mapper>

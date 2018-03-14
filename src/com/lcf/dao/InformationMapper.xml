@@ -13,13 +13,13 @@
 	    <result column="INFO_CONTENT3" property="content3" jdbcType="LONGVARCHAR" />
  	</resultMap>
 	<select id="findInfoByLoc" resultMap="BaseResultMap">
-		SELECT * FROM INFO WHERE INFO_LOC = #{location} 
+		SELECT * FROM info WHERE INFO_LOC = #{location} 
 	</select>
 	<select id="findInfoById" resultMap="BaseResultMap">
-		SELECT * FROM INFO WHERE INFO_ID = #{id} 
+		SELECT * FROM info WHERE INFO_ID = #{id} 
 	</select>
 	<select id="getInfoList" resultMap="BaseResultMap" parameterType="com.lcf.model.Information">
-		SELECT * FROM INFO WHERE 1 = 1
+		SELECT * FROM info WHERE 1 = 1
 		<if test="info.location!=null and info.location!=''">
 		AND INFO_LOC = #{info.location}
 		</if>
@@ -47,7 +47,7 @@
 	</select>
 	
 	<insert id="addInfo" useGeneratedKeys="true" keyProperty="id">
-		INSERT INTO INFO(<trim suffixOverrides=",">
+		INSERT INTO info(<trim suffixOverrides=",">
             <if test="location !=null and location !=''">INFO_LOC,</if>
             <if test="comment !=null and comment !=''">INFO_COMMENT,</if>
             <if test="title !=null and title !=''">INFO_TITLE,</if>
@@ -69,7 +69,7 @@
 	</insert>
 	
     <update id="editInfo" useGeneratedKeys="true" keyProperty="id">
-    	UPDATE INFO
+    	UPDATE info
     	<set>
     		<if test="location !=null and location !=''">INFO_LOC = #{location},</if>
             <if test="comment !=null and comment !=''">INFO_COMMENT = #{comment},</if>
@@ -84,6 +84,6 @@
     </update>
     
     <delete id="deleteInfo" parameterType="int">
-		DELETE FROM INFO WHERE INFO_ID = #{id}
+		DELETE FROM info WHERE INFO_ID = #{id}
 	</delete>
 </mapper>

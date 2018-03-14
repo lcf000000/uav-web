@@ -33,13 +33,13 @@
 	    </association>	    
  	</resultMap>
 	<select id="findSotResByUserID" resultMap="BaseResultMap">
-		SELECT * FROM RESULT_SOT WHERE USER_ID = #{user_id} ORDER BY ${overall}
+		SELECT * FROM result_sot WHERE USER_ID = #{user_id} ORDER BY ${overall}
 	</select>
     <select id="findSotResByName" resultMap="BaseResultMap">
-		SELECT * FROM RESULT_SOT WHERE RESULT_NAME = #{name} ORDER BY ${overall}
+		SELECT * FROM result_sot WHERE RESULT_NAME = #{name} ORDER BY ${overall}
 	</select>
     <select id="getSotResList" resultMap="BaseResultMap" parameterType="com.lcf.model.SotRes">
-		SELECT * FROM RESULT_SOT  WHERE 1 = 1
+		SELECT * FROM result_sot  WHERE 1 = 1
 		<if test="sotres.name != null and sotres.name != ''">
 		AND RESULT_NAME like concat('%',#{sotres.name},'%')
 		</if>
@@ -116,15 +116,15 @@
 	</select>
 	
 	<select id="findSotResByUserName" resultMap="BaseResultMap">
-		SELECT * FROM RESULT_SOT WHERE USER_ID = (SELECT USER_ID FROM USER WHERE USER_UNAME = #{username}) ORDER BY ${overall}
+		SELECT * FROM result_sot WHERE USER_ID = (SELECT USER_ID FROM USER WHERE USER_UNAME = #{username}) ORDER BY ${overall}
 	</select>
 	
     <delete id="deleteSotRes" parameterType="int">
-		DELETE FROM RESULT_SOT WHERE RESULT_ID = #{id}
+		DELETE FROM result_sot WHERE RESULT_ID = #{id}
 	</delete>
 	
 	<update id="updateSotRes" useGeneratedKeys="true" keyProperty="id">
-		UPDATE RESULT_SOT 
+		UPDATE result_sot 
 		<set>
 			<if test="name != null and name != ''">RESULT_NAME = #{name},</if>
 			<if test="datetime !=null and datetime !=''">RESULT_DATE = #{date},</if>
@@ -155,7 +155,7 @@
 	</update>
 	
 	<insert id="addSotRes" useGeneratedKeys="true" keyProperty="id">
-		INSERT INTO INFO(<trim suffixOverrides=",">
+		INSERT INTO result_sot(<trim suffixOverrides=",">
             <if test="name != null and name != ''">RESULT_NAME,</if>
 			<if test="datetime !=null and datetime !=''">RESULT_DATE,</if>
 			<if test="user_id != null and user_id != ''">USER_ID,</if>

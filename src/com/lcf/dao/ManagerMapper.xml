@@ -10,10 +10,10 @@
 	    <result column="MANAGER_RIGHT" property="right" jdbcType="NUMERIC" />
  	</resultMap>
 	<select id="findManagerByName" resultMap="BaseResultMap">
-		SELECT * FROM MANAGER WHERE MANAGER_UNAME = #{username} 
+		SELECT * FROM manager WHERE MANAGER_UNAME = #{username} 
 	</select>
     
     <delete id="deleteUser" parameterType="int">
-		delete from sysuser where id=#{id}
+		delete from manager where id=#{id}
 	</delete>
 </mapper>
