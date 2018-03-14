@@ -20,7 +20,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <link href="<%=path%>/css/bootstrap/bootstrap.min.css" rel="stylesheet">
 
     <!-- MetisMenu CSS -->
-    <link href="<%=path%>/css/metisMenu/metisMenu.min.css" rel="stylesheet">
+    <link href="<%=path%>/css/metisMenu/metisMenu.css" rel="stylesheet">
 
     <!-- DataTables CSS -->
     <link href="<%=path%>/css/datatables/dataTables.bootstrap.css" rel="stylesheet">
@@ -152,8 +152,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 									<span>Tracker name:</span>
 									<input type="text" class="form-control" placeholder="Tracker name" id="trackername-search">
 	                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	                                <button type="button" class="btn" id="btn-advanced-search" onclick="search()"><i class="fa fa-search"></i> Search</button>
-	                                <button type="button" class="btn" id="btn-advanced-search" onclick="removeSearchVal()"><i class="fa fa-times"></i> Remove Search Rules</button>
+	                                <button type="button" class="btn" onclick="search()"><i class="fa fa-search"></i> Search</button>
+	                                <button type="button" class="btn" onclick="removeSearchVal()"><i class="fa fa-times"></i> Remove Search Rules</button>
 	                            </div>
 							</form>
                         </div>

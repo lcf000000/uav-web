@@ -61,7 +61,7 @@ public class CommonInterceptor extends HandlerInterceptorAdapter{
         // 判断用户是否登录，一般是都没登录的
         if(user == null){
         	//request.getRequestDispatcher("/views/forwardLogin").forward(request, response);
-        	response.sendRedirect(request.getContextPath()+"/manage/forwardLogin");
+        	response.sendRedirect(request.getContextPath()+"/views/forwardLogin");
             return false;
 	     }else{
 	    	if (url.contains("login")||url.contains("register")){
@@ -71,7 +71,7 @@ public class CommonInterceptor extends HandlerInterceptorAdapter{
         	if(user.getPassword().equals(checkUser.getPassword())) {
         		return true;
         	}else {
-        		response.sendRedirect(request.getContextPath()+"/manage/forwardLogin");
+        		response.sendRedirect(request.getContextPath()+"/views/forwardLogin");
         		return false;
         	}
             

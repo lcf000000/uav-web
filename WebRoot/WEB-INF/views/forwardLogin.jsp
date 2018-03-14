@@ -80,7 +80,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</div>
 				<div class="col-md-8 panel panel-default" id="show-info" style="word-wrap:break-word;">
 					<div class="col-xs-10 col-sm-12">
-						<h3>Please login first! Redirect to login page...<span id="time"></span></h3>
+						<h3>Please login first! Redirect to login page...  <span id="time"></span> S</h3>
 					</div>
 				</div>
 				<div class="col-md-2">
