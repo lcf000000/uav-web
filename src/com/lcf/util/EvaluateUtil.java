@@ -219,7 +219,7 @@ public class EvaluateUtil {
 
 		log.info("Evaluate Done!");
 		res.setPrecision((double)centerCnt / objects);
-		res.setSuccess ((double)iouCnt / objects);
+		res.setIOU ((double)iouCnt / objects);
 		res.setFPS(fps / objects);
 		res.arc_p = (double)attP[0] / attCnt[0];
 		res.bc_p = (double)attP[1] / attCnt[1];

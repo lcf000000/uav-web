@@ -51,6 +51,7 @@ public class SotResController {
 		JSONArray jsonArray=new JSONArray();
 		JSONObject jsonObject=new JSONObject();
 		String path=null;// 文件路径
+		String gtPath = null;
 		long currentTime = System.currentTimeMillis();
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMddHHmmss");
 		Date date = new Date(currentTime);
