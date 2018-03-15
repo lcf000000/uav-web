@@ -4,42 +4,55 @@
 	<resultMap id="BaseResultMap" type="com.lcf.model.SotRes" >
 	    <id column="RESULT_ID" property="id" jdbcType="BIGINT" />
 	    <result column="RESULT_NAME" property="name" jdbcType="VARCHAR" />
-	    <result column="RESULT_DATE" property="date" jdbcType="TIMESTAMP" />
+	    <result column="RESULT_DATE" property="date" jdbcType="DATE" />
 	    <result column="USER_ID" property="user_id" jdbcType="BIGINT" />
 	    <result column="RESULT_LANG" property="language" jdbcType="VARCHAR" />
 	    <result column="RESULT_EVM" property="environment" jdbcType="VARCHAR" />
 	    <result column="RESULT_REF" property="reference" jdbcType="VARCHAR" />
 	    <result column="RESULT_RESFILE" property="resfile" jdbcType="LONGVARCHAR" />
 	    <result column="RESULT_CODE" property="code" jdbcType="LONGVARCHAR" />
-	    <result column="RESULT_STATUS" property="status" jdbcType="INTEGER" />
 	    <result column="RESULT_DESCRI" property="descrip" jdbcType="LONGVARCHAR" />
-	    <result column="RESULT_ARC" property="arc" jdbcType="DOUBLE" />
-	    <result column="RESULT_BC" property="bc" jdbcType="DOUBLE" />
-	    <result column="RESULT_CM" property="cm" jdbcType="DOUBLE" />
-	    <result column="RESULT_FM" property="fm" jdbcType="DOUBLE" />
-	    <result column="RESULT_FOC" property="foc" jdbcType="DOUBLE" />
-	    <result column="RESULT_IV" property="iv" jdbcType="DOUBLE" />
-	    <result column="RESULT_LR" property="lr" jdbcType="DOUBLE" />
-	    <result column="RESULT_OV" property="ov" jdbcType="DOUBLE" />
-	    <result column="RESULT_POC" property="poc" jdbcType="DOUBLE" />
-	    <result column="RESULT_SOB" property="sob" jdbcType="DOUBLE" />
-	    <result column="RESULT_SV" property="sv" jdbcType="DOUBLE" />
-	    <result column="RESULT_VC" property="vc" jdbcType="DOUBLE" />
+	    <result column="RESULT_ARC_IOU" property="arc_iou" jdbcType="DOUBLE" />
+	    <result column="RESULT_BC_IOU" property="bc_iou" jdbcType="DOUBLE" />
+	    <result column="RESULT_CM_IOU" property="cm_iou" jdbcType="DOUBLE" />
+	    <result column="RESULT_FM_IOU" property="fm_iou" jdbcType="DOUBLE" />
+	    <result column="RESULT_FOC_IOU" property="foc_iou" jdbcType="DOUBLE" />
+	    <result column="RESULT_IV_IOU" property="iv_iou" jdbcType="DOUBLE" />
+	    <result column="RESULT_LR_IOU" property="lr_iou" jdbcType="DOUBLE" />
+	    <result column="RESULT_OV_IOU" property="ov_iou" jdbcType="DOUBLE" />
+	    <result column="RESULT_POC_IOU" property="poc_iou" jdbcType="DOUBLE" />
+	    <result column="RESULT_SOB_IOU" property="sob_iou" jdbcType="DOUBLE" />
+	    <result column="RESULT_SV_IOU" property="sv_iou" jdbcType="DOUBLE" />
+	    <result column="RESULT_VC_IOU" property="vc_iou" jdbcType="DOUBLE" />	    
+	    <result column="RESULT_OVERALL_IOU" property="overall_iou" jdbcType="DOUBLE" />
+	    <result column="RESULT_ARC_P" property="arc_p" jdbcType="DOUBLE" />
+	    <result column="RESULT_BC_P" property="bc_p" jdbcType="DOUBLE" />
+	    <result column="RESULT_CM_P" property="cm_p" jdbcType="DOUBLE" />
+	    <result column="RESULT_FM_P" property="fm_p" jdbcType="DOUBLE" />
+	    <result column="RESULT_FOC_P" property="foc_p" jdbcType="DOUBLE" />
+	    <result column="RESULT_IV_P" property="iv_p" jdbcType="DOUBLE" />
+	    <result column="RESULT_LR_P" property="lr_p" jdbcType="DOUBLE" />
+	    <result column="RESULT_OV_P" property="ov_p" jdbcType="DOUBLE" />
+	    <result column="RESULT_POC_P" property="poc_p" jdbcType="DOUBLE" />
+	    <result column="RESULT_SOB_P" property="sob_p" jdbcType="DOUBLE" />
+	    <result column="RESULT_SV_P" property="sv_p" jdbcType="DOUBLE" />
+	    <result column="RESULT_VC_P" property="vc_p" jdbcType="DOUBLE" />	    
+	    <result column="RESULT_OVERALL_P" property="overall_p" jdbcType="DOUBLE" />
 	    <result column="RESULT_SPEED" property="speed" jdbcType="DOUBLE" />
-	    <result column="RESULT_OVERALL" property="overall" jdbcType="DOUBLE" />
+	    <result column="RESULT_STATUS" property="status" jdbcType="INTEGER" />
 	    <association property="user" javaType="com.lcf.model.User">
 	    	<id column="USER_ID" property="id" jdbcType="BIGINT" />
 	    	<result column="USER_UNAME" property="username" jdbcType="VARCHAR" /> 
 	    </association>	    
  	</resultMap>
 	<select id="findSotResByUserID" resultMap="BaseResultMap">
-		SELECT * FROM result_sot WHERE USER_ID = #{user_id} ORDER BY ${overall}
+		SELECT * FROM RESULT_SOT WHERE USER_ID = #{user_id} ORDER BY ${overall}
 	</select>
     <select id="findSotResByName" resultMap="BaseResultMap">
-		SELECT * FROM result_sot WHERE RESULT_NAME = #{name} ORDER BY ${overall}
+		SELECT * FROM RESULT_SOT WHERE RESULT_NAME = #{name} ORDER BY ${overall}
 	</select>
     <select id="getSotResList" resultMap="BaseResultMap" parameterType="com.lcf.model.SotRes">
-		SELECT * FROM result_sot  WHERE 1 = 1
+		SELECT * FROM RESULT_SOT  WHERE 1 = 1
 		<if test="sotres.name != null and sotres.name != ''">
 		AND RESULT_NAME like concat('%',#{sotres.name},'%')
 		</if>
@@ -67,41 +80,80 @@
 		<if test="sotres.descrip != null and sotres.descrip != ''">
 		AND RESULT_DESCRI like concat('%',#{sotres.descrip},'%')
 		</if>
-		<if test="sotres.arc != null and sotres.arc != ''">
-		AND RESULT_ARC = #{sotres.arc}
+		<if test="sotres.arc_p != null and sotres.arc_p != ''">
+		AND RESULT_ARC_P = #{sotres.arc_p}
 		</if>
-		<if test="sotres.bc != null and sotres.bc != ''">
-		AND RESULT_BC = #{sotres.bc}
+		<if test="sotres.bc_p != null and sotres.bc_p != ''">
+		AND RESULT_BC_P = #{sotres.bc_p}
 		</if>
-		<if test="sotres.cm != null and sotres.cm != ''">
-		AND RESULT_CM = #{sotres.cm}
+		<if test="sotres.cm_p != null and sotres.cm_p != ''">
+		AND RESULT_CM_P = #{sotres.cm_p}
 		</if>
-		<if test="sotres.fm != null and sotres.fm != ''">
-		AND RESULT_FM = #{sotres.fm}
+		<if test="sotres.fm_p != null and sotres.fm_p != ''">
+		AND RESULT_FM_P = #{sotres.fm}
 		</if>
-		<if test="sotres.foc != null and sotres.foc != ''">
-		AND RESULT_FOC = #{sotres.foc}
+		<if test="sotres.foc_p != null and sotres.foc_p != ''">
+		AND RESULT_FOC_P = #{sotres.foc_p}
 		</if>
-		<if test="sotres.iv != null and sotres.iv != ''">
-		AND RESULT_IV = #{sotres.iv}
+		<if test="sotres.iv_p != null and sotres.iv_p != ''">
+		AND RESULT_IV_P = #{sotres.iv_p}
 		</if>
-		<if test="sotres.lr != null and sotres.lr != ''">
-		AND RESULT_LR = #{sotres.lr}
+		<if test="sotres.lr_p != null and sotres.lr_p != ''">
+		AND RESULT_LR_P = #{sotres.lr_p}
 		</if>
-		<if test="sotres.ov != null and sotres.ov != ''">
-		AND RESULT_OV = #{sotres.ov}
+		<if test="sotres.ov_p != null and sotres.ov_p != ''">
+		AND RESULT_OV_P = #{sotres.ov_p}
 		</if>
-		<if test="sotres.poc != null and sotres.poc != ''">
-		AND RESULT_POC = #{sotres.poc}
+		<if test="sotres.poc_p != null and sotres.poc_p != ''">
+		AND RESULT_POC_P = #{sotres.poc_p}
 		</if>
-		<if test="sotres.sob != null and sotres.sob != ''">
-		AND RESULT_OV = #{sotres.sob}
+		<if test="sotres.sob_p != null and sotres.sob_p != ''">
+		AND RESULT_OV_P = #{sotres.sob_p}
 		</if>
-		<if test="sotres.sv != null and sotres.sv != ''">
-		AND RESULT_SV = #{sotres.sv}
+		<if test="sotres.sv_p != null and sotres.sv_p != ''">
+		AND RESULT_SV_P = #{sotres.sv_p}
 		</if>
-		<if test="sotres.vc != null and sotres.vc != ''">
-		AND RESULT_VC = #{sotres.vc}
+		<if test="sotres.vc_p != null and sotres.vc_p != ''">
+		AND RESULT_VC_P = #{sotres.vc_p}
+		</if>
+		<if test="sotres.overall_p != null and sotres.overall_p !=''">
+		AND RESULT_OVERALL_P = #{sotres.overall_p}
+		</if>
+		<if test="sotres.arc_iou != null and sotres.arc_iou != ''">
+		AND RESULT_ARC_IOU = #{sotres.arc_iou}
+		</if>
+		<if test="sotres.bc_iou != null and sotres.bc_iou != ''">
+		AND RESULT_BC_IOU = #{sotres.bc_iou}
+		</if>
+		<if test="sotres.cm_iou != null and sotres.cm_iou != ''">
+		AND RESULT_CM_IOU = #{sotres.cm_iou}
+		</if>
+		<if test="sotres.fm_iou != null and sotres.fm_iou != ''">
+		AND RESULT_FM_IOU = #{sotres.fm_iou}
+		</if>
+		<if test="sotres.foc_iou != null and sotres.foc_iou != ''">
+		AND RESULT_FOC_IOU = #{sotres.foc_iou}
+		</if>
+		<if test="sotres.iv_iou != null and sotres.iv_iou != ''">
+		AND RESULT_IV_IOU = #{sotres.iv_iou}
+		</if>
+		<if test="sotres.lr_iou != null and sotres.lr_iou != ''">
+		AND RESULT_LR_IOU = #{sotres.lr_iou}
+		</if>
+		<if test="sotres.ov_iou != null and sotres.ov_iou != ''">
+		AND RESULT_OV_IOU = #{sotres.ov_iou}
+		</if>
+		<if test="sotres.poc_iou != null and sotres.poc_iou != ''">
+		AND RESULT_POC_IOU = #{sotres.poc_iou}
+		</if>
+		<if test="sotres.sob_iou != null and sotres.sob_iou != ''">
+		AND RESULT_OV_IOU = #{sotres.sob_iou}
+		</if>
+		<if test="sotres.sv_iou != null and sotres.sv_iou != ''">
+		AND RESULT_SV_IOU = #{sotres.sv_iou}
+		</if>
+		<if test="sotres.vc_iou != null and sotres.vc_iou != ''">
+		AND RESULT_VC_IOU = #{sotres.vc_iou}
 		</if>
 		<if test="sotres.status != null and sotres.status !=''">
 		AND RESULT_STATUS = #{sotres.status}
@@ -109,22 +161,22 @@
 		<if test="sotres.speed != null and sotres.speed !=''">
 		AND RESULT_SPEED = #{sotres.speed}
 		</if>
-		<if test="sotres.overall != null and sotres.overall !=''">
-		AND RESULT_OVERALL = #{sotres.overall}
+		<if test="sotres.overall_iou != null and sotres.overall_iou !=''">
+		AND RESULT_OVERALL_IOU = #{sotres.overall_iou}
 		</if>
-		ORDER BY ${overall}
+		ORDER BY ${overall_p}
 	</select>
 	
 	<select id="findSotResByUserName" resultMap="BaseResultMap">
-		SELECT * FROM result_sot WHERE USER_ID = (SELECT USER_ID FROM USER WHERE USER_UNAME = #{username}) ORDER BY ${overall}
+		SELECT * FROM RESULT_SOT WHERE USER_ID = (SELECT USER_ID FROM USER WHERE USER_UNAME = #{username}) ORDER BY ${overall}
 	</select>
 	
     <delete id="deleteSotRes" parameterType="int">
-		DELETE FROM result_sot WHERE RESULT_ID = #{id}
+		DELETE FROM RESULT_SOT WHERE RESULT_ID = #{id}
 	</delete>
 	
 	<update id="updateSotRes" useGeneratedKeys="true" keyProperty="id">
-		UPDATE result_sot 
+		UPDATE RESULT_SOT 
 		<set>
 			<if test="name != null and name != ''">RESULT_NAME = #{name},</if>
 			<if test="datetime !=null and datetime !=''">RESULT_DATE = #{date},</if>
@@ -135,27 +187,41 @@
 			<if test="resfile != null nad resfile != ''">RESULT_RESFILE = #{resfile},</if>
 			<if test="code != null and code !=''">RESULT_CODE = #{code},</if>			
 			<if test="descrip != null and descrip != ''">RESULT_DESCRI = #{descrip},</if>
-			<if test="arc != null and arc != ''">RESULT_ARC = #{arc},</if>
-			<if test="bc != null and bc != ''">RESULT_BC = #{bc},</if>
-			<if test="cm != null and cm != ''">RESULT_CM = #{cm},</if>
-			<if test="fm != null and fm != ''">RESULT_FM = #{fm},</if>
-			<if test="foc != null and foc != ''">RESULT_FOC = #{foc},</if>
-			<if test="iv != null and iv != ''">RESULT_IV = #{iv},</if>
-			<if test="lr != null and lr != ''">RESULT_LR = #{lr},</if>
-			<if test="ov != null and ov != ''">RESULT_OV = #{ov},</if>
-			<if test="poc != null and poc != ''">RESULT_POC = #{poc},</if>
-			<if test="sob != null and sob != ''">RESULT_OV = #{sob},</if>
-			<if test="sv != null and sv != ''">RESULT_SV = #{sv},</if>
-			<if test="vc != null and vc != ''">RESULT_VC = #{vc},</if>
+			<if test="arc_p != null and arc_p != ''">RESULT_ARC_P = #{arc_p},</if>
+			<if test="bc_p != null and bc_p != ''">RESULT_BC_P = #{bc_p},</if>
+			<if test="cm_p != null and cm_p != ''">RESULT_CM_P = #{cm_p},</if>
+			<if test="fm_p != null and fm_p != ''">RESULT_FM_P = #{fm_p},</if>
+			<if test="foc_p != null and foc_p != ''">RESULT_FOC_P = #{foc_p},</if>
+			<if test="iv_p != null and iv_p != ''">RESULT_IV_P = #{iv_p},</if>
+			<if test="lr_p != null and lr_p != ''">RESULT_LR_P = #{lr_p},</if>
+			<if test="ov_p != null and ov_p != ''">RESULT_OV_P = #{ov_p},</if>
+			<if test="poc_p != null and poc_p != ''">RESULT_POC_P = #{poc_p},</if>
+			<if test="sob_p != null and sob_p != ''">RESULT_OV_P = #{sob_p},</if>
+			<if test="sv_p != null and sv_p != ''">RESULT_SV_P = #{sv_p},</if>
+			<if test="vc_p != null and vc_p != ''">RESULT_VC_P = #{vc_p},</if>
+			<if test="overall_p != null and overal_pl !=''">RESULT_OVERALL_P = #{overall_p}</if>
+			
+			<if test="arc_iou != null and arc_iou != ''">RESULT_ARC_IOU = #{arc_iou},</if>
+			<if test="bc_iou != null and bc_iou != ''">RESULT_BC_IOU = #{bc_iou},</if>
+			<if test="cm_iou != null and cm_iou != ''">RESULT_CM_IOU = #{cm_iou},</if>
+			<if test="fm_iou != null and fm_iou != ''">RESULT_FM_IOU = #{fm_iou},</if>
+			<if test="foc_iou != null and foc_iou != ''">RESULT_FOC_IOU = #{foc_iou},</if>
+			<if test="iv_iou != null and iv_iou != ''">RESULT_IV_IOU = #{iv_iou},</if>
+			<if test="lr_iou != null and lr_iou != ''">RESULT_LR_IOU = #{lr_iou},</if>
+			<if test="ov_iou != null and ov_iou != ''">RESULT_OV_IOU = #{ov_iou},</if>
+			<if test="poc_iou != null and poc_iou != ''">RESULT_POC_IOU = #{poc_iou},</if>
+			<if test="sob_iou != null and sob_iou != ''">RESULT_OV_IOU = #{sob_iou},</if>
+			<if test="sv_iou != null and sv_iou != ''">RESULT_SV_IOU = #{sv_iou},</if>
+			<if test="vc_iou != null and vc_iou != ''">RESULT_VC_IOU = #{vc_iou},</if>
 			<if test="status != null and status !=''">RESULT_STATUS = #{status},</if>
 			<if test="speed != null and speed !=''">RESULT_SPEED = #{speed},</if>
-			<if test="overall != null and overall !=''">RESULT_OVERALL = #{overall}</if>		
+			<if test="overall_iou != null and overall_iou !=''">RESULT_OVERALL_IOU = #{overall_iou}</if>		
 		</set>
 		WHERE RESULT_ID = #{id}
 	</update>
 	
 	<insert id="addSotRes" useGeneratedKeys="true" keyProperty="id">
-		INSERT INTO result_sot(<trim suffixOverrides=",">
+		INSERT INTO INFO(<trim suffixOverrides=",">
             <if test="name != null and name != ''">RESULT_NAME,</if>
 			<if test="datetime !=null and datetime !=''">RESULT_DATE,</if>
 			<if test="user_id != null and user_id != ''">USER_ID,</if>
@@ -165,21 +231,35 @@
 			<if test="resfile != null nad resfile != ''">RESULT_RESFILE,</if>
 			<if test="code != null and code !=''">RESULT_CODE,</if>			
 			<if test="descrip != null and descrip != ''">RESULT_DESCRI,</if>
-			<if test="arc != null and arc != ''">RESULT_ARC,</if>
-			<if test="bc != null and bc != ''">RESULT_BC,</if>
-			<if test="cm != null and cm != ''">RESULT_CM,</if>
-			<if test="fm != null and fm != ''">RESULT_FM,</if>
-			<if test="foc != null and foc != ''">RESULT_FOC,</if>
-			<if test="iv != null and iv != ''">RESULT_IV,</if>
-			<if test="lr != null and lr != ''">RESULT_LR,</if>
-			<if test="ov != null and ov != ''">RESULT_OV,</if>
-			<if test="poc != null and poc != ''">RESULT_POC,</if>
-			<if test="sob != null and sob != ''">RESULT_OV,</if>
-			<if test="sv != null and sv != ''">RESULT_SV,</if>
-			<if test="vc != null and vc != ''">RESULT_VC,</if>
+			<if test="arc_p != null and arc_p != ''">RESULT_ARC_P,</if>
+			<if test="bc_p != null and bc_p != ''">RESULT_BC_P,</if>
+			<if test="cm_p != null and cm_p != ''">RESULT_CM_P,</if>
+			<if test="fm_p != null and fm_p != ''">RESULT_FM_P,</if>
+			<if test="foc_p != null and foc_p != ''">RESULT_FOC_P,</if>
+			<if test="iv_p != null and iv_p != ''">RESULT_IV_P,</if>
+			<if test="lr_p != null and lr_p != ''">RESULT_LR_P,</if>
+			<if test="ov_p != null and ov_p != ''">RESULT_OV_P,</if>
+			<if test="poc_p != null and poc_p != ''">RESULT_POC_P,</if>
+			<if test="sob_p != null and sob_p != ''">RESULT_OV_P,</if>
+			<if test="sv_p != null and sv_p != ''">RESULT_SV_P,</if>
+			<if test="vc_p != null and vc_p != ''">RESULT_VC_P,</if>
+			<if test="overall_p != null and overall_p !=''">RESULT_OVERALL_P</if>
+			
+			<if test="arc_iou != null and arc_iou != ''">RESULT_ARC_IOU,</if>
+			<if test="bc_iou != null and bc_iou != ''">RESULT_BC_IOU,</if>
+			<if test="cm_iou != null and cm_iou != ''">RESULT_CM_IOU,</if>
+			<if test="fm_iou != null and fm_iou != ''">RESULT_FM_IOU,</if>
+			<if test="foc_iou != null and foc_iou != ''">RESULT_FOC_IOU,</if>
+			<if test="iv_iou != null and iv_iou != ''">RESULT_IV_IOU,</if>
+			<if test="lr_iou != null and lr_iou != ''">RESULT_LR_IOU,</if>
+			<if test="ov_iou != null and ov_iou != ''">RESULT_OV_IOU,</if>
+			<if test="poc_iou != null and poc_iou != ''">RESULT_POC_IOU,</if>
+			<if test="sob_iou != null and sob_iou != ''">RESULT_OV_IOU,</if>
+			<if test="sv_iou != null and sv_iou != ''">RESULT_SV_IOU,</if>
+			<if test="vc_iou != null and vc_iou != ''">RESULT_VC_IOU,</if>
+			<if test="overall_iou != null and overall_iou !=''">RESULT_OVERALL_IOU</if>
 			<if test="status != null and status !=''">RESULT_STATUS,</if>
 			<if test="speed != null and speed !=''">RESULT_SPEED,</if>
-			<if test="overall != null and overall !=''">RESULT_OVERALL</if>
 			</trim>)values(<trim suffixOverrides=",">
 			<if test="name != null and name != ''">#{name},</if>
 			<if test="datetime !=null and datetime !=''">#{date},</if>
@@ -190,21 +270,35 @@
 			<if test="resfile != null nad resfile != ''">#{resfile},</if>
 			<if test="code != null and code !=''">#{code},</if>			
 			<if test="descrip != null and descrip != ''">#{descrip},</if>
-			<if test="arc != null and arc != ''">#{arc},</if>
-			<if test="bc != null and bc != ''">#{bc},</if>
-			<if test="cm != null and cm != ''">#{cm},</if>
-			<if test="fm != null and fm != ''">#{fm},</if>
-			<if test="foc != null and foc != ''">#{foc},</if>
-			<if test="iv != null and iv != ''">#{iv},</if>
-			<if test="lr != null and lr != ''">#{lr},</if>
-			<if test="ov != null and ov != ''">#{ov},</if>
-			<if test="poc != null and poc != ''">#{poc},</if>
-			<if test="sob != null and sob != ''">#{sob},</if>
-			<if test="sv != null and sv != ''">#{sv},</if>
-			<if test="vc != null and vc != ''">#{vc},</if>
+			<if test="arc_p != null and arc_p != ''">#{arc_p},</if>
+			<if test="bc_p != null and bc_p != ''">#{bc_p},</if>
+			<if test="cm_p != null and cm_p != ''">#{cm_p},</if>
+			<if test="fm_p != null and fm_p != ''">#{fm_p},</if>
+			<if test="foc_p != null and foc_p != ''">#{foc_p},</if>
+			<if test="iv_p != null and iv_p != ''">#{iv_p},</if>
+			<if test="lr_p != null and lr_p != ''">#{lr_p},</if>
+			<if test="ov_p != null and ov_p != ''">#{ov_p},</if>
+			<if test="poc_p != null and poc_p != ''">#{poc_p},</if>
+			<if test="sob_p != null and sob_p != ''">#{sob_p},</if>
+			<if test="sv_p != null and sv_p != ''">#{sv_p},</if>
+			<if test="vc_p != null and vc_p != ''">#{vc_p},</if>
+			<if test="overall_p != null and overall_p !=''">#{overall_p}</if>
+			
+			<if test="arc_iou != null and arc_iou != ''">#{arc_iou},</if>
+			<if test="bc_iou != null and bc_iou != ''">#{bc_iou},</if>
+			<if test="cm_iou != null and cm_iou != ''">#{cm_iou},</if>
+			<if test="fm_iou != null and fm_iou != ''">#{fm_iou},</if>
+			<if test="foc_iou != null and foc_iou != ''">#{foc_iou},</if>
+			<if test="iv_iou != null and iv_iou != ''">#{iv_iou},</if>
+			<if test="lr_iou != null and lr_iou != ''">#{lr_iou},</if>
+			<if test="ov_iou != null and ov_iou != ''">#{ov_iou},</if>
+			<if test="poc_iou != null and poc_iou != ''">#{poc_iou},</if>
+			<if test="sob_iou != null and sob_iou != ''">#{sob_iou},</if>
+			<if test="sv_iou != null and sv_iou != ''">#{sv_iou},</if>
+			<if test="vc_iou != null and vc_iou != ''">#{vc_iou},</if>			
+			<if test="overall_iou != null and overall !=''">#{overall_iou}</if>
 			<if test="status != null and status !=''">#{status},</if>
 			<if test="speed != null and speed !=''">#{speed},</if>
-			<if test="overall != null and overall !=''">#{overall}</if>
             </trim>)
 	</insert>
 </mapper>
