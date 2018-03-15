@@ -6,21 +6,17 @@ var realname_ok = false;
 var email_ok = false;
 var org_ok = false;
 var country_ok = false;
-var i = 5; 
-/*  
- *验证用户名是否符合规范的方法   
- *1.验证用户名的输入格式是否正确和是否为空  
- *2.验证用户名输入是否唯一（ajax）  
- */  
+var i = 3; 
 function checkUsername(username){
         //验证用户名的输入格式  
         username_ok=checkField(username, /^[a-zA-Z0-9_]{6,20}$/, "Username can not be empty!", "The username can only be composed of letters and numbers and must be between six and twenty!");  
         //用户名的格式正确的条件成立则验证用户名是否唯一  
         if(username_ok){  
-        	nameOnly_ok = nameOnly(username);  
-        }  
+        	nameOnly(username);
+        }
+        enableSubmit();
         return username_ok&&nameOnly_ok;  
-    }  
+}  
 //验证用户名是否唯一  
 function nameOnly(username){
 	$.ajax({
@@ -32,10 +28,12 @@ function nameOnly(username){
         	if(result.success){
         		toastr.success(result.msg);
         		nameOnly_ok = true;
+        		enableSubmit();
         		return nameOnly_ok;
         	}else{
         		toastr.error(result.msg);
         		nameOnly_ok = false;
+        		enableSubmit();
         		return nameOnly_ok;
         	}
         }
@@ -45,7 +43,8 @@ function nameOnly(username){
  *password check
  */  
 function checkPassword(password){  
-        password_ok=checkField(password,/^[a-zA-Z0-9]{6,20}$/,"Password can not be empty!","The password can only be composed of letters and numbers and must be between six and twenty!");  
+        password_ok=checkField(password,/^[a-zA-Z0-9]{6,20}$/,"Password can not be empty!","The password can only be composed of letters and numbers and must be between six and twenty!");
+        enableSubmit();
         return password_ok;
 }
 /*
@@ -59,19 +58,23 @@ function checkRePassword(rePassword){
 	}else{
 		if(password == rePassword.value){
 			rePassword_ok = true;
+			enableSubmit();
 			return rePassword_ok;
 		}else{
 			toastr.error("The passwords entered twice are not the same!");
 			rePassword_ok = false;
+			enableSubmit();
 			return rePassword_ok;
 		}
 	}
+	enableSubmit();
 }
 /*
  * real name check
  */
 function checkRealname(realname){
     realname_ok=checkField(realname,/^([\u4e00-\u9fa5]+|([a-zA-Z]+\s?)+)$/,"Realname can not be empty!","Please enter the correct name!");  
+    enableSubmit();
     return realname_ok;
 }
 /*
@@ -79,6 +82,7 @@ function checkRealname(realname){
  */
 function checkEmail(email){
     email_ok=checkField(email,/[\w!#$%&'*+/=?^_`{|}~-]+(?:\.[\w!#$%&'*+/=?^_`{|}~-]+)*@(?:[\w](?:[\w-]*[\w])?\.)+[\w](?:[\w-]*[\w])?/,"Email can not be empty!","The format of the email address is incorrect!");  
+    enableSubmit();
     return email_ok;
 }
 /*
@@ -86,6 +90,7 @@ function checkEmail(email){
  */
 function checkOrg(org){
     org_ok=checkField(org,/^([\u4e00-\u9fa5]+|([a-zA-Z]+\s?)+)$/,"Organization can not be empty!","Please enter the correct organization!");  
+    enableSubmit();
     return org_ok;
 }
 /*
@@ -93,6 +98,7 @@ function checkOrg(org){
  */
 function checkCountry(country){
     country_ok=checkField(country,/^[A-Za-z0-9]{1,5}$/,"Country can not be empty!","Please enter the country code, as 'CN,US...'!");  
+    enableSubmit();
     return country_ok;
 }
 
@@ -106,8 +112,19 @@ function fun() {
 function backReg(){
 	window.location.href = ctx + "/views/index"; 
 }
-function submitReg(){
+function enableSubmit(){
+	var submit = document.getElementById('submitReg');
 	if(username_ok && nameOnly_ok && password_ok&& rePassword_ok && realname_ok && email_ok && org_ok && country_ok){
+		submit.removeAttribute("disabled");
+	}else{
+		submit.setAttribute("disabled","disabled");
+	}
+}
+function subReg(){
+	if(username_ok && nameOnly_ok && password_ok&& rePassword_ok && realname_ok && email_ok && org_ok && country_ok){
+		alert("---");
+		var submit = document.getElementById('submitReg');
+		submit.removeAttribute("disabled");
 		$.ajax({
 	        url: ctx+"/user/addUser",//提交地址
 	        type:"POST",
@@ -116,7 +133,7 @@ function submitReg(){
 	        success:function(result){
 	        	if(result.success){
 	        		toastr.success("Register successfully, jump after 5 seconds......");
-	        		var intervalid; 
+	        		var intervalid;
 	        		intervalid = setInterval("fun()", 1000);
 	        	}else{
 	        		toastr.error("Registration failed, please re-register");

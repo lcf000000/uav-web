@@ -60,7 +60,7 @@
 							<input class="form-control required" onblur="checkCountry(this)" type="text" placeholder=" Country,Region" name="country"/>
 					</div>
 					<div class="form-group">
-						<input onclick="submitReg()" class="btn btn-group-sm btn-success pull-right" value="Sign Up "/>
+						<input onclick="subReg()" id="submitReg" disabled="disabled" class="btn btn-group-sm btn-success pull-right" value="Sign Up "/>
 						<input onclick="backReg()" class="btn btn-group-sm btn-info pull-left" id="back_btn" value="Back"/>
 					</div>
 				</div>
@@ -73,8 +73,9 @@
     	<script src="<%=path%>/js/jquery/toastr.js"></script>
     	<!-- Bootstrap 核心 JavaScript 文件 -->
 		<script src="<%=path%>/js/bootstrap/bootstrap.min.js"></script>
+		
 		<script src="<%=path%>/js/views/utils.js"></script>
-		<script src="<%=path%>/js/views/checkMessage.js"></script>
+		<script src="<%=path%>/js/views/regCheck.js"></script>
 	</body>
 </html>
 

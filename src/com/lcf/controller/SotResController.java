@@ -43,7 +43,10 @@ public class SotResController {
 			@RequestParam("codefile") MultipartFile codefile,
     		@RequestParam String name,
     		@RequestParam String language,
-    		@RequestParam String environment,
+    		@RequestParam String core,
+    		@RequestParam String freq,
+    		@RequestParam String ram,
+    		@RequestParam String gpu,
     		@RequestParam String reference,
     		@RequestParam Integer user_id,
 			HttpServletRequest request) throws Exception
@@ -52,6 +55,7 @@ public class SotResController {
 		JSONObject jsonObject=new JSONObject();
 		String path=null;// 文件路径
 		String gtPath = null;
+		String environment = core + freq + ram + gpu;
 		long currentTime = System.currentTimeMillis();
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMddHHmmss");
 		Date date = new Date(currentTime);
@@ -60,25 +64,25 @@ public class SotResController {
             String restype=null;// 文件类型
             String resfileName=resfile.getOriginalFilename();// 文件原名称
             String destype=null;// 文件类型
-            String desfileName=resfile.getOriginalFilename();// 文件原名称
-            String codetype=null;// 文件类型
-            String codefileName=resfile.getOriginalFilename();// 文件原名称
+            String desfileName=desfile.getOriginalFilename();// 文件原名称
             log.info("上传的文件原名称:"+resfileName);
+            log.info("上传的文件原名称:"+desfileName);
             // 判断文件类型
             restype=resfileName.indexOf(".")!=-1?resfileName.substring(resfileName.lastIndexOf(".")+1, resfileName.length()):null; 
+            destype=desfileName.indexOf(".")!=-1?desfileName.substring(desfileName.lastIndexOf(".")+1, desfileName.length()):null; 
             if (restype!=null&&destype!=null) {// 判断文件类型是否为空
-                if ("zip".equals(restype.toUpperCase())&&("doc".equals(destype.toUpperCase())||"docx".equals(destype.toUpperCase())||"pdf".equals(destype.toUpperCase()))) {
+                if (("zip".equals(restype.toLowerCase()))&&(("doc".equals(destype.toLowerCase()))||("docx".equals(destype.toLowerCase()))||("pdf".equals(destype.toLowerCase())))) {
                     // 项目在容器中实际发布运行的根路径
                     //String realPath=request.getSession().getServletContext().getRealPath("/");
                     
                 	// 处理Results文件
                     String restrueFileName= "res" + String.valueOf(user_id) + addname + resfileName;
                     // 设置存放文件的路径
-                    String sotDir = "N:/evaluate/sottest/";
-                    String groudtruthPath = "N:/evaluate/sottest/gt/";
+                    String sotDir = "E:\\test\\sot\\";
+                    String groudtruthPath = "E:\\Project\\resource\\BenchMark\\sot-res\\sot_ann_release\\test";
                     //path = "E:\\Project\\website\\data\\sot\\" + restrueFileName;
                     path = sotDir + restrueFileName;
-                    gtPath = groudtruthPath + restrueFileName;
+                    gtPath = groudtruthPath;
                     log.info("存放文件的路径:"+path);
                     // 转存文件到指定的路径
                     resfile.transferTo(new File(path));
@@ -100,20 +104,24 @@ public class SotResController {
                     // 处理Description文件
                     String destrueFileName= "des" + String.valueOf(user_id) + addname + desfileName;
                     // 设置存放文件的路径
-                    path = "E:\\Project\\website\\data\\sot\\" + destrueFileName;
+                    path = "E:\\test\\sot\\" + destrueFileName;
                     // 转存文件到指定的路径
                     desfile.transferTo(new File(path));
                     
                     String codetrueFileName = "";
-                    //处理Code文件
-                    if (restype!=null&&destype!=null) {// 判断文件类型是否为空
-                        if ("zip".equals(restype.toUpperCase())) {
-                        	
-                        	codetrueFileName= "code" + String.valueOf(user_id) + addname + codefileName;
-                            // 设置存放文件的路径
-                            path = sotDir + codetrueFileName;
-                            // 转存文件到指定的路径
-                            desfile.transferTo(new File(path));
+                    if(codefile != null) {
+                    	String codetype=null;// 文件类型
+                        String codefileName=codefile.getOriginalFilename();// 文件原名称
+                        codetype=codefileName.indexOf(".")!=-1?codefileName.substring(codefileName.lastIndexOf(".")+1, codefileName.length()):null; 
+                      //处理Code文件
+                        if (codetype!=null) {// 判断文件类型是否为空
+                            if ("zip".equals(codetype.toUpperCase())) {           	
+                            	codetrueFileName= "code" + String.valueOf(user_id) + addname + codefileName;
+                                // 设置存放文件的路径
+                                path = sotDir + codetrueFileName;
+                                // 转存文件到指定的路径
+                                codefile.transferTo(new File(path));
+                            }
                         }
                     }
                     

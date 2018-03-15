@@ -16,6 +16,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<title>UAV DATASET - TJU and GA</title>
 		<!-- Bootstrap core CSS -->
 		<link href="<%=path%>/css/bootstrap/bootstrap.min.css" rel="stylesheet">
+		<link href="<%=path%>/css/jquery/toastr.css" rel="stylesheet">
 		<link rel="stylesheet" href="<%=path%>/css/font-awesome/font-awesome.min.css">
 		<!-- Custom styles for this template -->
 		<link href="<%=path%>/css/views/main.css" rel="stylesheet">
@@ -84,57 +85,58 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<div class="col-md-2">
 				</div>
 				<div class="col-md-8" id="show-info" style="word-wrap:break-word;">
-				<form class="form-horizontal col-sm-offset-2 col-md-offset-2" method="post" id="register_form">
+				<form enctype="multipart/form-data" class="form-horizontal col-sm-offset-2 col-md-offset-2" method="post" id="sotSubmit_form" action="<%=path%>/sotres/addres">
 					<h3 class="form-title">Submit your sot tracker</h3>
 					<br/>
 					<div class="col-sm-9 col-md-9">
 						<div class="form-group">
+							<input type="hidden" name="user_id" id="user_id" value="${user.id}">
 							<label>*Tracker Name</label>
-							<input class="form-control required" onblur="checkUsername(this)" type="text" placeholder="A unique name, a short name of your tracker" name="sotname" autofocus="autofocus"/>
+							<input class="form-control required" onblur="checkName(this)" type="text" placeholder="A unique name, a short name of your tracker" name="name"/>
 						</div>
 						<div class="form-group">
 							<label>*Development language</label>
-							<input class="form-control required"  onblur="checkPassword(this)" id="password" type="text" placeholder="C++,Matlab,Python,etc" name="sotlaug"/>
+							<input class="form-control required"  onblur="checkLang(this)" type="text" placeholder="C++,Matlab,Python,etc" name="language"/>
 						</div>
 						<div class="form-group">
 							<label>*Environment</label>
 							<div class="row">
 							  <div class="col-xs-3">
-							    <input type="text" class="form-control" placeholder="CPU:XXX*cores">
+							    <input type="text" class="form-control" onblur="checkEnviroment(this)" placeholder="CPU:XXX*cores" name="core">
 							  </div>
 							  <div class="col-xs-3">
-							    <input type="text" class="form-control" placeholder="@CPU frequency">
+							    <input type="text" class="form-control" onblur="checkEnviroment(this)" placeholder="@CPU frequency" name="freq">
 							  </div>
 							  <div class="col-xs-3">
-							    <input type="text" class="form-control" placeholder="RAM:XGB">
+							    <input type="text" class="form-control" onblur="checkEnviroment(this)" placeholder="RAM:XGB" name="ram">
 							  </div>
 							  <div class="col-xs-3">
-							    <input type="text" class="form-control" placeholder="GPU:XXX*N">
+							    <input type="text" class="form-control" onblur="checkEnviroment(this)" placeholder="GPU:XXX*N" name="gpu">
 							  </div>
 							</div>
 						</div>
 						<div class="form-group">
 						    <label>*Upload tracking results</label>
-						    <input type="file" id="exampleInputFile">
-						    <p class="help-block">Upload your results in a .zip file.</p>
+						    <input type="file" onblur="checkResFile(this)" id="resultFile" name="resfile">
+						    <p class="help-block">Uploard your results in a .zip file.</p>
 						</div>
 						<div class="form-group">
 						    <label>*Description</label>
-						    <input type="file" id="exampleInputFile">
+						    <input type="file" onblur="checkDesFile(this)" id="desFile" name="desfile">
 						    <p class="help-block">A short description of your method. Please use the template paper to describe your method (template is available here). Your file format should be .pdf, .docx or .doc.
 .</p>
 						</div>
 						<div class="form-group">
 						    <label>Code (optional)</label>
-						    <input type="file" id="exampleInputFile">
+						    <input type="file" id="codeFile" name="codefile">
 						    <p class="help-block">You can choose whether to upload your code(Compressed into a .zip format file).</p>
 						</div>
 						<div class="form-group">
-							<label>*Reference</label>
-							<input class="form-control required"  onblur="checkPassword(this)" id="password" type="text" placeholder="Author,  Title,  Conference/Journal,  Year" name="sotlaug"/>
+							<label>Reference</label>
+							<input class="form-control required" type="text" name="reference" placeholder="Author,  Title,  Conference/Journal,  Year"/>
 						</div>
 						<div class="form-group">
-							<input onclick="submitReg()" class="btn btn-group-sm btn-primary pull-right" value="Submit"/>
+							<input type="submit" onclick="submitSot()" disabled="disabled" id="submitSot" class="btn btn-group-sm btn-primary pull-right" value="Submit"/>
 						</div>
 					</div>
 				</form>
@@ -156,6 +158,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<script type="text/javascript">ctx="${pageContext.request.contextPath}";</script>
 		<script src="<%=path%>/js/jquery/jquery.min.js"></script>
 		<script src="<%=path%>/js/bootstrap/bootstrap.min.js"></script>
+		<script src="<%=path%>/js/jquery/toastr.js"></script>
 		<script src="<%=path%>/js/views/viewsGlob.js"></script>
+		<script src="<%=path%>/js/user/submitSot.js"></script>
 	</body>
 </html>

@@ -129,7 +129,7 @@ public class SotRes {
 	public double getFmP() {
 		return fm_p;
 	}
-	public void setFmP(double fm) {
+	public void setFmP(double fm_p) {
 		this.fm_p = fm_p;
 	}
 	public double getFocP() {
