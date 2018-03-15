@@ -47,7 +47,7 @@ public class SotResController {
     		@RequestParam String freq,
     		@RequestParam String ram,
     		@RequestParam String gpu,
-    		@RequestParam String reference,
+    		@RequestParam(required=false) String reference,
     		@RequestParam Integer user_id,
 			HttpServletRequest request) throws Exception
 	{
