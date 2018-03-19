@@ -23,47 +23,51 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	    <!-- DataTables Responsive CSS -->
 	    <link href="<%=path%>/css/datatables/dataTables.responsive.css" rel="stylesheet">
 		<!-- Custom styles for this template -->
+		<link href="<%=path%>/css/jquery/toastr.css" rel="stylesheet">
 		<link href="<%=path%>/css/views/main.css" rel="stylesheet">
 		<link href="<%=path%>/css/views/personal.css" rel="stylesheet">
+		<link href="<%=path%>/css/views/table.css" rel="stylesheet">
 	</head>
 	<body>
 		<!-- Navigation -->
 		<nav class="navbar navbar-inverse navbar-static-top" role="banner" id="navi">
 			<div class="container">
 				<div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
                     <a class="navbar-brand" href="<%=path%>/"><img src="<%=path%>/images/logo-lb.png" alt="logo"></a>
                 </div>
 				<div class="collapse navbar-collapse">
 					<ul class="nav navbar-nav">
 						<li><a href="<%=path%>/" class="navia">Home</a></li>
 						<li class="dropdown">
-                            <a href="#" class="dropdown-toggle navia" data-toggle="dropdown">Data <i class="fa fa-angle-down"></i></a>
+                            <a href="#" class="dropdown-toggle navia" data-toggle="dropdown">Benchmarks <i class="fa fa-angle-down"></i></a>
                             <ul class="dropdown-menu">
-                                <li><a href="<%=path%>/views/getInfo?loc=2" class="navia">Detection</a></li>
-                                <li><a href="<%=path%>/views/getInfo?loc=3" class="navia">Single-Tracking</a></li>
-                                <li><a href="<%=path%>/views/getInfo?loc=4" class="navia">Multi-Tracking</a></li>
-                                <li><a href="<%=path%>/views/getInfo?loc=5" class="navia">Challenge 2017</a></li>
+                                <li><a href="<%=path%>/views/getInfo?loc=2" class="navia">Image Detection</a></li>
+                                <li><a href="<%=path%>/views/getInfo?loc=3" class="navia">Video Detection</a></li>
+                                <li><a href="<%=path%>/views/getInfo?loc=4" class="navia">Single-Tracking</a></li>
+                                <li><a href="<%=path%>/views/getInfo?loc=5" class="navia">Multi-Tracking</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle navia" data-toggle="dropdown">Challenges<i class="fa fa-angle-down"></i></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="<%=path%>/views/getInfo?loc=8" class="navia">Visdrones 2018</a></li>
                             </ul>
                         </li>
 						<li class="dropdown">
                             <a href="#" class="dropdown-toggle navia" data-toggle="dropdown">Results <i class="fa fa-angle-down"></i></a>
                             <ul class="dropdown-menu">
-                                <li><a href="<%=path%>/views/" class="navia">Detection</a></li>
-                                <li><a href="<%=path%>/views/" class="navia">Single-Tracking</a></li>
-                                <li><a href="<%=path%>/views/" class="navia">Multi-Tracking</a></li>
+                                <li><a href="<%=path%>/views/detTable" class="navia">Image Detection</a></li>
+                                 <li><a href="<%=path%>/views/vdetTable" class="navia">Video Detection</a></li>
+                                <li><a href="<%=path%>/views/sotTable" class="navia">Single-Tracking</a></li>
+                                <li><a href="<%=path%>/views/motTable" class="navia">Multi-Tracking</a></li>
+                                <li><a href="<%=path%>/views/getInfo?loc=13" class="navia">Visdrones 2018</a></li>
                             </ul>
                         </li>
                         <li class="dropdown">
                         	<a href="#" class="dropdown-toggle navia" data-toggle="dropdown">Submit <i class="fa fa-angle-down"></i></a>
                         	<ul class="dropdown-menu">
                                 <li><a href="<%=path%>/views/getInfo?loc=14" class="navia">Instructions</a></li>
-								<li><a href="<%=path%>/user/submit" class="navia">Submit Result</a></li>
+                                <li><a href="<%=path%>/user/submit" class="navia">Submit Result</a></li>
                             </ul>
                         </li>
 						<li><a href="<%=path%>/views/getInfo?loc=15" class="navia">FAQ</a></li>
@@ -77,7 +81,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						</c:if>
 						<c:if test="${not empty sessionScope.user.username}">
 							<li><a href="#" onclick="loginOut()" class="navia"><i class="fa fa-sign-out"></i>  &nbsp; Sign out</a></li>
-							<li><a href="#" class="navia"><i class="fa fa-user"></i>  &nbsp; Welcome, ${user.username}</a>
+							<li><a href="<%=path%>/user/yourResults" class="navia"><i class="fa fa-user"></i>  &nbsp; Welcome, ${user.username}</a>
 							<input type="hidden" name="id" id="user_id" value="${user.id}">
 						</c:if>
 					</ul>
@@ -88,43 +92,37 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</nav>
 		<section>
 			<div class="row">
-				<div class="col-md-2">
+				<div class="col-md-0">
 				</div>
-				<div class="col-md-8" style="word-wrap:break-word;">
+				<div class="col-md-12" style="word-wrap:break-word;">
 					<br/>
-					<div class="col-xs-10 col-sm-12">
+					<div class="col-xs-5 col-sm-12">
                     <h2>Welcome</h2> 
                     <div class="tab-wrap">
                         <div class="media">
                             <div class="parrent pull-left">
                                 <ul class="nav nav-tabs nav-stacked">
-                                    <li class="active"><a href="#tab1" data-toggle="tab" class="analistic-01">Your Detector</a></li>
-                                    <li class=""><a href="#tab2" data-toggle="tab" class="analistic-02">Your Single-Object Tracker</a></li>
-                                    <li class=""><a href="#tab3" data-toggle="tab" class="tehnical">Your Multi-Object Tracker</a></li>
-                                    <li class=""><a href="#tab4" data-toggle="tab" class="tehnical">Change Password</a></li>
+                                    <li class="active" id="chose_det"><a href="#tab-det" onclick="showDet()" data-toggle="tab" class="tehnical">Your Detector</a></li>
+                                    <li class="active" id="chose_vdet"><a href="#tab-vdet" onclick="showVdet()" data-toggle="tab" class="tehnical">Your Detector</a></li>
+                                    <li class="" id="chose_sot"><a href="#tab-sot" onclick="showSot()" data-toggle="tab" class="tehnical">Your Single-Object Tracker</a></li>
+                                    <li class="" id="chose_mot"><a href="#tab-mot" onclick="showMot()" data-toggle="tab" class="tehnical">Your Multi-Object Tracker</a></li>
+                                    <li class="" id="chose_your"><a href="#tab-your" onclick="showYour()" data-toggle="tab" class="tehnical">Change Password</a></li>
                                 </ul>
                             </div>
                             <div class="parrent media-body">
                                 <div class="tab-content">
-                                    <div class="tab-pane" id="tab1">
-			                            <table width="100%" class="table table-striped table-bordered table-hover table-condensed" id="dataTables-idet">			                            
+                                    <div class="tab-pane " id="tab-det">
+			                            <table  style="width:100%" class="table tableArea display nowrap table-striped table-bordered table-hover table-condensed" id="dataTables-idet">			                            
 			                                <thead>
 												<tr>
 													<th>Detector Name</th>
 				                                    <th>Date</th>
-				                                    <th>ARC</th>
-				                                    <th>BC</th>
-				                                    <th>CM</th>
-				                                    <th>FM</th>
-				                                    <th>FOC</th>
-				                                    <th>IV</th>
-				                                    <th>LR</th>
-				                                    <th>OV</th>
-				                                    <th>POC</th>
-				                                    <th>SOB</th>
-				                                    <th>SV</th>
-				                                    <th>VC</th>
+				                                    <th>Overall-P</th>
+				                                    <th>Overall-I</th>
+				                                    <th>Speed</th>
+				                                    <th>Language</th>
 				                                    <th>Environment</th>
+				                                    <th>Reference</th>
 												</tr>
 											</thead>
 											<tbody>
@@ -136,26 +134,43 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			                            <!-- /.table-responsive -->
                                     </div>
 
-                                     <div class="tab-pane active in" id="tab2">
-                                     	<table width="100%" class="table table-striped table-bordered table-hover table-condensed" id="dataTables-isot">			                            
+                                     <div class="tab-pane tableArea" id="tab-sot">
+                                     	<table  style="width:100%" class="table tableArea display nowrap table-striped table-bordered table-hover table-condensed" id="dataTables-isot">			                            
 			                            	<thead>
 												<tr>
-													<th>Tracker Name</th>
+													<th>ID</th>
+													<th>Detector Name</th>
 				                                    <th>Date</th>
-				                                    <th>ARC</th>
-				                                    <th>BC</th>
-				                                    <th>CM</th>
-				                                    <th>FM</th>
-				                                    <th>FOC</th>
-				                                    <th>IV</th>
-				                                    <th>LR</th>
-				                                    <th>OV</th>
-				                                    <th>POC</th>
-				                                    <th>SOB</th>
-				                                    <th>SV</th>
-				                                    <th>VC</th>
-				                                    <th>Speed(fps)</th>
+				                                    <th>P-Overall</th>
+				                                    <th>S-Overall</th>
+				                                    <th>Speed</th>
+				                                    <th>P-ARC</th>
+				                                    <th>P-BC</th>
+				                                    <th>P-CM</th>
+				                                    <th>P-FM</th>
+				                                    <th>P-FOC</th>
+				                                    <th>P-IV</th>
+				                                    <th>P-LR</th>
+				                                    <th>P-OV</th>
+				                                    <th>P-POC</th>
+				                                    <th>P-SOB</th>
+				                                    <th>P-SV</th>
+				                                    <th>P-VC</th>
+				                                    <th>S-ARC</th>
+				                                    <th>S-BC</th>
+				                                    <th>S-CM</th>
+				                                    <th>S-FM</th>
+				                                    <th>S-FOC</th>
+				                                    <th>S-IV</th>
+				                                    <th>S-LR</th>
+				                                    <th>S-OV</th>
+				                                    <th>S-POC</th>
+				                                    <th>S-SOB</th>
+				                                    <th>S-SV</th>
+				                                    <th>S-VC</th>
+				                                    <th>Language</th>
 				                                    <th>Environment</th>
+				                                    <th>Reference</th>
 												</tr>
 											</thead>
 											<tbody>
@@ -167,8 +182,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		                            <!-- /.table-responsive -->
                                      </div>
 
-                                     <div class="tab-pane" id="tab3">
-                                        <table width="100%" class="table table-striped table-bordered table-hover table-condensed" id="dataTables-imot">			                            
+                                     <div class="tab-pane tableArea" id="tab-mot">
+                                        <table  style="width:100%" class="table tableArea display nowrap table-striped table-bordered table-hover table-condensed" id="dataTables-imot">			                            
 			                                <thead>
 												<tr>
 													<th>Tracker Name</th>
@@ -197,17 +212,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			                            <!-- /.table-responsive -->
                                      </div>
 
-                                     <div class="tab-pane" id="tab4">
+                                     <div class="tab-pane" id="tab-your">
                                         <form class="form-horizontal col-sm-offset-2 col-md-offset-2" method="post" id="changePass_form">
 											<h3 class="form-title">Change password</h3>
 											<div class="col-sm-9 col-md-9">
+												<input type="hidden" name="id" id="user_id" value="${user.id}">
 												<div class="form-group">
 													<i class="fa fa-lock fa-lg"></i>
-													<input class="form-control required"  onblur="checkPassword(this)" id="password" type="password" placeholder="Password" name="password"/>
+													<input class="form-control required"  onblur="checkPassword(this)" id="password" type="password" placeholder="fill in your new password" name="password"/>
 												</div>
 												<div class="form-group">
 													<i class="fa fa-check fa-lg"></i>
 													<input class="form-control required" onblur="checkRePassword(this)" type="password" placeholder="Re-type Your Password" name="rpassword"/>
+												</div>
+												<div class="form-group">
+												<input class="btn btn-success btn-block" value="Change" disabled="disabled" id="changeSubmit" onclick="submitChange()" />
 												</div>
 											</div>
 										</form>
@@ -219,7 +238,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     </div><!--/.tab-wrap-->               
                 </div><!--/.col-sm-6-->
 				</div>
-				<div class="col-md-2">
+				<div class="col-md-0">
 				</div>
 			</div>
 		</section>
@@ -245,8 +264,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	    <script src="<%=path%>/js/datatables/dataTables.responsive.js"></script>
 	    <script src="<%=path%>/js/datatables/fnReloadAjax.js"></script>
 	    <script src="<%=path%>/js/datatables/dataTables.select.min.js"></script>
-	    
+	    <script src="<%=path%>/js/jquery/toastr.js"></script>
+	    <script src="<%=path%>/js/my/yourResults.js"></script>
 		<script src="<%=path%>/js/views/viewsGlob.js"></script>
+		<script src="<%=path%>/js/views/utils.js"></script>
 		
 	</body>
 </html>

@@ -5,6 +5,7 @@
 *******Typography******
 **************************/
 
+
 a:hover,
 a:focus {
   color: #111;
@@ -138,6 +139,10 @@ div {
 }
 /*- Body -*/
 #show-info{
+	line-height:1.5;
+	word-spacing:2px;
+	text-align:justify;
+	
 	-webkit-box-shadow: #666 0px 0px 10px;  
    -moz-box-shadow: #666 0px 0px 10px;  
    box-shadow: #666 0px 0px 10px;

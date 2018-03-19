@@ -122,7 +122,6 @@ function enableSubmit(){
 }
 function subReg(){
 	if(username_ok && nameOnly_ok && password_ok&& rePassword_ok && realname_ok && email_ok && org_ok && country_ok){
-		alert("---");
 		var submit = document.getElementById('submitReg');
 		submit.removeAttribute("disabled");
 		$.ajax({
@@ -132,7 +131,7 @@ function subReg(){
 	        data:$("#register_form").serialize(),//将表单数据序列化,
 	        success:function(result){
 	        	if(result.success){
-	        		toastr.success("Register successfully, jump after 5 seconds......");
+	        		toastr.success("Register successfully, jump after 3 seconds......");
 	        		var intervalid;
 	        		intervalid = setInterval("fun()", 1000);
 	        	}else{

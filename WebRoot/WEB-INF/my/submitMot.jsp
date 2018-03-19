@@ -16,7 +16,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<title>UAV DATASET - TJU and GA</title>
 		<!-- Bootstrap core CSS -->
 		<link href="<%=path%>/css/bootstrap/bootstrap.min.css" rel="stylesheet">
-		<link href="<%=path%>/css/jquery/toastr.css" rel="stylesheet">
 		<link rel="stylesheet" href="<%=path%>/css/font-awesome/font-awesome.min.css">
 		<!-- Custom styles for this template -->
 		<link href="<%=path%>/css/views/main.css" rel="stylesheet">
@@ -58,7 +57,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         	<a href="#" class="dropdown-toggle navia" data-toggle="dropdown">Submit <i class="fa fa-angle-down"></i></a>
                         	<ul class="dropdown-menu">
                                 <li><a href="<%=path%>/views/getInfo?loc=14" class="navia">Instructions</a></li>
-                                <li><a href="<%=path%>/user/submit" class="navia">Submit Result</a></li>
+                                <li><a href="<%=path%>/my/submit" class="navia">Submit Result</a></li>
                             </ul>
                         </li>
 						<li><a href="<%=path%>/views/getInfo?loc=15" class="navia">FAQ</a></li>
@@ -72,7 +71,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						</c:if>
 						<c:if test="${not empty sessionScope.user.username}">
 							<li><a href="#" onclick="loginOut()" class="navia"><i class="fa fa-sign-out"></i>  &nbsp; Sign out</a></li>
-							<li><a href="<%=path%>/user/yourResults" class="navia"><i class="fa fa-user"></i>  &nbsp; Welcome, ${user.username}</a>
+							<li><a href="<%=path%>/my/yourResults" class="navia"><i class="fa fa-user"></i>  &nbsp; Welcome, ${user.username}</a>
 						</c:if>
 					</ul>
 
@@ -85,14 +84,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<div class="col-md-2">
 				</div>
 				<div class="col-md-8" id="show-info" style="word-wrap:break-word;">
-				<form enctype="multipart/form-data" class="form-horizontal col-sm-offset-2 col-md-offset-2" method="post" id="sotSubmit_form" action="<%=path%>/sotres/addres">
-					<h3 class="form-title">Submit your sot tracker</h3>
+				<form enctype="multipart/form-data" class="form-horizontal col-sm-offset-2 col-md-offset-2" method="post" id="motSubmit_form">
+					<h3 class="form-title">Submit your mot tracker</h3>
 					<br/>
 					<div class="col-sm-9 col-md-9">
 						<div class="form-group">
 							<input type="hidden" name="user_id" id="user_id" value="${user.id}">
 							<label>*Tracker Name</label>
-							<input class="form-control required" onblur="checkName(this)" type="text" placeholder="A unique name, a short name of your tracker" name="name"/>
+							<input id="trackerName" class="form-control required" onblur="checkName(this)" type="text" placeholder="A unique name, a short name of your tracker" name="name"/>
 						</div>
 						<div class="form-group">
 							<label>*Development language</label>
@@ -136,7 +135,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<input class="form-control required" type="text" name="reference" placeholder="Author,  Title,  Conference/Journal,  Year"/>
 						</div>
 						<div class="form-group">
-							<input type="submit" onclick="submitSot()" disabled="disabled" id="submitSot" class="btn btn-group-sm btn-primary pull-right" value="Submit"/>
+							<input onclick="subtMot()" disabled="disabled" id="submitMot" class="btn btn-group-sm btn-primary pull-right" value="Submit"/>
 						</div>
 					</div>
 				</form>
@@ -158,8 +157,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<script type="text/javascript">ctx="${pageContext.request.contextPath}";</script>
 		<script src="<%=path%>/js/jquery/jquery.min.js"></script>
 		<script src="<%=path%>/js/bootstrap/bootstrap.min.js"></script>
-		<script src="<%=path%>/js/jquery/toastr.js"></script>
 		<script src="<%=path%>/js/views/viewsGlob.js"></script>
-		<script src="<%=path%>/js/user/submitSot.js"></script>
+		<script src="<%=path%>/js/my/submitMot.js"></script>
 	</body>
 </html>

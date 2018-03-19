@@ -57,7 +57,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         	<a href="#" class="dropdown-toggle navia" data-toggle="dropdown">Submit <i class="fa fa-angle-down"></i></a>
                         	<ul class="dropdown-menu">
                                 <li><a href="<%=path%>/views/getInfo?loc=14" class="navia">Instructions</a></li>
-                                <li><a href="<%=path%>/user/submit" class="navia">Submit Result</a></li>
+								<li><a href="<%=path%>/my/submit" class="navia">Submit Result</a></li>
                             </ul>
                         </li>
 						<li><a href="<%=path%>/views/getInfo?loc=15" class="navia">FAQ</a></li>
@@ -71,7 +71,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						</c:if>
 						<c:if test="${not empty sessionScope.user.username}">
 							<li><a href="#" onclick="loginOut()" class="navia"><i class="fa fa-sign-out"></i>  &nbsp; Sign out</a></li>
-							<li><a href="<%=path%>/user/yourResults" class="navia"><i class="fa fa-user"></i>  &nbsp; Welcome, ${user.username}</a>
+							<li><a href="<%=path%>/my/yourResults" class="navia"><i class="fa fa-user"></i>  &nbsp; Welcome, ${user.username}</a>
 						</c:if>
 					</ul>
 
@@ -81,69 +81,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</nav>
 		<section>
 			<div class="row">
-				<div class="col-md-2">
+				<div class="col-md-4">
 				</div>
-				<div class="col-md-8" id="show-info" style="word-wrap:break-word;">
-				<form class="form-horizontal col-sm-offset-2 col-md-offset-2" method="post" id="register_form">
-					<h3 class="form-title">Submit your detector</h3>
+				<div class="col-md-4" style="word-wrap:break-word;">
 					<br/>
-					<div class="col-sm-9 col-md-9">
-						<div class="form-group">
-							<label>*Detector Name</label>
-							<input class="form-control required" onblur="checkUsername(this)" type="text" placeholder="A unique name, a short name of your tracker" name="sotname" autofocus="autofocus"/>
-						</div>
-						<div class="form-group">
-							<label>*Development language</label>
-							<input class="form-control required"  onblur="checkPassword(this)" id="password" type="text" placeholder="C++,Matlab,Python,etc" name="sotlaug"/>
-						</div>
-						<div class="form-group">
-							<label>*Environment</label>
-							<div class="row">
-							  <div class="col-xs-3">
-							    <input type="text" class="form-control" placeholder="CPU:XXX*cores">
-							  </div>
-							  <div class="col-xs-3">
-							    <input type="text" class="form-control" placeholder="@CPU frequency">
-							  </div>
-							  <div class="col-xs-3">
-							    <input type="text" class="form-control" placeholder="RAM:XGB">
-							  </div>
-							  <div class="col-xs-3">
-							    <input type="text" class="form-control" placeholder="GPU:XXX*N">
-							  </div>
-							</div>
-						</div>
-						<div class="form-group">
-						    <label>*Upload tracking results</label>
-						    <input type="file" id="exampleInputFile">
-						    <p class="help-block">Upload your results in a .zip file.</p>
-						</div>
-						<div class="form-group">
-						    <label>*Description</label>
-						    <input type="file" id="exampleInputFile">
-						    <p class="help-block">A short description of your method. Please use the template paper to describe your method (template is available here). Your file format should be .pdf, .docx or .doc.
-.</p>
-						</div>
-						<div class="form-group">
-						    <label>Code (optional)</label>
-						    <input type="file" id="exampleInputFile">
-						    <p class="help-block">You can choose whether to upload your code(Compressed into a .zip format file).</p>
-						</div>
-						<div class="form-group">
-							<label>*Reference</label>
-							<input class="form-control required"  onblur="checkPassword(this)" id="password" type="text" placeholder="Author,  Title,  Conference/Journal,  Year" name="sotlaug"/>
-						</div>
-						<div class="form-group">
-							<input onclick="submitReg()" class="btn btn-group-sm btn-primary pull-right" value="Submit"/>
-						</div>
-					</div>
-				</form>
+					<a href="<%=path%>/my/submitDet" class="btn btn-default btn-lg btn-block">Detection results submit</a>
+					<a href="<%=path%>/my/submitSot" class="btn btn-default btn-lg btn-block">Single-tracking results submit</a>
+					<a href="<%=path%>/my/submitMot" class="btn btn-default btn-lg btn-block">Multi-tracking results submit</a>
+					<a href="<%=path%>/my/yourResults" class="btn btn-default btn-lg btn-block">Your results</a>
 				</div>
-				<div class="col-md-2">
+				<div class="col-md-4">
 				</div>
 			</div>
 		</section>
-		<br/>
+		<div class="row">
+			<br/>
+		</div>
 		<footer class="footer">
 			<div class="footer-bottom">
 				<i class="fa fa-copyright"></i> Copyright 2018. All rights reserved.<br>

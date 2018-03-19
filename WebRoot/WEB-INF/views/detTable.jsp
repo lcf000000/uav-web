@@ -25,32 +25,34 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<nav class="navbar navbar-inverse navbar-static-top" role="banner" id="navi">
 			<div class="container">
 				<div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
                     <a class="navbar-brand" href="<%=path%>/"><img src="<%=path%>/images/logo-lb.png" alt="logo"></a>
                 </div>
 				<div class="collapse navbar-collapse">
 					<ul class="nav navbar-nav">
 						<li><a href="<%=path%>/" class="navia">Home</a></li>
 						<li class="dropdown">
-                            <a href="#" class="dropdown-toggle navia" data-toggle="dropdown">Data <i class="fa fa-angle-down"></i></a>
+                            <a href="#" class="dropdown-toggle navia" data-toggle="dropdown">Benchmarks <i class="fa fa-angle-down"></i></a>
                             <ul class="dropdown-menu">
-                                <li><a href="<%=path%>/views/getInfo?loc=2" class="navia">Detection</a></li>
-                                <li><a href="<%=path%>/views/getInfo?loc=3" class="navia">Single-Tracking</a></li>
-                                <li><a href="<%=path%>/views/getInfo?loc=4" class="navia">Multi-Tracking</a></li>
-                                <li><a href="<%=path%>/views/getInfo?loc=5" class="navia">Challenge 2017</a></li>
+                                <li><a href="<%=path%>/views/getInfo?loc=2" class="navia">Image Detection</a></li>
+                                <li><a href="<%=path%>/views/getInfo?loc=3" class="navia">Video Detection</a></li>
+                                <li><a href="<%=path%>/views/getInfo?loc=4" class="navia">Single-Tracking</a></li>
+                                <li><a href="<%=path%>/views/getInfo?loc=5" class="navia">Multi-Tracking</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle navia" data-toggle="dropdown">Challenges<i class="fa fa-angle-down"></i></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="<%=path%>/views/getInfo?loc=8" class="navia">Visdrones 2018</a></li>
                             </ul>
                         </li>
 						<li class="dropdown">
                             <a href="#" class="dropdown-toggle navia" data-toggle="dropdown">Results <i class="fa fa-angle-down"></i></a>
                             <ul class="dropdown-menu">
-                                <li><a href="<%=path%>/views/detTable" class="navia">Detection</a></li>
+                                <li><a href="<%=path%>/views/detTable" class="navia">Image Detection</a></li>
+                                 <li><a href="<%=path%>/views/vdetTable" class="navia">Video Detection</a></li>
                                 <li><a href="<%=path%>/views/sotTable" class="navia">Single-Tracking</a></li>
                                 <li><a href="<%=path%>/views/motTable" class="navia">Multi-Tracking</a></li>
+                                <li><a href="<%=path%>/views/getInfo?loc=13" class="navia">Visdrones 2018</a></li>
                             </ul>
                         </li>
                         <li class="dropdown">
@@ -72,6 +74,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<c:if test="${not empty sessionScope.user.username}">
 							<li><a href="#" onclick="loginOut()" class="navia"><i class="fa fa-sign-out"></i>  &nbsp; Sign out</a></li>
 							<li><a href="<%=path%>/user/yourResults" class="navia"><i class="fa fa-user"></i>  &nbsp; Welcome, ${user.username}</a>
+							<input type="hidden" name="id" id="user_id" value="${user.id}">
 						</c:if>
 					</ul>
 

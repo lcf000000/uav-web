@@ -87,11 +87,75 @@ function enableSubmit(){
 		submit.setAttribute("disabled","disabled");
 	}
 }
-function submitLogin(){
+var i= 3;
+function fun() {
+	if (i == 0) { 
+		window.location.href = ctx + "/my/yourResults"; 
+		clearInterval(intervalid); 
+	}
+	i--;
+}
+function subtSot(){
 	var submit = document.getElementById('submitSot');
 	if(name_ok && language_ok && enviroment_ok && description_ok && results_ok){
 		submit.removeAttribute("disabled");
+		var formData = new FormData($("#sotSubmit_form")[0]);
+		var trackerName = document.getElementById('trackerName');
+		if(trackerName.hasOwnProperty('readonly')){
+			$.ajax({
+		        url: ctx+"/sotres/updateSotbyId",//提交地址
+		        type:"POST",
+		        dataType:"json",
+		        data:formData,//将表单数据序列化,
+		        contentType: false, //必须
+		        processData: false, //必须
+		        success:function(result){
+		        	if(result.success){
+		        		toastr.success("Update successfully, jump after 3 seconds......");
+		        		var intervalid;
+		        		intervalid = setInterval("fun()", 1000);
+		        	}else{
+		        		toastr.error("Update failed, please re-update or contact us!");
+		        	}
+		        }
+		    });
+		}else{
+			$.ajax({
+		        url: ctx+"/sotres/addres",//提交地址
+		        type:"POST",
+		        dataType:"json",
+		        data:formData,//将表单数据序列化,
+		        contentType: false, //必须
+		        processData: false, //必须
+		        success:function(result){
+		        	if(result.success){
+		        		toastr.success("Submit successfully, jump after 3 seconds......");
+		        		var intervalid;
+		        		intervalid = setInterval("fun()", 1000);
+		        	}else{
+		        		toastr.error("Submit failed, please re-submit or contact us!");
+		        	}
+		        }
+		    });
+		}
 	}else{
 		toastr.error("Check your submission");
 	}
 }
+function GetQueryString(name)
+{
+     var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+     var r = window.location.search.substr(1).match(reg);
+     if(r!=null)return  unescape(r[2]); return null;
+}
+$(document).ready(function(){
+	var sotid = GetQueryString("sotid");
+	var sotname = GetQueryString("sotname");
+	if(sotid!=null&&sotname!=null){
+		var trackerName = document.getElementById('trackerName');
+		trackerName.value = sotname;
+		trackerName.setAttribute("readonly","readonly");
+	}else{
+		trackerName.removeAttribute("readonly");
+	}
+});

@@ -48,7 +48,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-
 </head>
 
 <body>
@@ -228,7 +227,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	                                </select>
 								</div>
 							</form>
-	                        <div id="editor">
+	                        <div id="editor" style="text-align:justify;line-height:20px;">
 						    </div>
 						    &nbsp;
 						    <div class="row">
@@ -275,7 +274,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	                                </select>
 								</div>
 							</form>
-                        	<div id="adder">
+                        	<div id="adder" style="text-align:justify;line-height:20px;">
 						    </div>
 						   	&nbsp;
 						    <div class="row">

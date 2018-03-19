@@ -31,20 +31,28 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<ul class="nav navbar-nav">
 						<li><a href="<%=path%>/" class="navia">Home</a></li>
 						<li class="dropdown">
-                            <a href="#" class="dropdown-toggle navia" data-toggle="dropdown">Data <i class="fa fa-angle-down"></i></a>
+                            <a href="#" class="dropdown-toggle navia" data-toggle="dropdown">Benchmarks <i class="fa fa-angle-down"></i></a>
                             <ul class="dropdown-menu">
-                                <li><a href="<%=path%>/views/getInfo?loc=2" class="navia">Detection</a></li>
-                                <li><a href="<%=path%>/views/getInfo?loc=3" class="navia">Single-Tracking</a></li>
-                                <li><a href="<%=path%>/views/getInfo?loc=4" class="navia">Multi-Tracking</a></li>
-                                <li><a href="<%=path%>/views/getInfo?loc=5" class="navia">Challenge 2017</a></li>
+                                <li><a href="<%=path%>/views/getInfo?loc=2" class="navia">Image Detection</a></li>
+                                <li><a href="<%=path%>/views/getInfo?loc=3" class="navia">Video Detection</a></li>
+                                <li><a href="<%=path%>/views/getInfo?loc=4" class="navia">Single-Tracking</a></li>
+                                <li><a href="<%=path%>/views/getInfo?loc=5" class="navia">Multi-Tracking</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle navia" data-toggle="dropdown">Challenges<i class="fa fa-angle-down"></i></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="<%=path%>/views/getInfo?loc=8" class="navia">Visdrones 2018</a></li>
                             </ul>
                         </li>
 						<li class="dropdown">
                             <a href="#" class="dropdown-toggle navia" data-toggle="dropdown">Results <i class="fa fa-angle-down"></i></a>
                             <ul class="dropdown-menu">
-                                <li><a href="<%=path%>/views/detTable" class="navia">Detection</a></li>
+                                <li><a href="<%=path%>/views/detTable" class="navia">Image Detection</a></li>
+                                 <li><a href="<%=path%>/views/vdetTable" class="navia">Video Detection</a></li>
                                 <li><a href="<%=path%>/views/sotTable" class="navia">Single-Tracking</a></li>
                                 <li><a href="<%=path%>/views/motTable" class="navia">Multi-Tracking</a></li>
+                                <li><a href="<%=path%>/views/getInfo?loc=13" class="navia">Visdrones 2018</a></li>
                             </ul>
                         </li>
                         <li class="dropdown">

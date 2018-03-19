@@ -203,8 +203,8 @@ public class SotResController {
 	public JSONObject findUserByUserID(
 			HttpServletRequest request,
     		@RequestParam Integer userID) {
-		//String userRes = null;
 		SotRes sotres = new SotRes();
+		log.info(userID.toString());
 		try {
 			sotres = sotresService.findUserByUserID(userID);
 		} catch(Exception e) {

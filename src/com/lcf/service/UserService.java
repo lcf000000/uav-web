@@ -58,5 +58,4 @@ public class UserService {
 		userMapper.deleteUser(id);
 	}
     
-    
 }
