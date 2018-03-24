@@ -1,4 +1,8 @@
 div.dataTables_wrapper{
+ position: relative;
+ clear: both;
+ zoom: 1;
+ overflow-x: auto;
   width: 1600px;
   margin: 0 auto;
 }

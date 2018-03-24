@@ -14,9 +14,11 @@ import com.lcf.model.SotRes;
 
 public interface SotResMapper {
 	
-	public SotRes findUserByUserID(@Param("user_id") int id);
-	public SotRes findUserByName(@Param("name") String name);
-	public SotRes findUserByUserName(@Param("username") String username);
+	public SotRes findSotResByUserID(@Param("user_id") int id);
+	
+	public SotRes findSotResByName(@Param("name") String name);
+	
+	public SotRes findSotResByUserName(@Param("username") String username);
 	
 	public List<SotRes> getSotResList(@Param("sotres")SotRes sotres);
 

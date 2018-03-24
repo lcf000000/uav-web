@@ -17,11 +17,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<!-- Bootstrap core CSS -->
 		<link href="<%=path%>/css/bootstrap/bootstrap.min.css" rel="stylesheet">
 		<link rel="stylesheet" href="<%=path%>/css/font-awesome/font-awesome.min.css">
-		<!-- DataTables CSS -->
-	    <link href="<%=path%>/css/datatables/dataTables.bootstrap.css" rel="stylesheet">
-	    <link href="<%=path%>/css/datatables/select.dataTables.min.css" rel="stylesheet">
-	    <!-- DataTables Responsive CSS -->
-	    <link href="<%=path%>/css/datatables/dataTables.responsive.css" rel="stylesheet">
 		<!-- Custom styles for this template -->
 		<link href="<%=path%>/css/views/main.css" rel="stylesheet">
 	</head>
@@ -82,51 +77,65 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</nav>
 		<section>
 			<div class="row">
-				<div class="col-md-1">
+				<div class="col-md-2">
 				</div>
-				<div class="col-md-10 panel panel-default" id="show-info" style="word-wrap:break-word;">
-					<h3>Evaluate metric</h3>
-					<table class="table table-striped table-bordered table-hover table-condensed" id="dataTables-sotres" >
-                                <thead> 
-									<tr>
-										<th>Tracker Name</th>
-										<th>P-Overall</th>
-										<th>S-Overall</th>
-	                                    <th>P-ARC</th>
-	                                    <th>P-BC</th>
-	                                    <th>P-CM</th>
-	                                    <th>P-FM</th>
-	                                    <th>P-FOC</th>
-	                                    <th>P-IV</th>
-	                                    <th>P-LR</th>
-	                                    <th>P-OV</th>
-	                                    <th>P-POC</th>
-	                                    <th>P-SOB</th>
-	                                    <th>P-SV</th>
-	                                    <th>P-VC</th>
-	                                    <th>S-ARC</th>
-	                                    <th>S-BC</th>
-	                                    <th>S-CM</th>
-	                                    <th>S-FM</th>
-	                                    <th>S-FOC</th>
-	                                    <th>S-IV</th>
-	                                    <th>S-LR</th>
-	                                    <th>S-OV</th>
-	                                    <th>S-POC</th>
-	                                    <th>S-SOB</th>
-	                                    <th>S-SV</th>
-	                                    <th>S-VC</th>
-	                                    <th>Speed(fps)</th>
-	                                    <th>Date</th>
-	                                    <th>Code</th>
-	                                    <th>Environment</th>
-									</tr>
-							</thead>
-							<tbody>
-							</tbody>
-                      </table>
+				<div class="col-md-8" id="show-info" style="word-wrap:break-word;">
+				<form class="form-horizontal col-sm-offset-2 col-md-offset-2" method="post" id="detSubmit_form">
+					<h3 class="form-title">Submit your detector</h3>
+					<br/>
+					<div class="col-sm-9 col-md-9">
+						<div class="form-group">
+							<label>*Detector Name</label>
+							<input id="detectorName" class="form-control required" onblur="checkName(this)" type="text" placeholder="A unique name, a short name of your tracker" name="name"/>
+						</div>
+						<div class="form-group">
+							<label>*Development language</label>
+							<input class="form-control required"  onblur="checkLang(this)" type="text" placeholder="C++,Matlab,Python,etc" name="language"/>
+						</div>
+						<div class="form-group">
+							<label>*Environment</label>
+							<div class="row">
+							  <div class="col-xs-3">
+							    <input onblur="checkEnviroment(this)" type="text" class="form-control" placeholder="CPU:XXX*cores"  name="core">
+							  </div>
+							  <div class="col-xs-3">
+							    <input onblur="checkEnviroment(this)" type="text" class="form-control" placeholder="@CPU frequency" name="freq">
+							  </div>
+							  <div class="col-xs-3">
+							    <input onblur="checkEnviroment(this)" type="text" class="form-control" placeholder="RAM:XGB" name="ram">
+							  </div>
+							  <div class="col-xs-3">
+							    <input onblur="checkEnviroment(this)" type="text" class="form-control" placeholder="GPU:XXX*N" name="gpu">
+							  </div>
+							</div>
+						</div>
+						<div class="form-group">
+						    <label>*Upload tracking results</label>
+						    <input onblur="checkResFile(this)" type="file" id="exampleInputFile" name="resfile">
+						    <p class="help-block">Upload your results in a .zip file.</p>
+						</div>
+						<div class="form-group">
+						    <label>*Description</label>
+						    <input onblur="checkDesFile(this)" type="file" id="exampleInputFile" name="desfile">
+						    <p class="help-block">A short description of your method. Please use the template paper to describe your method (template is available here). Your file format should be .pdf, .docx or .doc.
+.</p>
+						</div>
+						<div class="form-group">
+						    <label>Code (optional)</label>
+						    <input type="file" id="exampleInputFile" name="codefile">
+						    <p class="help-block">You can choose whether to upload your code(Compressed into a .zip format file).</p>
+						</div>
+						<div class="form-group">
+							<label>*Reference</label>
+							<input class="form-control required"  onblur="checkPassword(this)" id="password" type="text" placeholder="Author,  Title,  Conference/Journal,  Year" name="sotlaug"/>
+						</div>
+						<div class="form-group">
+							<input onclick="submitDet()" class="btn btn-group-sm btn-primary pull-right" value="Submit"/>
+						</div>
+					</div>
+				</form>
 				</div>
-				<div class="col-md-1">
+				<div class="col-md-2">
 				</div>
 			</div>
 		</section>
@@ -144,12 +153,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<script src="<%=path%>/js/jquery/jquery.min.js"></script>
 		<script src="<%=path%>/js/bootstrap/bootstrap.min.js"></script>
 		<script src="<%=path%>/js/views/viewsGlob.js"></script>
-		<script src="<%=path%>/js/views/sottable.js"></script>
-		<!-- DataTables JavaScript -->
-	    <script src="<%=path%>/js/datatables/jquery.dataTables.min.js"></script>
-	    <script src="<%=path%>/js/datatables/dataTables.bootstrap.min.js"></script>
-	    <script src="<%=path%>/js/datatables/dataTables.responsive.js"></script>
-	    <script src="<%=path%>/js/datatables/fnReloadAjax.js"></script>
-	    <script src="<%=path%>/js/datatables/dataTables.select.min.js"></script>
+		<script src="<%=path%>/js/my/submitVdet.js"></script>
 	</body>
 </html>

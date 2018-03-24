@@ -39,12 +39,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 <li><a href="<%=path%>/views/getInfo?loc=5" class="navia">Multi-Tracking</a></li>
                             </ul>
                         </li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle navia" data-toggle="dropdown">Challenges<i class="fa fa-angle-down"></i></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="<%=path%>/views/getInfo?loc=8" class="navia">Visdrones 2018</a></li>
-                            </ul>
-                        </li>
 						<li class="dropdown">
                             <a href="#" class="dropdown-toggle navia" data-toggle="dropdown">Results <i class="fa fa-angle-down"></i></a>
                             <ul class="dropdown-menu">
@@ -52,14 +46,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                  <li><a href="<%=path%>/views/vdetTable" class="navia">Video Detection</a></li>
                                 <li><a href="<%=path%>/views/sotTable" class="navia">Single-Tracking</a></li>
                                 <li><a href="<%=path%>/views/motTable" class="navia">Multi-Tracking</a></li>
-                                <li><a href="<%=path%>/views/getInfo?loc=13" class="navia">Visdrones 2018</a></li>
                             </ul>
                         </li>
                         <li class="dropdown">
                         	<a href="#" class="dropdown-toggle navia" data-toggle="dropdown">Submit <i class="fa fa-angle-down"></i></a>
                         	<ul class="dropdown-menu">
                                 <li><a href="<%=path%>/views/getInfo?loc=14" class="navia">Instructions</a></li>
-                                <li><a href="<%=path%>/user/submit" class="navia">Submit Result</a></li>
+                                <li><a href="<%=path%>/my/submit" class="navia">Submit Result</a></li>
                             </ul>
                         </li>
 						<li><a href="<%=path%>/views/getInfo?loc=15" class="navia">FAQ</a></li>
@@ -73,7 +66,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						</c:if>
 						<c:if test="${not empty sessionScope.user.username}">
 							<li><a href="#" onclick="loginOut()" class="navia"><i class="fa fa-sign-out"></i>  &nbsp; Sign out</a></li>
-							<li><a href="<%=path%>/user/yourResults" class="navia"><i class="fa fa-user"></i>  &nbsp; Welcome, ${user.username}</a>
+							<li><a href="<%=path%>/my/yourResults" class="navia"><i class="fa fa-user"></i>  &nbsp; Welcome, ${user.username}</a>
 							<input type="hidden" name="id" id="user_id" value="${user.id}">
 						</c:if>
 					</ul>

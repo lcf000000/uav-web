@@ -47,12 +47,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 <li><a href="<%=path%>/views/getInfo?loc=5" class="navia">Multi-Tracking</a></li>
                             </ul>
                         </li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle navia" data-toggle="dropdown">Challenges<i class="fa fa-angle-down"></i></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="<%=path%>/views/getInfo?loc=8" class="navia">Visdrones 2018</a></li>
-                            </ul>
-                        </li>
 						<li class="dropdown">
                             <a href="#" class="dropdown-toggle navia" data-toggle="dropdown">Results <i class="fa fa-angle-down"></i></a>
                             <ul class="dropdown-menu">
@@ -60,14 +54,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                  <li><a href="<%=path%>/views/vdetTable" class="navia">Video Detection</a></li>
                                 <li><a href="<%=path%>/views/sotTable" class="navia">Single-Tracking</a></li>
                                 <li><a href="<%=path%>/views/motTable" class="navia">Multi-Tracking</a></li>
-                                <li><a href="<%=path%>/views/getInfo?loc=13" class="navia">Visdrones 2018</a></li>
                             </ul>
                         </li>
                         <li class="dropdown">
                         	<a href="#" class="dropdown-toggle navia" data-toggle="dropdown">Submit <i class="fa fa-angle-down"></i></a>
                         	<ul class="dropdown-menu">
                                 <li><a href="<%=path%>/views/getInfo?loc=14" class="navia">Instructions</a></li>
-                                <li><a href="<%=path%>/user/submit" class="navia">Submit Result</a></li>
+                                <li><a href="<%=path%>/my/submit" class="navia">Submit Result</a></li>
                             </ul>
                         </li>
 						<li><a href="<%=path%>/views/getInfo?loc=15" class="navia">FAQ</a></li>
@@ -81,7 +74,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						</c:if>
 						<c:if test="${not empty sessionScope.user.username}">
 							<li><a href="#" onclick="loginOut()" class="navia"><i class="fa fa-sign-out"></i>  &nbsp; Sign out</a></li>
-							<li><a href="<%=path%>/user/yourResults" class="navia"><i class="fa fa-user"></i>  &nbsp; Welcome, ${user.username}</a>
+							<li><a href="<%=path%>/my/yourResults" class="navia"><i class="fa fa-user"></i>  &nbsp; Welcome, ${user.username}</a>
 							<input type="hidden" name="id" id="user_id" value="${user.id}">
 						</c:if>
 					</ul>
@@ -102,8 +95,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         <div class="media">
                             <div class="parrent pull-left">
                                 <ul class="nav nav-tabs nav-stacked">
-                                    <li class="active" id="chose_det"><a href="#tab-det" onclick="showDet()" data-toggle="tab" class="tehnical">Your Detector</a></li>
-                                    <li class="active" id="chose_vdet"><a href="#tab-vdet" onclick="showVdet()" data-toggle="tab" class="tehnical">Your Detector</a></li>
+                                    <li class="active" id="chose_det"><a href="#tab-det" onclick="showDet()" data-toggle="tab" class="tehnical">Your Image Detector</a></li>
+                                    <li class="" id="chose_vdet"><a href="#tab-vdet" onclick="showVdet()" data-toggle="tab" class="tehnical">Your Video Detector</a></li>
                                     <li class="" id="chose_sot"><a href="#tab-sot" onclick="showSot()" data-toggle="tab" class="tehnical">Your Single-Object Tracker</a></li>
                                     <li class="" id="chose_mot"><a href="#tab-mot" onclick="showMot()" data-toggle="tab" class="tehnical">Your Multi-Object Tracker</a></li>
                                     <li class="" id="chose_your"><a href="#tab-your" onclick="showYour()" data-toggle="tab" class="tehnical">Change Password</a></li>
@@ -135,7 +128,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                     </div>
 
                                      <div class="tab-pane tableArea" id="tab-sot">
-                                     	<table  style="width:100%" class="table tableArea display nowrap table-striped table-bordered table-hover table-condensed" id="dataTables-isot">			                            
+                                     	<table  style="width:100%" class="tableArea display nowrap table-striped table-bordered table-hover" id="dataTables-isot">			                            
 			                            	<thead>
 												<tr>
 													<th>ID</th>
@@ -243,7 +236,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</div>
 		</section>
 		<div class="row">
-			<br/>
+		<br/>
 		</div>
 		<footer class="footer">
 			<div class="footer-bottom">

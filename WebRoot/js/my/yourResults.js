@@ -1,25 +1,41 @@
 var chose_det = document.getElementById('chose_det');
+var chose_vdet = document.getElementById('chose_vdet');
 var chose_sot = document.getElementById('chose_sot');
 var chose_mot = document.getElementById('chose_mot');
 var chose_your = document.getElementById('chose_your');
 var password_ok = false;
 var rePassword_ok = false;
 function showDet(){
+	chose_vdet.removeAttribute("class");
 	chose_sot.removeAttribute("class");
 	chose_mot.removeAttribute("class");
 	chose_your.removeAttribute("class");
 	chose_det.setAttribute("class","active");
+	$('#tab-vdet').hide();
+	$('#tab-sot').hide();
+	$('#tab-mot').hide();
+	$('#tab-det').show();
+}
+function showVdet(){
+	chose_det.removeAttribute("class");
+	chose_sot.removeAttribute("class");
+	chose_mot.removeAttribute("class");
+	chose_your.removeAttribute("class");
+	chose_vdet.setAttribute("class","active");
+	$('#tab-det').hide();
 	$('#tab-sot').hide();
 	$('#tab-mot').hide();
 	$('#tab-your').hide();
-	$('#tab-det').show();
+	$('#tab-vdet').show();
 }
 function showSot(){
 	chose_det.removeAttribute("class");
+	chose_vdet.removeAttribute("class");
 	chose_mot.removeAttribute("class");
 	chose_your.removeAttribute("class");
 	chose_sot.setAttribute("class","active");
 	$('#tab-det').hide();
+	$('#tab-vdet').hide();
 	$('#tab-mot').hide();
 	$('#tab-your').hide();
 	$('#tab-sot').show();
@@ -27,6 +43,7 @@ function showSot(){
 }
 function showMot(){
 	chose_det.removeAttribute("class");
+	chose_vdet.removeAttribute("class");
 	chose_sot.removeAttribute("class");
 	chose_your.removeAttribute("class");
 	chose_mot.setAttribute("class","active");
@@ -38,10 +55,12 @@ function showMot(){
 }
 function showYour(){
 	chose_det.removeAttribute("class");
+	chose_vdet.removeAttribute("class");
 	chose_mot.removeAttribute("class");
 	chose_sot.removeAttribute("class");
 	chose_your.setAttribute("class","active");
 	$('#tab-det').hide();
+	$('#tab-vdet').hide();
 	$('#tab-mot').hide();
 	$('#tab-sot').hide();
 	$('#tab-your').show();
@@ -74,7 +93,7 @@ var iSot_table_options = {
         "pagingType" : "full_numbers",//除首页、上一页、下一页、末页四个按钮还有页数按钮
         "select" : true,
         "ajax" : {  
-            "url" : ctx + "/sotres/getSotbyUserid",
+            "url" : ctx + "/sotres/tabledata",
             "type" : "POST",  
             //dataSrc : "list",//这个参数是自己封装的json里面的key
             "data" :  function ( d ) {
@@ -88,7 +107,7 @@ var iSot_table_options = {
         //"scrollCollapse": true, 
         "searching" : false,//是否开始本地搜索  
         "stateSave" : false,//刷新时是否保存状态  
-        //"autoWidth" : false,//自动计算宽度  
+        "autoWidth" : true,//自动计算宽度  
         //deferRender : true,//延迟渲染  
         "columns" : [
         	{"data" : "id" , "visible": false},
@@ -132,23 +151,20 @@ function addIsot(){
 function updateIsot(){
 	var nTrs = iSot_table.fnGetNodes();//fnGetNodes获取表格所有行，nTrs[i]表示第i行tr
 	var flag = 0
-	var indx = 0
-    for ( ; indx < nTrs.length; indx++) {
+    for (var indx = 0; indx < nTrs.length; indx++) {
         if($(nTrs[indx]).hasClass('selected')){//相当于$(tr)
         	flag = 1;
 	        var t = iSot_table.fnGetData(nTrs[indx]);
+	        window.location.href = ctx + "/my/submitSot?sotid=" + t.id + "&sotname=" + t.name; 
         }
     }
-	if(flag == 1){ 
-		//此处拿到隐藏列的id  
-		var data = $('#dataTables-isot').DataTable().row(indx).data();
-		window.location.href = ctx + "/my/submitSot?sotid=" + data.id + "&sotname=" + data.name; 
-    }else{
+	if(flag == 0){ 
     	alert("Please choose one !");
     }
 };
 function removeIsot(){
 	var nTrs = iSot_table.fnGetNodes();//fnGetNodes获取表格所有行，nTrs[i]表示第i行tr
+	var flag = 0
     for ( var i = 0; i < nTrs.length; i++) {
         if($(nTrs[i]).hasClass('selected')){//相当于$(tr)
 	        var t = iSot_table.fnGetData(nTrs[i]);
@@ -166,6 +182,9 @@ function removeIsot(){
 		        }
 		    });
         }
+    }
+    if(flag == 0){ 
+    	alert("Please choose one !");
     }
     setTimeout("iSot_table.fnReloadAjax();",500);
 }

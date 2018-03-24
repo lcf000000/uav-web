@@ -28,7 +28,7 @@ public class SotResService {
 	 * @return
 	 */
 	public SotRes findUserByUserID(int userID) {
-		return sotresMapper.findUserByUserID(userID);
+		return sotresMapper.findSotResByUserID(userID);
 	}
 	
 	/**
@@ -36,7 +36,7 @@ public class SotResService {
 	 * @return
 	 */
 	public SotRes findUserByName(String name) {
-		return sotresMapper.findUserByName(name);
+		return sotresMapper.findSotResByName(name);
 	}
 	
 	/**
@@ -44,7 +44,7 @@ public class SotResService {
 	 * @return
 	 */
 	public SotRes findUserByUserName(String userName) {
-		return sotresMapper.findUserByUserName(userName);
+		return sotresMapper.findSotResByUserName(userName);
 	}
 	
 	/**

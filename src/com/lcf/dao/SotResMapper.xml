@@ -40,24 +40,17 @@
 	    <result column="RESULT_OVERALL_P" property="overall_p" jdbcType="DOUBLE" />
 	    <result column="RESULT_SPEED" property="speed" jdbcType="DOUBLE" />
 	    <result column="RESULT_STATUS" property="status" jdbcType="INTEGER" />
-	    <association property="user" javaType="com.lcf.model.User">
-	    	<id column="USER_ID" property="id" jdbcType="BIGINT" />
-	    	<result column="USER_UNAME" property="username" jdbcType="VARCHAR" /> 
-	    </association>	    
  	</resultMap>
 	<select id="findSotResByUserID" resultMap="BaseResultMap">
-		SELECT * FROM RESULT_SOT WHERE USER_ID = #{user_id} ORDER BY ${overall}
+		SELECT * FROM result_sot WHERE USER_ID = #{user_id} ORDER BY RESULT_OVERALL_P
 	</select>
     <select id="findSotResByName" resultMap="BaseResultMap">
-		SELECT * FROM RESULT_SOT WHERE RESULT_NAME = #{name} ORDER BY ${overall}
+		SELECT * FROM result_sot WHERE RESULT_NAME = #{name} ORDER BY RESULT_OVERALL_P
 	</select>
     <select id="getSotResList" resultMap="BaseResultMap" parameterType="com.lcf.model.SotRes">
 		SELECT * FROM RESULT_SOT  WHERE 1 = 1
 		<if test="sotres.name != null and sotres.name != ''">
 		AND RESULT_NAME like concat('%',#{sotres.name},'%')
-		</if>
-		<if test="sotres.datetime !=null and sotres.datetime !=''">
-		AND RESULT_DATE like concat('%',#{sotres.date},'%')
 		</if>
 		<if test="sotres.user_id != null and sotres.user_id != ''">
 		AND USER_ID = #{sotres.user_id}
@@ -80,99 +73,15 @@
 		<if test="sotres.descrip != null and sotres.descrip != ''">
 		AND RESULT_DESCRI like concat('%',#{sotres.descrip},'%')
 		</if>
-		<if test="sotres.arc_p != null and sotres.arc_p != ''">
-		AND RESULT_ARC_P = #{sotres.arc_p}
-		</if>
-		<if test="sotres.bc_p != null and sotres.bc_p != ''">
-		AND RESULT_BC_P = #{sotres.bc_p}
-		</if>
-		<if test="sotres.cm_p != null and sotres.cm_p != ''">
-		AND RESULT_CM_P = #{sotres.cm_p}
-		</if>
-		<if test="sotres.fm_p != null and sotres.fm_p != ''">
-		AND RESULT_FM_P = #{sotres.fm}
-		</if>
-		<if test="sotres.foc_p != null and sotres.foc_p != ''">
-		AND RESULT_FOC_P = #{sotres.foc_p}
-		</if>
-		<if test="sotres.iv_p != null and sotres.iv_p != ''">
-		AND RESULT_IV_P = #{sotres.iv_p}
-		</if>
-		<if test="sotres.lr_p != null and sotres.lr_p != ''">
-		AND RESULT_LR_P = #{sotres.lr_p}
-		</if>
-		<if test="sotres.ov_p != null and sotres.ov_p != ''">
-		AND RESULT_OV_P = #{sotres.ov_p}
-		</if>
-		<if test="sotres.poc_p != null and sotres.poc_p != ''">
-		AND RESULT_POC_P = #{sotres.poc_p}
-		</if>
-		<if test="sotres.sob_p != null and sotres.sob_p != ''">
-		AND RESULT_OV_P = #{sotres.sob_p}
-		</if>
-		<if test="sotres.sv_p != null and sotres.sv_p != ''">
-		AND RESULT_SV_P = #{sotres.sv_p}
-		</if>
-		<if test="sotres.vc_p != null and sotres.vc_p != ''">
-		AND RESULT_VC_P = #{sotres.vc_p}
-		</if>
-		<if test="sotres.overall_p != null and sotres.overall_p !=''">
-		AND RESULT_OVERALL_P = #{sotres.overall_p}
-		</if>
-		<if test="sotres.arc_iou != null and sotres.arc_iou != ''">
-		AND RESULT_ARC_IOU = #{sotres.arc_iou}
-		</if>
-		<if test="sotres.bc_iou != null and sotres.bc_iou != ''">
-		AND RESULT_BC_IOU = #{sotres.bc_iou}
-		</if>
-		<if test="sotres.cm_iou != null and sotres.cm_iou != ''">
-		AND RESULT_CM_IOU = #{sotres.cm_iou}
-		</if>
-		<if test="sotres.fm_iou != null and sotres.fm_iou != ''">
-		AND RESULT_FM_IOU = #{sotres.fm_iou}
-		</if>
-		<if test="sotres.foc_iou != null and sotres.foc_iou != ''">
-		AND RESULT_FOC_IOU = #{sotres.foc_iou}
-		</if>
-		<if test="sotres.iv_iou != null and sotres.iv_iou != ''">
-		AND RESULT_IV_IOU = #{sotres.iv_iou}
-		</if>
-		<if test="sotres.lr_iou != null and sotres.lr_iou != ''">
-		AND RESULT_LR_IOU = #{sotres.lr_iou}
-		</if>
-		<if test="sotres.ov_iou != null and sotres.ov_iou != ''">
-		AND RESULT_OV_IOU = #{sotres.ov_iou}
-		</if>
-		<if test="sotres.poc_iou != null and sotres.poc_iou != ''">
-		AND RESULT_POC_IOU = #{sotres.poc_iou}
-		</if>
-		<if test="sotres.sob_iou != null and sotres.sob_iou != ''">
-		AND RESULT_OV_IOU = #{sotres.sob_iou}
-		</if>
-		<if test="sotres.sv_iou != null and sotres.sv_iou != ''">
-		AND RESULT_SV_IOU = #{sotres.sv_iou}
-		</if>
-		<if test="sotres.vc_iou != null and sotres.vc_iou != ''">
-		AND RESULT_VC_IOU = #{sotres.vc_iou}
-		</if>
-		<if test="sotres.status != null and sotres.status !=''">
-		AND RESULT_STATUS = #{sotres.status}
-		</if>
-		<if test="sotres.speed != null and sotres.speed !=''">
-		AND RESULT_SPEED = #{sotres.speed}
-		</if>
-		<if test="sotres.overall_iou != null and sotres.overall_iou !=''">
-		AND RESULT_OVERALL_IOU = #{sotres.overall_iou}
-		</if>
-		ORDER BY ${overall_p}
+		ORDER BY RESULT_OVERALL_P
 	</select>
 	
 	<select id="findSotResByUserName" resultMap="BaseResultMap">
-		SELECT * FROM RESULT_SOT WHERE USER_ID = (SELECT USER_ID FROM USER WHERE USER_UNAME = #{username}) ORDER BY ${overall}
+		SELECT * FROM result_sot WHERE USER_ID = (SELECT USER_ID FROM USER WHERE USER_UNAME = #{username}) ORDER BY RESULT_OVERALL_P
 	</select>
 	
     <delete id="deleteSotRes" parameterType="int">
-		DELETE FROM RESULT_SOT WHERE RESULT_ID = #{id}
+		DELETE FROM result_sot WHERE RESULT_ID = #{id}
 	</delete>
 	
 	<update id="updateSotRes" useGeneratedKeys="true" keyProperty="id">
@@ -221,7 +130,7 @@
 	</update>
 	
 	<insert id="addSotRes" useGeneratedKeys="true" keyProperty="id">
-		INSERT INTO INFO(<trim suffixOverrides=",">
+		INSERT INTO result_sot(<trim suffixOverrides=",">
             <if test="name != null and name != ''">RESULT_NAME,</if>
 			<if test="datetime !=null and datetime !=''">RESULT_DATE,</if>
 			<if test="user_id != null and user_id != ''">USER_ID,</if>

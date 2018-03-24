@@ -181,9 +181,7 @@ public class SotResController {
             			json.setMsg("Insert result success!");
             		} catch(Exception e) {
             			json.setMsg(e.getMessage());
-            		}
-                    
-                    
+            		}     
                 }else {
                 	log.info("不是我们想要的文件类型,请按要求重新上传");
                 }
@@ -211,7 +209,6 @@ public class SotResController {
 			log.debug(e.getMessage());
 		}
 		JSONObject jsonObject = JSONObject.fromObject(sotres);
-		
 		return jsonObject;
 	}
 	
@@ -239,94 +236,40 @@ public class SotResController {
 			@RequestParam Integer start,
     		@RequestParam Integer length,
     		@RequestParam Integer draw,
-    		@RequestParam Integer id,
-    		@RequestParam String name,
-    		@RequestParam Integer userID,
-    		@RequestParam String language,
-    		@RequestParam String environment,
-    		@RequestParam String reference,
-    		@RequestParam String resfile,
-    		@RequestParam String code,
-    		@RequestParam String descrip,
-    		@RequestParam double arc_p,
-    		@RequestParam double bc_p,
-    		@RequestParam double cm_p,
-    		@RequestParam double fm_p,
-    		@RequestParam double foc_p,
-    		@RequestParam double iv_p,
-    		@RequestParam double lr_p,
-    		@RequestParam double ov_p,
-    		@RequestParam double poc_p,
-    		@RequestParam double sob_p,
-    		@RequestParam double sv_p,
-    		@RequestParam double vc_p,
-    		@RequestParam double overall_p,
-    		@RequestParam double arc_iou,
-    		@RequestParam double bc_iou,
-    		@RequestParam double cm_iou,
-    		@RequestParam double fm_iou,
-    		@RequestParam double foc_iou,
-    		@RequestParam double iv_iou,
-    		@RequestParam double lr_iou,
-    		@RequestParam double ov_iou,
-    		@RequestParam double poc_iou,
-    		@RequestParam double sob_iou,
-    		@RequestParam double sv_iou,
-    		@RequestParam double vc_iou,    		
-    		@RequestParam double overall_iou,
-    		@RequestParam double speed,
-    		@RequestParam Integer status) throws Exception {
+    		@RequestParam (required=false) Integer id,
+    		@RequestParam (required=false) String name,
+    		@RequestParam (required=false) Integer userID,
+    		@RequestParam (required=false) String language,
+    		@RequestParam (required=false) String environment,
+    		@RequestParam (required=false) String reference,
+    		@RequestParam (required=false) String resfile,
+    		@RequestParam (required=false) String code,
+    		@RequestParam (required=false) String descrip,
+    		@RequestParam (required=false) Integer status) throws Exception {
 		//String userRes = null;
 		SotRes sotres = new SotRes();
 		
-		sotres.setId(id);
+		if(id!=null) {
+			sotres.setId(id);
+		}
 		sotres.setName(name);
-		sotres.setUser_id(userID);
+		if(userID!=null) {
+			sotres.setUser_id(userID);
+		}
 		sotres.setLanguage(language);
 		sotres.setEnvironment(environment);
 		sotres.setResfile(resfile);
 		sotres.setCode(code);
 		sotres.setDescrip(descrip);
 		sotres.setReference(reference);
-		sotres.setArcP(arc_p);
-		sotres.setBcP(bc_p);
-		sotres.setCmP(cm_p);
-		sotres.setFmP(fm_p);
-		sotres.setFocP(foc_p);
-		sotres.setIvP(iv_p);
-		sotres.setLrP(lr_p);
-		sotres.setOvP(ov_p);
-		sotres.setPocP(poc_p);
-		sotres.setSobP(sob_p);
-		sotres.setSvP(sv_p);
-		sotres.setVcP(vc_p);
-		sotres.setOverallP(overall_p);
-		
-		sotres.setArcIOU(arc_iou);
-		sotres.setBcIOU(bc_iou);
-		sotres.setCmIOU(cm_iou);
-		sotres.setFmIOU(fm_iou);
-		sotres.setFocIOU(foc_iou);
-		sotres.setIvIOU(iv_iou);
-		sotres.setLrIOU(lr_iou);
-		sotres.setOvIOU(ov_iou);
-		sotres.setPocIOU(poc_iou);
-		sotres.setSobIOU(sob_iou);
-		sotres.setSvIOU(sv_iou);
-		sotres.setVcIOU(vc_iou);
-		sotres.setSpeed(speed);
-		sotres.setOverallIOU(overall_iou);
-		sotres.setStatus(status);
-		
+		if(status!=null) {
+			sotres.setStatus(status);
+		}
 		PageBean<SotRes> pb = sotresService.getSotResList(sotres);
 		DataGrid datagrid = new DataGrid(pb.getTotal(),pb.getList());
 		datagrid.setDraw(draw);
 		datagrid.setRecordsFiltered((int) pb.getTotal());
 		JSONObject json = JSONObject.fromObject(datagrid);
-		//JSONArray dataA = json.getJSONArray("data");
-		
-		//JSONObject jsonObject = JSONObject.fromObject(sotres);
-		
 		return json;
 	}
 	
