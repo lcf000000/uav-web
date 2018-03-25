@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lcf.dao.DetResMapper">
+	<resultMap id="BaseResultMap" type="com.lcf.model.DetRes" >
+	    <id column="RESULT_ID" property="id" jdbcType="BIGINT" />
+	    <result column="RESULT_NAME" property="name" jdbcType="VARCHAR" />
+	    <result column="RESULT_DATE" property="date" jdbcType="DATE" />
+	    <result column="USER_ID" property="user_id" jdbcType="BIGINT" />
+	    <result column="RESULT_LANG" property="language" jdbcType="VARCHAR" />
+	    <result column="RESULT_EVM" property="environment" jdbcType="VARCHAR" />
+	    <result column="RESULT_REF" property="reference" jdbcType="VARCHAR" />
+	    <result column="RESULT_RESFILE" property="resfile" jdbcType="LONGVARCHAR" />
+	    <result column="RESULT_CODE" property="code" jdbcType="LONGVARCHAR" />
+	    <result column="RESULT_DESCRI" property="descrip" jdbcType="LONGVARCHAR" />
+	    <result column="RESULT_AP" property="ap" jdbcType="DOUBLE" />
+	    <result column="RESULT_AP50" property="ap50" jdbcType="DOUBLE" />
+	    <result column="RESULT_AP75" property="ap75" jdbcType="DOUBLE" />
+	    <result column="RESULT_APSMALL" property="aps" jdbcType="DOUBLE" />
+	    <result column="RESULT_APMEDIUM" property="apm" jdbcType="DOUBLE" />
+	    <result column="RESULT_APLARGE" property="apl" jdbcType="DOUBLE" />
+	    <result column="RESULT_ARMAX1" property="arm1" jdbcType="DOUBLE" />
+	    <result column="RESULT_ARMAX10" property="arm10" jdbcType="DOUBLE" />
+	    <result column="RESULT_ARMAX100" property="arm100" jdbcType="DOUBLE" />
+	    <result column="RESULT_ARSMALL" property="ars" jdbcType="DOUBLE" />
+	    <result column="RESULT_ARMEDIUM" property="arm" jdbcType="DOUBLE" />
+	    <result column="RESULT_ARLARGE" property="arl" jdbcType="DOUBLE" />	    
+	    <result column="RESULT_SPEED" property="speed" jdbcType="DOUBLE" />
+	    <result column="RESULT_STATUS" property="status" jdbcType="INTEGER" />
+	    <association property="user" javaType="com.lcf.model.User">
+	    	<id column="USER_ID" property="id" jdbcType="BIGINT" />
+	    	<result column="USER_UNAME" property="username" jdbcType="VARCHAR" /> 
+	    </association>	    
+ 	</resultMap>
+ 	
+ 	<select id="findDetResByUserID" resultMap="BaseResultMap">
+		SELECT * FROM RESULT_DET WHERE USER_ID = #{user_id} ORDER BY ${ap}
+	</select>
+    <select id="findDetResByName" resultMap="BaseResultMap">
+		SELECT * FROM RESULT_DET WHERE RESULT_NAME = #{name} ORDER BY ${ap}
+	</select>
+ 	
+ 	<select id="getDetResList" resultMap="BaseResultMap" parameterType="com.lcf.model.DetRes">
+		SELECT * FROM RESULT_DET  WHERE 1 = 1
+		<if test="detres.name != null and detres.name != ''">
+		AND RESULT_NAME like concat('%',#{detres.name},'%')
+		</if>
+		<if test="detres.date !=null and detres.date !=''">
+		AND RESULT_DATE like concat('%',#{detres.date},'%')
+		</if>
+		<if test="detres.user_id != null and detres.user_id != ''">
+		AND USER_ID = #{detres.user_id}
+		</if>
+		<if test="detres.language != null and detres.language != ''">
+		AND RESULT_LANG like concat('%',#{detres.language},'%')
+		</if>
+		<if test="detres.environment != null and detres.environment != ''">
+		AND RESULT_EVM like concat('%',#{detres.environment},'%')
+		</if>
+		<if test="detres.reference != null and detres.reference !=''">
+		AND RESULT_REF like concat('%',#{detres.reference},'%')
+		</if>
+		<if test="detres.resfile != null and detres.resfile != ''">
+		AND RESULT_RESFILE like concat('%',#{detres.resfile},'%')
+		</if>
+		<if test="detres.code != null and detres.code !=''">
+		AND RESULT_CODE like concat('%',#{detres.code},'%')
+		</if>			
+		<if test="detres.descrip != null and detres.descrip != ''">
+		AND RESULT_DESCRI like concat('%',#{detres.descrip},'%')
+		</if>
+		<if test="detres.ap != null and detres.ap != ''">
+		AND RESULT_AP = #{detres.ap}
+		</if>
+		<if test="detres.ap50 != null and detres.ap50 != ''">
+		AND RESULT_AP50 = #{detres.ap50}
+		</if>
+		<if test="detres.ap75 != null and detres.ap75 != ''">
+		AND RESULT_AP75 = #{detres.ap75}
+		</if>
+		<if test="detres.aps != null and detres.aps != ''">
+		AND RESULT_APSMALL = #{detres.aps}
+		</if>
+		<if test="detres.apm != null and detres.apm != ''">
+		AND RESULT_APMEDIUM = #{detres.apm}
+		</if>
+		<if test="detres.apl != null and detres.apl != ''">
+		AND RESULT_APLARGE = #{detres.apl}
+		</if>
+		<if test="detres.arm1 != null and detres.arm1 != ''">
+		AND RESULT_ARMAX1 = #{detres.arm1}
+		</if>
+		<if test="detres.arm10 != null and detres.arm10 != ''">
+		AND RESULT_ARMAX10 = #{detres.arm10}
+		</if>
+		<if test="detres.arm100 != null and detres.arm100 != ''">
+		AND RESULT_ARMAX100 = #{detres.arm100}
+		</if>
+		<if test="detres.ars != null and detres.ars != ''">
+		AND RESULT_ARSMALL = #{detres.ars}
+		</if>
+		<if test="detres.arm != null and detres.arm != ''">
+		AND RESULT_ARMEIDUM = #{detres.arm}
+		</if>
+		<if test="detres.arl != null and detres.arl != ''">
+		AND RESULT_ARLARGE = #{detres.arl}
+		</if>
+		<if test="detres.speed != null and detres.speed !=''">
+		AND RESULT_SPEED = #{detres.speed}
+		</if>
+		<if test="detres.status != null and detres.status !=''">
+		AND RESULT_STATUS = #{detres.status}
+		</if>	
+		ORDER BY ${ap}
+	</select>
+ 	
+ 	<select id="findDetResByUserName" resultMap="BaseResultMap">
+		SELECT * FROM RESULT_DET WHERE USER_ID = (SELECT USER_ID FROM USER WHERE USER_UNAME = #{username}) ORDER BY ${ap}
+	</select>
+	
+    <delete id="deleteDetRes" parameterType="int">
+		DELETE FROM RESULT_DET WHERE RESULT_ID = #{id}
+	</delete>
+	
+	<update id="updateDetRes" useGeneratedKeys="true" keyProperty="id">
+		UPDATE RESULT_DET 
+		<set>
+			<if test="name != null and name != ''">RESULT_NAME = #{name},</if>
+			<if test="date !=null and date !=''">RESULT_DATE = #{date},</if>
+			<if test="user_id != null and user_id != ''">USER_ID = #{user_id},</if>
+			<if test="language != null and language != ''">RESULT_LANG = #{language},</if>
+			<if test="environment != null and environment != ''">RESULT_EVM = #{environment},</if>
+			<if test="reference != null and reference !=''">RESULT_REF = #{reference},</if>
+			<if test="resfile != null and resfile != ''">RESULT_RESFILE = #{resfile},</if>
+			<if test="code != null and code !=''">RESULT_CODE = #{code},</if>			
+			<if test="descrip != null and descrip != ''">RESULT_DESCRI = #{descrip},</if>
+			<if test="detres.ap != null and detres.ap != ''">RESULT_AP = #{ap},</if>
+			<if test="detres.ap50 != null and detres.ap50 != ''">RESULT_AP50 = #{ap50},</if>
+			<if test="detres.ap75 != null and detres.ap75 != ''">RESULT_AP75 = #{ap75},</if>
+			<if test="detres.aps != null and detres.aps != ''">RESULT_APSMALL = #{aps},</if>
+			<if test="detres.apm != null and detres.apm != ''">RESULT_APMEDIUM = #{apm},</if>
+			<if test="detres.apl != null and detres.apl != ''">RESULT_APLARGE = #{apl},</if>
+			<if test="detres.arm1 != null and detres.arm1 != ''">RESULT_ARMAX1 = #{arm1},</if>
+			<if test="detres.arm10 != null and detres.arm10 != ''">RESULT_ARMAX10 = #{arm10},</if>
+			<if test="detres.arm100 != null and detres.arm100 != ''">RESULT_ARMAX100 = #{arm100},</if>
+			<if test="detres.ars != null and detres.ars != ''">RESULT_ARSMALL = #{ars},</if>
+			<if test="detres.arm != null and detres.arm != ''">RESULT_ARMEIDUM = #{arm},</if>
+			<if test="detres.arl != null and detres.arl != ''">RESULT_ARLARG = #{arl},</if>
+			<if test="speed != null and speed !=''">RESULT_SPEED = #{speed},</if>	
+			<if test="status != null and status !=''">RESULT_STATUS = #{status}</if>				
+		</set>
+		WHERE RESULT_ID = #{id}
+	</update>
+ 	
+ 	<insert id="addDetRes" parameterType="com.lcf.model.DetRes" useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO RESULT_DET(<trim suffixOverrides=",">
+            <if test="name != null and name != ''">RESULT_NAME,</if>
+			<if test="date !=null and date !=''">RESULT_DATE,</if>
+			<if test="user_id != null and user_id != ''">USER_ID,</if>
+			<if test="language != null and language != ''">RESULT_LANG,</if>
+			<if test="environment != null and environment != ''">RESULT_EVM,</if>
+			<if test="reference != null and reference !=''">RESULT_REF,</if>
+			<if test="resfile != null and resfile != ''">RESULT_RESFILE,</if>
+			<if test="code != null and code !=''">RESULT_CODE,</if>			
+			<if test="descrip != null and descrip != ''">RESULT_DESCRI,</if>		
+			<if test="detres.ap != null and detres.ap != ''">RESULT_AP,</if>
+			<if test="detres.ap50 != null and detres.ap50 != ''">RESULT_AP50,</if>
+			<if test="detres.ap75 != null and detres.ap75 != ''">RESULT_AP75,</if>
+			<if test="detres.apm != null and detres.apm != ''">RESULT_APMEDIUM,</if>
+			<if test="detres.apl != null and detres.apl != ''">RESULT_APLARGE,</if>
+			<if test="detres.arm1 != null and detres.arm1 != ''">RESULT_ARMAX1,</if>
+			<if test="detres.arm10 != null and detres.arm10 != ''">RESULT_ARMAX10,</if>
+			<if test="detres.arm100 != null and detres.arm100 != ''">RESULT_ARMAX100,</if>
+			<if test="detres.ars != null and detres.ars != ''">RESULT_ARSMALL,</if>
+			<if test="detres.arm != null and detres.arm != ''">RESULT_ARMEIDUM,</if>
+			<if test="detres.arl != null and detres.arl != ''">RESULT_ARLARG,</if>		
+			<if test="speed != null and speed !=''">RESULT_SPEED,</if>
+			<if test="status != null and status !=''">RESULT_STATUS</if>			
+			</trim>)values(<trim suffixOverrides=",">
+			<if test="name != null and name != ''">#{name},</if>
+			<if test="date !=null and date !=''">#{date},</if>
+			<if test="user_id != null and user_id != ''">#{user_id},</if>
+			<if test="language != null and language != ''">#{language},</if>
+			<if test="environment != null and environment != ''">#{environment},</if>
+			<if test="reference != null and reference !=''">#{reference},</if>
+			<if test="resfile != null and resfile != ''">#{resfile},</if>
+			<if test="code != null and code !=''">#{code},</if>			
+			<if test="descrip != null and descrip != ''">#{descrip},</if>
+			<if test="detres.ap != null and detres.ap != ''">RESULT_AP = #{ap},</if>
+			<if test="detres.ap50 != null and detres.ap50 != ''">#{ap50},</if>
+			<if test="detres.ap75 != null and detres.ap75 != ''">#{ap75},</if>
+			<if test="detres.aps != null and detres.aps != ''">#{aps},</if>
+			<if test="detres.apm != null and detres.apm != ''">#{apm},</if>
+			<if test="detres.apl != null and detres.apl != ''">#{apl},</if>
+			<if test="detres.arm1 != null and detres.arm1 != ''">#{arm1},</if>
+			<if test="detres.arm10 != null and detres.arm10 != ''">#{arm10},</if>
+			<if test="detres.arm100 != null and detres.arm100 != ''">#{arm100},</if>
+			<if test="detres.ars != null and detres.ars != ''">#{ars},</if>
+			<if test="detres.arm != null and detres.arm != ''">#{arm},</if>
+			<if test="detres.arl != null and detres.arl != ''">#{arl},</if>			
+			<if test="speed != null and speed !=''">#{speed},</if>
+			<if test="status != null and status !=''">#{status}</if>			
+            </trim>)
+	</insert>
+ 	
+ </mapper>
