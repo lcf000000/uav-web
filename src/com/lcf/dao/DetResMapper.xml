@@ -33,14 +33,14 @@
  	</resultMap>
  	
  	<select id="findDetResByUserID" resultMap="BaseResultMap">
-		SELECT * FROM RESULT_DET WHERE USER_ID = #{user_id} ORDER BY ${ap}
+		SELECT * FROM result_det WHERE USER_ID = #{user_id} ORDER BY RESULT_AP
 	</select>
     <select id="findDetResByName" resultMap="BaseResultMap">
-		SELECT * FROM RESULT_DET WHERE RESULT_NAME = #{name} ORDER BY ${ap}
+		SELECT * FROM result_det WHERE RESULT_NAME = #{name} ORDER BY RESULT_AP
 	</select>
  	
  	<select id="getDetResList" resultMap="BaseResultMap" parameterType="com.lcf.model.DetRes">
-		SELECT * FROM RESULT_DET  WHERE 1 = 1
+		SELECT * FROM result_det  WHERE 1 = 1
 		<if test="detres.name != null and detres.name != ''">
 		AND RESULT_NAME like concat('%',#{detres.name},'%')
 		</if>
@@ -110,19 +110,19 @@
 		<if test="detres.status != null and detres.status !=''">
 		AND RESULT_STATUS = #{detres.status}
 		</if>	
-		ORDER BY ${ap}
+		ORDER BY RESULT_AP
 	</select>
  	
  	<select id="findDetResByUserName" resultMap="BaseResultMap">
-		SELECT * FROM RESULT_DET WHERE USER_ID = (SELECT USER_ID FROM USER WHERE USER_UNAME = #{username}) ORDER BY ${ap}
+		SELECT * FROM result_det WHERE USER_ID = (SELECT USER_ID FROM USER WHERE USER_UNAME = #{username}) ORDER BY RESULT_AP
 	</select>
 	
     <delete id="deleteDetRes" parameterType="int">
-		DELETE FROM RESULT_DET WHERE RESULT_ID = #{id}
+		DELETE FROM result_det WHERE RESULT_ID = #{id}
 	</delete>
 	
 	<update id="updateDetRes" useGeneratedKeys="true" keyProperty="id">
-		UPDATE RESULT_DET 
+		UPDATE result_det 
 		<set>
 			<if test="name != null and name != ''">RESULT_NAME = #{name},</if>
 			<if test="date !=null and date !=''">RESULT_DATE = #{date},</if>
@@ -152,7 +152,7 @@
 	</update>
  	
  	<insert id="addDetRes" parameterType="com.lcf.model.DetRes" useGeneratedKeys="true" keyProperty="id">
-		INSERT INTO RESULT_DET(<trim suffixOverrides=",">
+		INSERT INTO result_det(<trim suffixOverrides=",">
             <if test="name != null and name != ''">RESULT_NAME,</if>
 			<if test="date !=null and date !=''">RESULT_DATE,</if>
 			<if test="user_id != null and user_id != ''">USER_ID,</if>
