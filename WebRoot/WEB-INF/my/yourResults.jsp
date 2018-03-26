@@ -90,20 +90,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<div class="col-md-12" style="word-wrap:break-word;">
 					<br/>
 					<div class="col-xs-5 col-sm-12">
-                    <h2>Welcome</h2> 
-                    <div class="tab-wrap">
-                        <div class="media">
-                            <div class="parrent pull-left">
-                                <ul class="nav nav-tabs nav-stacked">
-                                    <li class="active" id="chose_det"><a href="#tab-det" onclick="showDet()" data-toggle="tab" class="tehnical">Your Image Detector</a></li>
-                                    <li class="" id="chose_vdet"><a href="#tab-vdet" onclick="showVdet()" data-toggle="tab" class="tehnical">Your Video Detector</a></li>
-                                    <li class="" id="chose_sot"><a href="#tab-sot" onclick="showSot()" data-toggle="tab" class="tehnical">Your Single-Object Tracker</a></li>
-                                    <li class="" id="chose_mot"><a href="#tab-mot" onclick="showMot()" data-toggle="tab" class="tehnical">Your Multi-Object Tracker</a></li>
-                                    <li class="" id="chose_your"><a href="#tab-your" onclick="showYour()" data-toggle="tab" class="tehnical">Change Password</a></li>
-                                </ul>
-                            </div>
-                            <div class="parrent media-body">
-                                <div class="tab-content">
+                    <h2>Welcome</h2>
+                    <ul class="nav nav-tabs" role="tablist">  
+					  <li role="presentation" class="active" id="chose_det"><a href="#tab-det" role="tab" onclick="showDet()" data-toggle="tab">My Image Detector</a></li>  
+					  <li role="presentation" class="" id="chose_vdet"><a href="#tab-vdet" role="tab" onclick="showVdet()" data-toggle="tab">My Video Detector</a></li>  
+					  <li role="presentation" class="" id="chose_sot"><a href="#tab-sot" role="tab" onclick="showSot()" data-toggle="tab">My Single-Object Tracker</a></li>  
+					  <li role="presentation" class="" id="chose_mot"><a href="#tab-mot" role="tab" onclick="showMot()" data-toggle="tab">My Multi-Object Tracker</a></li>
+					  <li role="presentation" class="" id="chose_your"><a href="#tab-your" role="tab" onclick="showYour()" data-toggle="tab">Change Password</a></li>  
+					</ul>      
+					<!-- 面板区 -->  
+					<div class="tab-content">  
+					  <div class="tab-content">
                                     <div class="tab-pane " id="tab-det">
 			                            <table  style="width:100%" class="table tableArea display nowrap table-striped table-bordered table-hover table-condensed" id="dataTables-idet">			                            
 			                                <thead>
@@ -131,7 +128,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                      	<table  style="width:100%" class="tableArea display nowrap table-striped table-bordered table-hover" id="dataTables-isot">			                            
 			                            	<thead>
 												<tr>
-													<th>ID</th>
+													<th></th>
 													<th>Detector Name</th>
 				                                    <th>Date</th>
 				                                    <th>P-Overall</th>
@@ -162,8 +159,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				                                    <th>S-SV</th>
 				                                    <th>S-VC</th>
 				                                    <th>Language</th>
-				                                    <th>Environment</th>
-				                                    <th>Reference</th>
 												</tr>
 											</thead>
 											<tbody>
@@ -226,9 +221,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                      </div>
                                      
                                 </div> <!--/.tab-content-->  
-                            </div> <!--/.media-body--> 
-                        </div> <!--/.media-->     
-                    </div><!--/.tab-wrap-->               
+					</div>   
                 </div><!--/.col-sm-6-->
 				</div>
 				<div class="col-md-0">
