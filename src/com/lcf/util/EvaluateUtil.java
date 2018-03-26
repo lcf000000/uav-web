@@ -28,6 +28,8 @@ class SotResult {
 */
 public class EvaluateUtil {
 	
+	private static int attNum = 12;
+	
 	private final static Logger log = LoggerFactory.getLogger(EvaluateUtil.class);
 	
 
@@ -124,7 +126,6 @@ public class EvaluateUtil {
      * @param  user result file
      * @return evaluation result
      */ 
-	@SuppressWarnings("null")
 	public static SotResultStruct sotEvaluate(String groudtruth, String userResult) throws IOException {
 		// ur = userResult; gt = groudTruth
 		File gtf = new File(groudtruth);
@@ -151,14 +152,11 @@ public class EvaluateUtil {
 		String gtTmp = "";
 		String urTmp = "";
 		String attTmp;
-		int[] attCnt;
-		int[] attFlag;
-		int[] attP;
-		int[] attIOU;
-		attCnt = new int[12];
-		attP = new int[12];
-		attIOU = new int[12];
-		attFlag = new int[12];
+		int[] attCnt = new int[attNum];;
+		int[] attFlag = new int[attNum];;
+		int[] attP = new int[attNum];;
+		int[] attIOU = new int[attNum];;
+
 		double fps = 0;
 		int iouCnt = 0, centerCnt = 0, objects = 0;
 		
@@ -167,30 +165,29 @@ public class EvaluateUtil {
 		SotResultStruct res = new SotResultStruct();
 		
 		for (String filename : gtList) {
-			BufferedReader gt = new BufferedReader(new FileReader(new File(groudtruth + filename)));
-			BufferedReader ur = new BufferedReader(new FileReader(new File(userResult + filename)));
-			BufferedReader att = new BufferedReader(new FileReader(new File(groudtruth + "att/" + filename)));
+            String subfileName = filename.substring(filename.lastIndexOf('\\') + 1, filename.length());
+			BufferedReader gt = new BufferedReader(new FileReader(new File(filename)));
+			BufferedReader ur = new BufferedReader(new FileReader(new File(userResult + subfileName)));
+			BufferedReader att = new BufferedReader(new FileReader(new File(groudtruth + "att/" + subfileName)));
 			
 			while (( gtTmp = gt.readLine()) != null && (urTmp = ur.readLine()) != null && (attTmp = att.readLine()) != null) {
 				objects ++;				
-				String[] gtStr = gtTmp.split(" ");
-				String[] urStr = urTmp.split(" ");
-				String[] attStr = attTmp.split(" ");
+				String[] gtStr = gtTmp.split(",");
+				String[] urStr = urTmp.split(",");
+				String[] attStr = attTmp.split(",");
 				
-				gtBox.x = Integer.parseInt(gtStr[0]);
-				gtBox.y = Integer.parseInt(gtStr[1]);
-				gtBox.w = Integer.parseInt(gtStr[2]);
-				gtBox.h = Integer.parseInt(gtStr[3]);
-			
-				fps += Double.parseDouble(gtStr[5]);
-			
-			
-				urBox.x = Integer.parseInt(urStr[0]);
-				urBox.y = Integer.parseInt(urStr[1]);
-				urBox.w = Integer.parseInt(urStr[2]);
-				urBox.h = Integer.parseInt(urStr[3]);
+				gtBox.x = Double.parseDouble(gtStr[0]);
+				gtBox.y = Double.parseDouble(gtStr[1]);
+				gtBox.w = Double.parseDouble(gtStr[2]);
+				gtBox.h = Double.parseDouble(gtStr[3]);
+						
+				urBox.x = Double.parseDouble(urStr[0]);
+				urBox.y = Double.parseDouble(urStr[1]);
+				urBox.w = Double.parseDouble(urStr[2]);
+				urBox.h = Double.parseDouble(urStr[3]);
+				fps += Double.parseDouble(urStr[4]);
 				
-				for (int i = 0; i < 12; i ++) {
+				for (int i = 0; i < attNum; i ++) {
 					attCnt[i] += Integer.parseInt(attStr[i]);
 					attFlag[i] = Integer.parseInt(attStr[i]);
 				}
@@ -198,7 +195,7 @@ public class EvaluateUtil {
 				if (iou(gtBox, urBox)) {
 					iouCnt ++;
 					
-					for (int i = 0; i < 12; i ++) {
+					for (int i = 0; i < attNum; i ++) {
 						if (attFlag[i] == 1) {
 							attP[i] ++;
 						}
@@ -206,7 +203,7 @@ public class EvaluateUtil {
 				}
 				if (centerPre(gtBox, urBox)) {
 					centerCnt ++;
-					for (int i = 0; i < 12; i ++) {
+					for (int i = 0; i < attNum; i ++) {
 						if (attFlag[i] == 1) {
 							attIOU[i] ++;
 						}
@@ -215,9 +212,16 @@ public class EvaluateUtil {
 			}
 			gt.close();
 			ur.close();
+			att.close();
 		}
 
-		log.info("Evaluate Done!");
+		for (int i = 0; i < attNum; i ++) {
+			if (attCnt[i] == 0) {
+				attCnt[i] = Integer.MAX_VALUE;
+			}
+				
+		}
+		
 		res.setPrecision((double)centerCnt / objects);
 		res.setIOU ((double)iouCnt / objects);
 		res.setFPS(fps / objects);
@@ -247,6 +251,7 @@ public class EvaluateUtil {
 		res.sv_iou = (double)attIOU[10] / attCnt[10];
 		res.vc_iou = (double)attIOU[11] / attCnt[11];
 		
+		log.info("Evaluate Done!");
 		return res;
 	}
 	

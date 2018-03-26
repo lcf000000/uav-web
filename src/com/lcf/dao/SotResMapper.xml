@@ -71,7 +71,7 @@
 		AND RESULT_CODE like concat('%',#{sotres.code},'%')
 		</if>			
 		<if test="sotres.descrip != null and sotres.descrip != ''">
-		AND RESULT_DESCRI like concat('%',#{sotres.descrip},'%')
+		AND RESULT_DESCRI like concat('%',#{sotres.descrip}'%')
 		</if>
 		ORDER BY RESULT_OVERALL_P
 	</select>
@@ -85,7 +85,7 @@
 	</delete>
 	
 	<update id="updateSotRes" useGeneratedKeys="true" keyProperty="id">
-		UPDATE RESULT_SOT 
+		UPDATE result_sot 
 		<set>
 			<if test="name != null and name != ''">RESULT_NAME = #{name},</if>
 			<if test="datetime !=null and datetime !=''">RESULT_DATE = #{date},</if>
@@ -108,7 +108,7 @@
 			<if test="sob_p != null and sob_p != ''">RESULT_OV_P = #{sob_p},</if>
 			<if test="sv_p != null and sv_p != ''">RESULT_SV_P = #{sv_p},</if>
 			<if test="vc_p != null and vc_p != ''">RESULT_VC_P = #{vc_p},</if>
-			<if test="overall_p != null and overal_pl !=''">RESULT_OVERALL_P = #{overall_p}</if>
+			<if test="overall_p != null and overal_pl !=''">RESULT_OVERALL_P = #{overall_p},</if>
 			
 			<if test="arc_iou != null and arc_iou != ''">RESULT_ARC_IOU = #{arc_iou},</if>
 			<if test="bc_iou != null and bc_iou != ''">RESULT_BC_IOU = #{bc_iou},</if>
@@ -122,9 +122,9 @@
 			<if test="sob_iou != null and sob_iou != ''">RESULT_OV_IOU = #{sob_iou},</if>
 			<if test="sv_iou != null and sv_iou != ''">RESULT_SV_IOU = #{sv_iou},</if>
 			<if test="vc_iou != null and vc_iou != ''">RESULT_VC_IOU = #{vc_iou},</if>
+			<if test="overall_iou != null and overall_iou !=''">RESULT_OVERALL_IOU = #{overall_iou},</if>
 			<if test="status != null and status !=''">RESULT_STATUS = #{status},</if>
-			<if test="speed != null and speed !=''">RESULT_SPEED = #{speed},</if>
-			<if test="overall_iou != null and overall_iou !=''">RESULT_OVERALL_IOU = #{overall_iou}</if>		
+			<if test="speed != null and speed !=''">RESULT_SPEED = #{speed}</if>		
 		</set>
 		WHERE RESULT_ID = #{id}
 	</update>
@@ -152,7 +152,7 @@
 			<if test="sob_p != null and sob_p != ''">RESULT_OV_P,</if>
 			<if test="sv_p != null and sv_p != ''">RESULT_SV_P,</if>
 			<if test="vc_p != null and vc_p != ''">RESULT_VC_P,</if>
-			<if test="overall_p != null and overall_p !=''">RESULT_OVERALL_P</if>
+			<if test="overall_p != null and overall_p !=''">RESULT_OVERALL_P,</if>
 			
 			<if test="arc_iou != null and arc_iou != ''">RESULT_ARC_IOU,</if>
 			<if test="bc_iou != null and bc_iou != ''">RESULT_BC_IOU,</if>
@@ -168,7 +168,7 @@
 			<if test="vc_iou != null and vc_iou != ''">RESULT_VC_IOU,</if>
 			<if test="overall_iou != null and overall_iou !=''">RESULT_OVERALL_IOU</if>
 			<if test="status != null and status !=''">RESULT_STATUS,</if>
-			<if test="speed != null and speed !=''">RESULT_SPEED,</if>
+			<if test="speed != null and speed !=''">RESULT_SPEED</if>
 			</trim>)values(<trim suffixOverrides=",">
 			<if test="name != null and name != ''">#{name},</if>
 			<if test="datetime !=null and datetime !=''">#{date},</if>
@@ -191,7 +191,7 @@
 			<if test="sob_p != null and sob_p != ''">#{sob_p},</if>
 			<if test="sv_p != null and sv_p != ''">#{sv_p},</if>
 			<if test="vc_p != null and vc_p != ''">#{vc_p},</if>
-			<if test="overall_p != null and overall_p !=''">#{overall_p}</if>
+			<if test="overall_p != null and overall_p !=''">#{overall_p},</if>
 			
 			<if test="arc_iou != null and arc_iou != ''">#{arc_iou},</if>
 			<if test="bc_iou != null and bc_iou != ''">#{bc_iou},</if>
@@ -205,9 +205,9 @@
 			<if test="sob_iou != null and sob_iou != ''">#{sob_iou},</if>
 			<if test="sv_iou != null and sv_iou != ''">#{sv_iou},</if>
 			<if test="vc_iou != null and vc_iou != ''">#{vc_iou},</if>			
-			<if test="overall_iou != null and overall !=''">#{overall_iou}</if>
+			<if test="overall_iou != null and overall !=''">#{overall_iou},</if>
 			<if test="status != null and status !=''">#{status},</if>
-			<if test="speed != null and speed !=''">#{speed},</if>
+			<if test="speed != null and speed !=''">#{speed}</if>
             </trim>)
 	</insert>
 </mapper>
