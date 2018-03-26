@@ -96,7 +96,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					  <li role="presentation" class="" id="chose_vdet"><a href="#tab-vdet" role="tab" onclick="showVdet()" data-toggle="tab">My Video Detector</a></li>  
 					  <li role="presentation" class="" id="chose_sot"><a href="#tab-sot" role="tab" onclick="showSot()" data-toggle="tab">My Single-Object Tracker</a></li>  
 					  <li role="presentation" class="" id="chose_mot"><a href="#tab-mot" role="tab" onclick="showMot()" data-toggle="tab">My Multi-Object Tracker</a></li>
-					  <li role="presentation" class="" id="chose_your"><a href="#tab-your" role="tab" onclick="showYour()" data-toggle="tab">Change Password</a></li>  
+					  <li role="presentation" class="" id="chose_your"><a href="#tab-your" role="tab" onclick="showYour()" data-toggle="tab">Change Personal Information</a></li>  
 					</ul>      
 					<!-- 面板区 -->  
 					<div class="tab-content">  
@@ -212,6 +212,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 												<div class="form-group">
 													<i class="fa fa-check fa-lg"></i>
 													<input class="form-control required" onblur="checkRePassword(this)" type="password" placeholder="Re-type Your Password" name="rpassword"/>
+												</div>
+												<div class="form-group">
+														<i class="fa fa-envelope fa-lg"></i>
+														<input class="form-control eamil" onblur="checkEmail(this)" type="text" placeholder=" Email" name="email"/>
+												</div>
+												<div class="form-group">
+														<i class="fa fa-group fa-lg"></i>
+														<input class="form-control required" onblur="checkOrg(this)" type="text" placeholder=" University,Group,institute,Corporation,etc (letters and , . only)" name="org"/>
+												</div>
+												<div class="form-group">
+														<i class="fa fa-globe fa-lg"></i>
+														<input class="form-control required" onblur="checkCountry(this)" type="text" placeholder="Country,Region 's Code, as CN,US..." name="country"/>
 												</div>
 												<div class="form-group">
 												<input class="btn btn-success btn-block" value="Change" disabled="disabled" id="changeSubmit" onclick="submitChange()" />

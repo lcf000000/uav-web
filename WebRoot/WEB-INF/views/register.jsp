@@ -45,19 +45,19 @@
 					</div>
 					<div class="form-group">
 							<i class="fa fa-pencil fa-lg"></i>
-							<input class="form-control required" onblur="checkRealname(this)" type="text" placeholder=" Real Name" name="realname"/>
+							<input class="form-control required" onblur="checkRealname(this)" type="text" placeholder="First(given)name,Surname(famirly name)" name="realname"/>
 					</div>
 					<div class="form-group">
 							<i class="fa fa-envelope fa-lg"></i>
-							<input class="form-control eamil" onblur="checkEmail(this)" type="text" placeholder=" Email" name="email"/>
+							<input class="form-control eamil" onblur="checkEmail(this)" type="text" placeholder="Email" name="email"/>
 					</div>
 					<div class="form-group">
 							<i class="fa fa-group fa-lg"></i>
-							<input class="form-control required" onblur="checkOrg(this)" type="text" placeholder=" University,Group,institute,Corporation,etc" name="org"/>
+							<input class="form-control required" onblur="checkOrg(this)" type="text" placeholder="University,Group,institute,Corporation,etc (letters and , . only)" name="org"/>
 					</div>
 					<div class="form-group">
 							<i class="fa fa-globe fa-lg"></i>
-							<input class="form-control required" onblur="checkCountry(this)" type="text" placeholder=" Country,Region" name="country"/>
+							<input class="form-control required" onblur="checkCountry(this)" type="text" placeholder="Country,Region 's Code, as CN,US..." name="country"/>
 					</div>
 					<div class="form-group">
 						<input onclick="subReg()" id="submitReg" disabled="disabled" class="btn btn-group-sm btn-success pull-right" value="Sign Up "/>

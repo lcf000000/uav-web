@@ -73,7 +73,7 @@ function checkRePassword(rePassword){
  * real name check
  */
 function checkRealname(realname){
-    realname_ok=checkField(realname,/^([\u4e00-\u9fa5]+|([a-zA-Z]+\s?)+)$/,"Realname can not be empty!","Please enter the correct name!");  
+    realname_ok=checkField(realname,/^([\u4e00-\u9fa5，,.]+|([a-zA-Z，,.]+\s?)+)$/,"Realname can not be empty!","Please enter the correct name!");  
     enableSubmit();
     return realname_ok;
 }
@@ -89,7 +89,7 @@ function checkEmail(email){
  * org check
  */
 function checkOrg(org){
-    org_ok=checkField(org,/^([\u4e00-\u9fa5]+|([a-zA-Z]+\s?)+)$/,"Organization can not be empty!","Please enter the correct organization!");  
+    org_ok=checkField(org,/^([\u4e00-\u9fa5，,.]+|([a-zA-Z，,.]+\s?)+)$/,"Organization can not be empty!","Please enter the correct organization!");  
     enableSubmit();
     return org_ok;
 }

@@ -5,6 +5,9 @@ var chose_mot = document.getElementById('chose_mot');
 var chose_your = document.getElementById('chose_your');
 var password_ok = false;
 var rePassword_ok = false;
+var email_ok = false;
+var org_ok = false;
+var country_ok = false;
 
 function showDet(){
 	chose_vdet.removeAttribute("class");
@@ -252,16 +255,40 @@ function checkRePassword(rePassword){
 	}
 enableSubmit();
 }
+/*
+ * email check
+ */
+function checkEmail(email){
+    email_ok=checkField(email,/[\w!#$%&'*+/=?^_`{|}~-]+(?:\.[\w!#$%&'*+/=?^_`{|}~-]+)*@(?:[\w](?:[\w-]*[\w])?\.)+[\w](?:[\w-]*[\w])?/,"Email can not be empty!","The format of the email address is incorrect!");  
+    enableSubmit();
+    return email_ok;
+}
+/*
+ * org check
+ */
+function checkOrg(org){
+    org_ok=checkField(org,/^([\u4e00-\u9fa5]+|([a-zA-Z]+\s?)+)$/,"Organization can not be empty!","Please enter the correct organization!");  
+    enableSubmit();
+    return org_ok;
+}
+/*
+ * country check
+ */
+function checkCountry(country){
+    country_ok=checkField(country,/^[A-Za-z0-9]{1,5}$/,"Country can not be empty!","Please enter the country code, as 'CN,US...'!");  
+    enableSubmit();
+    return country_ok;
+}
 function enableSubmit(){
 	var submit = document.getElementById('changeSubmit');
-	if(password_ok&& rePassword_ok){
+	if(password_ok&& rePassword_ok&& email_ok && org_ok && country_ok){
 		submit.removeAttribute("disabled");
 	}else{
 		submit.setAttribute("disabled","disabled");
 	}
 }
 function submitChange(){
-	if(password_ok&& rePassword_ok){
+	if(password_ok&& rePassword_ok&& email_ok && org_ok && country_ok){
 		var submit = document.getElementById('changeSubmit');
 		submit.removeAttribute("disabled");
 		$.ajax({
