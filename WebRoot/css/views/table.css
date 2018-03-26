@@ -1,8 +1,13 @@
-div.dataTables_wrapper{
- position: relative;
- clear: both;
- zoom: 1;
- overflow-x: auto;
-  width: 1600px;
-  margin: 0 auto;
+.table>tbody>tr>td{  
+        text-align:center;  
+}  
+.table>thead:first-child>tr:first-child>th{  
+        text-align:center;  
+}  
+td.details-control {
+    background: url('../resources/details_open.png') no-repeat center center;
+    cursor: pointer;
+}
+tr.shown td.details-control {
+    background: url('../resources/details_close.png') no-repeat center center;
 }

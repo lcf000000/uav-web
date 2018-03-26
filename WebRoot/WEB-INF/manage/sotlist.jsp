@@ -35,8 +35,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <!-- JQuery CSS -->
     <link href="<%=path%>/css/jquery/toastr.css" rel="stylesheet">
 
-    <!-- Custom Fonts -->
+    <!-- Custom -->
     <link href="<%=path%>/css/font-awesome/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="<%=path%>/css/views/table.css" rel="stylesheet">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -173,58 +174,45 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             <button type="button" class="btn btn-danger pull-right" onclick="removeSot()"><i class="fa fa-times"></i> Remove</button>
                                 <thead> 
 									<tr>
-										<th>ID</th>
-										<th>Tracker Name</th>
-	                                    <th>ARC</th>
-	                                    <th>BC</th>
-	                                    <th>CM</th>
-	                                    <th>FM</th>
-	                                    <th>FOC</th>
-	                                    <th>IV</th>
-	                                    <th>LR</th>
-	                                    <th>OV</th>
-	                                    <th>POC</th>
-	                                    <th>SOB</th>
-	                                    <th>SV</th>
-	                                    <th>VC</th>
-	                                    <th>Speed(fps)</th>
-	                                    <th>User Name</th>
+										<th></th>
+										<th>Detector Name</th>
 	                                    <th>Date</th>
-	                                    <th>Code</th>
-	                                    <th>Environment</th>
+	                                    <th>P-Overall</th>
+	                                    <th>S-Overall</th>
+	                                    <th>Speed</th>
+	                                    <th>P-ARC</th>
+	                                    <th>P-BC</th>
+	                                    <th>P-CM</th>
+	                                    <th>P-FM</th>
+	                                    <th>P-FOC</th>
+	                                    <th>P-IV</th>
+	                                    <th>P-LR</th>
+	                                    <th>P-OV</th>
+	                                    <th>P-POC</th>
+	                                    <th>P-SOB</th>
+	                                    <th>P-SV</th>
+	                                    <th>P-VC</th>
+	                                    <th>S-ARC</th>
+	                                    <th>S-BC</th>
+	                                    <th>S-CM</th>
+	                                    <th>S-FM</th>
+	                                    <th>S-FOC</th>
+	                                    <th>S-IV</th>
+	                                    <th>S-LR</th>
+	                                    <th>S-OV</th>
+	                                    <th>S-POC</th>
+	                                    <th>S-SOB</th>
+	                                    <th>S-SV</th>
+	                                    <th>S-VC</th>
+	                                    <th>Language</th>
 									</tr>
 								</thead>
 								<tbody>
 								</tbody>
-								<tfoot>
-									<tr>
-										<th>ID</th>
-										<th>Tracker Name</th>
-	                                    <th>ARC</th>
-	                                    <th>BC</th>
-	                                    <th>CM</th>
-	                                    <th>FM</th>
-	                                    <th>FOC</th>
-	                                    <th>IV</th>
-	                                    <th>LR</th>
-	                                    <th>OV</th>
-	                                    <th>POC</th>
-	                                    <th>SOB</th>
-	                                    <th>SV</th>
-	                                    <th>VC</th>
-	                                    <th>Speed(fps)</th>
-	                                    <th>User Name</th>
-	                                    <th>Date</th>
-	                                    <th>Code</th>
-	                                    <th>Environment</th>
-									</tr>
-								</tfoot>
                             </table>
                             <!-- /.table-responsive -->
                             <div class="well">
                                 <h4>DataTables Usage Information</h4>
-                                <p>DataTables is a very flexible, advanced tables plugin for jQuery. In SB Admin, we are using a specialized version of DataTables built for Bootstrap 3. We have also customized the table headings to use Font Awesome icons in place of images. For complete documentation on DataTables, visit their website at <a target="_blank" href="https://datatables.net/">https://datatables.net/</a>.</p>
-                                <a class="btn btn-default btn-lg btn-block" target="_blank" href="https://datatables.net/">View DataTables Documentation</a>
                             </div>
                         </div>
                         <!-- /.panel-body -->

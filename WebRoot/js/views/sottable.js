@@ -1,4 +1,17 @@
-var sotres_table;
+
+function format ( d ) {
+    // `d` is the original data object for the row
+    return '<table cellpadding="5" cellspacing="5" border="0" style="padding-left:50px;">'+
+        '<tr>'+
+	        '<td>Environment:&nbsp&nbsp&nbsp&nbsp</td>'+
+	        '<td>'+d.environment+'</td>'+
+        '</tr>'+
+        '<tr>'+
+            '<td>Reference:&nbsp&nbsp</td>'+
+            '<td>'+d.reference+'</td>'+
+        '</tr>'+
+    '</table>';
+}
 var datatables_options = {
 		"responsive": false,
         "serverSide" : true,//开启服务器模式:启用服务器分页
@@ -27,14 +40,19 @@ var datatables_options = {
         "ordering" : false,//是否允许用户排序  
         "processing" : true,//是否显示处理状态 
         "scrollX": true,//允许水平滚动 
-        "scrollY": "500px", 
+        "scrollY": "800px", 
         "scrollCollapse": true, 
         "searching" : false,//是否开始本地搜索  
         "stateSave" : false,//刷新时是否保存状态  
         "autoWidth" : false,//自动计算宽度  
         //deferRender : true,//延迟渲染  
         "columns" : [
-        	{"data" : "id" , "visible": false},
+        	{
+                "class":          'details-control',
+                "orderable":      false,
+                "data":           null,
+                "defaultContent": ''
+            },
         	{"data" : "name"},
         	{"data" : "date"},
         	{"data" : "overall_p"},
@@ -64,12 +82,24 @@ var datatables_options = {
         	{"data" : "sob_iou"},
         	{"data" : "sv_iou"},
         	{"data" : "vc_iou"},
-        	{"data" : "language"},
-        	{"data" : "environment"},
-        	{"data" : "reference"}
+        	{"data" : "language"}
         ]
 }
-
 $(document).ready(function() {
-	sotres_table = $('#dataTables-sotres').dataTable(datatables_options);
+	var sotres_table;
+	sotres_table = $('#dataTables-sotres').DataTable(datatables_options);
+	$('#dataTables-sotres tbody').on('click', 'td.details-control', function () {
+        var tr = $(this).closest('tr');
+        var row = sotres_table.row(tr);	
+        if ( row.child.isShown() ) {
+            // This row is already open - close it
+            row.child.hide();
+            tr.removeClass('shown');
+        }
+        else {
+            // Open this row
+            row.child( format(row.data()) ).show();
+            tr.addClass('shown');
+        }
+    } );
 });

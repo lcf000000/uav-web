@@ -24,6 +24,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	    <link href="<%=path%>/css/datatables/dataTables.responsive.css" rel="stylesheet">
 		<!-- Custom styles for this template -->
 		<link href="<%=path%>/css/views/main.css" rel="stylesheet">
+		<link href="<%=path%>/css/views/table.css" rel="stylesheet">
 	</head>
 	<body>
 		<!-- Navigation -->
@@ -86,12 +87,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</div>
 				<div class="col-md-10 panel panel-default" id="show-info" style="word-wrap:break-word;">
 					<h3>Evaluate metric</h3>
-					<table class="table table-striped table-bordered table-hover table-condensed" id="dataTables-sotres" >
+					<table class="table table-striped table-bordered table-hover table-condensed" id="dataTables-sotres">
                                 <thead> 
 									<tr>
-										<th>Tracker Name</th>
-										<th>P-Overall</th>
-										<th>S-Overall</th>
+										<th></th>
+										<th>Detector Name</th>
+	                                    <th>Date</th>
+	                                    <th>P-Overall</th>
+	                                    <th>S-Overall</th>
+	                                    <th>Speed</th>
 	                                    <th>P-ARC</th>
 	                                    <th>P-BC</th>
 	                                    <th>P-CM</th>
@@ -116,10 +120,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	                                    <th>S-SOB</th>
 	                                    <th>S-SV</th>
 	                                    <th>S-VC</th>
-	                                    <th>Speed(fps)</th>
-	                                    <th>Date</th>
-	                                    <th>Code</th>
-	                                    <th>Environment</th>
+	                                    <th>Language</th>
 									</tr>
 							</thead>
 							<tbody>

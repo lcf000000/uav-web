@@ -19,6 +19,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<link rel="stylesheet" href="<%=path%>/css/font-awesome/font-awesome.min.css">
 		<!-- Custom styles for this template -->
 		<link href="<%=path%>/css/views/main.css" rel="stylesheet">
+		<link href="<%=path%>/css/views/table.css" rel="stylesheet">
 	</head>
 	<body>
 		<!-- Navigation -->
