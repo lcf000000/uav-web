@@ -3,7 +3,6 @@ package com.lcf.controller;
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.sql.Timestamp;
 import javax.servlet.http.HttpServletRequest;
 
 import javax.annotation.Resource;
@@ -35,7 +34,6 @@ public class SotResController {
 	@Resource
 	private SotResService sotresService; //创建sotRes服务的对象
 	
-	@SuppressWarnings("unused")
 	@RequestMapping(value = "/sotres/addres", method = RequestMethod.POST)
 	@ResponseBody 
 	public JSONObject addSotRes(@RequestParam("resfile") MultipartFile resfile,

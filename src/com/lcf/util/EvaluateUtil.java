@@ -7,9 +7,11 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import com.jmatio.types.MLStructure;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import com.lcf.util.ReadMatUtil;
 import com.lcf.util.common.BoxStruct;
 import com.lcf.util.common.SotResultStruct;
 
@@ -125,8 +127,9 @@ public class EvaluateUtil {
      * @param  groud truth file
      * @param  user result file
      * @return evaluation result
+	 * @throws Exception 
      */ 
-	public static SotResultStruct sotEvaluate(String groudtruth, String userResult) throws IOException {
+	public static SotResultStruct sotEvaluate(String groudtruth, String userResult) throws Exception {
 		// ur = userResult; gt = groudTruth
 		File gtf = new File(groudtruth);
 		File urf = new File(userResult);
@@ -136,10 +139,11 @@ public class EvaluateUtil {
 		gtList = getFileList(gtf);
 		urList = getFileList(urf);
 		
-		//String fileNameTmp = urList.get(urList.size() - 1);
-		String suffixName = urList.get(urList.size() - 1).substring(urList.get(urList.size() - 1).lastIndexOf("."));
-		if (suffixName != ".txt") {
-			suffixName = ".mat";
+		String fileNameTmp = urList.get(urList.size() - 1);
+		String suffixName = fileNameTmp.substring(fileNameTmp.lastIndexOf(".") + 1);
+		String fileUserNameSuffix = fileNameTmp.substring(fileNameTmp.lastIndexOf("\\") + 19);
+		if (suffixName != "txt") {
+			suffixName = "mat";
 		} 
 
 		if (gtList.isEmpty()) {
@@ -166,59 +170,125 @@ public class EvaluateUtil {
 		BoxStruct urBox = new BoxStruct();
 		SotResultStruct res = new SotResultStruct();
 		
-		for (String filename : gtList) {
-            String subfileName = filename.substring(filename.lastIndexOf('\\') + 1, filename.length());
-			BufferedReader gt = new BufferedReader(new FileReader(new File(filename)));
-			BufferedReader ur = new BufferedReader(new FileReader(new File(userResult + subfileName)));
-			BufferedReader att = new BufferedReader(new FileReader(new File(groudtruth + "att/" + subfileName)));
-			
-			while((gtTmp = gt.readLine()) != null && (attTmp = att.readLine()) != null) {
-				objects ++;
-				String[] gtStr = gtTmp.split(",");
-				String[] attStr = attTmp.split(",");
-				gtBox.x = Double.parseDouble(gtStr[0]);
-				gtBox.y = Double.parseDouble(gtStr[1]);
-				gtBox.w = Double.parseDouble(gtStr[2]);
-				gtBox.h = Double.parseDouble(gtStr[3]);
+		if (suffixName == "txt") {
+			for (String filename : gtList) {
+	            
+				String subfileName = filename.substring(filename.lastIndexOf('\\') + 1, filename.length());
+				BufferedReader gt = new BufferedReader(new FileReader(new File(filename)));			
+				BufferedReader att = new BufferedReader(new FileReader(new File(groudtruth + "att/" + subfileName)));
+				BufferedReader ur = new BufferedReader(new FileReader(new File(userResult + subfileName)));
 				
-				for (int i = 0; i < attNum; i ++) {
-					attCnt[i] += Integer.parseInt(attStr[i]);
-					attFlag[i] = Integer.parseInt(attStr[i]);
-				}
-				
-				if ((urTmp = ur.readLine()) != null) {
-					String[] urStr = urTmp.split(",");
-					
-					urBox.x = Double.parseDouble(urStr[0]);
-					urBox.y = Double.parseDouble(urStr[1]);
-					urBox.w = Double.parseDouble(urStr[2]);
-					urBox.h = Double.parseDouble(urStr[3]);
-					fps += Double.parseDouble(urStr[4]);
-				}
-				
-				if (iou(gtBox, urBox)) {
-					iouCnt ++;
+				while((gtTmp = gt.readLine()) != null && (attTmp = att.readLine()) != null) {
+					objects ++;
+					String[] gtStr = gtTmp.split(",");
+					String[] attStr = attTmp.split(",");
+					gtBox.x = Double.parseDouble(gtStr[0]);
+					gtBox.y = Double.parseDouble(gtStr[1]);
+					gtBox.w = Double.parseDouble(gtStr[2]);
+					gtBox.h = Double.parseDouble(gtStr[3]);
 					
 					for (int i = 0; i < attNum; i ++) {
-						if (attFlag[i] == 1) {
-							attP[i] ++;
+						attCnt[i] += Integer.parseInt(attStr[i]);
+						attFlag[i] = Integer.parseInt(attStr[i]);
+					}
+					
+					if ((urTmp = ur.readLine()) != null) {
+						String[] urStr = urTmp.split(",");
+						
+						urBox.x = Double.parseDouble(urStr[0]);
+						urBox.y = Double.parseDouble(urStr[1]);
+						urBox.w = Double.parseDouble(urStr[2]);
+						urBox.h = Double.parseDouble(urStr[3]);
+						fps += Double.parseDouble(urStr[4]);
+					}
+					
+					if (iou(gtBox, urBox)) {
+						iouCnt ++;
+						
+						for (int i = 0; i < attNum; i ++) {
+							if (attFlag[i] == 1) {
+								attP[i] ++;
+							}
+						}
+					}
+					if (centerPre(gtBox, urBox)) {
+						centerCnt ++;
+						for (int i = 0; i < attNum; i ++) {
+							if (attFlag[i] == 1) {
+								attIOU[i] ++;
+							}
 						}
 					}
 				}
-				if (centerPre(gtBox, urBox)) {
-					centerCnt ++;
-					for (int i = 0; i < attNum; i ++) {
-						if (attFlag[i] == 1) {
-							attIOU[i] ++;
-						}
-					}
-				}
+				
+				gt.close();
+				ur.close();
+				att.close();
 			}
-			
-			gt.close();
-			ur.close();
-			att.close();
+			fps = fps / objects;
+		} else if (suffixName == "mat") {
+			for (String filename : gtList) {
+	            
+				String subfileName = filename.substring(filename.lastIndexOf('\\') + 1, filename.length() - 4) + fileUserNameSuffix;
+				BufferedReader gt = new BufferedReader(new FileReader(new File(filename)));			
+				BufferedReader att = new BufferedReader(new FileReader(new File(groudtruth + "att/" + subfileName)));
+				
+				MLStructure matStr = ReadMatUtil.ReadMat(userResult + subfileName);
+				double[][] userMatRes = ReadMatUtil.getMatRes(matStr);
+				double[][] fpsMat = ReadMatUtil.getMatRes(matStr);
+				
+				lineCnt = 0;
+				while ((gtTmp = gt.readLine()) != null && (attTmp = att.readLine()) != null) {
+					objects ++;
+					String[] gtStr = gtTmp.split(",");
+					String[] attStr = attTmp.split(",");
+					gtBox.x = Double.parseDouble(gtStr[0]);
+					gtBox.y = Double.parseDouble(gtStr[1]);
+					gtBox.w = Double.parseDouble(gtStr[2]);
+					gtBox.h = Double.parseDouble(gtStr[3]);
+					
+					for (int i = 0; i < attNum; i ++) {
+						attCnt[i] += Integer.parseInt(attStr[i]);
+						attFlag[i] = Integer.parseInt(attStr[i]);
+					}
+					
+					if(lineCnt <= userMatRes.length) {
+						urBox.x = userMatRes[lineCnt][0];
+						urBox.y = userMatRes[lineCnt][1];
+						urBox.h = userMatRes[lineCnt][2];
+						urBox.w = userMatRes[lineCnt][3];
+					}
+					
+					if (iou(gtBox, urBox)) {
+						iouCnt ++;
+						
+						for (int i = 0; i < attNum; i ++) {
+							if (attFlag[i] == 1) {
+								attP[i] ++;
+							}
+						}
+					}
+					if (centerPre(gtBox, urBox)) {
+						centerCnt ++;
+						for (int i = 0; i < attNum; i ++) {
+							if (attFlag[i] == 1) {
+								attIOU[i] ++;
+							}
+						}
+					}
+					
+				}
+				gt.close();
+				att.close();
+				
+				fps += fpsMat[0][0];
+			}
+			fps = fps / urList.size();
+		} else {
+			log.info(" Error! File is not txt or mat.");
 		}
+		
+		
 			
 		for (int i = 0; i < attNum; i ++) {
 			if (attCnt[i] == 0) {
@@ -229,7 +299,7 @@ public class EvaluateUtil {
 		
 		res.setPrecision((double)centerCnt / objects);
 		res.setIOU ((double)iouCnt / objects);
-		res.setFPS(fps / objects);
+		res.setFPS(fps);
 		res.arc_p = (double)attP[0] / attCnt[0];
 		res.bc_p = (double)attP[1] / attCnt[1];
 		res.cm_p = (double)attP[2] / attCnt[2];

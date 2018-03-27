@@ -3,7 +3,6 @@ package com.lcf.controller;
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.sql.Timestamp;
 import javax.servlet.http.HttpServletRequest;
 
 import javax.annotation.Resource;
