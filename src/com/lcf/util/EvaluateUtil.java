@@ -135,18 +135,19 @@ public class EvaluateUtil {
 		
 		gtList = getFileList(gtf);
 		urList = getFileList(urf);
-		/*
-		String fileNameTmp = urList.get(urList.size() - 1);
-		if (fileNameTmp.substring(fileNameTmp.lastIndexOf(".") + 1) == "txt") {
-			
-		}
-		*/
+		
+		//String fileNameTmp = urList.get(urList.size() - 1);
+		String suffixName = urList.get(urList.size() - 1).substring(urList.get(urList.size() - 1).lastIndexOf("."));
+		if (suffixName != ".txt") {
+			suffixName = ".mat";
+		} 
+
 		if (gtList.isEmpty()) {
-			log.info("The path of groudTruth is empty.");
+			log.info("The path of groudTruth is empty!!!");
 		}
 		
 		if (gtList.size() != urList.size()) {
-			log.info("The number of user files is not accurate.");
+			log.info("The number of user files is not accurate!");
 		}
 		
 		String gtTmp = "";
