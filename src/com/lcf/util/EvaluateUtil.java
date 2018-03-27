@@ -159,6 +159,7 @@ public class EvaluateUtil {
 		int[] attIOU = new int[attNum];
 
 		double fps = 0;
+		int lineCnt = 0;
 		int iouCnt = 0, centerCnt = 0, objects = 0;
 		
 		BoxStruct gtBox = new BoxStruct();

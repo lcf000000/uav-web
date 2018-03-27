@@ -170,8 +170,7 @@ public class SotResController {
             		
             		Date currentDate = new Date();
             		String nowTime = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(currentDate);
-            		Timestamp dateTime = Timestamp.valueOf(nowTime);
-            		sotres.setDate(dateTime);
+            		sotres.setDate(nowTime);
             		
             		Json json = new Json();
             		log.debug("Insert record.");
@@ -298,8 +297,7 @@ public class SotResController {
 		log.debug("Update result: " + sotres.getId());
 		Date currentDate = new Date();
 		String nowTime = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(currentDate);
-		Timestamp date = Timestamp.valueOf(nowTime);
-		sotres.setDate(date);
+		sotres.setDate(nowTime);
 		try {
 			sotresService.updateSotRes(sotres);
 			json.setSuccess(true);
@@ -319,8 +317,7 @@ public class SotResController {
 		log.debug("Update result: " + sotres.getId());
 		Date currentDate = new Date();
 		String nowTime = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(currentDate);
-		Timestamp date = Timestamp.valueOf(nowTime);
-		sotres.setDate(date);
+		sotres.setDate(nowTime);
 		try {
 			sotresService.addSotRes(sotres);
 			json.setSuccess(true);
