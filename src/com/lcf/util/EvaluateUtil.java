@@ -153,10 +153,10 @@ public class EvaluateUtil {
 		String gtTmp = "";
 		String urTmp = "";
 		String attTmp;
-		int[] attCnt = new int[attNum];;
-		int[] attFlag = new int[attNum];;
-		int[] attP = new int[attNum];;
-		int[] attIOU = new int[attNum];;
+		int[] attCnt = new int[attNum];
+		int[] attFlag = new int[attNum];
+		int[] attP = new int[attNum];
+		int[] attIOU = new int[attNum];
 
 		double fps = 0;
 		int iouCnt = 0, centerCnt = 0, objects = 0;
@@ -171,28 +171,30 @@ public class EvaluateUtil {
 			BufferedReader ur = new BufferedReader(new FileReader(new File(userResult + subfileName)));
 			BufferedReader att = new BufferedReader(new FileReader(new File(groudtruth + "att/" + subfileName)));
 			
-			while (( gtTmp = gt.readLine()) != null && (urTmp = ur.readLine()) != null && (attTmp = att.readLine()) != null) {
-				objects ++;				
+			while((gtTmp = gt.readLine()) != null && (attTmp = att.readLine()) != null) {
+				objects ++;
 				String[] gtStr = gtTmp.split(",");
-				String[] urStr = urTmp.split(",");
 				String[] attStr = attTmp.split(",");
-				
 				gtBox.x = Double.parseDouble(gtStr[0]);
 				gtBox.y = Double.parseDouble(gtStr[1]);
 				gtBox.w = Double.parseDouble(gtStr[2]);
 				gtBox.h = Double.parseDouble(gtStr[3]);
-						
-				urBox.x = Double.parseDouble(urStr[0]);
-				urBox.y = Double.parseDouble(urStr[1]);
-				urBox.w = Double.parseDouble(urStr[2]);
-				urBox.h = Double.parseDouble(urStr[3]);
-				fps += Double.parseDouble(urStr[4]);
 				
 				for (int i = 0; i < attNum; i ++) {
 					attCnt[i] += Integer.parseInt(attStr[i]);
 					attFlag[i] = Integer.parseInt(attStr[i]);
 				}
-			
+				
+				if ((urTmp = ur.readLine()) != null) {
+					String[] urStr = urTmp.split(",");
+					
+					urBox.x = Double.parseDouble(urStr[0]);
+					urBox.y = Double.parseDouble(urStr[1]);
+					urBox.w = Double.parseDouble(urStr[2]);
+					urBox.h = Double.parseDouble(urStr[3]);
+					fps += Double.parseDouble(urStr[4]);
+				}
+				
 				if (iou(gtBox, urBox)) {
 					iouCnt ++;
 					
@@ -211,17 +213,18 @@ public class EvaluateUtil {
 					}
 				}
 			}
+			
 			gt.close();
 			ur.close();
 			att.close();
 		}
-
+			
 		for (int i = 0; i < attNum; i ++) {
 			if (attCnt[i] == 0) {
 				attCnt[i] = Integer.MAX_VALUE;
 			}
 				
-		}
+		}	
 		
 		res.setPrecision((double)centerCnt / objects);
 		res.setIOU ((double)iouCnt / objects);
