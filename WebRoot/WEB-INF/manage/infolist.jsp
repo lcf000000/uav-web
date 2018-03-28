@@ -114,7 +114,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Results<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="<%=path%>/manage/detlist">Detection</a>
+                                    <a href="<%=path%>/manage/detlist">Image Detection</a>
+                                </li>
+                                <li>
+                                    <a href="<%=path%>/manage/vdetlist">Video Detection</a>
                                 </li>
                                 <li>
                                     <a href="<%=path%>/manage/sotlist">Single-tracking</a>
@@ -171,22 +174,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 									<span>Location&nbsp;:&nbsp;</span>
 									<select id="loc-search" name="location" class="selectpicker show-tick form-control">
 	                                        <option value="1">Index welcome</option>
-	                                        <option value="2">Data-Detection</option>
-	                                        <option value="3">Data-SigleTrcking</option>
-	                                        <option value="4">Data-MultiTracking</option>
-	                                        <option value="5">Data-2018</option>
-	                                        <option value="6">Data-2019</option>
-	                                        <option value="7">Data-2020</option>
-	                                        <option value="8">Results-Detection</option>
-	                                        <option value="9">Results-SigleTrcking</option>
-	                                        <option value="10">Results-MultiTracking</option>
-	                                        <option value="11">Results-2018</option>
-	                                        <option value="12">Results-2019</option>
-	                                        <option value="13">Results-2020</option>
+	                                        <option value="2">Image-Detection</option>
+	                                        <option value="3">Video-Detection</option>
+	                                        <option value="4">Single-Tracking</option>
+	                                        <option value="5">Multi-Tracking</option>
+	                                        <option value="6">Res-Idet</option>
+	                                        <option value="7">Res-Vdet</option>
+	                                        <option value="8">Res-Sot</option>
+	                                        <option value="9">Res-Mot</option>
 	                                        <option value="14">Instructions</option>
 	                                        <option value="15">FAQ</option>
 	                                        <option value="16">People</option>
-	                                        <option value="999">download</option>
+	                                        <option value="999">other</option>
 	                                </select>
 	                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 	                                <button type="button" class="btn" onclick="search()"><i class="fa fa-search"></i> Search</button>
@@ -216,15 +215,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 									<span>Location&nbsp;:&nbsp;</span>
 									<select id="loc-edit" name="location" class="selectpicker show-tick form-control">
 	                                        <option value="1">Index welcome</option>
-	                                        <option value="2">Data-Detection</option>
-	                                        <option value="3">Data-SigleTrcking</option>
-	                                        <option value="4">Data-MultiTracking</option>
-	                                        <option value="5">Data-2018</option>
-	                                        <option value="6">Data-2019</option>
-	                                        <option value="7">Data-2020</option>
-	                                        <option value="14">FAQ</option>
-	                                        <option value="15">People</option>
-	                                        <option value="999">download</option>
+	                                        <option value="2">Image-Detection</option>
+	                                        <option value="3">Video-Detection</option>
+	                                        <option value="4">Single-Tracking</option>
+	                                        <option value="5">Multi-Tracking</option>
+	                                        <option value="6">Res-Idet</option>
+	                                        <option value="7">Res-Vdet</option>
+	                                        <option value="8">Res-Sot</option>
+	                                        <option value="9">Res-Mot</option>
+	                                        <option value="14">Instructions</option>
+	                                        <option value="15">FAQ</option>
+	                                        <option value="16">People</option>
+	                                        <option value="999">other</option>
 	                                </select>
 								</div>
 							</form>
@@ -257,21 +259,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 									<span>Location&nbsp;:&nbsp;</span>
 									<select id="loc-add" name="location" class="selectpicker show-tick form-control">
 	                                        <option value="1">Index welcome</option>
-	                                        <option value="2">Data-Detection</option>
-	                                        <option value="3">Data-SigleTrcking</option>
-	                                        <option value="4">Data-MultiTracking</option>
-	                                        <option value="5">Data-2018</option>
-	                                        <option value="6">Data-2019</option>
-	                                        <option value="7">Data-2020</option>
-	                                        <option value="8">Results-Detection</option>
-	                                        <option value="9">Results-SigleTrcking</option>
-	                                        <option value="10">Results-MultiTracking</option>
-	                                        <option value="11">Results-2018</option>
-	                                        <option value="12">Results-2019</option>
-	                                        <option value="13">Results-2020</option>
-	                                        <option value="14">FAQ</option>
-	                                        <option value="15">People</option>
-	                                        <option value="999">download</option>
+	                                        <option value="2">Image-Detection</option>
+	                                        <option value="3">Video-Detection</option>
+	                                        <option value="4">Single-Tracking</option>
+	                                        <option value="5">Multi-Tracking</option>
+	                                        <option value="6">Res-Idet</option>
+	                                        <option value="7">Res-Vdet</option>
+	                                        <option value="8">Res-Sot</option>
+	                                        <option value="9">Res-Mot</option>
+	                                        <option value="14">Instructions</option>
+	                                        <option value="15">FAQ</option>
+	                                        <option value="16">People</option>
+	                                        <option value="999">other</option>
 	                                </select>
 								</div>
 							</form>

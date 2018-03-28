@@ -16,10 +16,10 @@ function getInfo(){
 	$.ajax({
         url:ctx+"/info/getInfoByLoc",//提交地址
         type:"POST",
-        data:{"location":"8"},
+        data:{"location":"7"},
         dataType:"json",
         success:function(info){
-        	document.getElementById("sot-metrics").innerHTML = info.content1;
+        	document.getElementById("det-metrics").innerHTML = info.content1;
         }
     });
 }
@@ -99,8 +99,8 @@ var datatables_options = {
 $(document).ready(function() {
 	getInfo();
 	var sotres_table;
-	sotres_table = $('#dataTables-sotres').dataTable(datatables_options);
-	$('#dataTables-sotres tbody').on('click', 'td.details-control', function () {
+	//sotres_table = $('#dataTables-vdetres').dataTable(datatables_options);
+	$('#dataTables-detres tbody').on('click', 'td.details-control', function () {
         var tr = $(this).closest('tr');
         var row = sotres_table.api().row(tr);	
         if ( row.child.isShown() ) {

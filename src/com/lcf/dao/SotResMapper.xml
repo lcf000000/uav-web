@@ -48,7 +48,7 @@
 		SELECT * FROM result_sot WHERE RESULT_NAME = #{name} ORDER BY RESULT_OVERALL_P
 	</select>
     <select id="getSotResList" resultMap="BaseResultMap" parameterType="com.lcf.model.SotRes">
-		SELECT * FROM RESULT_SOT  WHERE 1 = 1
+		SELECT * FROM result_sot  WHERE 1 = 1
 		<if test="sotres.name != null and sotres.name != ''">
 		AND RESULT_NAME like concat('%',#{sotres.name},'%')
 		</if>

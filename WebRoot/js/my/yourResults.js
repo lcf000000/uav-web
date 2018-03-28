@@ -311,10 +311,10 @@ function submitChange(){
 	}
 }
 $(document).ready(function() {
-	iSot_table = $('#dataTables-isot').DataTable(iSot_table_options);
+	iSot_table = $('#dataTables-isot').dataTable(iSot_table_options);
 	$('#dataTables-isot tbody').on('click', 'td.details-control', function () {
         var tr = $(this).closest('tr');
-        var row = iSot_table.row(tr);	
+        var row = iSot_table.api().row(tr);	
         if ( row.child.isShown() ) {
             // This row is already open - close it
             row.child.hide();

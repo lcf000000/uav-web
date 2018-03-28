@@ -81,7 +81,32 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<div class="col-md-1">
 				</div>
 				<div class="col-md-10" id="show-info" style="word-wrap:break-word;">
-					
+					<div id="det-metrics">
+					</div>
+					<table class="table table-striped table-bordered table-hover table-condensed" id="dataTables-detres">
+                        <thead> 
+							<tr>
+								<th></th>
+								<th>Detector Name</th>
+		                        <th>Date</th>
+		                        <th>AP</th>
+		                        <th>APIoU(0.50)</th>
+		                      	<th>APIoU(0.75)</th>
+		                      	<th>AP-small</th>
+		                      	<th>AP-medium</th>
+		                      	<th>AP-large</th>
+		                      	<th>AR-1</th>
+		                      	<th>AR-10</th>
+		                      	<th>AR-100</th>
+		                      	<th>AR-small</th>
+		                      	<th>AR-medium</th>
+		                      	<th>AR-large</th>
+		                        <th>Language</th>
+							</tr>
+						</thead>
+						<tbody>
+						</tbody>
+                      </table>
 				</div>
 				<div class="col-md-1">
 				</div>
@@ -101,6 +126,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<script src="<%=path%>/js/jquery/jquery.min.js"></script>
 		<script src="<%=path%>/js/bootstrap/bootstrap.min.js"></script>
 		<script src="<%=path%>/js/views/viewsGlob.js"></script>
-		<script src="<%=path%>/js/views/sottable.js"></script>
+		<script src="<%=path%>/js/views/dettable.js"></script>
+		<!-- DataTables JavaScript -->
+	    <script src="<%=path%>/js/datatables/jquery.dataTables.min.js"></script>
+	    <script src="<%=path%>/js/datatables/dataTables.bootstrap.min.js"></script>
+	    <script src="<%=path%>/js/datatables/dataTables.responsive.js"></script>
+	    <script src="<%=path%>/js/datatables/fnReloadAjax.js"></script>
+	    <script src="<%=path%>/js/datatables/dataTables.select.min.js"></script>
 	</body>
 </html>

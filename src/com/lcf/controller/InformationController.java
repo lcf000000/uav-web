@@ -65,17 +65,21 @@ public class InformationController {
 			if(loc==1){
 				dataO.put("location", "Index welcome");
 			}else if(loc==2){
-				dataO.put("location", "Data-Detection");
+				dataO.put("location", "Image-Detection");
 			}else if(loc==3){
-				dataO.put("location", "Data-SigleTrcking");
+				dataO.put("location", "Video-Detection");
 			}else if(loc==4){
-				dataO.put("location", "Data-MultiTracking");
+				dataO.put("location", "Single-Trcking");
 			}else if(loc==5){
-				dataO.put("location", "Data-2018");
+				dataO.put("location", "Multi-Tracking");
 			}else if(loc==6){
-				dataO.put("location", "Data-2019");
+				dataO.put("location", "Res-Idet");
 			}else if(loc==7){
-				dataO.put("location", "Data-2020");
+				dataO.put("location", "Res-Vdet");
+			}else if(loc==8){
+				dataO.put("location", "Res-Sot");
+			}else if(loc==9){
+				dataO.put("location", "Res-Mot");
 			}else if(loc==14){
 				dataO.put("location", "Instructions");
 			}else if(loc==15){
@@ -83,7 +87,7 @@ public class InformationController {
 			}else if(loc==16){
 				dataO.put("location", "People");
 			}else{
-				dataO.put("location", "download");
+				dataO.put("location", "other");
 			}
 			dataO.toJSONArray(dataA);
 			json.put("data", dataA);

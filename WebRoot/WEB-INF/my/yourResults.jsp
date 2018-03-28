@@ -102,28 +102,66 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<div class="tab-content">  
 					  <div class="tab-content">
                                     <div class="tab-pane " id="tab-det">
-			                            <table  style="width:100%" class="table tableArea display nowrap table-striped table-bordered table-hover table-condensed" id="dataTables-idet">			                            
-			                                <thead>
+			                            <table class="table table-striped table-bordered table-hover table-condensed" id="dataTables-idet">
+					                        <thead> 
 												<tr>
+													<th></th>
 													<th>Detector Name</th>
-				                                    <th>Date</th>
-				                                    <th>Overall-P</th>
-				                                    <th>Overall-I</th>
-				                                    <th>Speed</th>
-				                                    <th>Language</th>
-				                                    <th>Environment</th>
-				                                    <th>Reference</th>
+							                        <th>Date</th>
+							                        <th>AP</th>
+							                        <th>APIoU(0.50)</th>
+							                      	<th>APIoU(0.75)</th>
+							                      	<th>AP-small</th>
+							                      	<th>AP-medium</th>
+							                      	<th>AP-large</th>
+							                      	<th>AR-1</th>
+							                      	<th>AR-10</th>
+							                      	<th>AR-100</th>
+							                      	<th>AR-small</th>
+							                      	<th>AR-medium</th>
+							                      	<th>AR-large</th>
+							                        <th>Language</th>
 												</tr>
 											</thead>
 											<tbody>
 											</tbody>
+					                      </table>
 											<button type="button" class="btn btn-default pull-right" onclick="updateIdet()"><i class="fa fa-pencil"></i> Update</button>
 			                            	<button type="button" class="btn btn-default pull-right" onclick="removeIdet()"><i class="fa fa-times"></i> Remove</button>
 			                            	<button type="button" class="btn btn-default pull-right" onclick="addIdet()"><i class="fa fa-plus"></i> Add</button>
 			                            </table>
 			                            <!-- /.table-responsive -->
-                                    </div>
-
+	                                    </div>
+										 <div class="tab-pane " id="tab-vdet">
+				                            <table  style="width:100%" class="table tableArea display nowrap table-striped table-bordered table-hover table-condensed" id="dataTables-ivdet">			                            
+				                                <thead>
+													<tr>
+														<th></th>
+														<th>Detector Name</th>
+								                        <th>Date</th>
+								                        <th>AP</th>
+								                        <th>APIoU(0.50)</th>
+								                      	<th>APIoU(0.75)</th>
+								                      	<th>AP-small</th>
+								                      	<th>AP-medium</th>
+								                      	<th>AP-large</th>
+								                      	<th>AR-1</th>
+								                      	<th>AR-10</th>
+								                      	<th>AR-100</th>
+								                      	<th>AR-small</th>
+								                      	<th>AR-medium</th>
+								                      	<th>AR-large</th>
+								                        <th>Language</th>
+													</tr>
+												</thead>
+												<tbody>
+												</tbody>
+												<button type="button" class="btn btn-default pull-right" onclick="updateIdet()"><i class="fa fa-pencil"></i> Update</button>
+				                            	<button type="button" class="btn btn-default pull-right" onclick="removeIdet()"><i class="fa fa-times"></i> Remove</button>
+				                            	<button type="button" class="btn btn-default pull-right" onclick="addIdet()"><i class="fa fa-plus"></i> Add</button>
+				                            </table>
+				                            <!-- /.table-responsive -->
+	                                    </div>
                                      <div class="tab-pane tableArea" id="tab-sot">
                                      	<table  style="width:100%" class="tableArea display nowrap table-striped table-bordered table-hover" id="dataTables-isot">			                            
 			                            	<thead>
@@ -174,21 +212,27 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                         <table  style="width:100%" class="table tableArea display nowrap table-striped table-bordered table-hover table-condensed" id="dataTables-imot">			                            
 			                                <thead>
 												<tr>
+													<th></th>
 													<th>Tracker Name</th>
-				                                    <th>Date</th>
-				                                    <th>ARC</th>
-				                                    <th>BC</th>
-				                                    <th>CM</th>
-				                                    <th>FM</th>
-				                                    <th>FOC</th>
-				                                    <th>IV</th>
-				                                    <th>LR</th>
-				                                    <th>OV</th>
-				                                    <th>POC</th>
-				                                    <th>SOB</th>
-				                                    <th>SV</th>
-				                                    <th>VC</th>
-				                                    <th>Environment</th>
+							                        <th>Date</th>
+							                        <th>MOTAL</th>
+							                        <th>MOTP</th>
+							                      	<th>MOTA</th>
+							                      	<th>IDF1</th>
+							                      	<th>IDP</th>
+							                      	<th>IDR</th>
+							                      	<th>Rcll</th>
+							                      	<th>Prcn</th>
+							                      	<th>FAR</th>
+							                      	<th>GT</th>
+							                      	<th>MT</th>
+							                      	<th>PT</th>
+							                      	<th>ML</th>
+							                      	<th>FP</th>
+							                      	<th>FN</th>
+							                      	<th>IDs</th>
+							                      	<th>FM</th>
+							                        <th>Language</th>
 												</tr>
 											</thead>
 											<tbody>

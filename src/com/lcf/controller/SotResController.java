@@ -3,9 +3,9 @@ package com.lcf.controller;
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.sql.Timestamp;
 import javax.servlet.http.HttpServletRequest;
-
 import javax.annotation.Resource;
 
 import org.slf4j.Logger;
@@ -266,10 +266,16 @@ public class SotResController {
 			sotres.setStatus(status);
 		}
 		PageBean<SotRes> pb = sotresService.getSotResList(sotres);
+		List<SotRes> list = pb.getList();
+		for(int i=0;i<pb.getSize();i++) {
+			SotRes res = list.get(i);
+			log.info("NumberFormat---" + String.valueOf(res.getOverallP()));
+		}
 		DataGrid datagrid = new DataGrid(pb.getTotal(),pb.getList());
 		datagrid.setDraw(draw);
 		datagrid.setRecordsFiltered((int) pb.getTotal());
 		JSONObject json = JSONObject.fromObject(datagrid);
+		log.info("-----------------------------" + json.has("overall_p"));
 		return json;
 	}
 	

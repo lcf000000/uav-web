@@ -85,13 +85,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div class="row">
 				<div class="col-md-1">
 				</div>
-				<div class="col-md-10 panel panel-default" id="show-info" style="word-wrap:break-word;">
-					<h3>Evaluate metric</h3>
+				<div class="col-md-10 panel panel-default" style="word-wrap:break-word;">
+					<div id="sot-metrics">
+					</div>
+					<br/><br/><br/>
 					<table class="table table-striped table-bordered table-hover table-condensed" id="dataTables-sotres">
                                 <thead> 
 									<tr>
 										<th></th>
-										<th>Detector Name</th>
+										<th>Tracker Name</th>
 	                                    <th>Date</th>
 	                                    <th>P-Overall</th>
 	                                    <th>S-Overall</th>

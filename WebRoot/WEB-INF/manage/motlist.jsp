@@ -109,8 +109,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         <li>
                             <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Results<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
+                               	<li>
+                                    <a href="<%=path%>/manage/detlist">Image Detection</a>
+                                </li>
                                 <li>
-                                    <a href="<%=path%>/manage/detlist">Detection</a>
+                                    <a href="<%=path%>/manage/vdetlist">Video Detection</a>
                                 </li>
                                 <li>
                                     <a href="<%=path%>/manage/sotlist">Single-tracking</a>
@@ -175,50 +178,32 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             <button type="button" class="btn btn-success pull-right" onclick="addUser()"><i class="fa fa-plus"></i> Add</button>
                                 <thead> 
 									<tr>
+										<th></th>
 										<th>ID</th>
 										<th>Tracker Name</th>
-	                                    <th>ARC</th>
-	                                    <th>BC</th>
-	                                    <th>CM</th>
-	                                    <th>FM</th>
-	                                    <th>FOC</th>
-	                                    <th>IV</th>
-	                                    <th>LR</th>
-	                                    <th>OV</th>
-	                                    <th>POC</th>
-	                                    <th>SOB</th>
-	                                    <th>SV</th>
-	                                    <th>VC</th>
-	                                    <th>User Name</th>
-	                                    <th>Date</th>
-	                                    <th>Code</th>
-	                                    <th>Environment</th>
+				                        <th>Date</th>
+				                        <th>MOTAL</th>
+				                        <th>MOTP</th>
+				                      	<th>MOTA</th>
+				                      	<th>IDF1</th>
+				                      	<th>IDP</th>
+				                      	<th>IDR</th>
+				                      	<th>Rcll</th>
+				                      	<th>Prcn</th>
+				                      	<th>FAR</th>
+				                      	<th>GT</th>
+				                      	<th>MT</th>
+				                      	<th>PT</th>
+				                      	<th>ML</th>
+				                      	<th>FP</th>
+				                      	<th>FN</th>
+				                      	<th>IDs</th>
+				                      	<th>FM</th>
+				                        <th>Language</th>
 									</tr>
 								</thead>
 								<tbody>
 								</tbody>
-								<tfoot>
-									<tr>
-										<th>ID</th>
-										<th>Tracker Name</th>
-	                                    <th>ARC</th>
-	                                    <th>BC</th>
-	                                    <th>CM</th>
-	                                    <th>FM</th>
-	                                    <th>FOC</th>
-	                                    <th>IV</th>
-	                                    <th>LR</th>
-	                                    <th>OV</th>
-	                                    <th>POC</th>
-	                                    <th>SOB</th>
-	                                    <th>SV</th>
-	                                    <th>VC</th>
-	                                    <th>User Name</th>
-	                                    <th>Date</th>
-	                                    <th>Code</th>
-	                                    <th>Environment</th>
-									</tr>
-								</tfoot>
                             </table>
                             <!-- /.table-responsive -->
                             <div class="well">

@@ -81,7 +81,38 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<div class="col-md-1">
 				</div>
 				<div class="col-md-10" id="show-info" style="word-wrap:break-word;">
-					
+					<div id="mot-metrics">
+					</div>
+					<br/><br/><br/>
+					<table class="table table-striped table-bordered table-hover table-condensed" id="dataTables-motres">
+                        <thead> 
+							<tr>
+								<th></th>
+								<th>Tracker Name</th>
+		                        <th>Date</th>
+		                        <th>MOTAL</th>
+		                        <th>MOTP</th>
+		                      	<th>MOTA</th>
+		                      	<th>IDF1</th>
+		                      	<th>IDP</th>
+		                      	<th>IDR</th>
+		                      	<th>Rcll</th>
+		                      	<th>Prcn</th>
+		                      	<th>FAR</th>
+		                      	<th>GT</th>
+		                      	<th>MT</th>
+		                      	<th>PT</th>
+		                      	<th>ML</th>
+		                      	<th>FP</th>
+		                      	<th>FN</th>
+		                      	<th>IDs</th>
+		                      	<th>FM</th>
+		                        <th>Language</th>
+							</tr>
+						</thead>
+						<tbody>
+						</tbody>
+                      </table>
 				</div>
 				<div class="col-md-1">
 				</div>
@@ -101,6 +132,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<script src="<%=path%>/js/jquery/jquery.min.js"></script>
 		<script src="<%=path%>/js/bootstrap/bootstrap.min.js"></script>
 		<script src="<%=path%>/js/views/viewsGlob.js"></script>
-		<script src="<%=path%>/js/views/sottable.js"></script>
+		<script src="<%=path%>/js/views/mottable.js"></script>
+		<!-- DataTables JavaScript -->
+	    <script src="<%=path%>/js/datatables/jquery.dataTables.min.js"></script>
+	    <script src="<%=path%>/js/datatables/dataTables.bootstrap.min.js"></script>
+	    <script src="<%=path%>/js/datatables/dataTables.responsive.js"></script>
+	    <script src="<%=path%>/js/datatables/fnReloadAjax.js"></script>
+	    <script src="<%=path%>/js/datatables/dataTables.select.min.js"></script>
 	</body>
 </html>

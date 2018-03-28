@@ -141,10 +141,10 @@ function removeSot(){
     setTimeout("sotres_table.fnReloadAjax();",500);
 }
 $(document).ready(function() {
-	sotres_table = $('#dataTables-sotres').DataTable(datatables_options);
+	sotres_table = $('#dataTables-sotres').dataTable(datatables_options);
 	$('#dataTables-sotres tbody').on('click', 'td.details-control', function () {
         var tr = $(this).closest('tr');
-        var row = sotres_table.row(tr);	
+        var row = sotres_table.api().row(tr);	
         if ( row.child.isShown() ) {
             // This row is already open - close it
             row.child.hide();

@@ -111,7 +111,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Results<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="<%=path%>/manage/detlist">Detection</a>
+                                    <a href="<%=path%>/manage/detlist">Image Detection</a>
+                                </li>
+                                <li>
+                                    <a href="<%=path%>/manage/vdetlist">Video Detection</a>
                                 </li>
                                 <li>
                                     <a href="<%=path%>/manage/sotlist">Single-tracking</a>
