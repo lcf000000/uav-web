@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lcf.dao.MotResMapper">
+	<resultMap id="BaseResultMap" type="com.lcf.model.MotRes" >
+	    <id column="RESULT_ID" property="id" jdbcType="BIGINT" />
+	    <result column="RESULT_NAME" property="name" jdbcType="VARCHAR" />
+	    <result column="RESULT_DATE" property="date" jdbcType="VARCHAR" />
+	    <result column="USER_ID" property="user_id" jdbcType="BIGINT" />
+	    <result column="RESULT_LANG" property="language" jdbcType="VARCHAR" />
+	    <result column="RESULT_EVM" property="environment" jdbcType="VARCHAR" />
+	    <result column="RESULT_REF" property="reference" jdbcType="VARCHAR" />
+	    <result column="RESULT_RESFILE" property="resfile" jdbcType="LONGVARCHAR" />
+	    <result column="RESULT_CODE" property="code" jdbcType="LONGVARCHAR" />
+	    <result column="RESULT_DESCRI" property="descrip" jdbcType="LONGVARCHAR" />
+	    <result column="RESULT_IDF1" property="idf1" jdbcType="DOUBLE" />
+	    <result column="RESULT_IDP" property="idp" jdbcType="DOUBLE" />
+	    <result column="RESULT_IDR" property="idr" jdbcType="DOUBLE" />
+	    <result column="RESULT_RCLL" property="rcll" jdbcType="DOUBLE" />
+	    <result column="RESULT_PRCN" property="prcn" jdbcType="DOUBLE" />
+	    <result column="RESULT_FAR" property="far" jdbcType="DOUBLE" />
+	    <result column="RESULT_GT" property="gt" jdbcType="DOUBLE" />
+	    <result column="RESULT_MT" property="mt" jdbcType="DOUBLE" />
+	    <result column="RESULT_PT" property="pt" jdbcType="DOUBLE" />
+	    <result column="RESULT_ML" property="ml" jdbcType="DOUBLE" />
+	    <result column="RESULT_FP" property="fp" jdbcType="DOUBLE" />
+	    <result column="RESULT_FN" property="fn" jdbcType="DOUBLE" />	    
+	    <result column="RESULT_IDS" property="ids" jdbcType="DOUBLE" />
+	    <result column="RESULT_FM" property="fm" jdbcType="DOUBLE" />
+	    <result column="RESULT_MOTA" property="mota" jdbcType="DOUBLE" />
+	    <result column="RESULT_MOTP" property="motp" jdbcType="DOUBLE" />
+	    <result column="RESULT_MOTAL" property="motal" jdbcType="DOUBLE" />
+	    <result column="RESULT_SPEED" property="speed" jdbcType="DOUBLE" />
+	    <result column="RESULT_STATUS" property="status" jdbcType="INTEGER" />
+ 	</resultMap>
+	<select id="findMotResByUserID" resultMap="BaseResultMap">
+		SELECT * FROM result_mot WHERE USER_ID = #{user_id} ORDER BY RESULT_MOTAL
+	</select>
+    <select id="findMotResByName" resultMap="BaseResultMap">
+		SELECT * FROM result_mot WHERE RESULT_NAME = #{name} ORDER BY RESULT_MOTAL
+	</select>
+    <select id="getMotResList" resultMap="BaseResultMap" parameterType="com.lcf.model.MotRes">
+		SELECT * FROM result_mot  WHERE 1 = 1
+		<if test="motres.name != null and motres.name != ''">
+		AND RESULT_NAME like concat('%',#{motres.name},'%')
+		</if>
+		<if test="motres.user_id != null and motres.user_id != ''">
+		AND USER_ID = #{motres.user_id}
+		</if>
+		<if test="motres.language != null and motres.language != ''">
+		AND RESULT_LANG like concat('%',#{motres.language},'%')
+		</if>
+		<if test="motres.environment != null and motres.environment != ''">
+		AND RESULT_EVM like concat('%',#{motres.environment},'%')
+		</if>
+		<if test="motres.reference != null and motres.reference !=''">
+		AND RESULT_REF like concat('%',#{motres.reference},'%')
+		</if>
+		<if test="motres.resfile != null and motres.resfile != ''">
+		AND RESULT_RESFILE like concat('%',#{motres.resfile},'%')
+		</if>
+		<if test="motres.code != null and motres.code !=''">
+		AND RESULT_CODE like concat('%',#{motres.code},'%')
+		</if>			
+		<if test="motres.descrip != null and motres.descrip != ''">
+		AND RESULT_DESCRI like concat('%',#{motres.descrip}'%')
+		</if>
+		ORDER BY RESULT_MOTAL
+	</select>
+	
+	<select id="findMotResByUserName" resultMap="BaseResultMap">
+		SELECT * FROM result_mot WHERE USER_ID = (SELECT USER_ID FROM USER WHERE USER_UNAME = #{username}) ORDER BY RESULT_FP
+	</select>
+	
+    <delete id="deleteMotRes" parameterType="int">
+		DELETE FROM result_mot WHERE RESULT_ID = #{id}
+	</delete>
+	
+	<update id="updateMotRes" useGeneratedKeys="true" keyProperty="id">
+		UPDATE result_mot 
+		<set>
+			<if test="name != null and name != ''">RESULT_NAME = #{name},</if>
+			<if test="datetime !=null and datetime !=''">RESULT_DATE = #{date},</if>
+			<if test="user_id != null and user_id != ''">USER_ID = #{user_id},</if>
+			<if test="language != null and language != ''">RESULT_LANG = #{language},</if>
+			<if test="environment != null and environment != ''">RESULT_EVM = #{environment},</if>
+			<if test="reference != null and reference !=''">RESULT_REF = #{reference},</if>
+			<if test="resfile != null nad resfile != ''">RESULT_RESFILE = #{resfile},</if>
+			<if test="code != null and code !=''">RESULT_CODE = #{code},</if>			
+			<if test="descrip != null and descrip != ''">RESULT_DESCRI = #{descrip},</if>
+			<if test="idf1 != null and idf1 != ''">RESULT_IDF1 = #{idf1},</if>
+			<if test="idp != null and idp != ''">RESULT_IDP = #{idp},</if>
+			<if test="idr != null and idr != ''">RESULT_IDR = #{idr},</if>
+			<if test="rcll != null and rcll != ''">RESULT_RCLL = #{rcll},</if>
+			<if test="prcn != null and prcn != ''">RESULT_PRCN = #{prcn},</if>
+			<if test="far != null and far != ''">RESULT_FAR = #{far},</if>
+			<if test="gt != null and gt != ''">RESULT_GT = #{gt},</if>
+			<if test="mt != null and mt != ''">RESULT_MT = #{mt},</if>
+			<if test="pt != null and pt != ''">RESULT_POC_P = #{pt},</if>
+			<if test="ml != null and ml != ''">RESULT_MT = #{ml},</if>
+			<if test="fp != null and fp != ''">RESULT_PT = #{fp},</if>
+			<if test="fn != null and fn != ''">RESULT_ML = #{fn},</if>
+			<if test="ids != null and overal_pl !=''">RESULT_FP = #{ids},</if>			
+			<if test="fm != null and fm != ''">RESULT_FN = #{fm},</if>
+			<if test="mota != null and mota != ''">RESULT_IDS = #{mota},</if>
+			<if test="motp != null and motp != ''">RESULT_FM = #{motp},</if>
+			<if test="motal != null and motal != ''">RESULT_MOTA = #{motal},</if>
+			<if test="foc_iou != null and foc_iou != ''">RESULT_MOTP = #{foc_iou},</if>
+			<if test="iv_iou != null and iv_iou != ''">RESULT_MOTAL = #{iv_iou},</if>
+			<if test="speed != null and speed !=''">RESULT_SPEED = #{speed},</if>
+			<if test="status != null and status !=''">RESULT_STATUS = #{status}</if>		
+		</set>
+		WHERE RESULT_ID = #{id}
+	</update>
+	
+	<insert id="addMotRes" useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO result_mot(<trim suffixOverrides=",">
+            <if test="name != null and name != ''">RESULT_NAME,</if>
+			<if test="datetime !=null and datetime !=''">RESULT_DATE,</if>
+			<if test="user_id != null and user_id != ''">USER_ID,</if>
+			<if test="language != null and language != ''">RESULT_LANG,</if>
+			<if test="environment != null and environment != ''">RESULT_EVM,</if>
+			<if test="reference != null and reference !=''">RESULT_REF,</if>
+			<if test="resfile != null nad resfile != ''">RESULT_RESFILE,</if>
+			<if test="code != null and code !=''">RESULT_CODE,</if>			
+			<if test="descrip != null and descrip != ''">RESULT_DESCRI,</if>
+			<if test="idf1 != null and idf1 != ''">RESULT_IDF1,</if>
+			<if test="idp != null and idp != ''">RESULT_IDP,</if>
+			<if test="idr != null and idr != ''">RESULT_IDR,</if>
+			<if test="rcll != null and rcll != ''">RESULT_RCLL,</if>
+			<if test="prcn != null and prcn != ''">RESULT_PRCN,</if>
+			<if test="far != null and far != ''">RESULT_FAR,</if>
+			<if test="gt != null and gt != ''">RESULT_GT,</if>
+			<if test="mt != null and mt != ''">RESULT_MT,</if>
+			<if test="pt != null and pt != ''">RESULT_POC_P,</if>
+			<if test="ml != null and ml != ''">RESULT_MT,</if>
+			<if test="fp != null and fp != ''">RESULT_PT,</if>
+			<if test="fn != null and fn != ''">RESULT_ML,</if>
+			<if test="ids != null and ids !=''">RESULT_FP,</if>			
+			<if test="fm != null and fm != ''">RESULT_FN,</if>
+			<if test="mota != null and mota != ''">RESULT_IDS,</if>
+			<if test="motp != null and motp != ''">RESULT_FM,</if>
+			<if test="motal != null and motal != ''">RESULT_MOTA,</if>
+			<if test="foc_iou != null and foc_iou != ''">RESULT_MOTP,</if>
+			<if test="iv_iou != null and iv_iou != ''">RESULT_MOTAL,</if>
+			<if test="speed != null and speed !=''">RESULT_SPEED,</if>			
+			<if test="status != null and status !=''">RESULT_STATUS</if>
+			</trim>)values(<trim suffixOverrides=",">
+			<if test="name != null and name != ''">#{name},</if>
+			<if test="datetime !=null and datetime !=''">#{date},</if>
+			<if test="user_id != null and user_id != ''">#{user_id},</if>
+			<if test="language != null and language != ''">#{language},</if>
+			<if test="environment != null and environment != ''">#{environment},</if>
+			<if test="reference != null and reference !=''">#{reference},</if>
+			<if test="resfile != null nad resfile != ''">#{resfile},</if>
+			<if test="code != null and code !=''">#{code},</if>			
+			<if test="descrip != null and descrip != ''">#{descrip},</if>
+			<if test="idf1 != null and idf1 != ''">#{idf1},</if>
+			<if test="idp != null and idp != ''">#{idp},</if>
+			<if test="idr != null and idr != ''">#{idr},</if>
+			<if test="rcll != null and rcll != ''">#{rcll},</if>
+			<if test="prcn != null and prcn != ''">#{prcn},</if>
+			<if test="far != null and far != ''">#{far},</if>
+			<if test="gt != null and gt != ''">#{gt},</if>
+			<if test="mt != null and mt != ''">#{mt},</if>
+			<if test="pt != null and pt != ''">#{pt},</if>
+			<if test="ml != null and ml != ''">#{ml},</if>
+			<if test="fp != null and fp != ''">#{fp},</if>
+			<if test="fn != null and fn != ''">#{fn},</if>
+			<if test="ids != null and ids !=''">#{ids},</if>			
+			<if test="fm != null and fm != ''">#{fm},</if>
+			<if test="mota != null and mota != ''">#{mota},</if>
+			<if test="motp != null and motp != ''">#{motp},</if>
+			<if test="motal != null and motal != ''">#{motal},</if>
+			<if test="speed != null and speed !=''">#{speed},</if>
+			<if test="status != null and status !=''">#{status}</if>
+            </trim>)
+	</insert>
+</mapper>

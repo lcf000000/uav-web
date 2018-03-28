@@ -97,87 +97,87 @@ public class DetRes {
  		this.code = code;
  	}
  	
- 	public double getap() {
+ 	public double getAp() {
  		return ap;
  	}
- 	public void setap(double ap) {
+ 	public void setAp(double ap) {
  		this.ap = ap;
  	}
  	
- 	public double getap5() {
+ 	public double getAp5() {
  		return ap5;
  	}
- 	public void setap5(double ap5) {
+ 	public void setAp5(double ap5) {
  		this.ap5 = ap5;
  	}
  	
- 	public double getap75() {
+ 	public double getAp75() {
  		return ap75;
  	}
- 	public void setap75(double ap75) {
+ 	public void setAp75(double ap75) {
  		this.ap75 = ap75;
  	}
  	
- 	public double getaps() {
+ 	public double getAps() {
  		return aps;
  	}
- 	public void setaps(double aps) {
+ 	public void setAps(double aps) {
  		this.aps = aps;
  	}
  	
- 	public double getapm() {
+ 	public double getApm() {
  		return apm;
  	}
- 	public void setapm(double apm) {
+ 	public void setApm(double apm) {
  		this.apm = apm;
  	}
  	
- 	public double getapl() {
+ 	public double getApl() {
  		return apl;
  	}
- 	public void setapl(double apl) {
+ 	public void setApl(double apl) {
  		this.apl = apl;
  	}
  	
- 	public double getarm1() {
+ 	public double getArm1() {
  		return arm1;
  	}
- 	public void setarm1(double arm1) {
+ 	public void setArm1(double arm1) {
  		this.arm1 = arm1;
  	}
  	
- 	public double getarm10() {
+ 	public double getArm10() {
  		return arm10;
  	}
- 	public void setarm10(double arm10) {
+ 	public void setArm10(double arm10) {
  		this.arm10 = arm10;
  	}
  	
- 	public double getarm100() {
+ 	public double getArm100() {
  		return arm100;
  	}
- 	public void setarm100(double arm100) {
+ 	public void setArm100(double arm100) {
  		this.arm100 = arm100;
  	}
  	
- 	public double getars() {
+ 	public double getArs() {
  		return ars;
  	}
- 	public void setars(double ars) {
+ 	public void setArs(double ars) {
  		this.ars = ars;
  	}
  	
- 	public double getarm() {
+ 	public double getArm() {
  		return arm;
  	}
- 	public void setarm(double arm) {
+ 	public void setArm(double arm) {
  		this.arm = arm;
  	}
  	
- 	public double getarl() {
+ 	public double getArl() {
  		return arl;
  	}
- 	public void setar(double arl) {
+ 	public void setAr(double arl) {
  		this.arl = arl;
  	}
  	

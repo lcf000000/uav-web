@@ -34,7 +34,6 @@ public class SotResController {
 	@Resource
 	private SotResService sotresService; //创建sotRes服务的对象
 	
-	@SuppressWarnings("unused")
 	@RequestMapping(value = "/sotres/addres", method = RequestMethod.POST)
 	@ResponseBody 
 	public JSONObject addSotRes(@RequestParam("resfile") MultipartFile resfile,
