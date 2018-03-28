@@ -1,11 +1,10 @@
 package com.lcf.model;
 
-import java.sql.Timestamp;
 
 public class DetRes {
 	private int id;
 	private int user_id;
-	private Timestamp date;
+	private String date;
 	private String name;
 	private String language;
 	private String environment;
@@ -42,10 +41,10 @@ public class DetRes {
  		this.user_id = user_id;
  	}
  	
- 	public Timestamp getDate() {
+ 	public String getDate() {
  		return date;
  	}
- 	public void setDate(Timestamp date) {
+ 	public void setDate(String date) {
  		this.date = date;
  	}
  	

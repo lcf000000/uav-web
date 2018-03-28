@@ -4,7 +4,7 @@
 	<resultMap id="BaseResultMap" type="com.lcf.model.DetRes" >
 	    <id column="RESULT_ID" property="id" jdbcType="BIGINT" />
 	    <result column="RESULT_NAME" property="name" jdbcType="VARCHAR" />
-	    <result column="RESULT_DATE" property="date" jdbcType="DATE" />
+	    <result column="RESULT_DATE" property="date" jdbcType="VARCHAR" />
 	    <result column="USER_ID" property="user_id" jdbcType="BIGINT" />
 	    <result column="RESULT_LANG" property="language" jdbcType="VARCHAR" />
 	    <result column="RESULT_EVM" property="environment" jdbcType="VARCHAR" />
