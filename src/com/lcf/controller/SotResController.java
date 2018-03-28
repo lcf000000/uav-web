@@ -4,6 +4,7 @@ import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.servlet.http.HttpServletRequest;
+
 import javax.annotation.Resource;
 
 import org.slf4j.Logger;
@@ -314,7 +315,8 @@ public class SotResController {
 		Json json = new Json();
 		log.debug("Update result: " + sotres.getId());
 		Date currentDate = new Date();
-		String nowTime = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(currentDate);		sotres.setDate(nowTime);
+		String nowTime = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(currentDate);
+		sotres.setDate(nowTime);
 		try {
 			sotresService.addSotRes(sotres);
 			json.setSuccess(true);
