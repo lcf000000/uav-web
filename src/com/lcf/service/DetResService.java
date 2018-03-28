@@ -28,7 +28,7 @@ public class DetResService {
 	 * @return
 	 */
 	public DetRes findUserByUserId(int userID) {
-		return detresMapper.findUserByUserId(userID);
+		return detresMapper.findDetResByUserId(userID);
 	}
 	
 	/**
@@ -36,7 +36,7 @@ public class DetResService {
 	 * @return
 	 */
 	public DetRes findUserByName(String name) {
-		return detresMapper.findUserByName(name);
+		return detresMapper.findDetResByName(name);
 	}
 	
 	/**
@@ -44,7 +44,7 @@ public class DetResService {
 	 * @return
 	 */
 	public DetRes findUserByUserName(String userName) {
-		return detresMapper.findUserByUserName(userName);
+		return detresMapper.findDetResByUserName(userName);
 	}
 	
 	/**

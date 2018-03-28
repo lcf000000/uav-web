@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lcf.dao.MotResMapper">
+	<resultMap id="BaseResultMap" type="com.lcf.model.MotRes" >
+	    <id column="RESULT_ID" property="id" jdbcType="BIGINT" />
+	    <result column="RESULT_NAME" property="name" jdbcType="VARCHAR" />
+	    <result column="RESULT_DATE" property="date" jdbcType="VARCHAR" />
+	    <result column="USER_ID" property="user_id" jdbcType="BIGINT" />
+	    <result column="RESULT_LANG" property="language" jdbcType="VARCHAR" />
+	    <result column="RESULT_EVM" property="environment" jdbcType="VARCHAR" />
+	    <result column="RESULT_REF" property="reference" jdbcType="VARCHAR" />
+	    <result column="RESULT_RESFILE" property="resfile" jdbcType="LONGVARCHAR" />
+	    <result column="RESULT_CODE" property="code" jdbcType="LONGVARCHAR" />
+	    <result column="RESULT_DESCRI" property="descrip" jdbcType="LONGVARCHAR" />
+	    <result column="RESULT_ARC_IOU" property="arc_iou" jdbcType="DOUBLE" />
+	    <result column="RESULT_BC_IOU" property="bc_iou" jdbcType="DOUBLE" />
+	    <result column="RESULT_CM_IOU" property="cm_iou" jdbcType="DOUBLE" />
+	    <result column="RESULT_FM_IOU" property="fm_iou" jdbcType="DOUBLE" />
+	    <result column="RESULT_FOC_IOU" property="foc_iou" jdbcType="DOUBLE" />
+	    <result column="RESULT_IV_IOU" property="iv_iou" jdbcType="DOUBLE" />
+	    <result column="RESULT_LR_IOU" property="lr_iou" jdbcType="DOUBLE" />
+	    <result column="RESULT_OV_IOU" property="ov_iou" jdbcType="DOUBLE" />
+	    <result column="RESULT_POC_IOU" property="poc_iou" jdbcType="DOUBLE" />
+	    <result column="RESULT_SOB_IOU" property="sob_iou" jdbcType="DOUBLE" />
+	    <result column="RESULT_SV_IOU" property="sv_iou" jdbcType="DOUBLE" />
+	    <result column="RESULT_VC_IOU" property="vc_iou" jdbcType="DOUBLE" />	    
+	    <result column="RESULT_OVERALL_IOU" property="overall_iou" jdbcType="DOUBLE" />
+	    <result column="RESULT_ARC_P" property="arc_p" jdbcType="DOUBLE" />
+	    <result column="RESULT_BC_P" property="bc_p" jdbcType="DOUBLE" />
+	    <result column="RESULT_CM_P" property="cm_p" jdbcType="DOUBLE" />
+	    <result column="RESULT_FM_P" property="fm_p" jdbcType="DOUBLE" />
+	    <result column="RESULT_FOC_P" property="foc_p" jdbcType="DOUBLE" />
+	    <result column="RESULT_IV_P" property="iv_p" jdbcType="DOUBLE" />
+	    <result column="RESULT_LR_P" property="lr_p" jdbcType="DOUBLE" />
+	    <result column="RESULT_OV_P" property="ov_p" jdbcType="DOUBLE" />
+	    <result column="RESULT_POC_P" property="poc_p" jdbcType="DOUBLE" />
+	    <result column="RESULT_SOB_P" property="sob_p" jdbcType="DOUBLE" />
+	    <result column="RESULT_SV_P" property="sv_p" jdbcType="DOUBLE" />
+	    <result column="RESULT_VC_P" property="vc_p" jdbcType="DOUBLE" />	    
+	    <result column="RESULT_OVERALL_P" property="overall_p" jdbcType="DOUBLE" />
+	    <result column="RESULT_SPEED" property="speed" jdbcType="DOUBLE" />
+	    <result column="RESULT_STATUS" property="status" jdbcType="INTEGER" />
+ 	</resultMap>
+	<select id="findMotResByUserID" resultMap="BaseResultMap">
+		SELECT * FROM result_mot WHERE USER_ID = #{user_id} ORDER BY RESULT_OVERALL_P
+	</select>
+    <select id="findMotResByName" resultMap="BaseResultMap">
+		SELECT * FROM result_mot WHERE RESULT_NAME = #{name} ORDER BY RESULT_OVERALL_P
+	</select>
+    <select id="getMotResList" resultMap="BaseResultMap" parameterType="com.lcf.model.MotRes">
+		SELECT * FROM result_mot  WHERE 1 = 1
+		<if test="motres.name != null and motres.name != ''">
+		AND RESULT_NAME like concat('%',#{motres.name},'%')
+		</if>
+		<if test="motres.user_id != null and motres.user_id != ''">
+		AND USER_ID = #{motres.user_id}
+		</if>
+		<if test="motres.language != null and motres.language != ''">
+		AND RESULT_LANG like concat('%',#{motres.language},'%')
+		</if>
+		<if test="motres.environment != null and motres.environment != ''">
+		AND RESULT_EVM like concat('%',#{motres.environment},'%')
+		</if>
+		<if test="motres.reference != null and motres.reference !=''">
+		AND RESULT_REF like concat('%',#{motres.reference},'%')
+		</if>
+		<if test="motres.resfile != null and motres.resfile != ''">
+		AND RESULT_RESFILE like concat('%',#{motres.resfile},'%')
+		</if>
+		<if test="motres.code != null and motres.code !=''">
+		AND RESULT_CODE like concat('%',#{motres.code},'%')
+		</if>			
+		<if test="motres.descrip != null and motres.descrip != ''">
+		AND RESULT_DESCRI like concat('%',#{motres.descrip}'%')
+		</if>
+		ORDER BY RESULT_OVERALL_P
+	</select>
+	
+	<select id="findMotResByUserName" resultMap="BaseResultMap">
+		SELECT * FROM result_mot WHERE USER_ID = (SELECT USER_ID FROM USER WHERE USER_UNAME = #{username}) ORDER BY RESULT_OVERALL_P
+	</select>
+	
+    <delete id="deleteMotRes" parameterType="int">
+		DELETE FROM result_mot WHERE RESULT_ID = #{id}
+	</delete>
+	
+	<update id="updateMotRes" useGeneratedKeys="true" keyProperty="id">
+		UPDATE result_mot 
+		<set>
+			<if test="name != null and name != ''">RESULT_NAME = #{name},</if>
+			<if test="datetime !=null and datetime !=''">RESULT_DATE = #{date},</if>
+			<if test="user_id != null and user_id != ''">USER_ID = #{user_id},</if>
+			<if test="language != null and language != ''">RESULT_LANG = #{language},</if>
+			<if test="environment != null and environment != ''">RESULT_EVM = #{environment},</if>
+			<if test="reference != null and reference !=''">RESULT_REF = #{reference},</if>
+			<if test="resfile != null nad resfile != ''">RESULT_RESFILE = #{resfile},</if>
+			<if test="code != null and code !=''">RESULT_CODE = #{code},</if>			
+			<if test="descrip != null and descrip != ''">RESULT_DESCRI = #{descrip},</if>
+			<if test="arc_p != null and arc_p != ''">RESULT_ARC_P = #{arc_p},</if>
+			<if test="bc_p != null and bc_p != ''">RESULT_BC_P = #{bc_p},</if>
+			<if test="cm_p != null and cm_p != ''">RESULT_CM_P = #{cm_p},</if>
+			<if test="fm_p != null and fm_p != ''">RESULT_FM_P = #{fm_p},</if>
+			<if test="foc_p != null and foc_p != ''">RESULT_FOC_P = #{foc_p},</if>
+			<if test="iv_p != null and iv_p != ''">RESULT_IV_P = #{iv_p},</if>
+			<if test="lr_p != null and lr_p != ''">RESULT_LR_P = #{lr_p},</if>
+			<if test="ov_p != null and ov_p != ''">RESULT_OV_P = #{ov_p},</if>
+			<if test="poc_p != null and poc_p != ''">RESULT_POC_P = #{poc_p},</if>
+			<if test="sob_p != null and sob_p != ''">RESULT_OV_P = #{sob_p},</if>
+			<if test="sv_p != null and sv_p != ''">RESULT_SV_P = #{sv_p},</if>
+			<if test="vc_p != null and vc_p != ''">RESULT_VC_P = #{vc_p},</if>
+			<if test="overall_p != null and overal_pl !=''">RESULT_OVERALL_P = #{overall_p},</if>
+			
+			<if test="arc_iou != null and arc_iou != ''">RESULT_ARC_IOU = #{arc_iou},</if>
+			<if test="bc_iou != null and bc_iou != ''">RESULT_BC_IOU = #{bc_iou},</if>
+			<if test="cm_iou != null and cm_iou != ''">RESULT_CM_IOU = #{cm_iou},</if>
+			<if test="fm_iou != null and fm_iou != ''">RESULT_FM_IOU = #{fm_iou},</if>
+			<if test="foc_iou != null and foc_iou != ''">RESULT_FOC_IOU = #{foc_iou},</if>
+			<if test="iv_iou != null and iv_iou != ''">RESULT_IV_IOU = #{iv_iou},</if>
+			<if test="lr_iou != null and lr_iou != ''">RESULT_LR_IOU = #{lr_iou},</if>
+			<if test="ov_iou != null and ov_iou != ''">RESULT_OV_IOU = #{ov_iou},</if>
+			<if test="poc_iou != null and poc_iou != ''">RESULT_POC_IOU = #{poc_iou},</if>
+			<if test="sob_iou != null and sob_iou != ''">RESULT_OV_IOU = #{sob_iou},</if>
+			<if test="sv_iou != null and sv_iou != ''">RESULT_SV_IOU = #{sv_iou},</if>
+			<if test="vc_iou != null and vc_iou != ''">RESULT_VC_IOU = #{vc_iou},</if>
+			<if test="overall_iou != null and overall_iou !=''">RESULT_OVERALL_IOU = #{overall_iou},</if>
+			<if test="status != null and status !=''">RESULT_STATUS = #{status},</if>
+			<if test="speed != null and speed !=''">RESULT_SPEED = #{speed}</if>		
+		</set>
+		WHERE RESULT_ID = #{id}
+	</update>
+	
+	<insert id="addMotRes" useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO result_mot(<trim suffixOverrides=",">
+            <if test="name != null and name != ''">RESULT_NAME,</if>
+			<if test="datetime !=null and datetime !=''">RESULT_DATE,</if>
+			<if test="user_id != null and user_id != ''">USER_ID,</if>
+			<if test="language != null and language != ''">RESULT_LANG,</if>
+			<if test="environment != null and environment != ''">RESULT_EVM,</if>
+			<if test="reference != null and reference !=''">RESULT_REF,</if>
+			<if test="resfile != null nad resfile != ''">RESULT_RESFILE,</if>
+			<if test="code != null and code !=''">RESULT_CODE,</if>			
+			<if test="descrip != null and descrip != ''">RESULT_DESCRI,</if>
+			<if test="arc_p != null and arc_p != ''">RESULT_ARC_P,</if>
+			<if test="bc_p != null and bc_p != ''">RESULT_BC_P,</if>
+			<if test="cm_p != null and cm_p != ''">RESULT_CM_P,</if>
+			<if test="fm_p != null and fm_p != ''">RESULT_FM_P,</if>
+			<if test="foc_p != null and foc_p != ''">RESULT_FOC_P,</if>
+			<if test="iv_p != null and iv_p != ''">RESULT_IV_P,</if>
+			<if test="lr_p != null and lr_p != ''">RESULT_LR_P,</if>
+			<if test="ov_p != null and ov_p != ''">RESULT_OV_P,</if>
+			<if test="poc_p != null and poc_p != ''">RESULT_POC_P,</if>
+			<if test="sob_p != null and sob_p != ''">RESULT_OV_P,</if>
+			<if test="sv_p != null and sv_p != ''">RESULT_SV_P,</if>
+			<if test="vc_p != null and vc_p != ''">RESULT_VC_P,</if>
+			<if test="overall_p != null and overall_p !=''">RESULT_OVERALL_P,</if>
+			
+			<if test="arc_iou != null and arc_iou != ''">RESULT_ARC_IOU,</if>
+			<if test="bc_iou != null and bc_iou != ''">RESULT_BC_IOU,</if>
+			<if test="cm_iou != null and cm_iou != ''">RESULT_CM_IOU,</if>
+			<if test="fm_iou != null and fm_iou != ''">RESULT_FM_IOU,</if>
+			<if test="foc_iou != null and foc_iou != ''">RESULT_FOC_IOU,</if>
+			<if test="iv_iou != null and iv_iou != ''">RESULT_IV_IOU,</if>
+			<if test="lr_iou != null and lr_iou != ''">RESULT_LR_IOU,</if>
+			<if test="ov_iou != null and ov_iou != ''">RESULT_OV_IOU,</if>
+			<if test="poc_iou != null and poc_iou != ''">RESULT_POC_IOU,</if>
+			<if test="sob_iou != null and sob_iou != ''">RESULT_OV_IOU,</if>
+			<if test="sv_iou != null and sv_iou != ''">RESULT_SV_IOU,</if>
+			<if test="vc_iou != null and vc_iou != ''">RESULT_VC_IOU,</if>
+			<if test="overall_iou != null and overall_iou !=''">RESULT_OVERALL_IOU</if>
+			<if test="status != null and status !=''">RESULT_STATUS,</if>
+			<if test="speed != null and speed !=''">RESULT_SPEED</if>
+			</trim>)values(<trim suffixOverrides=",">
+			<if test="name != null and name != ''">#{name},</if>
+			<if test="datetime !=null and datetime !=''">#{date},</if>
+			<if test="user_id != null and user_id != ''">#{user_id},</if>
+			<if test="language != null and language != ''">#{language},</if>
+			<if test="environment != null and environment != ''">#{environment},</if>
+			<if test="reference != null and reference !=''">#{reference},</if>
+			<if test="resfile != null nad resfile != ''">#{resfile},</if>
+			<if test="code != null and code !=''">#{code},</if>			
+			<if test="descrip != null and descrip != ''">#{descrip},</if>
+			<if test="arc_p != null and arc_p != ''">#{arc_p},</if>
+			<if test="bc_p != null and bc_p != ''">#{bc_p},</if>
+			<if test="cm_p != null and cm_p != ''">#{cm_p},</if>
+			<if test="fm_p != null and fm_p != ''">#{fm_p},</if>
+			<if test="foc_p != null and foc_p != ''">#{foc_p},</if>
+			<if test="iv_p != null and iv_p != ''">#{iv_p},</if>
+			<if test="lr_p != null and lr_p != ''">#{lr_p},</if>
+			<if test="ov_p != null and ov_p != ''">#{ov_p},</if>
+			<if test="poc_p != null and poc_p != ''">#{poc_p},</if>
+			<if test="sob_p != null and sob_p != ''">#{sob_p},</if>
+			<if test="sv_p != null and sv_p != ''">#{sv_p},</if>
+			<if test="vc_p != null and vc_p != ''">#{vc_p},</if>
+			<if test="overall_p != null and overall_p !=''">#{overall_p},</if>
+			
+			<if test="arc_iou != null and arc_iou != ''">#{arc_iou},</if>
+			<if test="bc_iou != null and bc_iou != ''">#{bc_iou},</if>
+			<if test="cm_iou != null and cm_iou != ''">#{cm_iou},</if>
+			<if test="fm_iou != null and fm_iou != ''">#{fm_iou},</if>
+			<if test="foc_iou != null and foc_iou != ''">#{foc_iou},</if>
+			<if test="iv_iou != null and iv_iou != ''">#{iv_iou},</if>
+			<if test="lr_iou != null and lr_iou != ''">#{lr_iou},</if>
+			<if test="ov_iou != null and ov_iou != ''">#{ov_iou},</if>
+			<if test="poc_iou != null and poc_iou != ''">#{poc_iou},</if>
+			<if test="sob_iou != null and sob_iou != ''">#{sob_iou},</if>
+			<if test="sv_iou != null and sv_iou != ''">#{sv_iou},</if>
+			<if test="vc_iou != null and vc_iou != ''">#{vc_iou},</if>			
+			<if test="overall_iou != null and overall !=''">#{overall_iou},</if>
+			<if test="status != null and status !=''">#{status},</if>
+			<if test="speed != null and speed !=''">#{speed}</if>
+            </trim>)
+	</insert>
+</mapper>
