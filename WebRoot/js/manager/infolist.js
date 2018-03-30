@@ -121,28 +121,32 @@ function removeSearchVal(){
     });
 }
 function addInfo(){
+	document.getElementById('loc-add').value = "";
 	$('#edit-panel').hide();
 	$('#search-panel').hide();
 	$('#add-panel').show();
 }
 function submitAdd(){
-	var info = $("#addInfo-form").serialize();
-	info = info + "&content1=" + adder.txt.html();
-	alert(info);
-    $.ajax({
-        url:ctx+"/info/addInfo",//提交地址
-        type:"POST",
-        dataType:"json",
-        data:info,//将表单数据序列化
-        success:function(result){
-        	if(result.success){
-        		toastr.success(result.msg);
-        	}else{
-        		toastr.error("Error!");
-        	}
-        }
-    });
-	setTimeout("info_table.fnReloadAjax();",500);
+	if($("#loc-add").val()==null){
+		toastr.error("Please select location!");
+	}else{
+		var info = $("#addInfo-form").serialize();
+		info = info + "&content1=" + adder.txt.html();
+	    $.ajax({
+	        url:ctx+"/info/addInfo",//提交地址
+	        type:"POST",
+	        dataType:"json",
+	        data:info,//将表单数据序列化
+	        success:function(result){
+	        	if(result.success){
+	        		toastr.success(result.msg);
+	        	}else{
+	        		toastr.error("Error!");
+	        	}
+	        }
+	    });
+		setTimeout("info_table.fnReloadAjax();",500);
+	}
 }
 function cancelAdd(){
 	$('#add-panel').hide();
@@ -183,27 +187,30 @@ function editInfo(){
     }
 };
 function saveEdit(){
-	$.ajax({
-        url:ctx+"/info/editInfo",//提交地址
-        data:{	"content1":editor.txt.html(),
-        		"id":$("#id-edit").val(),
-        		"title":$("#title-edit").val(),
-        		"author":$("#author-edit").val(),
-        		"comment":$("#comment-edit").val(),
-        		"location":$("#loc-edit").val(),
-        	},
-        type:"POST",
-        dataType:"json",
-        success:function(result){
-        	if(result.success){
-        		toastr.success(result.msg);
-        	}else{
-        		toastr.error("Error!");
-        	}
-        }
-    });
-	
-	setTimeout("info_table.fnReloadAjax();",500);
+	if($("#loc-edit").val()==null){
+		toastr.error("Please select location!");
+	}else{
+		$.ajax({
+	        url:ctx+"/info/editInfo",//提交地址
+	        data:{	"content1":editor.txt.html(),
+	        		"id":$("#id-edit").val(),
+	        		"title":$("#title-edit").val(),
+	        		"author":$("#author-edit").val(),
+	        		"comment":$("#comment-edit").val(),
+	        		"location":$("#loc-edit").val(),
+	        	},
+	        type:"POST",
+	        dataType:"json",
+	        success:function(result){
+	        	if(result.success){
+	        		toastr.success(result.msg);
+	        	}else{
+	        		toastr.error("Error!");
+	        	}
+	        }
+	    });
+		setTimeout("info_table.fnReloadAjax();",500);
+	}
 }
 function cancelEdit(){
 	$('#edit-panel').hide();

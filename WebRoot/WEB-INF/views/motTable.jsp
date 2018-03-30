@@ -83,7 +83,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<div class="col-md-10" id="show-info" style="word-wrap:break-word;">
 					<div id="mot-metrics">
 					</div>
-					<br/><br/><br/>
+					<br/>
 					<table class="table table-striped table-bordered table-hover table-condensed" id="dataTables-motres">
                         <thead> 
 							<tr>

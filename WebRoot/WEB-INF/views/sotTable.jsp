@@ -88,7 +88,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<div class="col-md-10 panel panel-default" style="word-wrap:break-word;">
 					<div id="sot-metrics">
 					</div>
-					<br/><br/><br/>
+					<br/>
 					<table class="table table-striped table-bordered table-hover table-condensed" id="dataTables-sotres">
                                 <thead> 
 									<tr>

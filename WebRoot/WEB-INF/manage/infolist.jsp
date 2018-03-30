@@ -212,7 +212,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 									<span>Information comment:</span>
 									<input type="text" class="form-control" placeholder="Information comment..." id="comment-edit" name="comment">
 									&nbsp;&nbsp;
-									<span>Location&nbsp;:&nbsp;</span>
+									<span style="color:#F00">*Location&nbsp;:&nbsp;</span>
 									<select id="loc-edit" name="location" class="selectpicker show-tick form-control">
 	                                        <option value="1">Index welcome</option>
 	                                        <option value="2">Image-Detection</option>
@@ -228,6 +228,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	                                        <option value="16">People</option>
 	                                        <option value="999">other</option>
 	                                </select>
+	                                <span style="color:#F00">*Confirm selection ！</span>
 								</div>
 							</form>
 	                        <div id="editor" style="text-align:justify;line-height:20px;">
@@ -256,7 +257,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 									<span>Information comment:</span>
 									<input type="text" class="form-control" placeholder="Information comment..." id="comment-add" name="comment">
 									&nbsp;:&nbsp;
-									<span>Location&nbsp;:&nbsp;</span>
+									<span style="color:#F00">Location&nbsp;:&nbsp;</span>
 									<select id="loc-add" name="location" class="selectpicker show-tick form-control">
 	                                        <option value="1">Index welcome</option>
 	                                        <option value="2">Image-Detection</option>
@@ -272,6 +273,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	                                        <option value="16">People</option>
 	                                        <option value="999">other</option>
 	                                </select>
+	                                <span style="color:#F00">*Confirm selection ！</span>
 								</div>
 							</form>
                         	<div id="adder" style="text-align:justify;line-height:20px;">
