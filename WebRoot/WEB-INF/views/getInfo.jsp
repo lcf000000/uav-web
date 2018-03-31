@@ -56,7 +56,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             </ul>
                         </li>
 						<li><a href="<%=path%>/views/getInfo?loc=15" class="navia">FAQ</a></li>
-						<li><a href="<%=path%>/views/getInfo?loc=16" class="navia">People</a></li>
+						<li><a href="<%=path%>/views/people" class="navia">People</a></li>
 					</ul>
 
 					<ul class="nav navbar-nav navbar-right">
