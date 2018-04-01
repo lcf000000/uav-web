@@ -19,7 +19,7 @@ function getInfo(){
         data:{"location":"7"},
         dataType:"json",
         success:function(info){
-        	document.getElementById("det-metrics").innerHTML = info.content1;
+        	document.getElementById("vdet-metrics").innerHTML = info.content1;
         }
     });
 }

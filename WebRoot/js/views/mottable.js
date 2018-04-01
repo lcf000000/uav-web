@@ -19,7 +19,7 @@ function getInfo(){
         data:{"location":"9"},
         dataType:"json",
         success:function(info){
-        	document.getElementById("det-metrics").innerHTML = info.content1;
+        	document.getElementById("mot-metrics").innerHTML = info.content1;
         }
     });
 }

@@ -207,7 +207,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 									<input type="text" class="form-control" placeholder="Title..." id="title-edit" name="title">
 									&nbsp;&nbsp;
 									<span>Author:</span>
-									<input type="text" class="form-control" placeholder="Author..." id="author-edit" name="author">
+									<input type="text" class="form-control" placeholder="Author..." id="author-edit" name="author" readonly="readonly" value="${manager.username}">
 									&nbsp;&nbsp;
 									<span>Information comment:</span>
 									<input type="text" class="form-control" placeholder="Information comment..." id="comment-edit" name="comment">
@@ -252,7 +252,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 									<input type="text" class="form-control" placeholder="Title..." id="title-add" name="title">
 									&nbsp;&nbsp;
 									<span>Author:</span>
-									<input type="text" class="form-control" placeholder="Author..." id="author-add" name="author">
+									<input type="text" class="form-control" placeholder="Author..." id="author-add" name="author" readonly="readonly" value="${manager.username}">
 									&nbsp;&nbsp;
 									<span>Information comment:</span>
 									<input type="text" class="form-control" placeholder="Information comment..." id="comment-add" name="comment">
