@@ -62,7 +62,7 @@ public class UserController {
 				}catch(Exception e){
 				}
 				if (user == null) { 
-		    		request.setAttribute("message", "Username or password is wrong, please log in again!");
+		    		request.setAttribute("message", "Username or password is wrong, please login again!");
 		    		return "views/login"; 
 				}else {
 					if (user.getPassword().equals(password)) {
@@ -70,8 +70,7 @@ public class UserController {
 						session.setAttribute("user", user);
 		        		return "redirect:/";//跳转至访问页面
 					}else {
-						log.info("password is not correct");  
-		        		request.setAttribute("message", "Username or password is wrong, please log in again!");
+		        		request.setAttribute("message", "Username or password is wrong, please login again!");
 		        		return "views/login"; 
 					}
 				}
@@ -165,7 +164,6 @@ public class UserController {
 				dataO.put("right", "Others");
 			}
 			dataO.toJSONArray(dataA);//将更改后的属性传回dataA
-			log.debug(dataA.toString()); //控制台打印log
 			json.put("data", dataA);
 		}
 		return json;
@@ -203,7 +201,6 @@ public class UserController {
     @RequestMapping(value = "/user/editUser",method = RequestMethod.POST)
     public Json editUser(User user) {
         Json j = new Json();
-        log.debug("更改的用户ID为："+user.getId());
         try {
             userService.edit(user);
             j.setSuccess(true);
@@ -225,7 +222,6 @@ public class UserController {
 	public Json deleteUser(HttpServletRequest request,HttpServletResponse response,
     		@RequestParam Integer id) {
 		Json j = new Json();
-        log.debug("穿过来的用户ID为："+id);
         try {
 			userService.deleteUser(id);
 			j.setSuccess(true);

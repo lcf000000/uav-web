@@ -46,7 +46,6 @@ public class FileController {
 		if (file!=null) {// 判断上传的文件是否为空
             String type=null;// 文件类型
             String fileName=file.getOriginalFilename();// 文件原名称
-            log.info("上传的文件原名称:"+fileName);
             // 判断文件类型
             type=fileName.indexOf(".")!=-1?fileName.substring(fileName.lastIndexOf(".")+1, fileName.length()):null; 
             if (type!=null) {// 判断文件类型是否为空
@@ -57,11 +56,8 @@ public class FileController {
                     //path = "D:\\Program Files\\apache-tomcat-8.0.46\\imges\\" + trueFileName;
                     path = "/usr/uavweb/images/" + trueFileName;
                     rePath = pathRoot + "/upfile/" + trueFileName;
-                    log.info("存放图片文件的路径:"+path);
                     // 转存文件到指定的路径
                     file.transferTo(new File(path));
-                    log.info("文件成功上传到指定目录下");
-                    
                 }else {
                 	log.info("不是我们想要的文件类型,请按要求重新上传");
                 }

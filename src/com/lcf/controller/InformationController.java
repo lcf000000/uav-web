@@ -110,7 +110,6 @@ public class InformationController {
 		}
 		infoData = StringEscapeUtils.unescapeHtml(info.getContent1());
 		info.setContent1(infoData);
-		log.debug(infoData);
 		JSONObject j = JSONObject.fromObject(info);
 		return j;
 	}
@@ -130,7 +129,6 @@ public class InformationController {
 		}
 		infoData = StringEscapeUtils.unescapeHtml(info.getContent1());
 		info.setContent1(infoData);
-		log.debug(infoData);
 		JSONObject j = JSONObject.fromObject(info);
 		return j;
 	}
@@ -165,10 +163,8 @@ public class InformationController {
     @RequestMapping(value = "/info/editInfo",method = RequestMethod.POST)
     public Json editUser(Information info) {
         Json j = new Json();
-        log.debug("Get----------------->："+info.getContent1());
         String content = StringEscapeUtils.escapeHtml(info.getContent1());
 		info.setContent1(content);
-		log.debug("Encode----------------->："+info.getContent1());
         try {
         	infoService.editInfo(info);
             j.setSuccess(true);
@@ -188,7 +184,7 @@ public class InformationController {
 	public Json deleteUser(HttpServletRequest request,HttpServletResponse response,
     		@RequestParam Integer id) {
 		Json j = new Json();
-        log.debug("Delete info by id ："+id);
+        log.info("Delete info by id ："+id);
         try {
         	infoService.deleteInfo(id);
 			j.setSuccess(true);

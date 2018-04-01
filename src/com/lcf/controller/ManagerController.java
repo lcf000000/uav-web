@@ -31,8 +31,7 @@ public class ManagerController {
 			if (code.toLowerCase().equals(session.getAttribute("RANDOMCODE").toString().toLowerCase())){
 				Manager manager = managerService.findManagerByName(username);
 				if (manager == null) {
-					log.info("登陆用户名不存在");  
-		    		request.setAttribute("message", "Username or password is wrong, please log in again!");
+		    		request.setAttribute("message", "Username or password is wrong, please login again!");
 		    		return "manage/admin-login"; 
 				}else {
 					if (manager.getPassword().equals(password)) {
@@ -41,7 +40,7 @@ public class ManagerController {
 		        		return "manage/userlist";//跳转至访问页面
 						
 					}else { 
-		        		request.setAttribute("message", "Username or password is wrong, please log in again!");
+		        		request.setAttribute("message", "Username or password is wrong, please login again!");
 		        		return "manage/admin-login"; 
 					}
 				}

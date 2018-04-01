@@ -251,23 +251,23 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 												<input type="hidden" name="id" id="user_id" value="${user.id}">
 												<div class="form-group">
 													<i class="fa fa-lock fa-lg"></i>
-													<input class="form-control required"  onblur="checkPassword(this)" id="password" type="password" placeholder="fill in your new password" name="password"/>
+													<input class="form-control required" value="${user.password}" onblur="checkPassword(this)" id="password" type="password" placeholder="fill in your new password" name="password"/>
 												</div>
 												<div class="form-group">
 													<i class="fa fa-check fa-lg"></i>
-													<input class="form-control required" onblur="checkRePassword(this)" type="password" placeholder="Re-type Your Password" name="rpassword"/>
+													<input class="form-control required" value="${user.password}" onblur="checkRePassword(this)" type="password" placeholder="Re-type Your Password" name="rpassword"/>
 												</div>
 												<div class="form-group">
 														<i class="fa fa-envelope fa-lg"></i>
-														<input class="form-control eamil" onblur="checkEmail(this)" type="text" placeholder=" Email" name="email"/>
+														<input class="form-control eamil" value="${user.email}" onblur="checkEmail(this)" type="text" placeholder=" Email" name="email"/>
 												</div>
 												<div class="form-group">
 														<i class="fa fa-group fa-lg"></i>
-														<input class="form-control required" onblur="checkOrg(this)" type="text" placeholder=" University,Group,institute,Corporation,etc (letters and , . only)" name="org"/>
+														<input class="form-control required" value="${user.org}" onblur="checkOrg(this)" type="text" placeholder=" University,Group,institute,Corporation,etc (letters and , . only)" name="org"/>
 												</div>
 												<div class="form-group">
 														<i class="fa fa-globe fa-lg"></i>
-														<input class="form-control required" onblur="checkCountry(this)" type="text" placeholder="Country,Region 's Code, as CN,US..." name="country"/>
+														<input class="form-control required" value="${user.country}" onblur="checkCountry(this)" type="text" placeholder="Country,Region 's Code, as CN,US..." name="country"/>
 												</div>
 												<div class="form-group">
 												<input class="btn btn-success btn-block" value="Change" disabled="disabled" id="changeSubmit" onclick="submitChange()" />

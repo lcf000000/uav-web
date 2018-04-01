@@ -79,6 +79,7 @@ function checkCountry(country){
     return country_ok;
 }
 function enableSubmit(){
+	
 	var submit = document.getElementById('changeSubmit');
 	if(password_ok&& rePassword_ok&& email_ok && org_ok && country_ok){
 		submit.removeAttribute("disabled");

@@ -30,13 +30,9 @@ public class ManagerInterceptor extends HandlerInterceptorAdapter{
     	if ("GET".equalsIgnoreCase(request.getMethod())) {
     		RequestUtil.saveRequest();
         }
-        //log.info("==============执行拦截: preHandle================");  
 		String requestUri = request.getRequestURI();
 		String contextPath = request.getContextPath();
 		String url = requestUri.substring(contextPath.length());
-		
-		//这里对拉入黑名单的ip进行处理
-		log.info("来自 >>>>>>"+RequestUtil.getIpAddr(request)+" 请求访问后台页面。");	
 		
         Manager manager =  (Manager)request.getSession().getAttribute("manager"); 
         
