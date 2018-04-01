@@ -175,7 +175,6 @@ function editInfo(){
 	        success:function(info){
 	        	document.getElementById('id-edit').value = info.id;
 	        	document.getElementById('title-edit').value = info.title;
-	        	document.getElementById('author-edit').value = info.author;
 	        	document.getElementById('comment-edit').value = info.comment;
 	        	document.getElementById('loc-edit').value = info.location;
 	        	document.getElementById('id-edit').value = info.id;

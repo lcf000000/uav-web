@@ -33,7 +33,7 @@ public class ManagerController {
 				if (manager == null) {
 					log.info("登陆用户名不存在");  
 		    		request.setAttribute("message", "Username or password is wrong, please log in again!");
-		    		return "admin-login"; 
+		    		return "manage/admin-login"; 
 				}else {
 					if (manager.getPassword().equals(password)) {
 						// 保存用信息到session
