@@ -31,31 +31,32 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<ul class="nav navbar-nav">
 						<li><a href="<%=path%>/" class="navia">Home</a></li>
 						<li class="dropdown">
-                            <a href="#" class="dropdown-toggle navia" data-toggle="dropdown">Data <i class="fa fa-angle-down"></i></a>
+                            <a href="#" class="dropdown-toggle navia" data-toggle="dropdown">Benchmarks <i class="fa fa-angle-down"></i></a>
                             <ul class="dropdown-menu">
-                                <li><a href="<%=path%>/views/getInfo?loc=2" class="navia">Detection</a></li>
-                                <li><a href="<%=path%>/views/getInfo?loc=3" class="navia">Single-Tracking</a></li>
-                                <li><a href="<%=path%>/views/getInfo?loc=4" class="navia">Multi-Tracking</a></li>
-                                <li><a href="<%=path%>/views/getInfo?loc=5" class="navia">Challenge 2017</a></li>
+                                <li><a href="<%=path%>/views/getInfo?loc=2" class="navia">Image Detection</a></li>
+                                <li><a href="<%=path%>/views/getInfo?loc=3" class="navia">Video Detection</a></li>
+                                <li><a href="<%=path%>/views/getInfo?loc=4" class="navia">Single-Tracking</a></li>
+                                <li><a href="<%=path%>/views/getInfo?loc=5" class="navia">Multi-Tracking</a></li>
                             </ul>
                         </li>
 						<li class="dropdown">
                             <a href="#" class="dropdown-toggle navia" data-toggle="dropdown">Results <i class="fa fa-angle-down"></i></a>
                             <ul class="dropdown-menu">
-                                <li><a href="<%=path%>/views/detTable" class="navia">Detection</a></li>
-                                <li><a href="<%=path%>/views/sotTable" class="navia">Single-Tracking</a></li>
-                                <li><a href="<%=path%>/views/motTable" class="navia">Multi-Tracking</a></li>
+                                <li><a href="<%=path%>/views/temp" class="navia">Image Detection</a></li>
+                                 <li><a href="<%=path%>/views/temp" class="navia">Video Detection</a></li>
+                                <li><a href="<%=path%>/views/temp" class="navia">Single-Tracking</a></li>
+                                <li><a href="<%=path%>/views/temp" class="navia">Multi-Tracking</a></li>
                             </ul>
                         </li>
                         <li class="dropdown">
                         	<a href="#" class="dropdown-toggle navia" data-toggle="dropdown">Submit <i class="fa fa-angle-down"></i></a>
                         	<ul class="dropdown-menu">
                                 <li><a href="<%=path%>/views/getInfo?loc=14" class="navia">Instructions</a></li>
-                                <li><a href="<%=path%>/user/submit" class="navia">Submit Result</a></li>
+                                <li><a href="<%=path%>/my/submit" class="navia">Submit Result</a></li>
                             </ul>
                         </li>
 						<li><a href="<%=path%>/views/getInfo?loc=15" class="navia">FAQ</a></li>
-						<li><a href="<%=path%>/views/getInfo?loc=16" class="navia">People</a></li>
+						<li><a href="<%=path%>/views/people" class="navia">People</a></li>
 					</ul>
 
 					<ul class="nav navbar-nav navbar-right">
@@ -65,7 +66,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						</c:if>
 						<c:if test="${not empty sessionScope.user.username}">
 							<li><a href="#" onclick="loginOut()" class="navia"><i class="fa fa-sign-out"></i>  &nbsp; Sign out</a></li>
-							<li><a href="<%=path%>/user/yourResults" class="navia"><i class="fa fa-user"></i>  &nbsp; Welcome, ${user.username}</a>
+							<li><a href="<%=path%>/my/myInfo" class="navia"><i class="fa fa-user"></i>  &nbsp; Welcome, ${user.username}</a>
 							<input type="hidden" name="id" id="user_id" value="${user.id}">
 						</c:if>
 					</ul>
@@ -80,7 +81,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</div>
 				<div class="col-md-8 panel panel-default" id="show-info" style="word-wrap:break-word;">
 					<div class="col-xs-10 col-sm-12">
-						<h3>Please login first! Redirect to login page...  <span id="time"></span> S</h3>
+						<h3 align="center">Please login first! Redirect to login page...  <span id="time"></span> S</h3>
 					</div>
 				</div>
 				<div class="col-md-2">

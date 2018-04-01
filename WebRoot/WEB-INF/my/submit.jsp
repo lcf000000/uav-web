@@ -42,10 +42,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<li class="dropdown">
                             <a href="#" class="dropdown-toggle navia" data-toggle="dropdown">Results <i class="fa fa-angle-down"></i></a>
                             <ul class="dropdown-menu">
-                                <li><a href="<%=path%>/views/detTable" class="navia">Image Detection</a></li>
-                                 <li><a href="<%=path%>/views/vdetTable" class="navia">Video Detection</a></li>
-                                <li><a href="<%=path%>/views/sotTable" class="navia">Single-Tracking</a></li>
-                                <li><a href="<%=path%>/views/motTable" class="navia">Multi-Tracking</a></li>
+                                <li><a href="<%=path%>/views/temp" class="navia">Image Detection</a></li>
+                                 <li><a href="<%=path%>/views/temp" class="navia">Video Detection</a></li>
+                                <li><a href="<%=path%>/views/temp" class="navia">Single-Tracking</a></li>
+                                <li><a href="<%=path%>/views/temp" class="navia">Multi-Tracking</a></li>
                             </ul>
                         </li>
                         <li class="dropdown">
@@ -56,7 +56,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             </ul>
                         </li>
 						<li><a href="<%=path%>/views/getInfo?loc=15" class="navia">FAQ</a></li>
-						<li><a href="<%=path%>/views/getInfo?loc=16" class="navia">People</a></li>
+						<li><a href="<%=path%>/views/people" class="navia">People</a></li>
 					</ul>
 
 					<ul class="nav navbar-nav navbar-right">
@@ -66,7 +66,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						</c:if>
 						<c:if test="${not empty sessionScope.user.username}">
 							<li><a href="#" onclick="loginOut()" class="navia"><i class="fa fa-sign-out"></i>  &nbsp; Sign out</a></li>
-							<li><a href="<%=path%>/my/yourResults" class="navia"><i class="fa fa-user"></i>  &nbsp; Welcome, ${user.username}</a>
+							<li><a href="<%=path%>/my/myInfo" class="navia"><i class="fa fa-user"></i>  &nbsp; Welcome, ${user.username}</a>
 							<input type="hidden" name="id" id="user_id" value="${user.id}">
 						</c:if>
 					</ul>
@@ -85,7 +85,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<a href="<%=path%>/my/submitVdet" class="btn btn-default btn-lg btn-block">Video detection results submit</a>
 					<a href="<%=path%>/my/submitSot" class="btn btn-default btn-lg btn-block">Single-tracking results submit</a>
 					<a href="<%=path%>/my/submitMot" class="btn btn-default btn-lg btn-block">Multi-tracking results submit</a>
-					<a href="<%=path%>/my/yourResults" class="btn btn-default btn-lg btn-block">Your results</a>
+					<a href="<%=path%>/my/myInfo" class="btn btn-default btn-lg btn-block">Your Informations</a>
 				</div>
 				<div class="col-md-4">
 				</div>

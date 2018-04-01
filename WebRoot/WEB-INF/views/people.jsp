@@ -10,7 +10,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<!--[if gt IE 8]>	   <html class="no-js"> <![endif]-->
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
@@ -23,8 +23,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<link rel="stylesheet" href="<%=path%>/css/font-awesome/font-awesome.min.css">
 		<!-- Custom styles for this template -->
 		<link href="<%=path%>/css/views/main.css" rel="stylesheet">
-		<!-- Google Fonts -->
-		<link href='http://fonts.googleapis.com/css?family=Playfair+Display:400,700,400italic|Roboto:400,300,700' rel='stylesheet' type='text/css'>
 		<!-- Animate -->
 		<link rel="stylesheet" href="<%=path%>/css/views/animate.css">
 		<!-- Icomoon -->
@@ -62,10 +60,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<li class="dropdown">
                             <a href="#" class="dropdown-toggle navia" data-toggle="dropdown">Results <i class="fa fa-angle-down"></i></a>
                             <ul class="dropdown-menu">
-                                <li><a href="<%=path%>/views/detTable" class="navia">Image Detection</a></li>
-                                 <li><a href="<%=path%>/views/vdetTable" class="navia">Video Detection</a></li>
-                                <li><a href="<%=path%>/views/sotTable" class="navia">Single-Tracking</a></li>
-                                <li><a href="<%=path%>/views/motTable" class="navia">Multi-Tracking</a></li>
+                                <li><a href="<%=path%>/views/temp" class="navia">Image Detection</a></li>
+                                 <li><a href="<%=path%>/views/temp" class="navia">Video Detection</a></li>
+                                <li><a href="<%=path%>/views/temp" class="navia">Single-Tracking</a></li>
+                                <li><a href="<%=path%>/views/temp" class="navia">Multi-Tracking</a></li>
                             </ul>
                         </li>
                         <li class="dropdown">
@@ -86,7 +84,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						</c:if>
 						<c:if test="${not empty sessionScope.user.username}">
 							<li><a href="#" onclick="loginOut()" class="navia"><i class="fa fa-sign-out"></i>  &nbsp; Sign out</a></li>
-							<li><a href="<%=path%>/my/yourResults" class="navia"><i class="fa fa-user"></i>  &nbsp; Welcome, ${user.username}</a>
+							<li><a href="<%=path%>/my/myInfo" class="navia"><i class="fa fa-user"></i>  &nbsp; Welcome, ${user.username}</a>
 							<input type="hidden" name="id" id="user_id" value="${user.id}">
 						</c:if>
 					</ul>
