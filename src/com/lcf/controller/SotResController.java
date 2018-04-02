@@ -18,7 +18,9 @@ import org.springframework.web.multipart.MultipartFile;
 import com.lcf.model.dataformat.DataGrid;
 import com.lcf.model.dataformat.Json;
 import com.lcf.model.SotRes;
+import com.lcf.model.User;
 import com.lcf.service.SotResService;
+import com.lcf.service.UserService;
 import com.lcf.model.dataformat.PageBean;
 import com.lcf.util.UnzipFileUtil;
 import com.lcf.util.EvaluateUtil;
@@ -86,6 +88,7 @@ public class SotResController {
                     resfile.transferTo(new File(path));
                     log.info("文件成功上传到指定目录下");
                     
+                    /*
                   //解压文件
                     try {
                     	UnzipFileUtil.unZipFiles(path, sotDir);
@@ -98,6 +101,7 @@ public class SotResController {
             		SotResultStruct res = new SotResultStruct();
             		res = EvaluateUtil.sotEvaluate(gtPath, path);
             		log.info("总体评测结果完成。");
+                    */
                     
                     // 处理Description文件
                     String destrueFileName= "des" + String.valueOf(user_id) + addname + desfileName;
@@ -123,6 +127,7 @@ public class SotResController {
                         }
                     }
                     
+                    /*
                     SotRes sotres = new SotRes();
             		
             		//sotres.setId(id);
@@ -178,7 +183,24 @@ public class SotResController {
             			json.setMsg("Insert result success!");
             		} catch(Exception e) {
             			json.setMsg(e.getMessage());
-            		}     
+            		}
+            		*/
+                    
+                    UserService userService = new UserService();
+                    User user = new User();
+                    user = userService.findUserByID(user_id);
+                    user.setSotcnt(user.getSotcnt() - 1);
+                    
+                    Json json = new Json();
+                    try {
+                    	userService.edit(user);
+                    	log.info("Update user SotCnt.");
+                    	json.setSuccess(true);
+            			json.setMsg("Update user SotCnt success!");
+                    } catch(Exception e) {
+            			json.setMsg(e.getMessage());
+            		}
+                    
                 }else {
                 	log.info("不是我们想要的文件类型,请按要求重新上传");
                 }

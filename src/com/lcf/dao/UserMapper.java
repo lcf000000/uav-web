@@ -14,6 +14,8 @@ public interface UserMapper {
 	//提供访问数据库的接口，和Mapper.xml中的查询语句对应
 	
 	public User findUserByName(@Param("username") String username);
+	public User findUserByID(@Param("id") int id);
+	
 	
 	public List<User> getUserList(@Param("user")User user);
 

@@ -27,6 +27,14 @@ public class UserService {
 	}
 	
 	/**
+	 * @param id
+	 * @return
+	 */
+	public User findUserByID(int id) {
+		return userMapper.findUserByID(id);
+	}
+	
+	/**
 	 * 获取用户列表
 	 */
 	public PageBean<User> getUserList(User user) {
