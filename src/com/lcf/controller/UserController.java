@@ -205,7 +205,7 @@ public class UserController {
      */
 	@RequestMapping(value = "/user/getUserbyid", method = RequestMethod.POST)
 	@ResponseBody
-	public JSONObject findUserByUserID(
+	public JSONObject findUserByID(
 			HttpServletRequest request,
     		@RequestParam Integer userID) {
 		User user = new User();
