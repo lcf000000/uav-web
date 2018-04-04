@@ -58,7 +58,7 @@ public class SendEmailUtil {
          *         收件人的地址，或者是一个Address[]，用来装抄送或者暗送人的名单。或者用来群发。可以是相同邮箱服务器的，也可以是不同的
          *         这里我们发送给我们的qq邮箱
          */
-        message.setRecipient(RecipientType.TO, new InternetAddress("wyma@tju.edu.cn"));
+        message.setRecipient(RecipientType.TO, new InternetAddress(userEmail));
         // 主题（标题）
         message.setSubject("VisDrone 2018 Challenge Submission Confirmation");
         // 正文

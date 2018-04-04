@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.lcf.model.SotRes;
 import com.lcf.model.User;
 import com.lcf.model.dataformat.DataGrid;
 import com.lcf.model.dataformat.Json;
@@ -194,6 +196,28 @@ public class UserController {
         }
         return j;
     }
+	
+	/**
+     * 查找用户
+     * 
+     * @param user
+     * @return
+     */
+	@RequestMapping(value = "/user/getUserbyid", method = RequestMethod.POST)
+	@ResponseBody
+	public JSONObject findUserByUserID(
+			HttpServletRequest request,
+    		@RequestParam Integer userID) {
+		User user = new User();
+		log.info(userID.toString());
+		try {
+			user = userService.findUserByID(userID);
+		} catch(Exception e) {
+			log.debug(e.getMessage());
+		}
+		JSONObject jsonObject = JSONObject.fromObject(user);
+		return jsonObject;
+	}
 	
 	/**
      * 修改用户
