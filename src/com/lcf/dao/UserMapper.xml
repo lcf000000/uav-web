@@ -42,19 +42,7 @@
 		AND USER_ORG like concat('%',#{user.org},'%')
 		</if>		
 		<if test="user.right!=null and user.right!=''">
-		AND USER_RIGHT = #{user.right},
-		</if>
-		<if test="user.detcnt!=null and user.detcnt!=''">
-		AND USER_DETCNT = #{user.detcnt},
-		</if>
-		<if test="user.sotcnt!=null and user.sotcnt!=''">
-		AND USER_SOTCNT = #{user.sotcnt},
-		</if>
-		<if test="user.motcnt!=null and user.motcnt!=''">
-		AND USER_MOTCNT = #{user.motcnt},
-		</if>
-		<if test="user.vdetcnt!=null and user.vdetcnt!=''">
-		AND USER_VDETCNT = #{user.vdetcnt}
+		AND USER_RIGHT = #{user.right}
 		</if>
 	</select>
 	
@@ -96,7 +84,7 @@
             <if test="email !=null and email !=''">USER_EMAIL  = #{email},</if>
             <if test="country !=null and country !=''">USER_COUNTRY  = #{country},</if>
             <if test="realname !=null and realname !=''">USER_NAME  = #{realname},</if>
-            <if test="org !=null and org !=''">USER_ORG = #{org}</if>
+            <if test="org !=null and org !=''">USER_ORG = #{org},</if>
             <if test="right !=null and right !=''">USER_RIGHT = #{right},</if>
             <if test="detcnt!=null and detcnt!=''">USER_DETCNT = #{detcnt},</if>
 			<if test="sotcnt!=null and sotcnt!=''">USER_SOTCNT = #{sotcnt},</if>
