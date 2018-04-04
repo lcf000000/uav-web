@@ -24,6 +24,7 @@ import com.lcf.service.UserService;
 import com.lcf.model.dataformat.PageBean;
 import com.lcf.util.UnzipFileUtil;
 import com.lcf.util.EvaluateUtil;
+import com.lcf.util.SendEmailUtil;
 import com.lcf.util.common.SotResultStruct;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
@@ -137,10 +138,11 @@ private final Logger log = LoggerFactory.getLogger(DetResController.class);
                     User user = new User();
                     user = userService.findUserByID(user_id);
                     user.setDetcnt(user.getDetcnt() - 1);
-                    
+                    String email = user.getEmail();
                     Json json = new Json();
                     try {
                     	userService.edit(user);
+                    	SendEmailUtil.sendEmail(email);
                     	log.info("Update user DetCnt.");
                     	json.setSuccess(true);
             			json.setMsg("Update user DetCnt success!");

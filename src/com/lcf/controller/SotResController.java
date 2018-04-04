@@ -24,6 +24,7 @@ import com.lcf.service.UserService;
 import com.lcf.model.dataformat.PageBean;
 import com.lcf.util.UnzipFileUtil;
 import com.lcf.util.EvaluateUtil;
+import com.lcf.util.SendEmailUtil;
 import com.lcf.util.common.SotResultStruct;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
@@ -190,10 +191,11 @@ public class SotResController {
                     User user = new User();
                     user = userService.findUserByID(user_id);
                     user.setSotcnt(user.getSotcnt() - 1);
-                    
+                    String email = user.getEmail();
                     Json json = new Json();
                     try {
                     	userService.edit(user);
+                    	SendEmailUtil.sendEmail(email);
                     	log.info("Update user SotCnt.");
                     	json.setSuccess(true);
             			json.setMsg("Update user SotCnt success!");
