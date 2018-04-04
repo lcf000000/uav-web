@@ -179,6 +179,10 @@ public class UserController {
 		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");//设置日期格式
 		String regtime = df.format(new Date());// new Date()为获取当前系统时间，也可使用当前时间戳
 		user.setRegtime(regtime);
+		user.setDetcnt(5);
+		user.setMotcnt(5);
+		user.setSotcnt(5);
+		user.setVDetcnt(5);
 		Json j = new Json();
 		try {
             userService.add(user);

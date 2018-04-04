@@ -20,6 +20,7 @@ public class User {
 	private int motcnt;
 	private int detcnt;
 	private int sotcnt;
+	private int vdetcnt;  //video detection
 	
 	public int getId() {
 		return id;
@@ -92,5 +93,11 @@ public class User {
 	}
 	public void setDetcnt(int detcnt) {
 		this.detcnt = detcnt;
+	}
+	public int getVDetcnt() {
+		return vdetcnt;
+	}
+	public void setVDetcnt(int vdetcnt) {
+		this.vdetcnt = vdetcnt;
 	}
 }

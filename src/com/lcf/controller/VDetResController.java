@@ -17,8 +17,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import com.lcf.model.dataformat.DataGrid;
 import com.lcf.model.dataformat.Json;
-import com.lcf.model.DetRes;
 import com.lcf.model.User;
+import com.lcf.model.VDetRes;
 import com.lcf.service.DetResService;
 import com.lcf.service.UserService;
 import com.lcf.model.dataformat.PageBean;
@@ -29,17 +29,17 @@ import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
 @Controller
-public class DetResController {
+public class VDetResController {
 	
-private final Logger log = LoggerFactory.getLogger(DetResController.class);
+private final Logger log = LoggerFactory.getLogger(VDetResController.class);
 	
 	@Resource
-	private DetResService DetresService; //创建detRes服务的对象
+	//private VDetResService VDetresService; //创建vdetRes服务的对象
 	
 	@SuppressWarnings("unused")
 	@RequestMapping(value = "/detres/addres", method = RequestMethod.POST)
 	@ResponseBody 
-	public JSONObject addDetRes(@RequestParam("resfile") MultipartFile resfile,
+	public JSONObject addVDetRes(@RequestParam("resfile") MultipartFile resfile,
 			@RequestParam("desfile") MultipartFile desfile,
 			@RequestParam("codefile") MultipartFile codefile,
     		@RequestParam String name,
@@ -136,7 +136,7 @@ private final Logger log = LoggerFactory.getLogger(DetResController.class);
                     UserService userService = new UserService();
                     User user = new User();
                     user = userService.findUserByID(user_id);
-                    user.setDetcnt(user.getDetcnt() - 1);
+                    user.setDetcnt(user.getVDetcnt() - 1);
                     String email = user.getEmail();
                     Json json = new Json();
                     try {
