@@ -17,30 +17,32 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import com.lcf.model.dataformat.DataGrid;
 import com.lcf.model.dataformat.Json;
-import com.lcf.model.DetRes;
+import com.lcf.model.MotRes;
 import com.lcf.model.User;
-import com.lcf.service.DetResService;
+import com.lcf.service.MotResService;
 import com.lcf.service.UserService;
+import com.lcf.service.MotResService;
 import com.lcf.model.dataformat.PageBean;
 import com.lcf.util.UnzipFileUtil;
 import com.lcf.util.EvaluateUtil;
 import com.lcf.util.SendEmailUtil;
-import com.lcf.util.common.SotResultStruct;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
+
+
 @Controller
-public class DetResController {
+public class MotResController {
 	
-private final Logger log = LoggerFactory.getLogger(DetResController.class);
+private final Logger log = LoggerFactory.getLogger(MotResController.class);
 	
 	@Resource
-	private DetResService DetresService; //创建detRes服务的对象
+	private MotResService MotresService; //创建motRes服务的对象
 	
 	@SuppressWarnings("unused")
-	@RequestMapping(value = "/detres/addres", method = RequestMethod.POST)
+	@RequestMapping(value = "/motres/addres", method = RequestMethod.POST)
 	@ResponseBody 
-	public JSONObject addDetRes(@RequestParam("resfile") MultipartFile resfile,
+	public JSONObject addMotRes(@RequestParam("resfile") MultipartFile resfile,
 			@RequestParam("desfile") MultipartFile desfile,
 			@RequestParam("codefile") MultipartFile codefile,
     		@RequestParam String name,
@@ -83,76 +85,64 @@ private final Logger log = LoggerFactory.getLogger(DetResController.class);
                     int dot = restrueFileName.lastIndexOf('.');
                     String resfilePath = restrueFileName.substring(0, dot);
                     // 设置存放文件的路径
-                    String detDir = "N:/evaluate/dettest/userres/";
-                    String groudtruthPath = "N:/evaluate/dettest/gt/";
-                    //path = "E:\\Project\\website\\data\\det\\" + restrueFileName;
-                    path = detDir + restrueFileName;
-                    String unzipPath = detDir + resfilePath + '/';
+                    String motDir = "N:/evaluate/mottest/userres/";
+                    String groudtruthPath = "N:/evaluate/mottest/gt/";
+                    //path = "E:\\Project\\website\\data\\mot\\" + restrueFileName;
+                    path = motDir + restrueFileName;
+                    String unzipPath = motDir + resfilePath + '/';
                     gtPath = groudtruthPath;
                     log.info("存放文件的路径:"+path);
                     // 转存文件到指定的路径
                     resfile.transferTo(new File(path));
                     log.info("文件成功上传到指定目录下");
-                    
-                    /*
-                  //解压文件
-                    try {
-                    	UnzipFileUtil.unZipFiles(path, detDir);
-                    } catch (Exception e) {
-                    	log.debug(e.getMessage());
-                    }
-                    //解析文件 得出结果
-                                       
-                    //EvaluateUtil.SotResult res = new EvaluateUtil.SotResult();
-            		SotResultStruct res = new SotResultStruct();
-            		res = EvaluateUtil.sotEvaluate(gtPath, unzipPath);
-            		log.info("总体评测结果完成。");
-                    */
+
                     
                     // 处理Description文件
                     String destrueFileName= "des" + String.valueOf(user_id) + addname + desfileName;
                     // 设置存放文件的路径
-                    path = detDir + destrueFileName;
+                    path = motDir + destrueFileName;
                     // 转存文件到指定的路径
                     desfile.transferTo(new File(path));
                     
                     String codetrueFileName = "";
                     if(codefile != null) {
-                    	String codetype=null;// 文件类型
+                    	String comotype=null;// 文件类型
                         String codefileName=codefile.getOriginalFilename();// 文件原名称
-                        codetype=codefileName.indexOf(".")!=-1?codefileName.substring(codefileName.lastIndexOf(".")+1, codefileName.length()):null; 
+                        comotype=codefileName.indexOf(".")!=-1?codefileName.substring(codefileName.lastIndexOf(".")+1, codefileName.length()):null; 
                       //处理Code文件
-                        if (codetype!=null) {// 判断文件类型是否为空
-                            if ("zip".equals(codetype.toUpperCase())) {           	
+                        if (comotype!=null) {// 判断文件类型是否为空
+                            if ("zip".equals(comotype.toUpperCase())) {           	
                             	codetrueFileName= "code" + String.valueOf(user_id) + addname + codefileName;
                                 // 设置存放文件的路径
-                                path = detDir + codetrueFileName;
+                                path = motDir + codetrueFileName;
                                 // 转存文件到指定的路径
                                 codefile.transferTo(new File(path));
                             }
                         }
                     }
                     
-                    
                     UserService userService = new UserService();
                     User user = new User();
                     user = userService.findUserByID(user_id);
-                    user.setDetcnt(user.getDetcnt() - 1);
+                    user.setMotcnt(user.getMotcnt() - 1);
                     String email = user.getEmail();
+                    
                     Json json = new Json();
                     try {
                     	userService.edit(user);
                     	SendEmailUtil.sendEmail(email);
-                    	log.info("Update user DetCnt.");
+                    	log.info("Update user MotCnt.");
                     	json.setSuccess(true);
-            			json.setMsg("Update user DetCnt success!");
+            			json.setMsg("Update user MotCnt!");            			
                     } catch(Exception e) {
             			json.setMsg(e.getMessage());
             		}
                     
+                    
                 }
             }
 		}
+		
 		jsonObject.put("errno",0);  
         jsonObject.put("data",jsonArray);
 		return jsonObject;

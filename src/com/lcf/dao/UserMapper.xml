@@ -10,10 +10,17 @@
 	    <result column="USER_COUNTRY" property="country" jdbcType="VARCHAR" />
 	    <result column="USER_ORG" property="org" jdbcType="VARCHAR" />
 	    <result column="USER_REGDATE" property="regtime" jdbcType="VARCHAR" />
-	    <result column="USER_RIGHT" property="right" jdbcType="NUMERIC" />
+	    <result column="USER_RIGHT" property="right" jdbcType="NUMERIC" />    
+	    <result column="USER_DETCNT" property="detcnt" jdbcType="NUMERIC" />
+	    <result column="USER_SOTCNT" property="sotcnt" jdbcType="NUMERIC" />
+	    <result column="USER_MOTCNT" property="motcnt" jdbcType="NUMERIC" />
  	</resultMap>
 	<select id="findUserByName" resultMap="BaseResultMap">
 		SELECT * FROM user WHERE USER_UNAME = #{username} 
+	</select>
+	
+	<select id="findUserByID" resultMap="BaseResultMap">
+		SELECT * FROM user WHERE USER_UNAME = #{id} 
 	</select>
 	
 	<select id="getUserList" resultMap="BaseResultMap" parameterType="com.lcf.model.User">
@@ -32,9 +39,18 @@
 		</if> 
 		<if test="user.org!=null and user.org!=''">
 		AND USER_ORG like concat('%',#{user.org},'%')
-		</if>
+		</if>		
 		<if test="user.right!=null and user.right!=''">
-		AND USER_RIGHT = #{user.right}
+		AND USER_RIGHT = #{user.right},
+		</if>
+		<if test="user.detcnt!=null and user.detcnt!=''">
+		AND USER_DETCNT = #{user.detcnt},
+		</if>
+		<if test="user.sotcnt!=null and user.sotcnt!=''">
+		AND USER_SOTCNT = #{user.sotcnt},
+		</if>
+		<if test="user.motcnt!=null and user.motcnt!=''">
+		AND USER_MOTCNT = #{user.motcnt}
 		</if>
 	</select>
 	
@@ -48,6 +64,9 @@
             <if test="org !=null and org !=''">USER_ORG,</if>
             <if test="regtime !=null and regtime !=''">USER_REGDATE,</if>
             <if test="right !=null and right !=''">USER_RIGHT</if>
+            <if test="detcnt !=null and detcnt !=''">USER_DETCNT</if>
+            <if test="sotcnt !=null and sotcnt !=''">USER_SOTCNT</if>
+            <if test="motcnt !=null and motcnt !=''">USER_MOTCNT</if>
             </trim>)values(<trim suffixOverrides=",">
             <if test="username !=null and username !=''">#{username},</if>
             <if test="password !=null and password !=''">#{password},</if>
@@ -56,7 +75,10 @@
             <if test="realname !=null and realname !=''">#{realname},</if>
             <if test="org !=null and org !=''">#{org},</if>
             <if test="regtime !=null and regtime !=''">#{regtime},</if>
-            <if test="right !=null and right !=''">#{right}</if>
+            <if test="right !=null and right !=''">#{right},</if>
+            <if test="detcnt !=null and detcnt !=''">#{detcnt},</if>
+            <if test="sotcnt !=null and sotcnt !=''">#{sotcnt},</if>
+            <if test="motcnt !=null and motcnt !=''">#{motcnt}</if>
             </trim>)
 	</insert>
 	
@@ -69,7 +91,10 @@
             <if test="country !=null and country !=''">USER_COUNTRY  = #{country},</if>
             <if test="realname !=null and realname !=''">USER_NAME  = #{realname},</if>
             <if test="org !=null and org !=''">USER_ORG = #{org}</if>
-            <if test="right !=null and right !=''">USER_RIGHT = #{right}</if>
+            <if test="right !=null and right !=''">USER_RIGHT = #{right},</if>
+            <if test="detcnt!=null and detcnt!=''">USER_DETCNT = #{detcnt},</if>
+			<if test="sotcnt!=null and sotcnt!=''">USER_SOTCNT = #{sotcnt},</if>
+			<if test="motcnt!=null and motcnt!=''">USER_MOTCNT = #{motcnt}</if>
     	</set>
     	WHERE USER_ID = #{id}
     </update>

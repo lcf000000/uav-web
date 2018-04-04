@@ -17,6 +17,10 @@ public class User {
 	private String org;
 	private String regtime;
 	private int right;
+	private int motcnt;
+	private int detcnt;
+	private int sotcnt;
+	
 	public int getId() {
 		return id;
 	}
@@ -70,5 +74,23 @@ public class User {
 	}
 	public void setRight(int right) {
 		this.right = right;
+	}
+	public int getMotcnt() {
+		return motcnt;
+	}
+	public void setMotcnt(int motcnt) {
+		this.motcnt = motcnt;
+	}
+	public int getSotcnt() {
+		return sotcnt;
+	}
+	public void setSotcnt(int sotcnt) {
+		this.sotcnt = sotcnt;
+	}
+	public int getDetcnt() {
+		return detcnt;
+	}
+	public void setDetcnt(int detcnt) {
+		this.detcnt = detcnt;
 	}
 }
