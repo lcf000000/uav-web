@@ -80,7 +80,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<div class="col-md-2">
 				</div>
 				<div class="col-md-8" id="show-info" style="word-wrap:break-word;">
-				<form class="form-horizontal col-sm-offset-2 col-md-offset-2" method="post" id="detSubmit_form">
+				<form class="form-horizontal col-sm-offset-2 col-md-offset-2" method="post" id="vdetSubmit_form">
 					<h3 class="form-title">Submit your detector</h3>
 					<br/>
 					<div class="col-sm-9 col-md-9">
@@ -130,7 +130,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<input class="form-control required"  onblur="checkPassword(this)" id="password" type="text" placeholder="Author,  Title,  Conference/Journal,  Year" name="sotlaug"/>
 						</div>
 						<div class="form-group">
-							<input onclick="submitDet()" class="btn btn-group-sm btn-primary pull-right" value="Submit"/>
+							<p class="help-block" style="color:#F00"><span id="vdetcnt"></span> remaining submission opportunities</p><input onclick="submitDet()" disabled="disabled" id="submitVdet" class="btn btn-group-sm btn-primary pull-right" value="Submit"/>
 						</div>
 					</div>
 				</form>

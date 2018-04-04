@@ -68,6 +68,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<li><a href="#" onclick="loginOut()" class="navia"><i class="fa fa-sign-out"></i>  &nbsp; Sign out</a></li>
 							<li><a href="<%=path%>/my/myInfo" class="navia"><i class="fa fa-user"></i>  &nbsp; Welcome, ${user.username}</a>
 							<input type="hidden" name="id" id="user_id" value="${user.id}">
+							<input type="hidden" name="motcnt" id="motcnt" value="${user.motcnt}">
 						</c:if>
 					</ul>
 
@@ -131,7 +132,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<input class="form-control required" type="text" name="reference" placeholder="Author,  Title,  Conference/Journal,  Year"/>
 						</div>
 						<div class="form-group">
-							<input onclick="subtMot()" disabled="disabled" id="submitMot" class="btn btn-group-sm btn-primary pull-right" value="Submit"/>
+							<p class="help-block" style="color:#F00">${user.motcnt} remaining submission opportunities</p><input onclick="subtMot()" disabled="disabled" id="submitMot" class="btn btn-group-sm btn-primary pull-right" value="Submit"/>
 						</div>
 					</div>
 				</form>

@@ -18,6 +18,7 @@ var language_ok = false;
 var enviroment_ok = false;
 var results_ok = false;
 var description_ok = true;
+var sotcnt = 5;
 function checkName(trackername){
 	var name = trackername.value;
     if(name.length == 0){
@@ -90,56 +91,60 @@ function enableSubmit(){
 var i= 3;
 function fun() {
 	if (i == 0) { 
-		window.location.href = ctx + "/my/yourResults"; 
+		window.location.href = ctx + "/views/index"; 
 		clearInterval(intervalid); 
 	}
 	i--;
 }
 function subtSot(){
 	var submit = document.getElementById('submitSot');
-	if(name_ok && language_ok && enviroment_ok && description_ok && results_ok){
-		submit.removeAttribute("disabled");
-		var formData = new FormData($("#sotSubmit_form")[0]);
-		var trackerName = document.getElementById('trackerName');
-		if(trackerName.hasOwnProperty('readonly')){
-			$.ajax({
-		        url: ctx+"/sotres/updateSotbyId",//提交地址
-		        type:"POST",
-		        dataType:"json",
-		        data:formData,//将表单数据序列化,
-		        contentType: false, //必须
-		        processData: false, //必须
-		        success:function(result){
-		        	if(result.success){
-		        		toastr.success("Update successfully, jump after 3 seconds......");
-		        		var intervalid;
-		        		intervalid = setInterval("fun()", 1000);
-		        	}else{
-		        		toastr.error("Update failed, please re-update or contact us!");
-		        	}
-		        }
-		    });
+	if(sotcnt>0){
+		if(name_ok && language_ok && enviroment_ok && description_ok && results_ok){
+			submit.removeAttribute("disabled");
+			var formData = new FormData($("#sotSubmit_form")[0]);
+			var trackerName = document.getElementById('trackerName');
+			if(trackerName.hasOwnProperty('readonly')){
+				$.ajax({
+			        url: ctx+"/sotres/updateSotbyId",//提交地址
+			        type:"POST",
+			        dataType:"json",
+			        data:formData,//将表单数据序列化,
+			        contentType: false, //必须
+			        processData: false, //必须
+			        success:function(result){
+			        	if(result.success){
+			        		toastr.success("Update successfully, jump after 3 seconds......");
+			        		var intervalid;
+			        		intervalid = setInterval("fun()", 1000);
+			        	}else{
+			        		toastr.error("Update failed, please re-update or contact us!");
+			        	}
+			        }
+			    });
+			}else{
+				$.ajax({
+			        url: ctx+"/sotres/addres",//提交地址
+			        type:"POST",
+			        dataType:"json",
+			        data:formData,//将表单数据序列化,
+			        contentType: false, //必须
+			        processData: false, //必须
+			        success:function(result){
+			        	if(result.success){
+			        		toastr.success("Submit successfully, jump after 3 seconds......");
+			        		var intervalid;
+			        		intervalid = setInterval("fun()", 1000);
+			        	}else{
+			        		toastr.error("Submit failed, please re-submit or contact us!");
+			        	}
+			        }
+			    });
+			}
 		}else{
-			$.ajax({
-		        url: ctx+"/sotres/addres",//提交地址
-		        type:"POST",
-		        dataType:"json",
-		        data:formData,//将表单数据序列化,
-		        contentType: false, //必须
-		        processData: false, //必须
-		        success:function(result){
-		        	if(result.success){
-		        		toastr.success("Submit successfully, jump after 3 seconds......");
-		        		var intervalid;
-		        		intervalid = setInterval("fun()", 1000);
-		        	}else{
-		        		toastr.error("Submit failed, please re-submit or contact us!");
-		        	}
-		        }
-		    });
+			toastr.error("Check your submission");
 		}
 	}else{
-		toastr.error("Check your submission");
+		toastr.error("Your submission has been exhausted!");
 	}
 }
 function GetQueryString(name)

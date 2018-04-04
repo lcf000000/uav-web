@@ -81,11 +81,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</div>
 				<div class="col-md-4" style="word-wrap:break-word;">
 					<br/>
-					<a href="<%=path%>/my/submitDet" class="btn btn-default btn-lg btn-block">Image detection results submit</a>
-					<a href="<%=path%>/my/submitVdet" class="btn btn-default btn-lg btn-block">Video detection results submit</a>
-					<a href="<%=path%>/my/submitSot" class="btn btn-default btn-lg btn-block">Single-tracking results submit</a>
-					<a href="<%=path%>/my/submitMot" class="btn btn-default btn-lg btn-block">Multi-tracking results submit</a>
-					<a href="<%=path%>/my/myInfo" class="btn btn-default btn-lg btn-block">Your Informations</a>
+					<button onclick="subDet()"  id="subDet" disabled="disabled" class="btn btn-default btn-lg btn-block" >Image detection results submit  &nbsp; &nbsp; ${user.detcnt}/5 times</button>
+					<button onclick="subVdet()" id="subVdet" disabled="disabled" class="btn btn-default btn-lg btn-block" >Video detection results submit  &nbsp; &nbsp; ${user.vdetcnt}/5 times</button>
+					<button onclick="subSot()"  id="subSot" disabled="disabled" class="btn btn-default btn-lg btn-block">Single-tracking results submit  &nbsp; &nbsp; ${user.sotcnt}/5 times</button>
+					<button onclick="subMot()"  id="subMot" disabled="disabled" class="btn btn-default btn-lg btn-block">Multi-tracking results submit  &nbsp; &nbsp; ${user.motcnt}/5 times</button>
+					<button onclick="IntoMy()"  id="IntoMy" class="btn btn-default btn-lg btn-block">Your Informations</button>
 				</div>
 				<div class="col-md-4">
 				</div>

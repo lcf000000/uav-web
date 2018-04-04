@@ -68,6 +68,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<li><a href="#" onclick="loginOut()" class="navia"><i class="fa fa-sign-out"></i>  &nbsp; Sign out</a></li>
 							<li><a href="<%=path%>/my/myInfo" class="navia"><i class="fa fa-user"></i>  &nbsp; Welcome, ${user.username}</a>
 							<input type="hidden" name="id" id="user_id" value="${user.id}">
+							<input type="hidden" name="detcnt" id="detcnt" value="${user.detcnt}">
 						</c:if>
 					</ul>
 
@@ -130,7 +131,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<input class="form-control required"  onblur="checkPassword(this)" id="password" type="text" placeholder="Author,  Title,  Conference/Journal,  Year" name="sotlaug"/>
 						</div>
 						<div class="form-group">
-							<input onclick="submitDet()" class="btn btn-group-sm btn-primary pull-right" value="Submit"/>
+							<p class="help-block" style="color:#F00">${user.detcnt} remaining submission opportunities</p><input onclick="submitDet()" disabled="disabled" id="submitDet" class="btn btn-group-sm btn-primary pull-right" value="Submit"/>
 						</div>
 					</div>
 				</form>
