@@ -37,20 +37,20 @@ body.fh5co-overflow {
 }
 
 a {
-  color: #f7c873;
+  color: #000000;
   -webkit-transition: 0.5s;
   -o-transition: 0.5s;
   transition: 0.5s;
 }
 a:hover, a:focus, a:active {
-  color: #f3ac2b;
+  color: #808080;
   outline: none;
   text-decoration: none;
 }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: "Playfair Display", times, serif;
-  color: #000;
+  color: #000000;
 }
 
 p {

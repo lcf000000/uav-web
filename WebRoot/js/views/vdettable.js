@@ -16,7 +16,7 @@ function getInfo(){
 	$.ajax({
         url:ctx+"/info/getInfoByLoc",//提交地址
         type:"POST",
-        data:{"location":"7"},
+        data:{"location":"14"},
         dataType:"json",
         success:function(info){
         	document.getElementById("vdet-metrics").innerHTML = info.content1;

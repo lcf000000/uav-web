@@ -10,5 +10,4 @@ $(document).ready(function(){
 			        success:function(info){
 			        	document.getElementById("show-info").innerHTML = info.content1;
 			        }
-			    });
-			}
+});}

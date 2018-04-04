@@ -16,7 +16,7 @@ function getInfo(){
 	$.ajax({
         url:ctx+"/info/getInfoByLoc",//提交地址
         type:"POST",
-        data:{"location":"9"},
+        data:{"location":"16"},
         dataType:"json",
         success:function(info){
         	document.getElementById("mot-metrics").innerHTML = info.content1;

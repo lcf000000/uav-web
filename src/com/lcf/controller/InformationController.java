@@ -65,27 +65,37 @@ public class InformationController {
 			if(loc==1){
 				dataO.put("location", "Index welcome");
 			}else if(loc==2){
-				dataO.put("location", "Image-Detection");
+				dataO.put("location", "BM-Idet");
 			}else if(loc==3){
-				dataO.put("location", "Video-Detection");
+				dataO.put("location", "BM-Vdet");
 			}else if(loc==4){
-				dataO.put("location", "Single-Trcking");
+				dataO.put("location", "BM-Sot");
 			}else if(loc==5){
-				dataO.put("location", "Multi-Tracking");
+				dataO.put("location", "BM-Mot");
 			}else if(loc==6){
-				dataO.put("location", "Res-Idet");
+				dataO.put("location", "Results Format");
 			}else if(loc==7){
-				dataO.put("location", "Res-Vdet");
+				dataO.put("location", "Test Guidelines");
 			}else if(loc==8){
-				dataO.put("location", "Res-Sot");
+				dataO.put("location", "Upload Results");
 			}else if(loc==9){
-				dataO.put("location", "Res-Mot");
+				dataO.put("location", "Eva-Idet");
+			}else if(loc==10){
+				dataO.put("location", "Eva-Vdet");
+			}else if(loc==11){
+				dataO.put("location", "Eva-Sot");
+			}else if(loc==12){
+				dataO.put("location", "Eva-Mot");
+			}else if(loc==13){
+				dataO.put("location", "LB-Idet");
 			}else if(loc==14){
-				dataO.put("location", "Instructions");
+				dataO.put("location", "LB-Vdet");
 			}else if(loc==15){
-				dataO.put("location", "FAQ");
+				dataO.put("location", "LB-Sot");
 			}else if(loc==16){
-				dataO.put("location", "People");
+				dataO.put("location", "LB-Mot");
+			}else if(loc==17){
+				dataO.put("location", "FAQ");
 			}else{
 				dataO.put("location", "other");
 			}

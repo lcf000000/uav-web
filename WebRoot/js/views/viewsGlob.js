@@ -6,4 +6,5 @@ function loginOut(){
         	window.location.href = ctx + "/views/index"; 
         }
     });
+	
 }
