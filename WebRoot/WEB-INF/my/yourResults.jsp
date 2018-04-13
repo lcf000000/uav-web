@@ -14,6 +14,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 		<title>UAV DATASET - TJU and GA</title>
+		<!-- JQuery CSS -->
+   		<link href="<%=path%>/css/jquery/toastr.css" rel="stylesheet">
 		<!-- Bootstrap core CSS -->
 		<link href="<%=path%>/css/bootstrap/bootstrap.min.css" rel="stylesheet">
 		<link rel="stylesheet" href="<%=path%>/css/font-awesome/font-awesome.min.css">
@@ -23,7 +25,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	    <!-- DataTables Responsive CSS -->
 	    <link href="<%=path%>/css/datatables/dataTables.responsive.css" rel="stylesheet">
 		<!-- Custom styles for this template -->
-		<link href="<%=path%>/css/jquery/toastr.css" rel="stylesheet">
 		<link href="<%=path%>/css/views/main.css" rel="stylesheet">
 		<link href="<%=path%>/css/views/personal.css" rel="stylesheet">
 		<link href="<%=path%>/css/views/table.css" rel="stylesheet">

@@ -18,7 +18,7 @@ var language_ok = false;
 var enviroment_ok = false;
 var results_ok = false;
 var description_ok = true;
-var vdetcnt = 5;
+var motcnt = 0;
 function checkName(trackername){
 	var name = trackername.value;
     if(name.length == 0){
@@ -98,7 +98,7 @@ function fun() {
 }
 function subtMot(){
 	var submit = document.getElementById('submitMot');
-	if(vdetcnt>0){
+	if(motcnt>0){
 		if(name_ok && language_ok && enviroment_ok && description_ok && results_ok){
 			submit.removeAttribute("disabled");
 			var formData = new FormData($("#motSubmit_form")[0]);
@@ -155,10 +155,24 @@ function GetQueryString(name)
      if(r!=null)return  unescape(r[2]); return null;
 }
 $(document).ready(function(){
+	$.ajax({
+        url:ctx+"/user/findUserById",//提交地址
+        type:"POST",
+        data:{"user_id":$("#user_id").val()},
+        dataType:"json",
+        async:false,
+        success:function(data){
+        	motcnt = parseInt(data[0].motcnt);
+        	document.getElementById('mot').innerHTML = motcnt;
+        	if(motcnt<=0){
+        		toastr.error("Your submission has been exhausted!");
+        	}
+        }
+    });
 	var motid = GetQueryString("motid");
 	var motname = GetQueryString("motname");
+	var trackerName = document.getElementById('trackerName');
 	if(motid!=null&&motname!=null){
-		var trackerName = document.getElementById('trackerName');
 		trackerName.value = motname;
 		trackerName.setAttribute("readonly","readonly");
 	}else{

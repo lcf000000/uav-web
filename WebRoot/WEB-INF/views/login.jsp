@@ -43,11 +43,11 @@
 				<div class="col-sm-9 col-md-9">
 					<div class="form-group">
 						<i class="fa fa-user fa-lg"></i>
-						<input class="form-control required" onblur="checkUsername(this)" type="text" placeholder="Username" name="username" autofocus="autofocus" maxlength="20"/>
+						<input class="form-control required" onblur="checkUsername(this)" type="text" placeholder="Username" name="username" autofocus="autofocus" maxlength="40"/>
 					</div>
 					<div class="form-group">
 							<i class="fa fa-lock fa-lg"></i>
-							<input class="form-control required" onblur="checkPassword(this)" type="password" placeholder="Password" name="password" maxlength="20"/>
+							<input class="form-control required" onblur="checkPassword(this)" type="password" placeholder="Password" name="password" maxlength="40"/>
 					</div>
 					<div class="form-group">
 						<i class="fa fa-check fa-lg"></i>

@@ -14,6 +14,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 		<title>UAV DATASET - TJU and GA</title>
+		<!-- 在bootstrap.min.js 之前引入 -->
+    	<script src="<%=path%>/js/jquery/toastr.js"></script>
+		<!-- JQuery CSS -->
+   		<link href="<%=path%>/css/jquery/toastr.css" rel="stylesheet">
 		<!-- Bootstrap core CSS -->
 		<link href="<%=path%>/css/bootstrap/bootstrap.min.css" rel="stylesheet">
 		<link rel="stylesheet" href="<%=path%>/css/font-awesome/font-awesome.min.css">
@@ -106,6 +110,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<form enctype="multipart/form-data" class="form-horizontal col-sm-offset-2 col-md-offset-2" method="post" id="sotSubmit_form">
 					<h3 class="form-title">Submit your sot tracker</h3>
 					<br/>
+					<input type="hidden" name="user_id" id="user_id" value="${user.id}">
 					<div class="col-sm-9 col-md-9">
 						<div class="form-group">
 							<input type="hidden" name="user_id" id="user_id" value="${user.id}">
@@ -154,7 +159,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<input class="form-control required" type="text" name="reference" placeholder="Author,  Title,  Conference/Journal,  Year"/>
 						</div>
 						<div class="form-group">
-							<p class="help-block" style="color:#F00">${user.sotcnt} remaining submission opportunities</p><input onclick="subtSot()" disabled="disabled" id="submitSot" class="btn btn-group-sm btn-primary pull-right" value="Submit"/>
+							<p class="help-block" style="color:#F00"><span id="sot"></span> remaining submission opportunities</p><input onclick="subtSot()" disabled="disabled" id="submitSot" class="btn btn-group-sm btn-primary pull-right" value="Submit"/>
 						</div>
 					</div>
 				</form>

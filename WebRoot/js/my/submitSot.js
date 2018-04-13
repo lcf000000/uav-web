@@ -18,7 +18,7 @@ var language_ok = false;
 var enviroment_ok = false;
 var results_ok = false;
 var description_ok = true;
-var sotcnt = 5;
+var sotcnt = 0;
 function checkName(trackername){
 	var name = trackername.value;
     if(name.length == 0){
@@ -154,10 +154,24 @@ function GetQueryString(name)
      if(r!=null)return  unescape(r[2]); return null;
 }
 $(document).ready(function(){
+	$.ajax({
+        url:ctx+"/user/findUserById",//提交地址
+        type:"POST",
+        data:{"user_id":$("#user_id").val()},
+        dataType:"json",
+        async:false,
+        success:function(data){
+        	sotcnt = parseInt(data[0].sotcnt);
+        	document.getElementById('sot').innerHTML = sotcnt;
+        	if(sotcnt<=0){
+        		toastr.error("Your submission has been exhausted!");
+        	}
+        }
+    });
 	var sotid = GetQueryString("sotid");
 	var sotname = GetQueryString("sotname");
+	var trackerName = document.getElementById('trackerName');
 	if(sotid!=null&&sotname!=null){
-		var trackerName = document.getElementById('trackerName');
 		trackerName.value = sotname;
 		trackerName.setAttribute("readonly","readonly");
 	}else{

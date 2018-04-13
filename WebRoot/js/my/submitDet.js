@@ -18,7 +18,7 @@ var language_ok = false;
 var enviroment_ok = false;
 var results_ok = false;
 var description_ok = true;
-var vdetcnt = 5;
+var detcnt = 0;
 function checkName(trackername){
 	var name = trackername.value;
     if(name.length == 0){
@@ -98,7 +98,7 @@ function fun() {
 }
 function subtDet(){
 	var submit = document.getElementById('submitDet');
-	if(vdetcnt>0){
+	if(detcnt>0){
 		if(name_ok && language_ok && enviroment_ok && description_ok && results_ok){
 			submit.removeAttribute("disabled");
 			var formData = new FormData($("#detSubmit_form")[0]);
@@ -123,7 +123,7 @@ function subtDet(){
 			    });
 			}else{
 				$.ajax({
-			        url: ctx+"/detres/adddet",//提交地址
+			        url: ctx+"/detres/addres",//提交地址
 			        type:"POST",
 			        dataType:"json",
 			        data:formData,//将表单数据序列化,
@@ -154,10 +154,24 @@ function GetQueryString(name)
      if(r!=null)return  unescape(r[2]); return null;
 }
 $(document).ready(function(){
+	$.ajax({
+        url:ctx+"/user/findUserById",//提交地址
+        type:"POST",
+        data:{"user_id":$("#user_id").val()},
+        dataType:"json",
+        async:false,
+        success:function(data){
+        	detcnt = parseInt(data[0].detcnt);
+        	document.getElementById('det').innerHTML = detcnt;
+        	if(detcnt<=0){
+        		toastr.error("Your submission has been exhausted!");
+        	}
+        }
+    });
 	var detid = GetQueryString("detid");
 	var detname = GetQueryString("detname");
+	var trackerName = document.getElementById('detectorName');
 	if(detid!=null&&detname!=null){
-		var trackerName = document.getElementById('detectorName');
 		trackerName.value = detname;
 		trackerName.setAttribute("readonly","readonly");
 	}else{

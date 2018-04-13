@@ -33,15 +33,15 @@
 				<div class="col-sm-9 col-md-9">
 					<div class="form-group">
 						<i class="fa fa-user fa-lg"></i>
-						<input class="form-control required" onblur="checkUsername(this)" type="text" placeholder="Username" name="username" autofocus="autofocus"/>
+						<input class="form-control required" onblur="checkUsername(this)" type="text" placeholder="Username" name="username" maxlength="40" autofocus="autofocus"/>
 					</div>
 					<div class="form-group">
 							<i class="fa fa-lock fa-lg"></i>
-							<input class="form-control required"  onblur="checkPassword(this)" id="password" type="password" placeholder="Password" name="password"/>
+							<input class="form-control required"  onblur="checkPassword(this)" id="password" type="password" placeholder="Password" maxlength="40" name="password"/>
 					</div>
 					<div class="form-group">
 							<i class="fa fa-check fa-lg"></i>
-							<input class="form-control required" onblur="checkRePassword(this)" type="password" placeholder="Re-type Your Password" name="rpassword"/>
+							<input class="form-control required" onblur="checkRePassword(this)" type="password" placeholder="Re-type Your Password" maxlength="40" name="rpassword"/>
 					</div>
 					<div class="form-group">
 							<i class="fa fa-pencil fa-lg"></i>
@@ -49,7 +49,7 @@
 					</div>
 					<div class="form-group">
 							<i class="fa fa-envelope fa-lg"></i>
-							<input class="form-control eamil" onblur="checkEmail(this)" type="text" placeholder="Email" name="email"/>
+							<input class="form-control eamil" onblur="checkEmail(this)" type="text" placeholder="Email" name="email" maxlength="40"/>
 					</div>
 					<div class="form-group">
 							<i class="fa fa-group fa-lg"></i>
@@ -57,7 +57,7 @@
 					</div>
 					<div class="form-group">
 							<i class="fa fa-globe fa-lg"></i>
-							<input class="form-control required" onblur="checkCountry(this)" type="text" placeholder="Country,Region 's Code, as CN,US..." name="country"/>
+							<input class="form-control required" onblur="checkCountry(this)" type="text" placeholder="Country,Region 's Code, as CN,US..." maxlength="20"name="country"/>
 					</div>
 					<div class="form-group">
 						<input onclick="subReg()" id="submitReg" disabled="disabled" class="btn btn-group-sm btn-success pull-right" value="Sign Up "/>

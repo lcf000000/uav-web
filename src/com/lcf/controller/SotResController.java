@@ -39,7 +39,7 @@ public class SotResController {
 	
 	@RequestMapping(value = "/sotres/addres", method = RequestMethod.POST)
 	@ResponseBody 
-	public JSONObject addSotRes(@RequestParam("resfile") MultipartFile resfile,
+	public JSONObject addSotRes(HttpServletRequest request, @RequestParam("resfile") MultipartFile resfile,
 			@RequestParam("desfile") MultipartFile desfile,
 			@RequestParam("codefile") MultipartFile codefile,
     		@RequestParam String name,
@@ -49,8 +49,7 @@ public class SotResController {
     		@RequestParam String ram,
     		@RequestParam String gpu,
     		@RequestParam(required=false) String reference,
-    		@RequestParam Integer user_id,
-			HttpServletRequest request) throws Exception
+    		@RequestParam Integer user_id) throws Exception
 	{
 		JSONArray jsonArray=new JSONArray();
 		JSONObject jsonObject=new JSONObject();
