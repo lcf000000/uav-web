@@ -19,7 +19,6 @@ import com.lcf.model.dataformat.DataGrid;
 import com.lcf.model.dataformat.Json;
 import com.lcf.model.User;
 import com.lcf.model.VDetRes;
-import com.lcf.service.DetResService;
 import com.lcf.service.UserService;
 import com.lcf.service.VDetResService;
 import com.lcf.model.dataformat.PageBean;
@@ -37,6 +36,7 @@ private final Logger log = LoggerFactory.getLogger(VDetResController.class);
 	@Resource
 	private VDetResService VDetresService; //创建vdetRes服务的对象
 	
+	@SuppressWarnings("unused")
 	@RequestMapping(value = "/vdetres/addres", method = RequestMethod.POST)
 	@ResponseBody 
 	public JSONObject addVDetRes(@RequestParam("resfile") MultipartFile resfile,

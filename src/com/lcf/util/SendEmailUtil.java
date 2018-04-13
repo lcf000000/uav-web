@@ -12,19 +12,24 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
 public class SendEmailUtil {
+	
 	public static void sendEmail(String userEmail) throws Exception {
 		Properties props = new Properties();
+		
+		String emailAddress="tju.drone.vision@gmail.com";
+		String password="VisDrones2018";
 		// 获取邮箱smtp服务器的地址
-		props.setProperty("mail.host", "smtp.163.com");
-		// 是否进行权限验证
-		props.setProperty("mail.smtp.aauth", "true");
+		props.setProperty("mail.host", "smtp.gmail.com");
+        //是否进行权限验证。
+        props.setProperty("mail.smtp.ssl.enable", "true");
+        props.setProperty("mail.smtp.auth", "true");
 		
 		// 权限
 		Authenticator authenticator = new Authenticator() {
 			@Override
             public PasswordAuthentication getPasswordAuthentication() {
                 //填写自己的163邮箱的登录帐号和授权密码，授权密码的获取，在后面会进行讲解。
-                return new PasswordAuthentication("fcbar8@163.com","");
+                return new PasswordAuthentication(emailAddress,password);
             }  
 		};
 		
@@ -44,7 +49,7 @@ public class SendEmailUtil {
         // 创建消息
         Message message = new MimeMessage(session);
         // 发件人      
-        message.setFrom(new InternetAddress("fcbar8@163.com"));
+        message.setFrom(new InternetAddress(emailAddress));
         /**
          *  收件人
          *         第一个参数：
@@ -58,11 +63,11 @@ public class SendEmailUtil {
          *         收件人的地址，或者是一个Address[]，用来装抄送或者暗送人的名单。或者用来群发。可以是相同邮箱服务器的，也可以是不同的
          *         这里我们发送给我们的qq邮箱
          */
-        message.setRecipient(RecipientType.TO, new InternetAddress("wyma@tju.edu.cn"));
+        message.setRecipient(RecipientType.TO, new InternetAddress(userEmail));
         // 主题（标题）
         message.setSubject("VisDrone 2018 Challenge Submission Confirmation");
         // 正文
-        String str = "Dear: <br/>" +
+        String str = "Dear user: <br/>" +
                 "Your result was submitted successfully to VisDrone 2018." +
                 "<br/>" +
                 "<br/>" +
