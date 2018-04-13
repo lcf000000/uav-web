@@ -18,12 +18,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.lcf.model.SotRes;
 import com.lcf.model.User;
 import com.lcf.model.dataformat.DataGrid;
 import com.lcf.model.dataformat.Json;
 import com.lcf.model.dataformat.PageBean;
 import com.lcf.service.UserService;
+import com.lcf.util.SendEmailUtil;
 
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
@@ -191,6 +191,7 @@ public class UserController {
             j.setSuccess(true);
             j.setMsg("Add user success!");
             j.setObj(user);
+            SendEmailUtil.sendEmail(user.getEmail(), false);
         } catch (Exception e) {
             j.setMsg(e.getMessage());
         }

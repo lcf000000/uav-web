@@ -130,7 +130,7 @@ private final Logger log = LoggerFactory.getLogger(MotResController.class);
                     Json json = new Json();
                     try {
                     	userService.edit(user);
-                    	SendEmailUtil.sendEmail(email);
+                    	SendEmailUtil.sendEmail(email, false);
                     	log.info("Update user MotCnt.");
                     	json.setSuccess(true);
             			json.setMsg("Update user MotCnt!");            			
