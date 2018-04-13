@@ -21,7 +21,7 @@
 	</select>
 	
 	<select id="findUserByID" resultMap="BaseResultMap">
-		SELECT * FROM user WHERE USER_UNAME = #{id} 
+		SELECT * FROM user WHERE USER_ID = #{id} 
 	</select>
 	
 	<select id="getUserList" resultMap="BaseResultMap" parameterType="com.lcf.model.User">
@@ -42,19 +42,7 @@
 		AND USER_ORG like concat('%',#{user.org},'%')
 		</if>		
 		<if test="user.right!=null and user.right!=''">
-		AND USER_RIGHT = #{user.right},
-		</if>
-		<if test="user.detcnt!=null and user.detcnt!=''">
-		AND USER_DETCNT = #{user.detcnt},
-		</if>
-		<if test="user.sotcnt!=null and user.sotcnt!=''">
-		AND USER_SOTCNT = #{user.sotcnt},
-		</if>
-		<if test="user.motcnt!=null and user.motcnt!=''">
-		AND USER_MOTCNT = #{user.motcnt},
-		</if>
-		<if test="user.vdetcnt!=null and user.vdetcnt!=''">
-		AND USER_VDETCNT = #{user.vdetcnt}
+		AND USER_RIGHT = #{user.right}
 		</if>
 	</select>
 	

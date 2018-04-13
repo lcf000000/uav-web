@@ -19,63 +19,85 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<link rel="stylesheet" href="<%=path%>/css/font-awesome/font-awesome.min.css">
 		<!-- Custom styles for this template -->
 		<link href="<%=path%>/css/views/main.css" rel="stylesheet">
+		<!-- pignose css -->
+		<link href="<%=path%>/css/views/pignose.layerslider.css" rel="stylesheet" type="text/css" media="all" />
 	</head>
 	<body>
-		<!-- Navigation -->
-		<nav class="navbar navbar-inverse navbar-static-top" role="banner" id="navi">
-			<div class="container">
+		<!-- banner -->
+<div class="ban-top">
+	<div class="container">
+		<div class="top_nav_left">
+			<nav class="navbar navbar-default">
+			  <div class="container-fluid">
+				<!-- Brand and toggle get grouped for better mobile display -->
 				<div class="navbar-header">
-                    <a class="navbar-brand" href="<%=path%>/"><img src="<%=path%>/images/logo-lb.png" alt="logo"></a>
-                </div>
-				<div class="collapse navbar-collapse">
-					<ul class="nav navbar-nav">
-						<li><a href="<%=path%>/" class="navia">Home</a></li>
-						<li class="dropdown">
-                            <a href="#" class="dropdown-toggle navia" data-toggle="dropdown">Benchmarks <i class="fa fa-angle-down"></i></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="<%=path%>/views/getInfo?loc=2" class="navia">Image Detection</a></li>
-                                <li><a href="<%=path%>/views/getInfo?loc=3" class="navia">Video Detection</a></li>
-                                <li><a href="<%=path%>/views/getInfo?loc=4" class="navia">Single-Tracking</a></li>
-                                <li><a href="<%=path%>/views/getInfo?loc=5" class="navia">Multi-Tracking</a></li>
-                            </ul>
-                        </li>
-						<li class="dropdown">
-                            <a href="#" class="dropdown-toggle navia" data-toggle="dropdown">Results <i class="fa fa-angle-down"></i></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="<%=path%>/views/temp" class="navia">Image Detection</a></li>
-                                 <li><a href="<%=path%>/views/temp" class="navia">Video Detection</a></li>
-                                <li><a href="<%=path%>/views/temp" class="navia">Single-Tracking</a></li>
-                                <li><a href="<%=path%>/views/temp" class="navia">Multi-Tracking</a></li>
-                            </ul>
-                        </li>
-                        <li class="dropdown">
-                        	<a href="#" class="dropdown-toggle navia" data-toggle="dropdown">Submit <i class="fa fa-angle-down"></i></a>
-                        	<ul class="dropdown-menu">
-                                <li><a href="<%=path%>/views/getInfo?loc=14" class="navia">Instructions</a></li>
-                                <li><a href="<%=path%>/my/submit" class="navia">Submit Result</a></li>
-                            </ul>
-                        </li>
-						<li><a href="<%=path%>/views/getInfo?loc=15" class="navia">FAQ</a></li>
-						<li><a href="<%=path%>/views/people" class="navia">People</a></li>
-					</ul>
-
-					<ul class="nav navbar-nav navbar-right">
-						<c:if test="${empty sessionScope.user.username}">
-							<li><a href="<%=path%>/views/login" class="navia"><i class="fa fa-sign-in"></i>   &nbsp; Sign in</a></li> 
-							<li><a href="<%=path%>/views/register" class="navia"><i class="fa fa-pencil"></i>  &nbsp; Sign up</a></li>
-						</c:if>
-						<c:if test="${not empty sessionScope.user.username}">
-							<li><a href="#" onclick="loginOut()" class="navia"><i class="fa fa-sign-out"></i>  &nbsp; Sign out</a></li>
-							<li><a href="<%=path%>/my/myInfo" class="navia"><i class="fa fa-user"></i>  &nbsp; Welcome, ${user.username}</a>
-							<input type="hidden" name="id" id="user_id" value="${user.id}">
-							<input type="hidden" name="motcnt" id="motcnt" value="${user.motcnt}">
-						</c:if>
-					</ul>
-
+				  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				  </button>
 				</div>
-				<!--/.nav-collapse -->
-			</div>
-		</nav>
+				<!-- Collect the nav links, forms, and other content for toggling -->
+				<div class="collapse navbar-collapse menu--shylock" id="bs-example-navbar-collapse-1">
+				  <ul class="nav navbar-nav menu__list">
+					<li class="active menu__item menu__item--current"><a class="menu__link" href="<%=path%>/views/index">Home <span class="sr-only">(current)</span></a></li>
+					<li class="dropdown menu__item">
+						<a href="#" class="dropdown-toggle menu__link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Benchmark <span class="caret"></span></a>
+							<ul class="dropdown-menu multi-column columns-1">
+								<ul class="multi-column-dropdown">
+									<li><a href="<%=path%>/views/getInfo?loc=2">Detection in Images</a></li>
+									<li><a href="<%=path%>/views/getInfo?loc=3">Detection in Videos</a></li>
+									<li><a href="<%=path%>/views/getInfo?loc=4">Single-Object Tracking</a></li>
+									<li><a href="<%=path%>/views/getInfo?loc=5">Multi-Object Tracking</a></li>
+								</ul>
+							</ul>
+					</li>
+					<li class="dropdown menu__item">
+						<a href="#" class="dropdown-toggle menu__link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Evaluate <span class="caret"></span></a>
+							<ul class="dropdown-menu multi-column columns-2">
+								<ul class="multi-column-dropdown">
+									<li>Participate:</li>
+									<li><i class="fa fa-gear fa-lg"></i><a href="<%=path%>/views/getInfo?loc=6">&nbsp;&nbsp;Results Format</a></li>
+									<li><i class="fa fa-gear fa-lg"></i><a href="<%=path%>/views/getInfo?loc=7">&nbsp;&nbsp;Test Guidelines</a></li>
+									<li><i class="fa fa-gear fa-lg"></i><a href="<%=path%>/views/getInfo?loc=8">&nbsp;&nbsp;Upload Results</a></li>
+									<li class="divider"></li>
+									<li>Evaluate:</li>
+									<li><i class="fa fa-bar-chart-o fa-lg"></i><a href="<%=path%>/views/getInfo?loc=9">&nbsp;&nbsp;Detection in Images</a></li>
+									<li><i class="fa fa-bar-chart-o fa-lg"></i><a href="<%=path%>/views/getInfo?loc=10">&nbsp;&nbsp;Detection in Videos</a></li>
+									<li><i class="fa fa-bar-chart-o fa-lg"></i><a href="<%=path%>/views/getInfo?loc=11">&nbsp;&nbsp;Single-Object Tracking</a></li>
+									<li><i class="fa fa-bar-chart-o fa-lg"></i><a href="<%=path%>/views/getInfo?loc=12">&nbsp;&nbsp;Multi-Object Tracking</a></li>
+									<li class="divider"></li>
+									<li>Leaderboards:</li>
+									<li><i class="fa fa-bar-chart-o fa-lg"></i><a href="<%=path%>/views/temp">&nbsp;&nbsp;Detection in Images</a></li>
+									<li><i class="fa fa-bar-chart-o fa-lg"></i><a href="<%=path%>/views/temp">&nbsp;&nbsp;Detection in Videos</a></li>
+									<li><i class="fa fa-bar-chart-o fa-lg"></i><a href="<%=path%>/views/temp">&nbsp;&nbsp;Single-Object Tracking</a></li>
+									<li><i class="fa fa-bar-chart-o fa-lg"></i><a href="<%=path%>/views/temp">&nbsp;&nbsp;Multi-Object Tracking</a></li>
+								</ul>
+							</ul>
+					</li>
+					<li class=" menu__item"><a class="menu__link" href="<%=path%>/my/submit">Submit</a></li>
+					<li class=" menu__item"><a class="menu__link" href="<%=path%>/views/getInfo?loc=17">FAQ</a></li>
+					<li class=" menu__item"><a class="menu__link" href="<%=path%>/views/people">People</a></li>
+				  </ul>
+				  <ul class="nav navbar-nav menu__list nav-right">
+					  <c:if test="${empty sessionScope.user.username}">
+						<li class=" menu__item"><a href="<%=path%>/views/login" class="menu__link"><i class="fa fa-sign-in"></i>   &nbsp; Sign in</a></li> 
+						<li class=" menu__item"><a href="<%=path%>/views/register" class="menu__link"><i class="fa fa-pencil"></i>  &nbsp; Sign up</a></li>
+					  </c:if>
+					  <c:if test="${not empty sessionScope.user.username}">
+						<li class=" menu__item"><a href="#" onclick="loginOut()" class="menu__link"><i class="fa fa-sign-out"></i>  &nbsp; Sign out</a></li>
+						<li class=" menu__item"><a href="<%=path%>/my/myInfo" class="menu__link"><i class="fa fa-user"></i>  &nbsp; Welcome, ${user.username}</a>
+						<input type="hidden" name="id" id="user_id" value="${user.id}">
+					  </c:if>
+				  </ul>
+				</div>
+			  </div>
+			</nav>	
+		</div>
+		<div class="clearfix"></div>
+	</div>
+</div>
 		<section>
 			<div class="row">
 				<div class="col-md-2">

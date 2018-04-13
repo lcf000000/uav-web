@@ -196,6 +196,31 @@ public class UserController {
     }
 	
 	/**
+	 * Find User by Id
+	 * @return
+	 */
+	@ResponseBody
+	@RequestMapping(value = "/user/findUserById",method = RequestMethod.POST)
+    public JSONArray findUserById(HttpServletRequest request,HttpServletResponse response,
+    		@RequestParam Integer user_id) {
+		User user = new User();
+		JSONArray jsonA = new JSONArray();
+		try {
+            user = userService.findUserByID(user_id);
+            JSONObject user1 = new JSONObject();
+            log.info(String.valueOf(user.getDetcnt()));
+            user1.put("detcnt", String.valueOf(user.getDetcnt()));  
+            user1.put("vdetcnt", String.valueOf(user.getVDetcnt()));  
+            user1.put("sotcnt", String.valueOf(user.getSotcnt()));
+            user1.put("motcnt", String.valueOf(user.getMotcnt()));
+            jsonA.add(user1);
+        } catch (Exception e) {
+        	log.info(e.getMessage());
+        }
+        return jsonA;
+    }
+	
+	/**
      * 修改用户
      * 
      * @param user
