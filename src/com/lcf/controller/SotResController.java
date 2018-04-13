@@ -36,6 +36,8 @@ public class SotResController {
 	
 	@Resource
 	private SotResService sotresService; //创建sotRes服务的对象
+	@Resource
+	private UserService userService;
 	
 	@RequestMapping(value = "/sotres/addres", method = RequestMethod.POST)
 	@ResponseBody 
@@ -78,11 +80,10 @@ public class SotResController {
                 	// 处理Results文件
                     String restrueFileName= "res" + String.valueOf(user_id) + addname + resfileName;
                     // 设置存放文件的路径
-                    String sotDir = "E:\\test\\sot\\";
-                    String groudtruthPath = "E:\\Project\\resource\\BenchMark\\sot-res\\sot_ann_release\\test";
-                    //path = "E:\\Project\\website\\data\\sot\\" + restrueFileName;
+                    String sotDir = "N:\\evaluate\\";
+                    String groudtruthPath = "N:\\evaluate\\";
                     path = sotDir + restrueFileName;
-                    gtPath = groudtruthPath;
+                    //gtPath = groudtruthPath;
                     log.info("存放文件的路径:"+path);
                     // 转存文件到指定的路径
                     resfile.transferTo(new File(path));
@@ -106,7 +107,7 @@ public class SotResController {
                     // 处理Description文件
                     String destrueFileName= "des" + String.valueOf(user_id) + addname + desfileName;
                     // 设置存放文件的路径
-                    path = "E:\\test\\sot\\" + destrueFileName;
+                    path = "N:\\evaluate\\" + destrueFileName;
                     // 转存文件到指定的路径
                     desfile.transferTo(new File(path));
                     
@@ -186,18 +187,18 @@ public class SotResController {
             		}
             		*/
                     
-                    UserService userService = new UserService();
+                    //UserService userService = new UserService();
                     User user = new User();
-                    user = userService.findUserByID(user_id);
-                    user.setSotcnt(user.getSotcnt() - 1);
+                    user = userService.findUserByID(user_id);                    
                     String email = user.getEmail();
                     Json json = new Json();
                     try {
+                    	user.setSotcnt(user.getSotcnt() - 1);
                     	userService.edit(user);
                     	SendEmailUtil.sendEmail(email, false);
                     	log.info("Update user SotCnt.");
-                    	json.setSuccess(true);
             			json.setMsg("Update user SotCnt success!");
+            			json.setSuccess(true);
                     } catch(Exception e) {
             			json.setMsg(e.getMessage());
             		}

@@ -35,6 +35,8 @@ private final Logger log = LoggerFactory.getLogger(DetResController.class);
 	
 	@Resource
 	private DetResService DetresService; //创建detRes服务的对象
+	@Resource
+	private UserService userService;
 	
 	@SuppressWarnings("unused")
 	@RequestMapping(value = "/detres/addres", method = RequestMethod.POST)
@@ -83,11 +85,10 @@ private final Logger log = LoggerFactory.getLogger(DetResController.class);
                     String resfilePath = restrueFileName.substring(0, dot);
                     // 设置存放文件的路径
                     String detDir = "N:/evaluate/dettest/userres/";
-                    String groudtruthPath = "N:/evaluate/dettest/gt/";
-                    //path = "E:\\Project\\website\\data\\det\\" + restrueFileName;
+                    //String groudtruthPath = "N:/evaluate/dettest/gt/";
                     path = detDir + restrueFileName;
                     String unzipPath = detDir + resfilePath + '/';
-                    gtPath = groudtruthPath;
+                    //gtPath = groudtruthPath;
                     log.info("存放文件的路径:"+path);
                     // 转存文件到指定的路径
                     resfile.transferTo(new File(path));
@@ -133,10 +134,8 @@ private final Logger log = LoggerFactory.getLogger(DetResController.class);
                     }
                     
                     
-                    UserService userService = new UserService();
                     User user = new User();
-                    user = userService.findUserByID(user_id);
-                    user.setDetcnt(user.getDetcnt() - 1);
+                    user = userService.findUserByID(user_id);                    
                     String email = user.getEmail();
                     Json json = new Json();
                     try {
@@ -149,6 +148,7 @@ private final Logger log = LoggerFactory.getLogger(DetResController.class);
             			json.setMsg(e.getMessage());
             		}
                     
+                    user.setDetcnt(user.getDetcnt() - 1);
                 }
             }
 		}

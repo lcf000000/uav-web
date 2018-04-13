@@ -38,6 +38,8 @@ private final Logger log = LoggerFactory.getLogger(MotResController.class);
 	
 	@Resource
 	private MotResService MotresService; //创建motRes服务的对象
+	@Resource
+	private UserService userService;
 	
 	@SuppressWarnings("unused")
 	@RequestMapping(value = "/motres/addres", method = RequestMethod.POST)
@@ -86,11 +88,10 @@ private final Logger log = LoggerFactory.getLogger(MotResController.class);
                     String resfilePath = restrueFileName.substring(0, dot);
                     // 设置存放文件的路径
                     String motDir = "N:/evaluate/mottest/userres/";
-                    String groudtruthPath = "N:/evaluate/mottest/gt/";
-                    //path = "E:\\Project\\website\\data\\mot\\" + restrueFileName;
+                    //String groudtruthPath = "N:/evaluate/mottest/gt/";
                     path = motDir + restrueFileName;
                     String unzipPath = motDir + resfilePath + '/';
-                    gtPath = groudtruthPath;
+                    //gtPath = groudtruthPath;
                     log.info("存放文件的路径:"+path);
                     // 转存文件到指定的路径
                     resfile.transferTo(new File(path));
@@ -121,10 +122,9 @@ private final Logger log = LoggerFactory.getLogger(MotResController.class);
                         }
                     }
                     
-                    UserService userService = new UserService();
                     User user = new User();
                     user = userService.findUserByID(user_id);
-                    user.setMotcnt(user.getMotcnt() - 1);
+                    
                     String email = user.getEmail();
                     
                     Json json = new Json();
@@ -138,7 +138,7 @@ private final Logger log = LoggerFactory.getLogger(MotResController.class);
             			json.setMsg(e.getMessage());
             		}
                     
-                    
+                    user.setMotcnt(user.getMotcnt() - 1);
                 }
             }
 		}
