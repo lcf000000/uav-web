@@ -194,7 +194,7 @@ public class SotResController {
                     Json json = new Json();
                     try {
                     	userService.edit(user);
-                    	SendEmailUtil.sendEmail(email);
+                    	SendEmailUtil.sendEmail(email, false);
                     	log.info("Update user SotCnt.");
                     	json.setSuccess(true);
             			json.setMsg("Update user SotCnt success!");

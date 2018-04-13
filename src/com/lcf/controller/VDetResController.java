@@ -141,7 +141,7 @@ private final Logger log = LoggerFactory.getLogger(VDetResController.class);
                     Json json = new Json();
                     try {
                     	userService.edit(user);
-                    	SendEmailUtil.sendEmail(email);
+                    	SendEmailUtil.sendEmail(email, false);
                     	log.info("Update user DetCnt.");
                     	json.setSuccess(true);
             			json.setMsg("Update user DetCnt success!");

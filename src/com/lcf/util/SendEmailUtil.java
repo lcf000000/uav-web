@@ -13,7 +13,7 @@ import javax.mail.internet.MimeMessage;
 
 public class SendEmailUtil {
 	
-	public static void sendEmail(String userEmail) throws Exception {
+	public static void sendEmail(String userEmail, boolean flag) throws Exception {
 		Properties props = new Properties();
 		
 		String emailAddress="tju.drone.vision@gmail.com";
@@ -65,15 +65,31 @@ public class SendEmailUtil {
          */
         message.setRecipient(RecipientType.TO, new InternetAddress(userEmail));
         // 主题（标题）
-        message.setSubject("VisDrone 2018 Challenge Submission Confirmation");
-        // 正文
-        String str = "Dear user: <br/>" +
-                "Your result was submitted successfully to VisDrone 2018." +
-                "<br/>" +
-                "<br/>" +
-                "Thank you for your submittion.<br/>" +
-                "Sincerely,<br/>" +
-                "";
+        
+        String str;
+        // Sign up
+        if (flag) {
+        	message.setSubject("VisDrone 2018 Challenge Sign Up Confirmation");
+            // 正文
+            str = "Dear user: <br/>" +
+                    "You have sign up successfully to VisDrone 2018." +
+                    "<br/>" +
+                    "<br/>" +
+                    "Thanks for your attention.<br/>" +
+                    "Sincerely,<br/>" +
+                    "";
+        } else {
+        	// Submission
+        	message.setSubject("VisDrone 2018 Challenge Submission Confirmation");
+        	// 正文
+        	str = "Dear user: <br/>" +
+        			"Your result was submitted successfully to VisDrone 2018." +
+        			"<br/>" +
+        			"<br/>" +
+        			"Thanks for your submittion.<br/>" +
+        			"Sincerely,<br/>" +
+        			"";
+        }
         // 设置编码，防止发送的内容中文乱码。
         message.setContent(str, "text/html;charset=UTF-8");
 
