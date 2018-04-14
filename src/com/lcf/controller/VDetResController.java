@@ -23,6 +23,7 @@ import com.lcf.service.UserService;
 import com.lcf.service.VDetResService;
 import com.lcf.model.dataformat.PageBean;
 import com.lcf.util.UnzipFileUtil;
+import com.lcf.util.CheckDirUtil;
 import com.lcf.util.EvaluateUtil;
 import com.lcf.util.SendEmailUtil;
 import net.sf.json.JSONArray;
@@ -41,7 +42,7 @@ private final Logger log = LoggerFactory.getLogger(VDetResController.class);
 	@SuppressWarnings("unused")
 	@RequestMapping(value = "/vdetres/addres", method = RequestMethod.POST)
 	@ResponseBody 
-	public JSONObject addVDetRes(@RequestParam("resfile") MultipartFile resfile,
+	public Json addVDetRes(@RequestParam("resfile") MultipartFile resfile,
 			@RequestParam("desfile") MultipartFile desfile,
 			@RequestParam("codefile") MultipartFile codefile,
     		@RequestParam String name,
@@ -54,6 +55,7 @@ private final Logger log = LoggerFactory.getLogger(VDetResController.class);
     		@RequestParam Integer user_id,
 			HttpServletRequest request) throws Exception {
 		
+		Json json = new Json();
 		JSONArray jsonArray=new JSONArray();
 		JSONObject jsonObject=new JSONObject();
 		String path=null;// 文件路径
@@ -84,35 +86,23 @@ private final Logger log = LoggerFactory.getLogger(VDetResController.class);
                     int dot = restrueFileName.lastIndexOf('.');
                     String resfilePath = restrueFileName.substring(0, dot);
                     // 设置存放文件的路径
-                    String detDir = "N:/evaluate/dettest/userres/";
-                    //String groudtruthPath = "N:/evaluate/dettest/gt/";
-                    path = detDir + restrueFileName;
-                    String unzipPath = detDir + resfilePath + '/';
-                    //gtPath = groudtruthPath;
+                    String vdetDir = CheckDirUtil.checkDir("VDet\\", user_id);
+                    
+                    String resPath = vdetDir + "res\\";              
+                    path = resPath + restrueFileName;
+
                     log.info("存放文件的路径:"+path);
                     // 转存文件到指定的路径
                     resfile.transferTo(new File(path));
                     log.info("文件成功上传到指定目录下");
                     
-                    /*
-                  //解压文件
-                    try {
-                    	UnzipFileUtil.unZipFiles(path, detDir);
-                    } catch (Exception e) {
-                    	log.debug(e.getMessage());
-                    }
-                    //解析文件 得出结果
-                                       
-                    //EvaluateUtil.SotResult res = new EvaluateUtil.SotResult();
-            		SotResultStruct res = new SotResultStruct();
-            		res = EvaluateUtil.sotEvaluate(gtPath, unzipPath);
-            		log.info("总体评测结果完成。");
-                    */
                     
                     // 处理Description文件
                     String destrueFileName= "des" + String.valueOf(user_id) + addname + desfileName;
                     // 设置存放文件的路径
-                    path = detDir + destrueFileName;
+                    String desPath = vdetDir + "des\\";                   
+                    // 设置存放文件的路径
+                    path = desPath + destrueFileName;
                     // 转存文件到指定的路径
                     desfile.transferTo(new File(path));
                     
@@ -121,12 +111,13 @@ private final Logger log = LoggerFactory.getLogger(VDetResController.class);
                     	String codetype=null;// 文件类型
                         String codefileName=codefile.getOriginalFilename();// 文件原名称
                         codetype=codefileName.indexOf(".")!=-1?codefileName.substring(codefileName.lastIndexOf(".")+1, codefileName.length()):null; 
-                      //处理Code文件
+                        //处理Code文件
                         if (codetype!=null) {// 判断文件类型是否为空
-                            if ("zip".equals(codetype.toUpperCase())) {           	
+                            if ("zip".equals(codetype.toLowerCase())) {           	
                             	codetrueFileName= "code" + String.valueOf(user_id) + addname + codefileName;
                                 // 设置存放文件的路径
-                                path = detDir + codetrueFileName;
+                            	String codePath = vdetDir + "code\\";                           	
+                                path = codePath + codetrueFileName;
                                 // 转存文件到指定的路径
                                 codefile.transferTo(new File(path));
                             }
@@ -137,10 +128,9 @@ private final Logger log = LoggerFactory.getLogger(VDetResController.class);
                     User user = new User();
                     user = userService.findUserByID(user_id);                 
                     String email = user.getEmail();
-                    Json json = new Json();
                     try {
                     	userService.edit(user);
-                    	SendEmailUtil.sendEmail(email, false);
+                    	//SendEmailUtil.sendEmail(email, false);
                     	log.info("Update user DetCnt.");
                     	json.setSuccess(true);
             			json.setMsg("Update user DetCnt success!");
@@ -151,9 +141,8 @@ private final Logger log = LoggerFactory.getLogger(VDetResController.class);
                 }
             }
 		}
-		jsonObject.put("errno",0);  
-        jsonObject.put("data",jsonArray);
-		return jsonObject;
+
+		return json;
 	}
 
 }

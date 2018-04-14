@@ -19,7 +19,7 @@ import org.slf4j.LoggerFactory;
 public class UnzipFileUtil {
 	
 	
-	private final static Logger log = LoggerFactory.getLogger(EvaluateUtil.class);
+	private final static Logger log = LoggerFactory.getLogger(UnzipFileUtil.class);
 
 	/**
 	 * 解压到指定目录

@@ -25,6 +25,7 @@ import com.lcf.model.dataformat.PageBean;
 import com.lcf.util.UnzipFileUtil;
 import com.lcf.util.EvaluateUtil;
 import com.lcf.util.SendEmailUtil;
+import com.lcf.util.CheckDirUtil;
 import com.lcf.util.common.SotResultStruct;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
@@ -41,7 +42,7 @@ public class SotResController {
 	
 	@RequestMapping(value = "/sotres/addres", method = RequestMethod.POST)
 	@ResponseBody 
-	public JSONObject addSotRes(HttpServletRequest request, @RequestParam("resfile") MultipartFile resfile,
+	public Json addSotRes(HttpServletRequest request, @RequestParam("resfile") MultipartFile resfile,
 			@RequestParam("desfile") MultipartFile desfile,
 			@RequestParam("codefile") MultipartFile codefile,
     		@RequestParam String name,
@@ -53,6 +54,7 @@ public class SotResController {
     		@RequestParam(required=false) String reference,
     		@RequestParam Integer user_id) throws Exception
 	{
+		Json json = new Json();
 		JSONArray jsonArray=new JSONArray();
 		JSONObject jsonObject=new JSONObject();
 		String path=null;// 文件路径
@@ -80,50 +82,40 @@ public class SotResController {
                 	// 处理Results文件
                     String restrueFileName= "res" + String.valueOf(user_id) + addname + resfileName;
                     // 设置存放文件的路径
-                    String sotDir = "N:\\evaluate\\";
-                    String groudtruthPath = "N:\\evaluate\\";
-                    path = sotDir + restrueFileName;
-                    //gtPath = groudtruthPath;
+                    String sotDir = CheckDirUtil.checkDir("Sot\\", user_id);
+                    
+                    String resPath = sotDir + "res\\";              
+                    path = resPath + restrueFileName;
+                    
                     log.info("存放文件的路径:"+path);
                     // 转存文件到指定的路径
                     resfile.transferTo(new File(path));
-                    log.info("文件成功上传到指定目录下");
-                    
-                    /*
-                  //解压文件
-                    try {
-                    	UnzipFileUtil.unZipFiles(path, sotDir);
-                    } catch (Exception e) {
-                    	log.debug(e.getMessage());
-                    }
-                    //解析文件 得出结果
-                                       
-                    //EvaluateUtil.SotResult res = new EvaluateUtil.SotResult();
-            		SotResultStruct res = new SotResultStruct();
-            		res = EvaluateUtil.sotEvaluate(gtPath, path);
-            		log.info("总体评测结果完成。");
-                    */
+                    log.info("文件成功上传到指定目录下");                   
                     
                     // 处理Description文件
                     String destrueFileName= "des" + String.valueOf(user_id) + addname + desfileName;
+                    String desPath = sotDir + "des\\";                   
                     // 设置存放文件的路径
-                    path = "N:\\evaluate\\" + destrueFileName;
+                    path = desPath + destrueFileName;
                     // 转存文件到指定的路径
                     desfile.transferTo(new File(path));
                     
-                    String codetrueFileName = "";
+                    String codetrueFileName = "";                   
                     if(codefile != null) {
                     	String codetype=null;// 文件类型
                         String codefileName=codefile.getOriginalFilename();// 文件原名称
                         codetype=codefileName.indexOf(".")!=-1?codefileName.substring(codefileName.lastIndexOf(".")+1, codefileName.length()):null; 
-                      //处理Code文件
+                        //处理Code文件
+                        log.info("Code Type:" + codetype);
                         if (codetype!=null) {// 判断文件类型是否为空
-                            if ("zip".equals(codetype.toUpperCase())) {           	
+                            if ("zip".equals(codetype.toLowerCase())) {           	
                             	codetrueFileName= "code" + String.valueOf(user_id) + addname + codefileName;
                                 // 设置存放文件的路径
-                                path = sotDir + codetrueFileName;
+                            	String codePath = sotDir + "code\\";                           	
+                                path = codePath + codetrueFileName;
                                 // 转存文件到指定的路径
                                 codefile.transferTo(new File(path));
+                                log.info("Code transfer done.");
                             }
                         }
                     }
@@ -190,8 +182,7 @@ public class SotResController {
                     //UserService userService = new UserService();
                     User user = new User();
                     user = userService.findUserByID(user_id);                    
-                    String email = user.getEmail();
-                    Json json = new Json();
+                    String email = user.getEmail();                  
                     try {
                     	user.setSotcnt(user.getSotcnt() - 1);
                     	userService.edit(user);
@@ -212,9 +203,10 @@ public class SotResController {
         }else {
         	log.info("没有找到相对应的文件");
         }
-        jsonObject.put("errno",0);  
-        jsonObject.put("data",jsonArray);
-        return jsonObject;
+        //jsonObject.put("errno",0);  
+        //jsonObject.put("data",jsonArray);
+        //return jsonObject;
+		return json;
 	}
 	
 	@RequestMapping(value = "/sotres/getSotbyUserid", method = RequestMethod.POST)
