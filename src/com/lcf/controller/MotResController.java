@@ -115,7 +115,7 @@ private final Logger log = LoggerFactory.getLogger(MotResController.class);
                     	String comotype=null;// 文件类型
                         String codefileName=codefile.getOriginalFilename();// 文件原名称
                         comotype=codefileName.indexOf(".")!=-1?codefileName.substring(codefileName.lastIndexOf(".")+1, codefileName.length()):null; 
-                      //处理Code文件
+                        //处理Code文件
                         if (comotype!=null) {// 判断文件类型是否为空
                             if ("zip".equals(comotype.toLowerCase())) {           	
                             	codetrueFileName= "code" + String.valueOf(user_id) + addname + codefileName;
@@ -134,7 +134,7 @@ private final Logger log = LoggerFactory.getLogger(MotResController.class);
                                       
                     try {
                     	userService.edit(user);
-                    	//SendEmailUtil.sendEmail(email, false);
+                    	SendEmailUtil.sendEmail(email, false);
                     	log.info("Update user MotCnt.");
                     	json.setSuccess(true);
             			json.setMsg("Update user MotCnt!");            			

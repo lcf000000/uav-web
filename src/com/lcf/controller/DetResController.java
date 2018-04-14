@@ -111,7 +111,7 @@ private final Logger log = LoggerFactory.getLogger(DetResController.class);
                     	String codetype=null;// 文件类型
                         String codefileName=codefile.getOriginalFilename();// 文件原名称
                         codetype=codefileName.indexOf(".")!=-1?codefileName.substring(codefileName.lastIndexOf(".")+1, codefileName.length()):null; 
-                      //处理Code文件
+                        //处理Code文件
                         if (codetype!=null) {// 判断文件类型是否为空
                             if ("zip".equals(codetype.toLowerCase())) {           	
                             	codetrueFileName= "code" + String.valueOf(user_id) + addname + codefileName;
@@ -130,7 +130,7 @@ private final Logger log = LoggerFactory.getLogger(DetResController.class);
                     String email = user.getEmail();
                     try {
                     	userService.edit(user);
-                    	//SendEmailUtil.sendEmail(email, false);
+                    	SendEmailUtil.sendEmail(email, false);
                     	log.info("Update user DetCnt.");
                     	json.setSuccess(true);
             			json.setMsg("Update user DetCnt success!");
