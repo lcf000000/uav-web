@@ -45,20 +45,61 @@ h4{
 
 }
 p{
-	font-size: 15px;
+	font-size: 16px;
 	font-family: "Open Sans";
+}
+li,span,i,font{
+	font-family: "Open Sans";
+	font-size:16px; 
+}
 }
 
 
 span{
-	font-size: 20px;
+	font-size: 16px;
 }
+
 people{
 	font-size: 8px;
     font-family: "Roboto", arial, sans-serif;
     color: #999999;
     margin-bottom: 20px;
     display: block;
+}
+#content-h {
+    position: relative;
+    /* background: #fff; */
+    padding: 30px 0 0px 0;
+}
+.box-hang {
+	margin-left:20px;
+	margin:0 auto;
+	white-space:nowrap;
+	font-size: 13px ;
+	text-transform : capitalize;
+	width: 470px;
+	border: 0px solid #D4D4D4;
+	display: inline-block;
+}
+.box-area-hang{
+	   margin:0 auto;
+	   margin-left:40px;
+    
+    /* padding-top: 0; */
+      height: 218px;
+      float: left;
+      text-align:justify;
+   
+}
+.box-area-hang-right{
+	
+	
+    
+    /* padding-top: 0; */
+    height: 218px;
+    float: right;
+    text-align:inherit;
+   
 }
 .ban-top{
 	background:#000;

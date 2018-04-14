@@ -113,7 +113,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				  </ul>
 				</div>
 			  </div>
-			</nav>		
+			</nav>	
 		</div>
 		<div class="clearfix"></div>
 	</div>
@@ -134,33 +134,58 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<div class="row fh5co-post-entry">
 							<article class="col-lg-3 col-md-3 col-sm-3 col-xs-6 col-xxs-12 animate-box">
 								<figure>
-									<a href="http://cs.tju.edu.cn/faculty/zhupengfei/faculty-standard/"><img src="<%=path%>/images/people/1.jpg" alt="Image" class="img-responsive"></a>
+									<a href="http://cs.tju.edu.cn/faculty/zhupengfei/faculty-standard/"><img src="<%=path%>/images/people/1.jpg" alt="Image" class="img-responsive"style= "margin: 0 auto;"></a>
 								</figure>								
 								<h3 class="fh5co-article-title"><div style="text-align: center;"><a href="http://cs.tju.edu.cn/faculty/zhupengfei/faculty-standard/">Pengfei Zhu</a></div></h3>
-								<span class="fh5co-meta fh5co-date"><div style="white-space:nowrap;font-size: 12px "><br>Associate Professor<br /> <br>Tianjin University<br/></div></span>
+								<span class="fh5co-meta fh5co-date"><div style="white-space:nowrap;font-size: 12px; text-transform : capitalize"><br>Associate Professor<br /> <br>Tianjin University<br/></div></span>
 							</article>
 							<article class="col-lg-3 col-md-3 col-sm-3 col-xs-6 col-xxs-12 animate-box">
 								<figure>
-									<a href="http://www.cbsr.ia.ac.cn/users/lywen/"><img src="<%=path%>/images/people/2.jpg" alt="Image" class="img-responsive"></a>
+									<a href="http://www.cbsr.ia.ac.cn/users/lywen/"><img src="<%=path%>/images/people/2.jpg" alt="Image" class="img-responsive"style= "margin: 0 auto;"></a>
 								</figure>								
 								<h3 class="fh5co-article-title"><div style="text-align: center;"><a href="http://www.cbsr.ia.ac.cn/users/lywen/">Longyin Wen</a></div></h3>
-								<span class="fh5co-meta fh5co-date"><div style="white-space:nowrap;font-size: 12px "><br>Computer Vision Scientist<br/> <br>GE Global Research<br/></div></span>
+								<span class="fh5co-meta fh5co-date"><div style="white-space:nowrap;font-size: 12px; text-transform :capitalize"><br>Computer Vision Scientist<br/> <br>GE Global Research<br/></div></span>
 							</article>
 							<div class="clearfix visible-xs-block"></div>
 							<article class="col-lg-3 col-md-3 col-sm-3 col-xs-6 col-xxs-12 animate-box">
 								<figure>
-									<a href="https://sites.google.com/site/cvbian/"><img src="<%=path%>/images/people/3.jpg" alt="Image" class="img-responsive"></a>
+									<a href="https://sites.google.com/site/cvbian/"><img src="<%=path%>/images/people/3.jpg" alt="Image" class="img-responsive"style= "margin: 0 auto;"></a>
 								</figure>
 								<h3 class="fh5co-article-title"><div style="text-align: center;"><a href="https://sites.google.com/site/cvbian/">Bian Xiao</a></div></h3>
-								<span class="fh5co-meta fh5co-date"><div style="white-space:nowrap;font-size: 12px "><br>GE Global Research<br /> <br>Lead Scientist<br/></div></span>
+								<span class="fh5co-meta fh5co-date"><div style="white-space:nowrap;font-size: 12px ;text-transform : capitalize"><br>Lead Scientist<br /> <br>GE Global Research<br/></div></span>
 							</article>
 							<article class="col-lg-3 col-md-3 col-sm-3 col-xs-6 col-xxs-12 animate-box">
 								<figure>
-									<a href="http://www.dabi.temple.edu/~hbling/"><img src="<%=path%>/images/people/4.jpg" alt="Image" class="img-responsive"></a>
+									<a href="http://www.dabi.temple.edu/~hbling/"><img src="<%=path%>/images/people/4.jpg" alt="Image" class="img-responsive"style= "margin: 0 auto;"></a>
 								</figure>
 								<h3 class="fh5co-article-title"><div style="text-align: center;"><a href="http://www.dabi.temple.edu/~hbling/#">Haibin Ling</a></div></h3>
-								<span class="fh5co-meta fh5co-date"><div style="white-space:nowrap;font-size: 12px "><br>Associate Professor</br> <br>Temple University</br></div></span>
+								<span class="fh5co-meta fh5co-date"><div style="white-space:nowrap;font-size: 12px ;text-transform : capitalize"><br>Associate Professor</br> <br>Temple University</br></div></span>
 							</article>
+							<section id="content-h">
+							<div class="box-hang">
+								<div class="box-area-hang fh5co-meta fh5co-date">Hamilton Scott Clouse (USAirforce Research) <br>
+									Liyi Dai (US Army Research Office) <br>
+									Riad I.Hammound (BAE Systems, USA) <br>
+									Qinghua Hu (Tianjin Univ., China)<br>
+									David Jacobs (Univ. Maryland College Park, USA)<br> 
+									John Lizzi (GEGlobal Research, Niskayuna, USA) <br>
+									Stan Z. Li (Institute ofAutomation, Chinese Academy of Sciences, China)<br></div>
+							</div>
+
+							<div class="box-hang fh5co-meta fh5co-date">
+						      <div class="box-area-hang-right">
+							Anton Milan (Amazon Research and Development Center, Germany)<br>
+                            Zhuowen Tu (Univ. California San Diego, USA)<br>
+                            Siyu Tang (Max Planck Institute for Intelligent Systems, Germany)<br>
+                            Yi Wu (Indiana Univ., USA)<br>
+                            Wenhan Luo (Tencent AI Lab)<br>
+                            Ming-Hsuan Yang （University of California at Merced, USA）<br>
+
+							
+							 </div>
+							</div>
+							
+							</section>
 							<div class="clearfix visible-lg-block visible-md-block visible-sm-block visible-xs-block"></div>
 							<div class="col-lg-12 col-md-12 text-center">
 							<h1 id="fh5co-logo">Team Member</h1>
@@ -168,59 +193,64 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							</div>
 							<article class="col-lg-3 col-md-3 col-sm-3 col-xs-6 col-xxs-12 animate-box">
 								<figure>
-									<a href="#"><img src="<%=path%>/images/people/5.jpg" alt="Image" class="img-responsive"></a>
+									<a href="#"><img src="<%=path%>/images/people/5.jpg" alt="Image" class="img-responsive"style= "margin: 0 auto;"></a>
 								</figure>
 								<h3 class="fh5co-article-title"><div style="text-align: center;"><a href="#">Hao Cheng</a></div></h3>
-								<span class="fh5co-meta fh5co-date"><div style="white-space:nowrap;font-size: 12px "><br>Master<br /><br> Tianjin University<br/></div></span>
+								<span class="fh5co-meta fh5co-date"><div style="white-space:nowrap;font-size: 12px ;text-transform : capitalize"><br>Master<br /><br> Tianjin University<br/></div></span>
 							</article>
 							<article class="col-lg-3 col-md-3 col-sm-3 col-xs-6 col-xxs-12 animate-box">
 								<figure>
-									<a href="#"><img src="<%=path%>/images/people/6.JPG" alt="Image" class="img-responsive"></a>
+									<a href="#"><img src="<%=path%>/images/people/6.JPG" alt="Image" class="img-responsive"style= "margin: 0 auto;"></a>
 								</figure>
 								<h3 class="fh5co-article-title"><div style="text-align: center;"><a href="#">Chenfeng Liu</a></div></h3>
-								<span class="fh5co-meta fh5co-date"><div style="white-space:nowrap;font-size: 12px "><br>Master<br/><br> Tianjin University<br/></div></span>
+								<span class="fh5co-meta fh5co-date"><div style="white-space:nowrap;font-size: 12px ;text-transform : capitalize"><br>Master<br/><br> Tianjin University<br/></div></span>
 							</article>
 							<article class="col-lg-3 col-md-3 col-sm-3 col-xs-6 col-xxs-12 animate-box">
 								<figure>
-									<a href="#"><img src="<%=path%>/images/people/7.jpg" alt="Image" class="img-responsive"></a>
+									<a href="#"><img src="<%=path%>/images/people/7.jpg" alt="Image" class="img-responsive"style= "margin: 0 auto;"></a>
 								</figure>
 								<h3 class="fh5co-article-title"><div style="text-align: center;"><a href="#">Xiaoyu Liu</a></div></h3>
-								<span class="fh5co-meta fh5co-date"><div style="white-space:nowrap;font-size: 12px "><br>Master<br/> <br>Tianjin University<br/></div></span>
+								<span class="fh5co-meta fh5co-date"><div style="white-space:nowrap;font-size: 12px ;text-transform : capitalize"><br>Master<br/> <br>Tianjin University<br/></div></span>
 							</article>
 							<article class="col-lg-3 col-md-3 col-sm-3 col-xs-6 col-xxs-12 animate-box">
 								<figure>
-									<a href="#"><img src="<%=path%>/images/people/8.jpg" alt="Image" class="img-responsive"></a>
+									<a href="#"><img src="<%=path%>/images/people/8.jpg" alt="Image" class="img-responsive"style= "margin: 0 auto;"></a>
 								</figure>
 								<h3 class="fh5co-article-title"><div style="text-align: center;"><a href="#">Wenya Ma</a></div></h3>
-								<span class="fh5co-meta fh5co-date"><div style="white-space:nowrap;font-size: 12px "><br>Master<br/><br>Tianjin University<br/></div></span>
+								<span class="fh5co-meta fh5co-date"><div style="white-space:nowrap;font-size: 12px;text-transform : capitalize "><br>Master<br/><br>Tianjin University<br/></div></span>
 							</article>
 							<article class="col-lg-3 col-md-3 col-sm-3 col-xs-6 col-xxs-12 animate-box">
 								<figure>
-									<a href="#"><img src="<%=path%>/images/people/9.jpg" alt="Image" class="img-responsive"></a>
+									<a href="#"><img src="<%=path%>/images/people/9.jpg" alt="Image" class="img-responsive"style= "margin: 0 auto;"></a>
 								</figure>
 								<h3 class="fh5co-article-title"><div style="text-align: center;"><a href="#">Qinqin Nie</a></div></h3>
-								<span class="fh5co-meta fh5co-date"><div style="white-space:nowrap;font-size: 12px "><br>Master<br/><br> Tianjin University<br/></div></span>
+								<span class="fh5co-meta fh5co-date"><div style="white-space:nowrap;font-size: 12px;text-transform : capitalize "><br>Master<br/><br> Tianjin University<br/></div></span>
 							</article>
 							<article class="col-lg-3 col-md-3 col-sm-3 col-xs-6 col-xxs-12 animate-box">
 								<figure>
-									<a href="#"><img src="<%=path%>/images/people/10.png" alt="Image" class="img-responsive"></a>
+									<a href="#"><img src="<%=path%>/images/people/10.png" alt="Image" class="img-responsive"style= "margin: 0 auto;"></a>
 								</figure>
 								<h3 class="fh5co-article-title"><div style="text-align: center;"><a href="#">Haotian Wu</a></div></h3>
-								<span class="fh5co-meta fh5co-date"><div style="white-space:nowrap;font-size: 12px "><br>Master<br/> <br>Tianjin University<br/></div></span>
+								<span class="fh5co-meta fh5co-date"><div style="white-space:nowrap;font-size: 12px ;text-transform : capitalize"><br>Master<br/> <br>Tianjin University<br/></div></span>
 							</article>
 							<article class="col-lg-3 col-md-3 col-sm-3 col-xs-6 col-xxs-12 animate-box">
 								<figure>
-									<a href="#"><img src="<%=path%>/images/people/11.jpg" alt="Image" class="img-responsive"></a>
+									<a href="#"><img src="<%=path%>/images/people/11.jpg" alt="Image" class="img-responsive"style= "margin: 0 auto;"></a>
 								</figure>
 								<h3 class="fh5co-article-title"><div style="text-align: center;"><a href="#">Lianjie Wang</a></div></h3>
-								<span class="fh5co-meta fh5co-date"><div style="white-space:nowrap;font-size: 12px "><br>Master<br/><br>Tianjin University<br/></div></span>
+								<span class="fh5co-meta fh5co-date"><div style="white-space:nowrap;font-size: 12px;text-transform : capitalize "><br>Master<br/><br>Tianjin University<br/></div></span>
 							</article>
+							
 							<div class="clearfix visible-xs-block"></div>
+							
+							
 						</div>
+						
 					</div>
 				</div>
 				<div class="col-md-2">
 				</div>
+				
 			</div>
 		</section>
 
