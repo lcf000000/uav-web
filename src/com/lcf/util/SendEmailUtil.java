@@ -18,6 +18,7 @@ public class SendEmailUtil {
 		
 		String emailAddress="tju.drone.vision@gmail.com";
 		String password="VisDrones2018";
+		
 		// 获取邮箱smtp服务器的地址
 		props.setProperty("mail.host", "smtp.gmail.com");
         //是否进行权限验证。
@@ -73,22 +74,22 @@ public class SendEmailUtil {
             // 正文
             str = "Dear user: <br/>" +
                     "You have sign up successfully to VisDrone 2018." +
-                    "<br/>" +
-                    "<br/>" +
+                    "<br/>" +                 
                     "Thanks for your attention.<br/>" +
+                    "<br/>" +
                     "Sincerely,<br/>" +
-                    "";
+                    "VisDrone2018";
         } else {
         	// Submission
         	message.setSubject("VisDrone 2018 Challenge Submission Confirmation");
         	// 正文
         	str = "Dear user: <br/>" +
-        			"Your result was submitted successfully to VisDrone 2018." +
-        			"<br/>" +
-        			"<br/>" +
+        			"    Your result was submitted successfully to VisDrone 2018." +
+        			"<br/>" +        			
         			"Thanks for your submittion.<br/>" +
+        			"<br/>" +
         			"Sincerely,<br/>" +
-        			"";
+        			"VisDrone2018";
         }
         // 设置编码，防止发送的内容中文乱码。
         message.setContent(str, "text/html;charset=UTF-8");

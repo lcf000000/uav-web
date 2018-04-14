@@ -191,7 +191,7 @@ public class UserController {
             j.setSuccess(true);
             j.setMsg("Add user success!");
             j.setObj(user);
-            SendEmailUtil.sendEmail(user.getEmail(), false);
+            SendEmailUtil.sendEmail(user.getEmail(), true);
         } catch (Exception e) {
             j.setMsg(e.getMessage());
         }

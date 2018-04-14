@@ -24,6 +24,7 @@ import com.lcf.service.UserService;
 import com.lcf.service.MotResService;
 import com.lcf.model.dataformat.PageBean;
 import com.lcf.util.UnzipFileUtil;
+import com.lcf.util.CheckDirUtil;
 import com.lcf.util.EvaluateUtil;
 import com.lcf.util.SendEmailUtil;
 import net.sf.json.JSONArray;
@@ -38,11 +39,13 @@ private final Logger log = LoggerFactory.getLogger(MotResController.class);
 	
 	@Resource
 	private MotResService MotresService; //创建motRes服务的对象
+	@Resource
+	private UserService userService;
 	
 	@SuppressWarnings("unused")
 	@RequestMapping(value = "/motres/addres", method = RequestMethod.POST)
 	@ResponseBody 
-	public JSONObject addMotRes(@RequestParam("resfile") MultipartFile resfile,
+	public Json addMotRes(@RequestParam("resfile") MultipartFile resfile,
 			@RequestParam("desfile") MultipartFile desfile,
 			@RequestParam("codefile") MultipartFile codefile,
     		@RequestParam String name,
@@ -55,6 +58,7 @@ private final Logger log = LoggerFactory.getLogger(MotResController.class);
     		@RequestParam Integer user_id,
 			HttpServletRequest request) throws Exception {
 		
+		Json json = new Json();
 		JSONArray jsonArray=new JSONArray();
 		JSONObject jsonObject=new JSONObject();
 		String path=null;// 文件路径
@@ -82,15 +86,14 @@ private final Logger log = LoggerFactory.getLogger(MotResController.class);
                     
                 	// 处理Results文件
                     String restrueFileName= "res" + String.valueOf(user_id) + addname + resfileName;
-                    int dot = restrueFileName.lastIndexOf('.');
-                    String resfilePath = restrueFileName.substring(0, dot);
+                    //int dot = restrueFileName.lastIndexOf('.');
+                    //String resfilePath = restrueFileName.substring(0, dot);
                     // 设置存放文件的路径
-                    String motDir = "N:/evaluate/mottest/userres/";
-                    String groudtruthPath = "N:/evaluate/mottest/gt/";
-                    //path = "E:\\Project\\website\\data\\mot\\" + restrueFileName;
-                    path = motDir + restrueFileName;
-                    String unzipPath = motDir + resfilePath + '/';
-                    gtPath = groudtruthPath;
+                    String motDir = CheckDirUtil.checkDir("Mot\\", user_id);
+                    
+                    String resPath = motDir + "res\\";              
+                    path = resPath + restrueFileName;
+                    //gtPath = groudtruthPath;
                     log.info("存放文件的路径:"+path);
                     // 转存文件到指定的路径
                     resfile.transferTo(new File(path));
@@ -100,7 +103,10 @@ private final Logger log = LoggerFactory.getLogger(MotResController.class);
                     // 处理Description文件
                     String destrueFileName= "des" + String.valueOf(user_id) + addname + desfileName;
                     // 设置存放文件的路径
-                    path = motDir + destrueFileName;
+                    String desPath = motDir + "des\\";
+                    
+                    // 设置存放文件的路径
+                    path = desPath + destrueFileName;
                     // 转存文件到指定的路径
                     desfile.transferTo(new File(path));
                     
@@ -109,25 +115,23 @@ private final Logger log = LoggerFactory.getLogger(MotResController.class);
                     	String comotype=null;// 文件类型
                         String codefileName=codefile.getOriginalFilename();// 文件原名称
                         comotype=codefileName.indexOf(".")!=-1?codefileName.substring(codefileName.lastIndexOf(".")+1, codefileName.length()):null; 
-                      //处理Code文件
+                        //处理Code文件
                         if (comotype!=null) {// 判断文件类型是否为空
-                            if ("zip".equals(comotype.toUpperCase())) {           	
+                            if ("zip".equals(comotype.toLowerCase())) {           	
                             	codetrueFileName= "code" + String.valueOf(user_id) + addname + codefileName;
                                 // 设置存放文件的路径
-                                path = motDir + codetrueFileName;
+                            	String codePath = motDir + "code\\";                           	
+                                path = codePath + codetrueFileName;
                                 // 转存文件到指定的路径
                                 codefile.transferTo(new File(path));
                             }
                         }
                     }
                     
-                    UserService userService = new UserService();
                     User user = new User();
-                    user = userService.findUserByID(user_id);
-                    user.setMotcnt(user.getMotcnt() - 1);
+                    user = userService.findUserByID(user_id);                   
                     String email = user.getEmail();
-                    
-                    Json json = new Json();
+                                      
                     try {
                     	userService.edit(user);
                     	SendEmailUtil.sendEmail(email, false);
@@ -138,14 +142,12 @@ private final Logger log = LoggerFactory.getLogger(MotResController.class);
             			json.setMsg(e.getMessage());
             		}
                     
-                    
+                    user.setMotcnt(user.getMotcnt() - 1);
                 }
             }
 		}
 		
-		jsonObject.put("errno",0);  
-        jsonObject.put("data",jsonArray);
-		return jsonObject;
+		return json;
 	}
 
 }
