@@ -129,6 +129,7 @@ private final Logger log = LoggerFactory.getLogger(DetResController.class);
                     user = userService.findUserByID(user_id);                    
                     String email = user.getEmail();
                     try {
+                    	user.setDetcnt(user.getDetcnt() - 1);
                     	userService.edit(user);
                     	SendEmailUtil.sendEmail(email, false);
                     	log.info("Update user DetCnt.");
@@ -136,9 +137,8 @@ private final Logger log = LoggerFactory.getLogger(DetResController.class);
             			json.setMsg("Update user DetCnt success!");
                     } catch(Exception e) {
             			json.setMsg(e.getMessage());
-            		}
+            		}                   
                     
-                    user.setDetcnt(user.getDetcnt() - 1);
                 }
             }
 		}

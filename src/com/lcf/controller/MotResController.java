@@ -133,6 +133,7 @@ private final Logger log = LoggerFactory.getLogger(MotResController.class);
                     String email = user.getEmail();
                                       
                     try {
+                    	user.setMotcnt(user.getMotcnt() - 1);
                     	userService.edit(user);
                     	SendEmailUtil.sendEmail(email, false);
                     	log.info("Update user MotCnt.");
@@ -141,8 +142,7 @@ private final Logger log = LoggerFactory.getLogger(MotResController.class);
                     } catch(Exception e) {
             			json.setMsg(e.getMessage());
             		}
-                    
-                    user.setMotcnt(user.getMotcnt() - 1);
+                                        
                 }
             }
 		}
