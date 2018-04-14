@@ -51,7 +51,7 @@ public class SotResController {
     		@RequestParam String freq,
     		@RequestParam String ram,
     		@RequestParam String gpu,
-    		@RequestParam(required=false) String reference,
+    		@RequestParam (required=false) String reference,
     		@RequestParam Integer user_id) throws Exception
 	{
 		Json json = new Json();

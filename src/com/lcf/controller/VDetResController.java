@@ -51,7 +51,7 @@ private final Logger log = LoggerFactory.getLogger(VDetResController.class);
     		@RequestParam String freq,
     		@RequestParam String ram,
     		@RequestParam String gpu,
-    		@RequestParam(required=false) String reference,
+    		@RequestParam (required=false) String reference,
     		@RequestParam Integer user_id,
 			HttpServletRequest request) throws Exception {
 		
@@ -131,7 +131,7 @@ private final Logger log = LoggerFactory.getLogger(VDetResController.class);
                     try {
                     	userService.edit(user);
                     	SendEmailUtil.sendEmail(email, false);
-                    	log.info("Update user DetCnt.");
+                    	log.info("Update user VDetCnt.");
                     	json.setSuccess(true);
             			json.setMsg("Update user DetCnt success!");
                     } catch(Exception e) {

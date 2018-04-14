@@ -19,7 +19,6 @@ h1,u{
     position: relative;
     margin-bottom: 15px;
     padding-bottom: 20px;
-    text-transform: uppercase;
     font-family: "Open Sans";
 }
 h2{
@@ -76,7 +75,6 @@ people{
 	margin:0 auto;
 	white-space:nowrap;
 	font-size: 13px ;
-	text-transform : capitalize;
 	width: 470px;
 	border: 0px solid #D4D4D4;
 	display: inline-block;
@@ -266,7 +264,6 @@ a.menu__link {
     color: #fff !important;
     font-size: 15px;
     font-weight: normal;
-    text-transform: uppercase;
 }
 /*-- //left nav --*/
 .top_nav_right {
@@ -315,7 +312,6 @@ footer {
 	padding: 0;
 	font-size: 12px;
 	font-weight: 500;
-	text-transform: uppercase;
 	letter-spacing: 1px;
 	color: #717171;
 	text-align: center;

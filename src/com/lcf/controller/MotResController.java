@@ -54,7 +54,7 @@ private final Logger log = LoggerFactory.getLogger(MotResController.class);
     		@RequestParam String freq,
     		@RequestParam String ram,
     		@RequestParam String gpu,
-    		@RequestParam(required=false) String reference,
+    		@RequestParam (required=false) String reference,
     		@RequestParam Integer user_id,
 			HttpServletRequest request) throws Exception {
 		

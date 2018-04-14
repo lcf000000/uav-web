@@ -17,7 +17,7 @@ var name_ok = false;
 var language_ok = false;
 var enviroment_ok = false;
 var results_ok = false;
-var description_ok = true;
+var description_ok = false;
 var motcnt = 0;
 function checkName(trackername){
 	var name = trackername.value;

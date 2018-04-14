@@ -14,8 +14,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 		<title>UAV DATASET - TJU and GA</title>
-		<!-- 在bootstrap.min.js 之前引入 -->
-    	<script src="<%=path%>/js/jquery/toastr.js"></script>
 		<!-- JQuery CSS -->
    		<link href="<%=path%>/css/jquery/toastr.css" rel="stylesheet">
 		<!-- Bootstrap core CSS -->
@@ -180,6 +178,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<!-- Placed at the end of the document so the pages load faster -->
 		<script type="text/javascript">ctx="${pageContext.request.contextPath}";</script>
 		<script src="<%=path%>/js/jquery/jquery.min.js"></script>
+		<!-- 在bootstrap.min.js 之前引入 -->
+    	<script src="<%=path%>/js/jquery/toastr.js"></script>
 		<script src="<%=path%>/js/bootstrap/bootstrap.min.js"></script>
 		<script src="<%=path%>/js/views/viewsGlob.js"></script>
 		<script src="<%=path%>/js/my/submitMot.js"></script>

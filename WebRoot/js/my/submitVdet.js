@@ -17,7 +17,7 @@ var name_ok = false;
 var language_ok = false;
 var enviroment_ok = false;
 var results_ok = false;
-var description_ok = true;
+var description_ok = false;
 var vdetcnt = 0;
 function checkName(trackername){
 	var name = trackername.value;
@@ -81,7 +81,7 @@ function checkDesFile(descrip){
 	enableSubmit();
 }
 function enableSubmit(){
-	var submit = document.getElementById('submitDet');
+	var submit = document.getElementById('submitVdet');
 	if(name_ok && language_ok && enviroment_ok && description_ok && results_ok){
 		submit.removeAttribute("disabled");
 	}else{

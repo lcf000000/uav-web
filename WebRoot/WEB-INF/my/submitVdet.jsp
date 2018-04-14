@@ -14,8 +14,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 		<title>UAV DATASET - TJU and GA</title>
-		<!-- 在bootstrap.min.js 之前引入 -->
-    	<script src="<%=path%>/js/jquery/toastr.js"></script>
 		<!-- JQuery CSS -->
    		<link href="<%=path%>/css/jquery/toastr.css" rel="stylesheet">
 		<!-- Bootstrap core CSS -->
@@ -154,8 +152,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						    <p class="help-block">You can choose whether to upload your code(Compressed into a .zip format file).</p>
 						</div>
 						<div class="form-group">
-							<label>*Reference</label>
-							<input class="form-control required"  onblur="checkPassword(this)" id="password" type="text" placeholder="Author,  Title,  Conference/Journal,  Year" name="sotlaug"/>
+							<label>Reference</label>
+							<input class="form-control required" id="password" type="text" placeholder="Author,  Title,  Conference/Journal,  Year" name="reference"/>
 						</div>
 						<div class="form-group">
 							<p class="help-block" style="color:#F00"><span id="vdet"></span> remaining submission opportunities</p><input onclick="subtVdet()" disabled="disabled" id="submitVdet" class="btn btn-group-sm btn-primary pull-right" value="Submit"/>
@@ -179,6 +177,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<!-- Placed at the end of the document so the pages load faster -->
 		<script type="text/javascript">ctx="${pageContext.request.contextPath}";</script>
 		<script src="<%=path%>/js/jquery/jquery.min.js"></script>
+		<!-- 在bootstrap.min.js 之前引入 -->
+    	<script src="<%=path%>/js/jquery/toastr.js"></script>
 		<script src="<%=path%>/js/bootstrap/bootstrap.min.js"></script>
 		<script src="<%=path%>/js/views/viewsGlob.js"></script>
 		<script src="<%=path%>/js/my/submitVdet.js"></script>
