@@ -3,19 +3,23 @@
 body{
 	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
 	background-color: #ffffff;
+	 padding: 12px;
+   
+    margin: auto;
 }
 
 p, li,h3, li a, label {
     color: #555;
 }
 h1,u{
-	text-align:center;
+	
 	text-decoration : none;
 	color: #444;
     font-size: 22px;
     position: relative;
     margin-bottom: 15px;
     padding-bottom: 20px;
+    text-transform: uppercase;
     font-family: "Open Sans";
 }
 h2{
@@ -44,25 +48,28 @@ p{
 	font-size: 15px;
 	font-family: "Open Sans";
 }
-div{
-    padding: 8px;
-   
-    margin: auto;
-   }
+
 
 span{
 	font-size: 20px;
+}
+people{
+	font-size: 8px;
+    font-family: "Roboto", arial, sans-serif;
+    color: #999999;
+    margin-bottom: 20px;
+    display: block;
 }
 .ban-top{
 	background:#000;
     padding: 0px 0;
 }
 .dropdown-menu.columns-1 {
-    min-width: 230px;
+    min-width: 280px;
     padding: 10px 10px;
 }
 .dropdown-menu.columns-2 {
-    min-width: 260px;
+    min-width: 280px;
     padding: 10px 10px;
 }
 .multi-gd-img img{
@@ -218,6 +225,7 @@ a.menu__link {
     color: #fff !important;
     font-size: 15px;
     font-weight: normal;
+    text-transform: uppercase;
 }
 /*-- //left nav --*/
 .top_nav_right {
@@ -255,6 +263,7 @@ a.simpleCart_empty {
 	background-color: #ffffff;
 	border:0px;
 	font-size:4px;
+	
 	  
 }
 
@@ -265,6 +274,7 @@ footer {
 	padding: 0;
 	font-size: 12px;
 	font-weight: 500;
+	text-transform: uppercase;
 	letter-spacing: 1px;
 	color: #717171;
 	text-align: center;

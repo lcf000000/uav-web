@@ -96,6 +96,12 @@ public class InformationController {
 				dataO.put("location", "LB-Mot");
 			}else if(loc==17){
 				dataO.put("location", "FAQ");
+			}else if(loc==18){
+				dataO.put("location", "Bibtex source");
+			}else if(loc==19){
+				dataO.put("location", "Abstract");
+			}else if(loc==20){
+				dataO.put("location", "PDF");
 			}else{
 				dataO.put("location", "other");
 			}

@@ -13,6 +13,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!--[if gt IE 8]>	   <html class="no-js"> <![endif]-->
 <html lang="en">
 	<head>
+	   
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -60,15 +61,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<!-- Collect the nav links, forms, and other content for toggling -->
 				<div class="collapse navbar-collapse menu--shylock" id="bs-example-navbar-collapse-1">
 				  <ul class="nav navbar-nav menu__list">
-					<li class=" menu__item"><a class="menu__link" href="<%=path%>/views/index">Home <span class="sr-only">(current)</span></a></li>
+					<li class="menu__item"><a class="menu__link" href="<%=path%>/views/index">Home <span class="sr-only">(current)</span></a></li>
 					<li class="dropdown menu__item">
 						<a href="#" class="dropdown-toggle menu__link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Benchmark <span class="caret"></span></a>
 							<ul class="dropdown-menu multi-column columns-1">
 								<ul class="multi-column-dropdown">
-									<li><a href="<%=path%>/views/getInfo?loc=2">Detection in Images</a></li>
-									<li><a href="<%=path%>/views/getInfo?loc=3">Detection in Videos</a></li>
-									<li><a href="<%=path%>/views/getInfo?loc=4">Single-Object Tracking</a></li>
-									<li><a href="<%=path%>/views/getInfo?loc=5">Multi-Object Tracking</a></li>
+									<li><i class="fa fa-bookmark-o fa-lg"></i><a href="<%=path%>/views/getInfo?loc=2">&nbsp;&nbsp;Object Detection in Images</a></li>
+									<li><i class="fa fa-bookmark-o fa-lg"></i><a href="<%=path%>/views/getInfo?loc=3">&nbsp;&nbsp;Object Detection in Videos</a></li>
+									<li><i class="fa fa-bookmark-o fa-lg"></i><a href="<%=path%>/views/getInfo?loc=4">&nbsp;&nbsp;Single-Object Tracking</a></li>
+									<li><i class="fa fa-bookmark-o fa-lg"></i><a href="<%=path%>/views/getInfo?loc=5">&nbsp;&nbsp;Multi-Object Tracking</a></li>
 								</ul>
 							</ul>
 					</li>
@@ -82,14 +83,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 									<li><i class="fa fa-gear fa-lg"></i><a href="<%=path%>/views/getInfo?loc=8">&nbsp;&nbsp;Upload Results</a></li>
 									<li class="divider"></li>
 									<li>Evaluate:</li>
-									<li><i class="fa fa-bar-chart-o fa-lg"></i><a href="<%=path%>/views/getInfo?loc=9">&nbsp;&nbsp;Detection in Images</a></li>
-									<li><i class="fa fa-bar-chart-o fa-lg"></i><a href="<%=path%>/views/getInfo?loc=10">&nbsp;&nbsp;Detection in Videos</a></li>
-									<li><i class="fa fa-bar-chart-o fa-lg"></i><a href="<%=path%>/views/getInfo?loc=11">&nbsp;&nbsp;Single-Object Tracking</a></li>
-									<li><i class="fa fa-bar-chart-o fa-lg"></i><a href="<%=path%>/views/getInfo?loc=12">&nbsp;&nbsp;Multi-Object Tracking</a></li>
+									<li><i class="fa fa-tasks fa-lg"></i><a href="<%=path%>/views/getInfo?loc=9">&nbsp;&nbsp;Object Detection in Images</a></li>
+									<li><i class="fa fa-tasks fa-lg"></i><a href="<%=path%>/views/getInfo?loc=10">&nbsp;&nbsp;Object Detection in Videos</a></li>
+									<li><i class="fa fa-tasks fa-lg"></i><a href="<%=path%>/views/getInfo?loc=11">&nbsp;&nbsp;Single-Object Tracking</a></li>
+									<li><i class="fa fa-tasks fa-lg"></i><a href="<%=path%>/views/getInfo?loc=12">&nbsp;&nbsp;Multi-Object Tracking</a></li>
 									<li class="divider"></li>
 									<li>Leaderboards:</li>
-									<li><i class="fa fa-bar-chart-o fa-lg"></i><a href="<%=path%>/views/temp">&nbsp;&nbsp;Detection in Images</a></li>
-									<li><i class="fa fa-bar-chart-o fa-lg"></i><a href="<%=path%>/views/temp">&nbsp;&nbsp;Detection in Videos</a></li>
+									<li><i class="fa fa-bar-chart-o fa-lg"></i><a href="<%=path%>/views/temp">&nbsp;&nbsp;Object Detection in Images</a></li>
+									<li><i class="fa fa-bar-chart-o fa-lg"></i><a href="<%=path%>/views/temp">&nbsp;&nbsp;Object Detection in Videos</a></li>
 									<li><i class="fa fa-bar-chart-o fa-lg"></i><a href="<%=path%>/views/temp">&nbsp;&nbsp;Single-Object Tracking</a></li>
 									<li><i class="fa fa-bar-chart-o fa-lg"></i><a href="<%=path%>/views/temp">&nbsp;&nbsp;Multi-Object Tracking</a></li>
 								</ul>
@@ -97,7 +98,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</li>
 					<li class=" menu__item"><a class="menu__link" href="<%=path%>/my/submit">Submit</a></li>
 					<li class=" menu__item"><a class="menu__link" href="<%=path%>/views/getInfo?loc=17">FAQ</a></li>
-					<li class="active menu__item menu__item--current"><a class="menu__link" href="<%=path%>/views/people">People</a></li>
+					<li class=" menu__item"><a class="menu__link" href="<%=path%>/views/people">People</a></li>
 				  </ul>
 				  <ul class="nav navbar-nav menu__list nav-right">
 					  <c:if test="${empty sessionScope.user.username}">
@@ -112,7 +113,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				  </ul>
 				</div>
 			  </div>
-			</nav>	
+			</nav>		
 		</div>
 		<div class="clearfix"></div>
 	</div>
@@ -135,30 +136,30 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								<figure>
 									<a href="http://cs.tju.edu.cn/faculty/zhupengfei/faculty-standard/"><img src="<%=path%>/images/people/1.jpg" alt="Image" class="img-responsive"></a>
 								</figure>								
-								<h3 class="fh5co-article-title"><a href="http://cs.tju.edu.cn/faculty/zhupengfei/faculty-standard/">Pengfei Zhu</a></h3>
-								<span class="fh5co-meta fh5co-date">Associate Professor, Tianjin University</span>
+								<h3 class="fh5co-article-title"><div style="text-align: center;"><a href="http://cs.tju.edu.cn/faculty/zhupengfei/faculty-standard/">Pengfei Zhu</a></div></h3>
+								<span class="fh5co-meta fh5co-date"><div style="white-space:nowrap;font-size: 12px "><br>Associate Professor<br /> <br>Tianjin University<br/></div></span>
 							</article>
 							<article class="col-lg-3 col-md-3 col-sm-3 col-xs-6 col-xxs-12 animate-box">
 								<figure>
 									<a href="http://www.cbsr.ia.ac.cn/users/lywen/"><img src="<%=path%>/images/people/2.jpg" alt="Image" class="img-responsive"></a>
 								</figure>								
-								<h3 class="fh5co-article-title"><a href="http://www.cbsr.ia.ac.cn/users/lywen/">Longyin Wen</a></h3>
-								<span class="fh5co-meta fh5co-date">Computer Vision Scientist GE Global Research</span>
+								<h3 class="fh5co-article-title"><div style="text-align: center;"><a href="http://www.cbsr.ia.ac.cn/users/lywen/">Longyin Wen</a></div></h3>
+								<span class="fh5co-meta fh5co-date"><div style="white-space:nowrap;font-size: 12px "><br>Computer Vision Scientist<br/> <br>GE Global Research<br/></div></span>
 							</article>
 							<div class="clearfix visible-xs-block"></div>
 							<article class="col-lg-3 col-md-3 col-sm-3 col-xs-6 col-xxs-12 animate-box">
 								<figure>
 									<a href="https://sites.google.com/site/cvbian/"><img src="<%=path%>/images/people/3.jpg" alt="Image" class="img-responsive"></a>
 								</figure>
-								<h3 class="fh5co-article-title"><a href="https://sites.google.com/site/cvbian/">Bian Xiao</a></h3>
-								<span class="fh5co-meta fh5co-date">GE Global Research Lead Scientist</span>
+								<h3 class="fh5co-article-title"><div style="text-align: center;"><a href="https://sites.google.com/site/cvbian/">Bian Xiao</a></div></h3>
+								<span class="fh5co-meta fh5co-date"><div style="white-space:nowrap;font-size: 12px "><br>GE Global Research<br /> <br>Lead Scientist<br/></div></span>
 							</article>
 							<article class="col-lg-3 col-md-3 col-sm-3 col-xs-6 col-xxs-12 animate-box">
 								<figure>
 									<a href="http://www.dabi.temple.edu/~hbling/"><img src="<%=path%>/images/people/4.jpg" alt="Image" class="img-responsive"></a>
 								</figure>
-								<h3 class="fh5co-article-title"><a href="http://www.dabi.temple.edu/~hbling/#">Haibin Ling</a></h3>
-								<span class="fh5co-meta fh5co-date">Associate, Professor Temple University</span>
+								<h3 class="fh5co-article-title"><div style="text-align: center;"><a href="http://www.dabi.temple.edu/~hbling/#">Haibin Ling</a></div></h3>
+								<span class="fh5co-meta fh5co-date"><div style="white-space:nowrap;font-size: 12px "><br>Associate Professor</br> <br>Temple University</br></div></span>
 							</article>
 							<div class="clearfix visible-lg-block visible-md-block visible-sm-block visible-xs-block"></div>
 							<div class="col-lg-12 col-md-12 text-center">
@@ -169,50 +170,50 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								<figure>
 									<a href="#"><img src="<%=path%>/images/people/5.jpg" alt="Image" class="img-responsive"></a>
 								</figure>
-								<h3 class="fh5co-article-title"><a href="#">Hao Cheng</a></h3>
-								<span class="fh5co-meta fh5co-date">Master, Tianjin University</span>
+								<h3 class="fh5co-article-title"><div style="text-align: center;"><a href="#">Hao Cheng</a></div></h3>
+								<span class="fh5co-meta fh5co-date"><div style="white-space:nowrap;font-size: 12px "><br>Master<br /><br> Tianjin University<br/></div></span>
 							</article>
 							<article class="col-lg-3 col-md-3 col-sm-3 col-xs-6 col-xxs-12 animate-box">
 								<figure>
 									<a href="#"><img src="<%=path%>/images/people/6.JPG" alt="Image" class="img-responsive"></a>
 								</figure>
-								<h3 class="fh5co-article-title"><a href="#">Chenfeng Liu</a></h3>
-								<span class="fh5co-meta fh5co-date">Master, Tianjin University</span>
+								<h3 class="fh5co-article-title"><div style="text-align: center;"><a href="#">Chenfeng Liu</a></div></h3>
+								<span class="fh5co-meta fh5co-date"><div style="white-space:nowrap;font-size: 12px "><br>Master<br/><br> Tianjin University<br/></div></span>
 							</article>
 							<article class="col-lg-3 col-md-3 col-sm-3 col-xs-6 col-xxs-12 animate-box">
 								<figure>
 									<a href="#"><img src="<%=path%>/images/people/7.jpg" alt="Image" class="img-responsive"></a>
 								</figure>
-								<h3 class="fh5co-article-title"><a href="#">Xiaoyu Liu</a></h3>
-								<span class="fh5co-meta fh5co-date">Master, Tianjin University</span>
+								<h3 class="fh5co-article-title"><div style="text-align: center;"><a href="#">Xiaoyu Liu</a></div></h3>
+								<span class="fh5co-meta fh5co-date"><div style="white-space:nowrap;font-size: 12px "><br>Master<br/> <br>Tianjin University<br/></div></span>
 							</article>
 							<article class="col-lg-3 col-md-3 col-sm-3 col-xs-6 col-xxs-12 animate-box">
 								<figure>
 									<a href="#"><img src="<%=path%>/images/people/8.jpg" alt="Image" class="img-responsive"></a>
 								</figure>
-								<h3 class="fh5co-article-title"><a href="#">Wenya Ma</a></h3>
-								<span class="fh5co-meta fh5co-date">Master, Tianjin University</span>
+								<h3 class="fh5co-article-title"><div style="text-align: center;"><a href="#">Wenya Ma</a></div></h3>
+								<span class="fh5co-meta fh5co-date"><div style="white-space:nowrap;font-size: 12px "><br>Master<br/><br>Tianjin University<br/></div></span>
 							</article>
 							<article class="col-lg-3 col-md-3 col-sm-3 col-xs-6 col-xxs-12 animate-box">
 								<figure>
 									<a href="#"><img src="<%=path%>/images/people/9.jpg" alt="Image" class="img-responsive"></a>
 								</figure>
-								<h3 class="fh5co-article-title"><a href="#">Qinqin Nie</a></h3>
-								<span class="fh5co-meta fh5co-date">Master, Tianjin University</span>
+								<h3 class="fh5co-article-title"><div style="text-align: center;"><a href="#">Qinqin Nie</a></div></h3>
+								<span class="fh5co-meta fh5co-date"><div style="white-space:nowrap;font-size: 12px "><br>Master<br/><br> Tianjin University<br/></div></span>
 							</article>
 							<article class="col-lg-3 col-md-3 col-sm-3 col-xs-6 col-xxs-12 animate-box">
 								<figure>
 									<a href="#"><img src="<%=path%>/images/people/10.png" alt="Image" class="img-responsive"></a>
 								</figure>
-								<h3 class="fh5co-article-title"><a href="#">Haotian Wu</a></h3>
-								<span class="fh5co-meta fh5co-date">Master, Tianjin University</span>
+								<h3 class="fh5co-article-title"><div style="text-align: center;"><a href="#">Haotian Wu</a></div></h3>
+								<span class="fh5co-meta fh5co-date"><div style="white-space:nowrap;font-size: 12px "><br>Master<br/> <br>Tianjin University<br/></div></span>
 							</article>
 							<article class="col-lg-3 col-md-3 col-sm-3 col-xs-6 col-xxs-12 animate-box">
 								<figure>
 									<a href="#"><img src="<%=path%>/images/people/11.jpg" alt="Image" class="img-responsive"></a>
 								</figure>
-								<h3 class="fh5co-article-title"><a href="#">Lianjie Wang</a></h3>
-								<span class="fh5co-meta fh5co-date">Master, Tianjin University</span>
+								<h3 class="fh5co-article-title"><div style="text-align: center;"><a href="#">Lianjie Wang</a></div></h3>
+								<span class="fh5co-meta fh5co-date"><div style="white-space:nowrap;font-size: 12px "><br>Master<br/><br>Tianjin University<br/></div></span>
 							</article>
 							<div class="clearfix visible-xs-block"></div>
 						</div>

@@ -130,13 +130,17 @@ function submitAdd(){
 	if($("#loc-add").val()==null){
 		toastr.error("Please select location!");
 	}else{
-		var info = $("#addInfo-form").serialize();
-		info = info + "&content1=" + adder.txt.html();
 	    $.ajax({
 	        url:ctx+"/info/addInfo",//提交地址
+	        data:{	
+	        	"content1":adder.txt.html(),
+        		"title":$("#title-add").val(),
+        		"author":$("#author-add").val(),
+        		"comment":$("#comment-add").val(),
+        		"location":$("#loc-add").val(),
+        	},
 	        type:"POST",
 	        dataType:"json",
-	        data:info,//将表单数据序列化
 	        success:function(result){
 	        	if(result.success){
 	        		toastr.success(result.msg);
