@@ -185,6 +185,7 @@ public class UserController {
 		user.setMotcnt(5);
 		user.setSotcnt(5);
 		user.setVDetcnt(5);
+		user.setRight(1);
 		Json j = new Json();
 		try {
             userService.add(user);
