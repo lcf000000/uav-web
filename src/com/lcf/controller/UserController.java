@@ -207,7 +207,7 @@ public class UserController {
             j.setSuccess(true);
             j.setMsg("Add user success!");
             j.setObj(user);
-            SendEmailUtil.sendEmail(user.getEmail(), true);
+            //SendEmailUtil.sendEmail(user.getEmail(), true);
         } catch (Exception e) {
             j.setMsg(e.getMessage());
         }
@@ -279,4 +279,23 @@ public class UserController {
         }
         return j;
 	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/user/sendEmail",method = RequestMethod.POST)
+	public Json regEmail(HttpServletRequest request,HttpServletResponse response,
+    		@RequestParam String username,
+    		@RequestParam int flag) {
+		Json j = new Json();
+		User user = new User();
+		user = userService.findUserByName(username);                 
+		try {
+			SendEmailUtil.sendEmail(user.getEmail(), flag, username, user.getPassword());
+			j.setSuccess(true);
+			j.setMsg("Confirm Email Send Done.");
+		} catch(Exception e) {
+			j.setMsg(e.getMessage());
+		}
+		return j;
+	}
+	
 }

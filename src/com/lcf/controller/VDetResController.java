@@ -25,7 +25,6 @@ import com.lcf.model.dataformat.PageBean;
 import com.lcf.util.UnzipFileUtil;
 import com.lcf.util.CheckDirUtil;
 import com.lcf.util.EvaluateUtil;
-import com.lcf.util.SendEmailUtil;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
@@ -131,7 +130,6 @@ private final Logger log = LoggerFactory.getLogger(VDetResController.class);
                     try {
                     	user.setDetcnt(user.getVDetcnt() - 1);
                     	userService.edit(user);                 	
-                    	SendEmailUtil.sendEmail(email, false);
                     	log.info("Update user VDetCnt.");
                     	json.setSuccess(true);
             			json.setMsg("Update user DetCnt success!");
