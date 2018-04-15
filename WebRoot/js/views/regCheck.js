@@ -143,3 +143,6 @@ function subReg(){
 		toastr.error("Check your information");
 	}
 }
+$(document).ready(function(){
+	setInterval("enableSubmit();",2000);
+});

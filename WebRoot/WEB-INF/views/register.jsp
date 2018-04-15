@@ -33,31 +33,31 @@
 				<div class="col-sm-9 col-md-9">
 					<div class="form-group">
 						<i class="fa fa-user fa-lg"></i>
-						<input class="form-control required" onblur="checkUsername(this)" type="text" placeholder="Username" name="username" maxlength="40" autofocus="autofocus"/>
+						<input class="form-control required" onblur="checkUsername(this)" type="text" placeholder="Username" name="add-username" maxlength="40" autofocus="autofocus"/>
 					</div>
 					<div class="form-group">
 							<i class="fa fa-lock fa-lg"></i>
-							<input class="form-control required"  onblur="checkPassword(this)" id="password" type="password" placeholder="Password" maxlength="40" name="password"/>
+							<input class="form-control required"  onblur="checkPassword(this)" id="password" type="password" placeholder="Password" maxlength="40" name="add-password"/>
 					</div>
 					<div class="form-group">
 							<i class="fa fa-check fa-lg"></i>
-							<input class="form-control required" onblur="checkRePassword(this)" type="password" placeholder="Re-type Your Password" maxlength="40" name="rpassword"/>
+							<input class="form-control required" onblur="checkRePassword(this)" type="password" placeholder="Re-type Your Password" maxlength="40" name="add-rpassword"/>
 					</div>
 					<div class="form-group">
 							<i class="fa fa-pencil fa-lg"></i>
-							<input class="form-control required" onblur="checkRealname(this)" type="text" placeholder="First(given)name,Surname(famirly name)" name="realname"/>
+							<input class="form-control required" onblur="checkRealname(this)" type="text" placeholder="First(given)name,Surname(famirly name)" name="add-realname"/>
 					</div>
 					<div class="form-group">
 							<i class="fa fa-envelope fa-lg"></i>
-							<input class="form-control eamil" onblur="checkEmail(this)" type="text" placeholder="Email" name="email" maxlength="40"/>
+							<input class="form-control eamil" onblur="checkEmail(this)" type="text" placeholder="Email" name="add-email" maxlength="40"/>
 					</div>
 					<div class="form-group">
 							<i class="fa fa-group fa-lg"></i>
-							<input class="form-control required" onblur="checkOrg(this)" type="text" placeholder="University,Group,institute,Corporation,etc (letters and , . only)" name="org"/>
+							<input class="form-control required" onblur="checkOrg(this)" type="text" placeholder="University,Group,institute,Corporation,etc (letters and , . only)" name="add-org"/>
 					</div>
 					<div class="form-group">
 							<i class="fa fa-globe fa-lg"></i>
-							<input class="form-control required" onblur="checkCountry(this)" type="text" placeholder="Country,Region 's Code, as CN,US..." maxlength="20"name="country"/>
+							<input class="form-control required" onblur="checkCountry(this)" type="text" placeholder="Country,Region 's Code, as CN,US..." maxlength="20" name="add-country"/>
 					</div>
 					<div class="form-group">
 						<input onclick="subReg()" id="submitReg" disabled="disabled" class="btn btn-group-sm btn-success pull-right" value="Sign Up "/>
