@@ -132,6 +132,11 @@ function subReg(){
 	        success:function(result){
 	        	if(result.success){
 	        		toastr.success("Register successfully, jump after 3 seconds......");
+	        		$.ajax({
+	        			  type: 'POST',
+	        			  url: ctx+"/user/sendEmail",
+	        			  data: {username: $("#add-username").val(), flag:1},
+	        		});
 	        		var intervalid;
 	        		intervalid = setInterval("fun()", 1000);
 	        	}else{

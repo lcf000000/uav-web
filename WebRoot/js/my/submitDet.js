@@ -103,6 +103,7 @@ function subtDet(){
 			submit.removeAttribute("disabled");
 			var formData = new FormData($("#detSubmit_form")[0]);
 			var trackerName = document.getElementById('detectorName');
+			toastr.success("Uploading... Please stay on this page until you are prompted to jump");
 			if(trackerName.hasOwnProperty('readonly')){
 				$.ajax({
 			        url: ctx+"/detres/updateDetbyId",//提交地址
@@ -114,6 +115,11 @@ function subtDet(){
 			        success:function(result){
 			        	if(result.success){
 			        		toastr.success("Update successfully, jump after 3 seconds......");
+			        		$.ajax({
+			        			  type: 'POST',
+			        			  url: ctx+"/user/sendEmail",
+			        			  data: {username: $("#username").val(), flag:2},
+			        		});
 			        		var intervalid;
 			        		intervalid = setInterval("fun()", 1000);
 			        	}else{
@@ -132,6 +138,11 @@ function subtDet(){
 			        success:function(result){
 			        	if(result.success){
 			        		toastr.success("Submit successfully, jump after 3 seconds......");
+			        		$.ajax({
+			        			  type: 'POST',
+			        			  url: ctx+"/user/sendEmail",
+			        			  data: {username: $("#username").val(), flag:2},
+			        		});
 			        		var intervalid;
 			        		intervalid = setInterval("fun()", 1000);
 			        	}else{
@@ -155,7 +166,7 @@ function GetQueryString(name)
 }
 $(document).ready(function(){
 	$.ajax({
-        url:ctx+"/user/findUserById",//提交地址
+        url:ctx+"/user/findUserById",
         type:"POST",
         data:{"user_id":$("#user_id").val()},
         dataType:"json",
