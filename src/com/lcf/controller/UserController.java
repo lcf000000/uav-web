@@ -279,6 +279,11 @@ public class UserController {
         return j;
 	}
 	
+	/**
+	 * 发送邮件
+	 * @param username
+	 * @param out
+	 */
 	@ResponseBody
 	@RequestMapping(value = "/user/sendEmail",method = RequestMethod.POST)
 	public Json regEmail(HttpServletRequest request,HttpServletResponse response,
@@ -296,5 +301,4 @@ public class UserController {
 		}
 		return j;
 	}
-	
 }
