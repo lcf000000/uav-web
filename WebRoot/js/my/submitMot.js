@@ -115,6 +115,11 @@ function subtMot(){
 			        success:function(result){
 			        	if(result.success){
 			        		toastr.success("Update successfully, jump after 3 seconds......");
+			        		$.ajax({
+			        			  type: 'POST',
+			        			  url: ctx+"/user/sendEmail",
+			        			  data: {username: $("#username").val(), flag:2},
+			        		});
 			        		var intervalid;
 			        		intervalid = setInterval("fun()", 1000);
 			        	}else{
@@ -133,6 +138,11 @@ function subtMot(){
 			        success:function(result){
 			        	if(result.success){
 			        		toastr.success("Submit successfully, jump after 3 seconds......");
+			        		$.ajax({
+			        			  type: 'POST',
+			        			  url: ctx+"/user/sendEmail",
+			        			  data: {username: $("#username").val(), flag:2},
+			        		});
 			        		var intervalid;
 			        		intervalid = setInterval("fun()", 1000);
 			        	}else{

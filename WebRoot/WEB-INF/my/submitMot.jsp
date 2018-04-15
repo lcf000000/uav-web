@@ -112,6 +112,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<div class="col-sm-9 col-md-9">
 						<div class="form-group">
 							<input type="hidden" name="user_id" id="user_id" value="${user.id}">
+							<input type="hidden" name="username" id="username" value="${user.username}">
 							<label>*Tracker Name</label>
 							<input id="trackerName" class="form-control required" onblur="checkName(this)" type="text" placeholder="A unique name, a short name of your tracker" name="name"/>
 						</div>

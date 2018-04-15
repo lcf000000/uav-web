@@ -109,6 +109,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<h3 class="form-title">Submit your sot tracker</h3>
 					<br/>
 					<input type="hidden" name="user_id" id="user_id" value="${user.id}">
+					<input type="hidden" name="username" id="username" value="${user.username}">
 					<div class="col-sm-9 col-md-9">
 						<div class="form-group">
 							<input type="hidden" name="user_id" id="user_id" value="${user.id}">
