@@ -128,7 +128,7 @@ private final Logger log = LoggerFactory.getLogger(VDetResController.class);
                     user = userService.findUserByID(user_id);                 
                     String email = user.getEmail();
                     try {
-                    	user.setDetcnt(user.getVDetcnt() - 1);
+                    	user.setVDetcnt(user.getVDetcnt() - 1);
                     	userService.edit(user);                 	
                     	log.info("Update user VDetCnt.");
                     	json.setSuccess(true);

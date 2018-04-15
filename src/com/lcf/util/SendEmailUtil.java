@@ -76,10 +76,10 @@ public class SendEmailUtil {
         if (flag == 1) {
         	message.setSubject("VisDrone 2018 Challenge Sign Up Confirmation");
             // 正文
-            str = "Dear " + userName + " <br/>" +
-                    "    You have sign up successfully to VisDrone 2018." +
+            str = "Dear " + userName + ", <br/>" +
+                    "You have sign up successfully to VisDrone 2018." +
                     "<br/>" +                 
-                    "    Thanks for your attention.<br/>" +
+                    "Thanks for your attention.<br/>" +
                     "<br/>" +
                     "Sincerely,<br/>" +
                     "VisDrone2018";
@@ -87,27 +87,27 @@ public class SendEmailUtil {
         	// Submission
         	message.setSubject("VisDrone 2018 Challenge Submission Confirmation");
         	// 正文
-        	str = "Dear " + userName + " <br/>" +
-        			"    Your result was submitted successfully to VisDrone 2018." +
+        	str = "Dear " + userName + ", <br/>" +
+        			"Your result was submitted successfully to VisDrone 2018." +
         			"<br/>" +        			
-        			"    Thanks for your submittion.<br/>" +
+        			"Thanks for your submittion.<br/>" +
         			"<br/>" +
         			"Sincerely,<br/>" +
         			"VisDrone2018";
         } else if (flag == 3){
         	message.setSubject("VisDrone 2018 Challenge Recover Password");
         	// 正文
-        	str = "Dear " + userName + " <br/>" +
-        			"    Your password is" + password +
+        	str = "Dear " + userName + ", <br/>" +
+        			"Your password is" + password +
         			"<br/>" +        			
-        			"    Please memorize your passwor and keep it safely.<br/>" +
+        			"Please memorize your passwor and keep it safely.<br/>" +
         			"<br/>" +
         			"Sincerely,<br/>" +
         			"VisDrone2018";
         } else {
         	message.setSubject("VisDrone 2018 Challenge");
         	// 正文
-        	str = "Dear " + userName + " <br/>" +
+        	str = "Dear " + userName + ", <br/>" +
         			"<br/>" +
         			"Sincerely,<br/>" +
         			"VisDrone2018";

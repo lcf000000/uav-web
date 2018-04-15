@@ -180,8 +180,7 @@ public class SotResController {
                     
                     //UserService userService = new UserService();
                     User user = new User();
-                    user = userService.findUserByID(user_id);                    
-                    String email = user.getEmail();                  
+                    user = userService.findUserByID(user_id);                                     
                     try {
                     	user.setSotcnt(user.getSotcnt() - 1);
                     	userService.edit(user);
