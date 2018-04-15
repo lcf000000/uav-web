@@ -103,6 +103,7 @@ function subtVdet(){
 			submit.removeAttribute("disabled");
 			var formData = new FormData($("#vdetSubmit_form")[0]);
 			var trackerName = document.getElementById('detectorName');
+			toastr.success("Uploading... Please stay on this page until you are prompted to jump");
 			if(trackerName.hasOwnProperty('readonly')){
 				$.ajax({
 			        url: ctx+"/detres/updateDetbyId",//提交地址

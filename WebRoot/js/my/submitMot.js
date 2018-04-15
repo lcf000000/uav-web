@@ -103,6 +103,7 @@ function subtMot(){
 			submit.removeAttribute("disabled");
 			var formData = new FormData($("#motSubmit_form")[0]);
 			var trackerName = document.getElementById('trackerName');
+			toastr.success("Uploading... Please stay on this page until you are prompted to jump");
 			if(trackerName.hasOwnProperty('readonly')){
 				$.ajax({
 			        url: ctx+"/motres/updateMotbyId",//提交地址

@@ -103,6 +103,7 @@ function subtSot(){
 			submit.removeAttribute("disabled");
 			var formData = new FormData($("#sotSubmit_form")[0]);
 			var trackerName = document.getElementById('trackerName');
+			toastr.success("Uploading... Please stay on this page until you are prompted to jump");
 			if(trackerName.hasOwnProperty('readonly')){
 				$.ajax({
 			        url: ctx+"/sotres/updateSotbyId",//提交地址

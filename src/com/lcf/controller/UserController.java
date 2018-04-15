@@ -183,8 +183,7 @@ public class UserController {
     		@RequestParam String add_realname,
     		@RequestParam String add_email,
     		@RequestParam String add_country,
-    		@RequestParam String add_org,
-    		@RequestParam Integer add_right) {
+    		@RequestParam String add_org) {
 		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");//设置日期格式
 		String regtime = df.format(new Date());// new Date()为获取当前系统时间，也可使用当前时间戳
 		

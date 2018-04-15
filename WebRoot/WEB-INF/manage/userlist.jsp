@@ -234,19 +234,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<form class="form-inline well" id="addUser-form">
 								<div class="row">
 									<span>User name:</span>
-									<input type="text" class="form-control" placeholder="User name" id="username-add" name="add-username">
+									<input type="text" class="form-control" placeholder="User name" id="username-add" name="add_username">
 									&nbsp;&nbsp;
 									<span>Password:</span>
-									<input type="password" class="form-control" placeholder="Password" id="password-add" name="add-password">
+									<input type="password" class="form-control" placeholder="Password" id="password-add" name="add_password">
 									&nbsp;&nbsp;
 									<span>Real name:</span>
-									<input type="text" class="form-control" placeholder="Real name" id="realname-add" name="add-realname">
+									<input type="text" class="form-control" placeholder="Real name" id="realname-add" name="add_realname">
 									&nbsp;&nbsp;
 									<span>Organization:</span>
-									<input type="text" class="form-control" placeholder="Organization" id="org-add" name="add-org">
+									<input type="text" class="form-control" placeholder="Organization" id="org-add" name="add_org">
 									&nbsp;&nbsp;
 									<span>&nbsp;Email:&nbsp;</span>
-									<input type="text" class="form-control" placeholder="Email" id="email-add" name="add-email">
+									<input type="text" class="form-control" placeholder="Email" id="email-add" name="add_email">
 								</div>
 								<div class="row">
 								&nbsp;
