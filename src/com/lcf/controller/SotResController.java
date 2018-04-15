@@ -82,9 +82,9 @@ public class SotResController {
                 	// 处理Results文件
                     String restrueFileName= "res" + String.valueOf(user_id) + addname + resfileName;
                     // 设置存放文件的路径
-                    String sotDir = CheckDirUtil.checkDir("Sot\\", user_id);
+                    String sotDir = CheckDirUtil.checkDir("Sot/", user_id);
                     
-                    String resPath = sotDir + "res\\";              
+                    String resPath = sotDir + "res/";              
                     path = resPath + restrueFileName;
                     
                     log.info("存放文件的路径:"+path);
@@ -94,7 +94,7 @@ public class SotResController {
                     
                     // 处理Description文件
                     String destrueFileName= "des" + String.valueOf(user_id) + addname + desfileName;
-                    String desPath = sotDir + "des\\";                   
+                    String desPath = sotDir + "des/";                   
                     // 设置存放文件的路径
                     path = desPath + destrueFileName;
                     // 转存文件到指定的路径
@@ -111,7 +111,7 @@ public class SotResController {
                             if ("zip".equals(codetype.toLowerCase())) {           	
                             	codetrueFileName= "code" + String.valueOf(user_id) + addname + codefileName;
                                 // 设置存放文件的路径
-                            	String codePath = sotDir + "code\\";                           	
+                            	String codePath = sotDir + "code/";                           	
                                 path = codePath + codetrueFileName;
                                 // 转存文件到指定的路径
                                 codefile.transferTo(new File(path));

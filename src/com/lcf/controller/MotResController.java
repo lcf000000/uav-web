@@ -89,9 +89,9 @@ private final Logger log = LoggerFactory.getLogger(MotResController.class);
                     //int dot = restrueFileName.lastIndexOf('.');
                     //String resfilePath = restrueFileName.substring(0, dot);
                     // 设置存放文件的路径
-                    String motDir = CheckDirUtil.checkDir("Mot\\", user_id);
+                    String motDir = CheckDirUtil.checkDir("Mot/", user_id);
                     
-                    String resPath = motDir + "res\\";              
+                    String resPath = motDir + "res/";              
                     path = resPath + restrueFileName;
                     //gtPath = groudtruthPath;
                     log.info("存放文件的路径:"+path);
@@ -103,7 +103,7 @@ private final Logger log = LoggerFactory.getLogger(MotResController.class);
                     // 处理Description文件
                     String destrueFileName= "des" + String.valueOf(user_id) + addname + desfileName;
                     // 设置存放文件的路径
-                    String desPath = motDir + "des\\";
+                    String desPath = motDir + "des/";
                     
                     // 设置存放文件的路径
                     path = desPath + destrueFileName;
@@ -120,7 +120,7 @@ private final Logger log = LoggerFactory.getLogger(MotResController.class);
                             if ("zip".equals(comotype.toLowerCase())) {           	
                             	codetrueFileName= "code" + String.valueOf(user_id) + addname + codefileName;
                                 // 设置存放文件的路径
-                            	String codePath = motDir + "code\\";                           	
+                            	String codePath = motDir + "code/";                           	
                                 path = codePath + codetrueFileName;
                                 // 转存文件到指定的路径
                                 codefile.transferTo(new File(path));
