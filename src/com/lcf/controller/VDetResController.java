@@ -86,9 +86,9 @@ private final Logger log = LoggerFactory.getLogger(VDetResController.class);
                     int dot = restrueFileName.lastIndexOf('.');
                     String resfilePath = restrueFileName.substring(0, dot);
                     // 设置存放文件的路径
-                    String vdetDir = CheckDirUtil.checkDir("VDet\\", user_id);
+                    String vdetDir = CheckDirUtil.checkDir("VDet/", user_id);
                     
-                    String resPath = vdetDir + "res\\";              
+                    String resPath = vdetDir + "res/";              
                     path = resPath + restrueFileName;
 
                     log.info("存放文件的路径:"+path);
@@ -100,7 +100,7 @@ private final Logger log = LoggerFactory.getLogger(VDetResController.class);
                     // 处理Description文件
                     String destrueFileName= "des" + String.valueOf(user_id) + addname + desfileName;
                     // 设置存放文件的路径
-                    String desPath = vdetDir + "des\\";                   
+                    String desPath = vdetDir + "des/";                   
                     // 设置存放文件的路径
                     path = desPath + destrueFileName;
                     // 转存文件到指定的路径
@@ -116,7 +116,7 @@ private final Logger log = LoggerFactory.getLogger(VDetResController.class);
                             if ("zip".equals(codetype.toLowerCase())) {           	
                             	codetrueFileName= "code" + String.valueOf(user_id) + addname + codefileName;
                                 // 设置存放文件的路径
-                            	String codePath = vdetDir + "code\\";                           	
+                            	String codePath = vdetDir + "code/";                           	
                                 path = codePath + codetrueFileName;
                                 // 转存文件到指定的路径
                                 codefile.transferTo(new File(path));

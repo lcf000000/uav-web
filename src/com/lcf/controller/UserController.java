@@ -177,14 +177,30 @@ public class UserController {
 	 */
 	@ResponseBody
 	@RequestMapping(value = "/user/addUser",method = RequestMethod.POST)
-    public Json addUser(User user) {
+    public Json addUser(HttpServletRequest request,HttpServletResponse response,
+    		@RequestParam String add_username,
+    		@RequestParam String add_password,
+    		@RequestParam String add_realname,
+    		@RequestParam String add_email,
+    		@RequestParam String add_country,
+    		@RequestParam String add_org,
+    		@RequestParam Integer add_right) {
 		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");//设置日期格式
 		String regtime = df.format(new Date());// new Date()为获取当前系统时间，也可使用当前时间戳
+		
+		User user = new User();
 		user.setRegtime(regtime);
+		user.setCountry(add_country);
+		user.setEmail(add_email);
+		user.setOrg(add_org);
+		user.setRealname(add_realname);
+		user.setUsername(add_username);
+		user.setPassword(add_password);
 		user.setDetcnt(5);
 		user.setMotcnt(5);
 		user.setSotcnt(5);
 		user.setVDetcnt(5);
+		user.setRight(1);
 		Json j = new Json();
 		try {
             userService.add(user);
