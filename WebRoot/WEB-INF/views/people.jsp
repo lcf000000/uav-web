@@ -61,15 +61,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<!-- Collect the nav links, forms, and other content for toggling -->
 				<div class="collapse navbar-collapse menu--shylock" id="bs-example-navbar-collapse-1">
 				  <ul class="nav navbar-nav menu__list">
-					<li class="menu__item"><a class="menu__link" href="<%=path%>/views/index">Home <span class="sr-only">(current)</span></a></li>
+					<li class=" menu__item"><a class="menu__link" href="<%=path%>/views/index">Home <span class="sr-only">(current)</span></a></li>
 					<li class="dropdown menu__item">
 						<a href="#" class="dropdown-toggle menu__link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Benchmark <span class="caret"></span></a>
 							<ul class="dropdown-menu multi-column columns-1">
 								<ul class="multi-column-dropdown">
-									<li><i class="fa fa-bookmark-o fa-lg"></i><a href="<%=path%>/views/getInfo?loc=2">&nbsp;&nbsp;Object Detection in Images</a></li>
-									<li><i class="fa fa-bookmark-o fa-lg"></i><a href="<%=path%>/views/getInfo?loc=3">&nbsp;&nbsp;Object Detection in Videos</a></li>
-									<li><i class="fa fa-bookmark-o fa-lg"></i><a href="<%=path%>/views/getInfo?loc=4">&nbsp;&nbsp;Single-Object Tracking</a></li>
-									<li><i class="fa fa-bookmark-o fa-lg"></i><a href="<%=path%>/views/getInfo?loc=5">&nbsp;&nbsp;Multi-Object Tracking</a></li>
+									<li><a href="<%=path%>/views/getInfo?loc=2">Detection in Images</a></li>
+									<li><a href="<%=path%>/views/getInfo?loc=3">Detection in Videos</a></li>
+									<li><a href="<%=path%>/views/getInfo?loc=4">Single-Object Tracking</a></li>
+									<li><a href="<%=path%>/views/getInfo?loc=5">Multi-Object Tracking</a></li>
 								</ul>
 							</ul>
 					</li>
@@ -83,14 +83,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 									<li><i class="fa fa-gear fa-lg"></i><a href="<%=path%>/views/getInfo?loc=8">&nbsp;&nbsp;Upload Results</a></li>
 									<li class="divider"></li>
 									<li>Evaluate:</li>
-									<li><i class="fa fa-tasks fa-lg"></i><a href="<%=path%>/views/getInfo?loc=9">&nbsp;&nbsp;Object Detection in Images</a></li>
-									<li><i class="fa fa-tasks fa-lg"></i><a href="<%=path%>/views/getInfo?loc=10">&nbsp;&nbsp;Object Detection in Videos</a></li>
-									<li><i class="fa fa-tasks fa-lg"></i><a href="<%=path%>/views/getInfo?loc=11">&nbsp;&nbsp;Single-Object Tracking</a></li>
-									<li><i class="fa fa-tasks fa-lg"></i><a href="<%=path%>/views/getInfo?loc=12">&nbsp;&nbsp;Multi-Object Tracking</a></li>
+									<li><i class="fa fa-bar-chart-o fa-lg"></i><a href="<%=path%>/views/getInfo?loc=9">&nbsp;&nbsp;Detection in Images</a></li>
+									<li><i class="fa fa-bar-chart-o fa-lg"></i><a href="<%=path%>/views/getInfo?loc=10">&nbsp;&nbsp;Detection in Videos</a></li>
+									<li><i class="fa fa-bar-chart-o fa-lg"></i><a href="<%=path%>/views/getInfo?loc=11">&nbsp;&nbsp;Single-Object Tracking</a></li>
+									<li><i class="fa fa-bar-chart-o fa-lg"></i><a href="<%=path%>/views/getInfo?loc=12">&nbsp;&nbsp;Multi-Object Tracking</a></li>
 									<li class="divider"></li>
 									<li>Leaderboards:</li>
-									<li><i class="fa fa-bar-chart-o fa-lg"></i><a href="<%=path%>/views/temp">&nbsp;&nbsp;Object Detection in Images</a></li>
-									<li><i class="fa fa-bar-chart-o fa-lg"></i><a href="<%=path%>/views/temp">&nbsp;&nbsp;Object Detection in Videos</a></li>
+									<li><i class="fa fa-bar-chart-o fa-lg"></i><a href="<%=path%>/views/temp">&nbsp;&nbsp;Detection in Images</a></li>
+									<li><i class="fa fa-bar-chart-o fa-lg"></i><a href="<%=path%>/views/temp">&nbsp;&nbsp;Detection in Videos</a></li>
 									<li><i class="fa fa-bar-chart-o fa-lg"></i><a href="<%=path%>/views/temp">&nbsp;&nbsp;Single-Object Tracking</a></li>
 									<li><i class="fa fa-bar-chart-o fa-lg"></i><a href="<%=path%>/views/temp">&nbsp;&nbsp;Multi-Object Tracking</a></li>
 								</ul>
@@ -98,7 +98,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</li>
 					<li class=" menu__item"><a class="menu__link" href="<%=path%>/my/submit">Submit</a></li>
 					<li class=" menu__item"><a class="menu__link" href="<%=path%>/views/getInfo?loc=17">FAQ</a></li>
-					<li class=" menu__item"><a class="menu__link" href="<%=path%>/views/people">People</a></li>
+					<li class="active menu__item menu__item--current"><a class="menu__link" href="<%=path%>/views/people">People</a></li>
 				  </ul>
 				  <ul class="nav navbar-nav menu__list nav-right">
 					  <c:if test="${empty sessionScope.user.username}">
@@ -162,30 +162,76 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								<span class="fh5co-meta fh5co-date"><div style="white-space:nowrap;font-size: 12px ;text-transform : capitalize"><br>Associate Professor</br> <br>Temple University</br></div></span>
 							</article>
 							<section id="content-h">
-							<div class="box-hang">
-								<div class="box-area-hang fh5co-meta fh5co-date">Hamilton Scott Clouse (USAirforce Research) <br>
-									Liyi Dai (US Army Research Office) <br>
-									Riad I.Hammound (BAE Systems, USA) <br>
-									Qinghua Hu (Tianjin Univ., China)<br>
-									David Jacobs (Univ. Maryland College Park, USA)<br> 
-									John Lizzi (GEGlobal Research, Niskayuna, USA) <br>
-									Stan Z. Li (Institute ofAutomation, Chinese Academy of Sciences, China)<br></div>
-							</div>
-
-							<div class="box-hang fh5co-meta fh5co-date">
-						      <div class="box-area-hang-right">
-							Anton Milan (Amazon Research and Development Center, Germany)<br>
-                            Zhuowen Tu (Univ. California San Diego, USA)<br>
-                            Siyu Tang (Max Planck Institute for Intelligent Systems, Germany)<br>
-                            Yi Wu (Indiana Univ., USA)<br>
-                            Wenhan Luo (Tencent AI Lab)<br>
-                            Ming-Hsuan Yang （University of California at Merced, USA）<br>
-
+					<!-- 新加入 -->
+							   <div class="clearfix visible-lg-block visible-md-block visible-sm-block visible-xs-block"></div>
+							   <div class="container-fluid">
+						       <div class="row fh5co-post-entry">
+					              <div class="col-lg-12 col-md-12 text-center">
+					              
+					               <h1 id="fh5co-logo">Keynote Speaker</h1>
+					               <br/>
+					                </div>
+				             <article class="col-lg-3 col-md-3 col-sm-3 col-xs-6 col-xxs-12 animate-box col-md-push-2">
+								<figure>
+									<a href="#"><img src="<%=path%>/images/people/15.jpg" alt="Image" class="img-responsive"style= "margin: 0 auto;"></a>
+								</figure>
+								<h3 class="fh5co-article-title"><div style="text-align: center;"><a href="#">Daniel Cremers</a></div></h3>
+								<span class="fh5co-meta fh5co-date"><div style="white-space:nowrap;font-size: 12px ;text-transform : capitalize"><br>Professor<br /><br> Technische Universität München<br/></div></span>
+							</article>
 							
-							 </div>
+							 <article class="col-lg-3 col-md-3 col-sm-3 col-xs-6 col-xxs-12 animate-box col-md-push-4">
+								<figure>
+							
+									<a href="#"><img src="<%=path%>/images/people/16.jpg" alt="Image" class="img-responsive"style= "margin: 0 auto;"></a>
+								</figure>
+								<h3 class="fh5co-article-title"><div style="text-align: center;"><a href="#">Mubarak Shah</a></div></h3>
+								<span class="fh5co-meta fh5co-date"><div style="white-space:nowrap;font-size: 12px ;text-transform : capitalize"><br>Professor<br /><br> University of Central Florida<br/></div></span>
+							</article>
 							</div>
+							</div>
+							
 							
 							</section>
+							
+					<div class="col-lg-12 col-md-12 text-center">
+					
+					<h1 id="fh5co-logo">Advisory Committee</h1>
+					<br/>
+					</div>
+							    <div class="container">
+							     <div class="row">
+								    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 col-xxs-12 animate-box col-md-push-1 ">
+								    <div class="box-hang">
+								    <list>
+								   <li style="font-size: 12px"> Hamilton Scott Clouse (USAirforce Research)</li> 
+									<li style="font-size: 12px">Liyi Dai (US Army Research Office)</li> 
+									<li style="font-size: 12px">Riad I.Hammound (BAE Systems, USA) </li>
+									<li style="font-size: 12px">Qinghua Hu (Tianjin Univ., China)</li>
+									<li style="font-size: 12px">David Jacobs (Univ. Maryland College Park, USA)</li> 
+									<li style="font-size: 12px">John Lizzi (GEGlobal Research, Niskayuna, USA)</li>
+									<li style="font-size: 12px">Stan Z. Li (Institute ofAutomation, Chinese Academy of Sciences, China)</li>
+									</list>
+							        </div>
+							        </div>
+							        
+							        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 col-xxs-12 animate-box col-md-offset-3">
+								    <div class="box-hang"><list>
+								   
+							        <li style="font-size: 12px">Anton Milan (Amazon Research and Development Center, Germany)</li>
+                                    <li style="font-size: 12px"> Zhuowen Tu (Univ. California San Diego, USA)</li>
+                                    <li style="font-size: 12px">Siyu Tang (Max Planck Institute for Intelligent Systems, Germany)</li>
+                                    <li style="font-size: 12px">Yi Wu (Indiana Univ., USA)</li>
+                                    <li style="font-size: 12px">Wenhan Luo (Tencent AI Lab)</li>
+                                    <li style="font-size: 12px">Ming-Hsuan Yang （University of California at Merced, USA）</li>
+                                     </list>
+                                    </div>
+                                    </div>
+                                    </div>
+                                    </div>
+                                     
+							 
+							  <br/><br/><br/><br/>
+							
 							<div class="clearfix visible-lg-block visible-md-block visible-sm-block visible-xs-block"></div>
 							<div class="col-lg-12 col-md-12 text-center">
 							<h1 id="fh5co-logo">Team Member</h1>
