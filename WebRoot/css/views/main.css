@@ -19,11 +19,11 @@ h1,u{
     position: relative;
     margin-bottom: 15px;
     padding-bottom: 20px;
-    font-family: inherit;
+    font-family:"Open Sans";
 }
 h2{
 	font-size: 20px;
-	font-family: inherit;
+	font-family: "Open Sans";
 }
 h3,h4 { 
 	 text-align: justify;
@@ -31,7 +31,7 @@ h3,h4 {
 	 font-size:18px; 
 	 font-weight:normal
      display: block;
-     font-family: inherit;
+     font-family:"Open Sans";
    
     -webkit-margin-before: 1em;
     -webkit-margin-after: 1em;
@@ -42,21 +42,27 @@ h3,h4 {
 }
 h4{
 	text-align: justify;
-    font-family: inherit;
+    font-family:"Open Sans";
 }
 p{
-	font-size: 18px;
-	font-family: inherit;
+	font-size: 16px;
+	font-family:"Open Sans";
 }
-li,span,i,font{
-	font-family: inherit;
-	font-size:18px; 
+ul,li,span,i,font{
+	
+	 text-align:justify;
+	
+	
+	 font-weight:normal
+     display: block;
+	font-family:"Open Sans";
+	font-size:16px; 
 }
 }
 
 
 span{
-	font-size: 18px;
+	font-size: 16px;
 	
 	
 }
