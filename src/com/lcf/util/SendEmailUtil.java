@@ -79,9 +79,9 @@ public class SendEmailUtil {
             str = "Dear Participator: <br/><br/>" +
             		"Thanks for creating an account in the VisDrone challenge. "
             		+ "You may receive important news and updates about the challenge in the future. "
-            		+ "Please click the link below to verify your email address:"
-            		+ " xxxxx." +
-                    "<br/>" +
+            		+ "Please click the link below to verify your email address:<br/>"
+            		+ password +
+                    "<br/><br/>" +
                     "Kind Regards,<br/>" +
         			"The VisDrone Team";
         } else if (flag == 2){

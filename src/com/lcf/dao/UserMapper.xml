@@ -15,6 +15,9 @@
 	    <result column="USER_SOTCNT" property="sotcnt" jdbcType="NUMERIC" />
 	    <result column="USER_MOTCNT" property="motcnt" jdbcType="NUMERIC" />
 	    <result column="USER_VDETCNT" property="vdetcnt" jdbcType="NUMERIC" />
+	    <result column="USER_CODE" property="code" jdbcType="VARCHAR" />
+	    <result column="USER_STATUS" property="status" jdbcType="NUMERIC" />
+	    
  	</resultMap>
 	<select id="findUserByName" resultMap="BaseResultMap">
 		SELECT * FROM user WHERE USER_UNAME = #{username} 
@@ -42,7 +45,10 @@
 		AND USER_ORG like concat('%',#{user.org},'%')
 		</if>		
 		<if test="user.right!=null and user.right!=''">
-		AND USER_RIGHT = #{user.right}
+		AND USER_RIGHT = #{user.right},
+		</if>
+		<if test="user.status!=null and user.status!=''">
+		AND USER_STATUS = #{user.status}
 		</if>
 	</select>
 	
@@ -59,7 +65,9 @@
             <if test="detcnt !=null and detcnt !=''">USER_DETCNT,</if>
             <if test="sotcnt !=null and sotcnt !=''">USER_SOTCNT,</if>
             <if test="motcnt !=null and motcnt !=''">USER_MOTCNT,</if>
-            <if test="vdetcnt !=null and vdetcnt !=''">USER_VDETCNT</if>
+            <if test="vdetcnt !=null and vdetcnt !=''">USER_VDETCNT,</if>
+            <if test="code != null and code !=''">USER_CODE,</if>
+            <if test="status!=null and status!=''">USER_STATUS</if>
             </trim>)values(<trim suffixOverrides=",">
             <if test="username !=null and username !=''">#{username},</if>
             <if test="password !=null and password !=''">#{password},</if>
@@ -72,7 +80,9 @@
             <if test="detcnt !=null and detcnt !=''">#{detcnt},</if>
             <if test="sotcnt !=null and sotcnt !=''">#{sotcnt},</if>
             <if test="motcnt !=null and motcnt !=''">#{motcnt},</if>
-            <if test="vdetcnt !=null and vdetcnt !=''">#{vdetcnt}</if>
+            <if test="vdetcnt !=null and vdetcnt !=''">#{vdetcnt},</if>
+            <if test="code != null and code !=''">#{code},</if>
+            <if test="status!=null and status!=''">#{status}</if>
             </trim>)
 	</insert>
 	
@@ -80,16 +90,18 @@
     	UPDATE user
     	<set>
     		<if test="username !=null and username !=''">USER_UNAME = #{username},</if>
-            <if test="password !=null and password !=''">USER_PASS  = #{password},</if>
-            <if test="email !=null and email !=''">USER_EMAIL  = #{email},</if>
-            <if test="country !=null and country !=''">USER_COUNTRY  = #{country},</if>
-            <if test="realname !=null and realname !=''">USER_NAME  = #{realname},</if>
+            <if test="password !=null and password !=''">USER_PASS = #{password},</if>
+            <if test="email !=null and email !=''">USER_EMAIL = #{email},</if>
+            <if test="country !=null and country !=''">USER_COUNTRY = #{country},</if>
+            <if test="realname !=null and realname !=''">USER_NAME = #{realname},</if>
             <if test="org !=null and org !=''">USER_ORG = #{org},</if>
             <if test="right !=null and right !=''">USER_RIGHT = #{right},</if>
             USER_DETCNT = #{detcnt},
 			USER_SOTCNT = #{sotcnt},
 			USER_MOTCNT = #{motcnt},
-			USER_VDETCNT = #{vdetcnt}
+			USER_VDETCNT = #{vdetcnt},
+			<if test="code != null and code !=''">USER_CODE = #{code},</if>
+			<if test="user.status!=null and user.status!=''">USER_STATUS = #{user.status}</if>
     	</set>
     	WHERE USER_ID = #{id}
     </update>

@@ -21,6 +21,8 @@ public class User {
 	private int detcnt;
 	private int sotcnt;
 	private int vdetcnt;  //video detection
+	private String code;
+	private int status;
 	
 	public int getId() {
 		return id;
@@ -28,76 +30,102 @@ public class User {
 	public void setId(int id) {
 		this.id = id;
 	}
+	
 	public String getUsername() {
 		return username;
 	}
 	public void setUsername(String username) {
 		this.username = username;
 	}
+	
 	public String getPassword() {
 		return password;
 	}
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	
 	public String getEmail() {
 		return email;
 	}
 	public void setEmail(String email) {
 		this.email = email;
 	}
+	
 	public String getRealname() {
 		return realname;
 	}
 	public void setRealname(String realname) {
 		this.realname = realname;
 	}
+	
 	public String getCountry() {
 		return country;
 	}
 	public void setCountry(String country) {
 		this.country = country;
 	}
+	
 	public String getOrg() {
 		return org;
 	}
 	public void setOrg(String org) {
 		this.org = org;
 	}
+	
 	public String getRegtime() {
 		return regtime;
 	}
 	public void setRegtime(String regtime) {
 		this.regtime = regtime;
 	}
+	
 	public int getRight() {
 		return right;
 	}
 	public void setRight(int right) {
 		this.right = right;
 	}
+	
 	public int getMotcnt() {
 		return motcnt;
 	}
 	public void setMotcnt(int motcnt) {
 		this.motcnt = motcnt;
 	}
+	
 	public int getSotcnt() {
 		return sotcnt;
 	}
 	public void setSotcnt(int sotcnt) {
 		this.sotcnt = sotcnt;
 	}
+	
 	public int getDetcnt() {
 		return detcnt;
 	}
 	public void setDetcnt(int detcnt) {
 		this.detcnt = detcnt;
 	}
+	
 	public int getVDetcnt() {
 		return vdetcnt;
 	}
 	public void setVDetcnt(int vdetcnt) {
 		this.vdetcnt = vdetcnt;
+	}
+	
+	public String getCode() {
+		return code;
+	}
+	public void setCode(String code) {
+		this.code = code;
+	}
+	
+	public int getStatus() {
+		return status;
+	}
+	public void setStatus(int status) {
+		this.status = status;
 	}
 }

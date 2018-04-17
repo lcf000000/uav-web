@@ -5,6 +5,7 @@ package com.lcf.controller;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.UUID;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -24,6 +25,7 @@ import com.lcf.model.dataformat.Json;
 import com.lcf.model.dataformat.PageBean;
 import com.lcf.service.UserService;
 import com.lcf.util.SendEmailUtil;
+import com.lcf.util.GenerateLinkUtil;
 
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
@@ -200,6 +202,8 @@ public class UserController {
 		user.setSotcnt(5);
 		user.setVDetcnt(5);
 		user.setRight(1);
+		user.setStatus(0);
+		user.setCode(UUID.randomUUID().toString());
 		Json j = new Json();
 		try {
             userService.add(user);
@@ -293,7 +297,14 @@ public class UserController {
 		User user = new User();
 		user = userService.findUserByName(username);                 
 		try {
-			SendEmailUtil.sendEmail(user.getEmail(), flag, username, user.getPassword());
+			if (flag!= 1) {
+				SendEmailUtil.sendEmail(user.getEmail(), flag, username, user.getPassword());
+			} else {
+				String code = user.getCode();
+				String link = GenerateLinkUtil.generateActiveLink(String.valueOf(user.getId()), username, code);
+				SendEmailUtil.sendEmail(user.getEmail(), flag, username, link);
+			}
+			
 			j.setSuccess(true);
 			j.setMsg("Confirm Email Send Done.");
 		} catch(Exception e) {
