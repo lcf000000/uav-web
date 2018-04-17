@@ -74,26 +74,29 @@ public class SendEmailUtil {
         String str;
         // Sign up
         if (flag == 1) {
-        	message.setSubject("VisDrone 2018 Challenge Sign Up Confirmation");
+        	message.setSubject("Verify Your Email Address");
             // 正文
-            str = "Dear " + userName + ", <br/>" +
-                    "You have sign up successfully to VisDrone 2018." +
-                    "<br/>" +                 
-                    "Thanks for your attention.<br/>" +
-                    "<br/>" +
-                    "Sincerely,<br/>" +
-                    "VisDrone2018";
+            str = "Dear Participator: <br/><br/>" +
+            		"Thanks for creating an account in the VisDrone challenge. "
+            		+ "You may receive important news and updates about the challenge in the future. "
+            		+ "Please click the link below to verify your email address:<br/>"
+            		+ password +
+                    "<br/><br/>" +
+                    "Kind Regards,<br/>" +
+        			"The VisDrone Team";
         } else if (flag == 2){
         	// Submission
-        	message.setSubject("VisDrone 2018 Challenge Submission Confirmation");
+        	message.setSubject("VisDrone 2018 Submission");
         	// 正文
-        	str = "Dear " + userName + ", <br/>" +
-        			"Your result was submitted successfully to VisDrone 2018." +
-        			"<br/>" +        			
-        			"Thanks for your submittion.<br/>" +
-        			"<br/>" +
-        			"Sincerely,<br/>" +
-        			"VisDrone2018";
+        	str = "Dear Participator: <br/><br/>" +
+        			"Thank you for participating the VisDrone 2018 Challenge, "
+        			+ "held on the ECCV 2018 workshop \"Vision Meets Drones: A Challenge\". "
+        			+ "We have successfully received your results. "
+        			+ "We will post the latest updates of the challenge on the website: "
+        			+ "http://www.aiskyeye.com/." +
+        			"<br/><br/>" +
+        			"Kind Regards,<br/>" +
+        			"The VisDrone Team";
         } else if (flag == 3){
         	message.setSubject("VisDrone 2018 Challenge Recover Password");
         	// 正文
