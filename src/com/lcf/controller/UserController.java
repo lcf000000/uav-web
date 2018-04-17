@@ -71,8 +71,13 @@ public class UserController {
 				}else {
 					if (user.getPassword().equals(password)) {
 						// 保存用信息到session
-						session.setAttribute("user", user);
-		        		return "redirect:/";//跳转至访问页面
+						if (user.getStatus() != 1) {
+							request.setAttribute("message", "User is not active, please activate your account and login again!");
+							return "views/login";
+						} else {
+							session.setAttribute("user", user);
+		        			return "redirect:/";//跳转至访问页面
+						}
 					}else {
 		        		request.setAttribute("message", "Username or password is wrong, please login again!");
 		        		return "views/login"; 
