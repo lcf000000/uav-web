@@ -11,7 +11,8 @@ public class GenerateLinkUtil {
 	}
 	
 	public static String generateActiveLink(String id, String userName, String randomCode) {
-		return "http://www.aiskyeye.com/views/activateAccount?id=" 
+		//return "http://localhost:8080/UAV-Data/views/activateAccount?id="
+		return "http://www.aiskyeye.com/views/activateAccount?id="
 				+ id + "&" + CHECK_CODE + "=" + generateCheckcode(userName, randomCode);
 	}
 	

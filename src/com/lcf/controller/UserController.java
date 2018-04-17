@@ -317,4 +317,30 @@ public class UserController {
 		}
 		return j;
 	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/user/activateAcount",method = RequestMethod.POST) 
+	public Json activeAccount(HttpServletRequest request,HttpServletResponse response,
+    		@RequestParam int useId,
+    		@RequestParam String checkCode) {
+		Json j = new Json();
+		
+		User user = new User();
+		user = userService.findUserByID(useId);
+		try {
+			if (GenerateLinkUtil.verifyCheckCode(user.getUsername(), user.getCode(), checkCode)) {
+				user.setStatus(1);
+				userService.edit(user);
+				j.setSuccess(true);
+				j.setMsg("Activate user done!");
+			} else {
+				j.setSuccess(false);
+				j.setMsg("Activate user fail.");
+			}
+		} catch(Exception e) {
+			j.setMsg(e.getMessage());
+		}
+		
+		return j;
+	}
 }

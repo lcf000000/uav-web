@@ -28,7 +28,7 @@ public class SendEmailUtil {
         //是否进行权限验证。
         props.setProperty("mail.smtp.ssl.enable", "true");
         props.setProperty("mail.smtp.auth", "true");
-		
+
 		// 权限
 		Authenticator authenticator = new Authenticator() {
 			@Override
@@ -76,12 +76,12 @@ public class SendEmailUtil {
         if (flag == 1) {
         	message.setSubject("Verify Your Email Address");
             // 正文
-            str = "Dear Participator: <br/><br/>" +
+            str = "Dear Participator: <br/>" +
             		"Thanks for creating an account in the VisDrone challenge. "
-            		+ "You may receive important news and updates about the challenge in the future. "
-            		+ "Please click the link below to verify your email address:<br/>"
-            		+ password +
-                    "<br/><br/>" +
+            		+ "You may receive important news and updates about the challenge in the future.<br/> "
+            		+ "Please verify your email address:<br>"
+            		+ "<a href='" + password + "'>" + password + "</a>" +
+                    "<br/>" +
                     "Kind Regards,<br/>" +
         			"The VisDrone Team";
         } else if (flag == 2){
@@ -93,7 +93,7 @@ public class SendEmailUtil {
         			+ "held on the ECCV 2018 workshop \"Vision Meets Drones: A Challenge\". "
         			+ "We have successfully received your results. "
         			+ "We will post the latest updates of the challenge on the website: "
-        			+ "http://www.aiskyeye.com/." +
+        			+ "<a href='http://www.aiskyeye.com'>" + "http://www.aiskyeye.com" + "</a>" +
         			"<br/><br/>" +
         			"Kind Regards,<br/>" +
         			"The VisDrone Team";
