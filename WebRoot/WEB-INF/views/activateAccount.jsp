@@ -104,9 +104,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div class="row">
 				<div class="col-md-2">
 				</div>
-				<div class="col-md-8 panel panel-default" id="show-info" style="word-wrap:break-word;">
+				<div class="col-md-8 panel panel-default" style="word-wrap:break-word;">
 					<div class="col-xs-10 col-sm-12">
-						<h3 align="center">Please login first! Redirect to login page...<span id="time"></span> S</h3>
+						<h1 align="center">Verifying...</h1>
+						<h1 align="center"><span id="time"></span></h1>
 					</div>
 				</div>
 				<div class="col-md-2">
@@ -127,18 +128,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<script src="<%=path%>/js/jquery/jquery.min.js"></script>
 		<script src="<%=path%>/js/bootstrap/bootstrap.min.js"></script>
 		<script src="<%=path%>/js/views/viewsGlob.js"></script>
-		<script>
-			var i = 3; 
-			var intervalid; 
-			intervalid = setInterval("fun()", 1000); 
-			function fun() { 
-				if (i == 0) { 
-				window.location.href = ctx + "/views/login"; 
-				clearInterval(intervalid); 
-				} 
-				document.getElementById("time").innerHTML = i; 
-				i--; 
-			} 
-		</script>
+		<script src="<%=path%>/js/views/actAccount.js"></script>
 	</body>
 </html>

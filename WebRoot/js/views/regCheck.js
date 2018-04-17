@@ -6,7 +6,7 @@ var realname_ok = false;
 var email_ok = false;
 var org_ok = false;
 var country_ok = false;
-var i = 3; 
+var i = 5; 
 function checkUsername(username){
         //验证用户名的输入格式  
         username_ok=checkField(username, /^[a-zA-Z0-9_]{6,20}$/, "Username can not be empty!", "The username can only be composed of letters and numbers and must be between six and twenty!");  
@@ -131,7 +131,7 @@ function subReg(){
 	        data:$("#register_form").serialize(),//将表单数据序列化,
 	        success:function(result){
 	        	if(result.success){
-	        		toastr.success("Register successfully, jump after 3 seconds......");
+	        		toastr.success("Please login to your email to verify, jump to login after 5 seconds......");
 	        		$.ajax({
 	        			  type: 'POST',
 	        			  url: ctx+"/user/sendEmail",
