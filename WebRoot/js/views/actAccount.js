@@ -32,7 +32,7 @@ function fun() {
 $(document).ready(function(){
 	var userId = GetQueryString("id");
 	var checkCode = GetQueryString("checkCode");
-	if(user_id!=null&&checkCode!=null){
+	if(userId!=null&&checkCode!=null){
 		$.ajax({
 	        url:ctx+"/user/activateAcount",
 	        type:"POST",

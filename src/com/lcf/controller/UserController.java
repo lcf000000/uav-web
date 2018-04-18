@@ -295,7 +295,7 @@ public class UserController {
 	 */
 	@ResponseBody
 	@RequestMapping(value = "/user/sendEmail",method = RequestMethod.POST)
-	public Json regEmail(HttpServletRequest request,HttpServletResponse response,
+	public Json sendEmail(HttpServletRequest request,HttpServletResponse response,
     		@RequestParam String username,
     		@RequestParam int flag) {
 		Json j = new Json();
@@ -318,15 +318,19 @@ public class UserController {
 		return j;
 	}
 	
+	/**
+	 * 邮箱验证
+	 * @param userId checkCode
+	 * @param out
+	 */
 	@ResponseBody
 	@RequestMapping(value = "/user/activateAcount",method = RequestMethod.POST) 
 	public Json activeAccount(HttpServletRequest request,HttpServletResponse response,
-    		@RequestParam int useId,
-    		@RequestParam String checkCode) {
-		Json j = new Json();
-		
-		User user = new User();
-		user = userService.findUserByID(useId);
+    		@RequestParam String userId,
+    		@RequestParam String checkCode) throws Exception {
+		Json j = new Json();	
+		User user = new User();	
+		user = userService.findUserByID(Integer.valueOf(userId));
 		try {
 			if (GenerateLinkUtil.verifyCheckCode(user.getUsername(), user.getCode(), checkCode)) {
 				user.setStatus(1);
