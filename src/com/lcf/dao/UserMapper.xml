@@ -101,7 +101,7 @@
 			USER_MOTCNT = #{motcnt},
 			USER_VDETCNT = #{vdetcnt},
 			<if test="code != null and code !=''">USER_CODE = #{code},</if>
-			<if test="user.status!=null and user.status!=''">USER_STATUS = #{user.status}</if>
+			<if test="status!=null and status!=''">USER_STATUS = #{status}</if>
     	</set>
     	WHERE USER_ID = #{id}
     </update>
