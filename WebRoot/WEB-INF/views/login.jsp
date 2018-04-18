@@ -59,7 +59,7 @@
 					</div>
 					<div class="form-group">
 						<label class="checkbox">
-							<input type="checkbox" name="remember" value="1" onblur="enableLG()"/> Enable Login
+							<input type="checkbox" onblur="enableLG()"/> Enable Login
 						</label>
 						<hr />
 						<a href="<%=path%>/views/register" id="register_btn" class="">Create an account</a>
