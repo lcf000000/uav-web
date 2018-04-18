@@ -193,6 +193,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	                                        <option value="18">Bibtex source</option>
 	                                        <option value="19">Abstract</option>
 	                                        <option value="20">PDF</option>
+	                                        <option value="21">Download</option>
 	                                        <option value="999">other</option>
 	                                </select>
 	                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -242,6 +243,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	                                        <option value="18">Bibtex source</option>
 	                                        <option value="19">Abstract</option>
 	                                        <option value="20">PDF</option>
+	                                        <option value="21">Download</option>
 	                                        <option value="999">other</option>
 	                                </select>
 	                                <span style="color:#F00">*Confirm selection ！</span>
@@ -295,6 +297,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	                                        <option value="18">Bibtex source</option>
 	                                        <option value="19">Abstract</option>
 	                                        <option value="20">PDF</option>
+	                                        <option value="21">Download</option>
 	                                        <option value="999">other</option>
 	                                </select>
 	                                <span style="color:#F00">*Confirm selection ！</span>

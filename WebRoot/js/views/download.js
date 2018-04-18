@@ -5,7 +5,7 @@ function getInfo(){
 	$.ajax({
         url:ctx+"/info/getInfoByLoc",//提交地址
     type:"POST",
-    data:{"location":"999"},
+    data:{"location":"21"},
     dataType:"json",
     success:function(info){
     	document.getElementById("show-info").innerHTML = info.content1;
