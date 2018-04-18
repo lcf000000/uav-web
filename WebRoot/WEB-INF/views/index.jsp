@@ -15,6 +15,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 		<title>UAV DATASET - TJU and GA</title>
 		<!-- Bootstrap core CSS -->
+		<link rel="shortcut icon" href="<%=path%>/images/favicon.ico" type="image/x-icon" />
 		<link href="<%=path%>/css/bootstrap/bootstrap.css" rel="stylesheet">
 		<link rel="stylesheet" href="<%=path%>/css/font-awesome/font-awesome.min.css">
 		<!-- Custom styles for this template -->

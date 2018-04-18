@@ -112,6 +112,15 @@ function fun() {
 function backReg(){
 	window.location.href = ctx + "/views/index"; 
 }
+function enableSP(){
+	checkUsername();
+	checkPassword();
+	checkRePassword();
+	checkRealname();
+	checkEmail();
+	checkOrg();
+	checkCountry();
+}
 function enableSubmit(){
 	var submit = document.getElementById('submitReg');
 	if(username_ok && nameOnly_ok && password_ok&& rePassword_ok && realname_ok && email_ok && org_ok && country_ok){

@@ -11,6 +11,7 @@
 	<head>
 		<meta charset="utf-8" />
 		<title></title>
+		<link rel="shortcut icon" href="<%=path%>/images/favicon.ico" type="image/x-icon" />
 		<!-- Bootstrap 核心 CSS 文件 -->
 		<script type="text/javascript">ctx="${pageContext.request.contextPath}";</script>
 		<link href="<%=path%>/css/bootstrap/bootstrap.min.css" rel="stylesheet">
@@ -58,7 +59,7 @@
 					</div>
 					<div class="form-group">
 						<label class="checkbox">
-							<input type="checkbox" name="remember" value="1"/> Remember me
+							<input type="checkbox" onblur="enableLG()"/> Enable Login
 						</label>
 						<hr />
 						<a href="<%=path%>/views/register" id="register_btn" class="">Create an account</a>

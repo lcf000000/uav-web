@@ -102,6 +102,8 @@ public class InformationController {
 				dataO.put("location", "Abstract");
 			}else if(loc==20){
 				dataO.put("location", "PDF");
+			}else if(loc==21){
+				dataO.put("location", "Download");
 			}else{
 				dataO.put("location", "other");
 			}
