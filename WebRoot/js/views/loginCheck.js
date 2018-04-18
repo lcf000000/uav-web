@@ -41,6 +41,11 @@ function checkCode(code){
     	return code_ok;
     }
 }
+function enableLG(){
+	checkUsername();
+	checkPassword();
+	checkCode();
+}
 function enableSubmit(){
 	var submit = document.getElementById('loginSubmit');
 	if(username_ok && password_ok && code_ok){

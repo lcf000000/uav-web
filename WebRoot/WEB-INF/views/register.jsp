@@ -60,6 +60,9 @@
 							<input class="form-control required" onblur="checkCountry(this)" type="text" placeholder="Country,Region 's Code, as CN,US..." maxlength="20" name="add_country"/>
 					</div>
 					<div class="form-group">
+						<input onclick="enableSP()" class="btn btn-group-sm btn-success pull-right" value="Enable Sign-UP"/>
+					</div>
+					<div class="form-group">
 						<input onclick="subReg()" id="submitReg" disabled="disabled" class="btn btn-group-sm btn-success pull-right" value="Sign Up "/>
 						<input onclick="backReg()" class="btn btn-group-sm btn-info pull-left" id="back_btn" value="Back"/>
 					</div>
