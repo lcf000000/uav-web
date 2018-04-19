@@ -45,7 +45,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				  <ul class="nav navbar-nav menu__list">
 					<li class="menu__item"><a class="menu__link" href="<%=path%>/views/index">Home <span class="sr-only">(current)</span></a></li>
 					<li class="dropdown menu__item">
-						<a href="#" class="dropdown-toggle menu__link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Benchmark <span class="caret"></span></a>
+						<a href="#" class="dropdown-toggle menu__link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Challenge <span class="caret"></span></a>
 							<ul class="dropdown-menu multi-column columns-1">
 								<ul class="multi-column-dropdown">
 									<li><i class="fa fa-bookmark-o fa-lg"></i><a href="<%=path%>/views/getInfo?loc=2">&nbsp;&nbsp;Object Detection in Images</a></li>
@@ -78,6 +78,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								</ul>
 							</ul>
 					</li>
+					<li class=" menu__item"><a class="menu__link" href="<%=path%>/my/downloadD">Download</a></li>
 					<li class=" menu__item"><a class="menu__link" href="<%=path%>/my/submit">Submit</a></li>
 					<li class=" menu__item"><a class="menu__link" href="<%=path%>/views/getInfo?loc=17">FAQ</a></li>
 					<li class=" menu__item"><a class="menu__link" href="<%=path%>/views/people">People</a></li>
