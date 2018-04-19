@@ -75,6 +75,7 @@
              <mvc:mapping path="/my/submitMOt"/>
              <mvc:mapping path="/my/yourResults"/>
              <mvc:mapping path="/my/myInfo"/>
+             <mvc:mapping path="/my/downloadD"/>
              <bean class="com.lcf.interceptor.CommonInterceptor"></bean>
          </mvc:interceptor>
          <mvc:interceptor>
