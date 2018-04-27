@@ -202,10 +202,10 @@ public class UserController {
 		user.setRealname(add_realname);
 		user.setUsername(add_username);
 		user.setPassword(add_password);
-		user.setDetcnt(5);
-		user.setMotcnt(5);
-		user.setSotcnt(5);
-		user.setVDetcnt(5);
+		user.setDetcnt(3);
+		user.setMotcnt(3);
+		user.setSotcnt(3);
+		user.setVDetcnt(3);
 		user.setRight(1);
 		user.setStatus(0);
 		user.setCode(UUID.randomUUID().toString());

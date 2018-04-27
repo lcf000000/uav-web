@@ -62,7 +62,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 									<li>Participate:</li>
 									<li><i class="fa fa-gear fa-lg"></i><a href="<%=path%>/views/getInfo?loc=6">&nbsp;&nbsp;Results Format</a></li>
 									<li><i class="fa fa-gear fa-lg"></i><a href="<%=path%>/views/getInfo?loc=7">&nbsp;&nbsp;Test Guidelines</a></li>
-									<li><i class="fa fa-gear fa-lg"></i><a href="<%=path%>/views/getInfo?loc=8">&nbsp;&nbsp;Upload Results</a></li>
+									<li><i class="fa fa-gear fa-lg"></i><a href="<%=path%>/views/getInfo?loc=8">&nbsp;&nbsp;Upload Instruction</a></li>
 									<li class="divider"></li>
 									<li>Evaluate:</li>
 									<li><i class="fa fa-tasks fa-lg"></i><a href="<%=path%>/views/getInfo?loc=9">&nbsp;&nbsp;Object Detection in Images</a></li>

@@ -66,7 +66,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 									<li>Participate:</li>
 									<li><i class="fa fa-gear fa-lg"></i><a href="<%=path%>/views/getInfo?loc=6">&nbsp;&nbsp;Results Format</a></li>
 									<li><i class="fa fa-gear fa-lg"></i><a href="<%=path%>/views/getInfo?loc=7">&nbsp;&nbsp;Test Guidelines</a></li>
-									<li><i class="fa fa-gear fa-lg"></i><a href="<%=path%>/views/getInfo?loc=8">&nbsp;&nbsp;Upload Results</a></li>
+									<li><i class="fa fa-gear fa-lg"></i><a href="<%=path%>/views/getInfo?loc=8">&nbsp;&nbsp;Upload Instruction</a></li>
 									<li class="divider"></li>
 									<li>Evaluate:</li>
 									<li><i class="fa fa-tasks fa-lg"></i><a href="<%=path%>/views/getInfo?loc=9">&nbsp;&nbsp;Object Detection in Images</a></li>
@@ -112,10 +112,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</div>
 				<div class="col-md-4" style="word-wrap:break-word;">
 					<br/>
-					<button onclick="subDet()"  id="subDet" disabled="disabled" class="btn btn-default btn-lg btn-block" >Image detection results submit  &nbsp; &nbsp; <span id="det"></span>/5 times</button>
-					<button onclick="subVdet()" id="subVdet" disabled="disabled" class="btn btn-default btn-lg btn-block" >Video detection results submit  &nbsp; &nbsp; <span id="vdet"></span>/5 times</button>
-					<button onclick="subSot()"  id="subSot" disabled="disabled" class="btn btn-default btn-lg btn-block">Single-tracking results submit  &nbsp; &nbsp; <span id="sot"></span>/5 times</button>
-					<button onclick="subMot()"  id="subMot" disabled="disabled" class="btn btn-default btn-lg btn-block">Multi-tracking results submit  &nbsp; &nbsp; <span id="mot"></span>/5 times</button>
+					<button onclick="subDet()"  id="subDet" disabled="disabled" class="btn btn-default btn-lg btn-block" >Image detection results submit  &nbsp; &nbsp; <span id="det"></span>/3 times</button>
+					<button onclick="subVdet()" id="subVdet" disabled="disabled" class="btn btn-default btn-lg btn-block" >Video detection results submit  &nbsp; &nbsp; <span id="vdet"></span>/3 times</button>
+					<button onclick="subSot()"  id="subSot" disabled="disabled" class="btn btn-default btn-lg btn-block">Single-tracking results submit  &nbsp; &nbsp; <span id="sot"></span>/3 times</button>
+					<button onclick="subMot()"  id="subMot" disabled="disabled" class="btn btn-default btn-lg btn-block">Multi-tracking results submit  &nbsp; &nbsp; <span id="mot"></span>/3 times</button>
 					<button onclick="IntoMy()"  id="IntoMy" class="btn btn-default btn-lg btn-block">Your Informations</button>
 				</div>
 				<div class="col-md-4">

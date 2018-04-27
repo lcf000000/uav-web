@@ -375,7 +375,7 @@ p {
   text-align: center;
   float: left;
   margin-bottom: 110px;
-  padding-left: 3em;
+  padding-left: 0em;
   padding-right: 3em;
 }
 @media screen and (max-width: 1200px) {
@@ -432,7 +432,7 @@ p {
   }
 }
 .fh5co-post-entry article .fh5co-meta {
-  font-size: 16px;
+  font-size: 13px;
   font-family: "Roboto", arial, sans-serif;
   color: #999999;
   margin-bottom: 20px;
