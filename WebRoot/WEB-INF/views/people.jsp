@@ -180,7 +180,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 										<li style="font-size: 12px">Qinghua Hu (Tianjin Univ., China)</li>
 										<li style="font-size: 12px">David Jacobs (Univ. Maryland College Park, USA)</li> 
 										<li style="font-size: 12px">John Lizzi (GE Global Research, Niskayuna, USA)</li>
-										<li style="font-size: 12px">Siwei Lyu (Univ. at Albany, SUNY, USA)</li>	
+										<li style="font-size: 12px">Siwei Lyu (Univ. at Albany, SUNY, USA)</li>
+										
 										<li style="font-size: 12px">Wenhan Luo (Tencent AI Lab)</li>
 								        <li style="font-size: 12px">Anton Milan (Amazon Research and Development Center, Germany)</li>
 	                                    <li style="font-size: 12px">Siyu Tang (Max Planck Institute for Intelligent Systems, Germany)</li>

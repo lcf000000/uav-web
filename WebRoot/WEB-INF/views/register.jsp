@@ -50,10 +50,11 @@
 					<div class="form-group">
 							<i class="fa fa-envelope fa-lg"></i>
 							<input class="form-control eamil" onblur="checkEmail(this)" type="text" placeholder="Email" name="add_email" maxlength="40"/>
+							<div style="font-size: 13px; color:#FFFFFF; background-color:#C0C0C0 ">* It is better <span style="color:#FF0000">not</span> to use a commercial mailbox (e.g., gmail, hotmail, yahoo, outlook, live, qq, 163, and 126...).</div>
 					</div>
 					<div class="form-group">
 							<i class="fa fa-group fa-lg"></i>
-							<input class="form-control required" onblur="checkOrg(this)" type="text" placeholder="University,Group,institute,Corporation,etc (letters and , . only)" name="add_org"/>
+							<input class="form-control required" onblur="checkOrg(this)" type="text" placeholder="University,Group,institute,Corporation,etc" name="add_org"/>
 					</div>
 					<div class="form-group">
 							<i class="fa fa-globe fa-lg"></i>
