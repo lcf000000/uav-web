@@ -18,7 +18,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-		<title>UAV DATASET - TJU and GA</title>
+		<title>VisDrone2018</title>
 		<!-- Bootstrap core CSS -->
 		<link href="<%=path%>/css/bootstrap/bootstrap.css" rel="stylesheet">
 		<link rel="stylesheet" href="<%=path%>/css/font-awesome/font-awesome.min.css">
@@ -174,21 +174,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 col-xxs-12 animate-box col-md-offset-3 ">
 								    <div class="box-hang">
 								    <list>
-								   <li style="font-size: 12px"> Hamilton Scott Clouse (USAirforce Research)</li> 
-									<li style="font-size: 12px">Liyi Dai (US Army Research Office)</li> 
-									<li style="font-size: 12px">Riad I.Hammound (BAE Systems, USA) </li>
-									<li style="font-size: 12px">Qinghua Hu (Tianjin Univ., China)</li>
-									<li style="font-size: 12px">David Jacobs (Univ. Maryland College Park, USA)</li> 
-									<li style="font-size: 12px">John Lizzi (GEGlobal Research, Niskayuna, USA)</li>
-									<li style="font-size: 12px">Stan Z. Li (Institute ofAutomation, Chinese Academy of Sciences, China)</li>
-									
-								   
-							        <li style="font-size: 12px">Anton Milan (Amazon Research and Development Center, Germany)</li>
-                                    <li style="font-size: 12px">Siyu Tang (Max Planck Institute for Intelligent Systems, Germany)</li>
-                                    <li style="font-size: 12px">Yi Wu (Indiana Univ., USA)</li>
-                                    <li style="font-size: 12px">Wenhan Luo (Tencent AI Lab)</li>
-                                    <li style="font-size: 12px">Ming-Hsuan Yang （University of California at Merced, USA）</li>
-                                     </list>
+									   	<li style="font-size: 12px">Hamilton Scott Clouse (US Airforce Research)</li> 
+										<li style="font-size: 12px">Liyi Dai (US Army Research Office)</li> 
+										<li style="font-size: 12px">Riad I.Hammound (BAE Systems, USA) </li>
+										<li style="font-size: 12px">Qinghua Hu (Tianjin Univ., China)</li>
+										<li style="font-size: 12px">David Jacobs (Univ. Maryland College Park, USA)</li> 
+										<li style="font-size: 12px">John Lizzi (GE Global Research, Niskayuna, USA)</li>
+										<li style="font-size: 12px">Siwei Lyu (Univ. at Albany, SUNY, USA)</li>	
+										<li style="font-size: 12px">Wenhan Luo (Tencent AI Lab)</li>
+								        <li style="font-size: 12px">Anton Milan (Amazon Research and Development Center, Germany)</li>
+	                                    <li style="font-size: 12px">Siyu Tang (Max Planck Institute for Intelligent Systems, Germany)</li>
+	                                    <li style="font-size: 12px">Yi Wu (Indiana Univ., USA)</li>
+	                                    <li style="font-size: 12px">Ming-Hsuan Yang （University of California at Merced, USA）</li>
+                                    </list>
                                     </div>
                                     </div>
                                     </div>
