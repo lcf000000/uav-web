@@ -365,5 +365,12 @@ footer .footer-socials a:hover {
 	background-color: #dddddd;
 }
 footer .footer-bottom {
-	padding: 0 0 40px;
+	padding: 20px 0 20px;
+}
+table {
+	width: 100%;
+}
+section > .row {
+	margin-right: 0px!important;
+	margin-left: 0px!important;
 }
