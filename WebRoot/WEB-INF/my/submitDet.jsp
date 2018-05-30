@@ -146,7 +146,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<div class="form-group">
 						    <label>*Description</label>
 						    <input onblur="checkDesFile(this)" type="file" id="exampleInputFile" name="desfile">
-						    <p class="help-block">A short description of your method. Please use the template paper to describe your method (template is available here). Your file format should be .pdf, .docx or .doc.
+						    <p class="help-block">A short description of your method. Please use the template paper to describe your method (VisDrone2018-Authorkit is available here[ <a href="https://pan.baidu.com/s/1v7WKU1v5en7uU3nyHS4G3Q">BaiduYun</a> | <a href="https://drive.google.com/open?id=13MN5aLXXj1x9kq1w2UWBMVLqxSePVhtb">GoogleDrive</a>]). Your file format should be .pdf, .docx or .doc.
 .</p>
 						</div>
 						<div class="form-group">
