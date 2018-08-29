@@ -20,8 +20,8 @@ public class SendEmailUtil {
 	public static void sendEmail(String userEmail, int flag, String userName, String password) throws Exception {
 		Properties props = new Properties();
 		
-		String emailAddress="tju.drone.vision@gmail.com";
-		String emailPassword="VisDrones2018";
+		String emailAddress="*********";
+		String emailPassword="**********";
 		
 		// 获取邮箱smtp服务器的地址
 		props.setProperty("mail.host", "smtp.gmail.com");
